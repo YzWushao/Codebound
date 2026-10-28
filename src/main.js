@@ -124,6 +124,11 @@ async function startRun(singleStep = false) {
     if (token !== runToken || error.name === 'AbortError') return;
     running = computing = false; controls(); $('#console-state').textContent = '执行已停止';
     $('#feedback').className = 'feedback error'; $('#feedback').textContent = error.message;
+    if (error.detail) {
+      const details = document.createElement('details'), summary = document.createElement('summary'), raw = document.createElement('pre');
+      summary.textContent = '查看运行器诊断'; raw.textContent = error.detail; raw.style.whiteSpace = 'pre-wrap';
+      details.append(summary, raw); $('#feedback').append(details);
+    }
   }
 }
 function advance() {

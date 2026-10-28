@@ -8,7 +8,9 @@ Python 网页版独立维护在 `YzWushao/codebound_web`，本地目录为 `D:/D
 
 ## 开始
 
-本仓库提供源码，当前尚未发布 GitHub Release 安装包。需要 Node.js 22.12+，在 Windows 上克隆后启动桌面版：
+Windows 安装包请到 [GitHub Releases](https://github.com/YzWushao/Codebound/releases) 下载。当前版本为 `0.1.0-alpha.2`，无需另装 Python 或 Node.js。
+
+本仓库同时提供源码。开发需要 Node.js 22.12+，在 Windows 上克隆后启动桌面版：
 
 ```powershell
 git clone https://github.com/YzWushao/Codebound.git
@@ -49,13 +51,15 @@ config/repository.json GitHub 来源配置
 
 ## GitHub 更新状态
 
-当前已关联公开仓库 `YzWushao/Codebound`，更新源配置已同步为公开。Alpha 提供明确的更新状态和读取接口，尚未发布 GitHub Release，也未接入发行包的签名校验、下载和自动安装。不会向玩家客户端内置 GitHub 凭据。正式启用自动更新时，需要发布可供玩家访问的发行包并接入签名验证。
+当前已关联公开仓库 `YzWushao/Codebound`，更新源配置已同步为公开。Alpha 安装包由 GitHub Releases 分发；游戏中的检查更新接口尚未接入发行包的签名校验、下载和自动安装。Alpha 预发行版本请从 Releases 手动下载。不会向玩家客户端内置 GitHub 凭据。
 
 客户端更新以正式构建的发行包为单位，不在玩家电脑上克隆源码或现场编译。应用清单与 DLC 清单分开维护，避免语言包发行影响本体更新通道。
 
 ## 验证
 
-`npm test` 使用本机 Python 3 执行同一游戏桥，检查 20 关参考答案、输入变式、错误行号、循环限制与存档协议。EXE 内实际运行使用随程序打包的 Pyodide。
+`npm test` 使用本机 Python 3 与真实 Pyodide 执行同一游戏桥，检查 20 关参考答案、输入变式、错误行号、循环限制、存档协议与运行时完整性。EXE 内实际运行使用随程序打包的 Pyodide。
+
+如果源码启动时提示运行资源缺失或损坏，请重新执行 `npm ci` 与 `npm run dev`。如果仍然报错，请展开「查看运行器诊断」查看具体初始化信息；安装版请重新下载安装完整安装包。
 
 ## 依赖与许可
 

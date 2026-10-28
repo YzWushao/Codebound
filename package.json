@@ -1,6 +1,6 @@
 {
   "name": "codebound",
-  "version": "0.1.0-alpha.1",
+  "version": "0.1.0-alpha.2",
   "description": "Codebound Windows 桌面版 · 写下代码，开启下一关。",
   "repository": { "type": "git", "url": "https://github.com/YzWushao/Codebound.git" },
   "private": true,

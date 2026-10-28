@@ -14,6 +14,7 @@ export class PythonRunner {
       onStatus('正在唤醒 Python…');
       this.timeout = setTimeout(() => fail('Python 初始化超时，请重试。'), 45000);
       this.worker.onmessage = ({ data }) => {
+        if (data.type === 'status') onStatus(data.message);
         if (data.type === 'ready') {
           ready = true; clearTimeout(this.timeout); onStatus('正在执行代码…');
           this.timeout = setTimeout(() => fail('程序运行超过 6 秒，已停止。请检查循环是否能够结束。'), 6000);
@@ -21,7 +22,8 @@ export class PythonRunner {
         if (data.type === 'result' || data.type === 'failure') {
           clearTimeout(this.timeout); this.pending = null;
           this.worker?.terminate(); this.worker = null;
-          if (data.type === 'result') resolve(data.result); else reject(new Error(data.message));
+          if (data.type === 'result') resolve(data.result);
+          else { const error = new Error(data.message); error.detail = data.detail; reject(error); }
         }
       };
       this.worker.onerror = event => {

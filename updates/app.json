@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "version": "0.1.0-alpha.1",
+  "version": "0.1.0-alpha.2",
   "channel": "alpha",
-  "notes": "首个本地 Alpha：Python 内置主线，20 个关卡，本地存档。",
+  "notes": "Windows 安装包：20 关 Python 序幕；增加运行时资源完整性检查、标准库预加载及初始化错误诊断。",
   "platforms": {}
 }
