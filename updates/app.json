@@ -1,0 +1,7 @@
+{
+  "schemaVersion": 1,
+  "version": "0.1.0-alpha.1",
+  "channel": "alpha",
+  "notes": "首个本地 Alpha：Python 内置主线，20 个关卡，本地存档。",
+  "platforms": {}
+}

@@ -1,0 +1,77 @@
+{
+  "id": "python-main", "title": "重启校园", "subtitle": "一台机器人，二十次改变。", "schemaVersion": 1,
+  "acts": [
+    { "id": "prologue", "title": "序·幕", "name": "Byte 苏醒", "summary": "从第一行代码开始，掌握指令、变量、判断与循环。", "status": "available", "units": ["wake", "power", "gate", "cargo", "reboot"] },
+    { "id": "act-one", "title": "第一幕", "name": "校园救援", "summary": "规划中的正式冒险：更长的任务区域、综合语法、列表与函数。", "status": "planned", "units": [] },
+    { "id": "act-two", "title": "第二幕", "name": "信号迷城", "summary": "规划中的后续冒险：数据处理、查找与基础算法。", "status": "planned", "units": [] }
+  ],
+  "chapters": [
+    { "id": "wake", "title": "唤醒机器人", "subtitle": "顺序 · 调用 · 输出", "icon": "bot", "color": "#c7ef7b" },
+    { "id": "power", "title": "恢复供电", "subtitle": "变量 · 字符串 · 运算", "icon": "zap", "color": "#ffc779" },
+    { "id": "gate", "title": "修复门禁", "subtitle": "比较 · 条件 · 分支", "icon": "split", "color": "#b7a2ff" },
+    { "id": "cargo", "title": "运送物资", "subtitle": "for · range · 累加", "icon": "boxes", "color": "#73d4e6" },
+    { "id": "reboot", "title": "重启校园", "subtitle": "while · 结束条件 · 综合", "icon": "radio-tower", "color": "#f299b9" }
+  ],
+  "levels": [
+    {
+      "id":"python.wake.001","chapter":"wake","title":"第一步，向前","concept":"顺序执行","type":"world","brief":"小机器人 Byte 已经醒来。通往校园的信号就在前方，让它抵达绿色传送点。","goal":"向右移动 3 格，到达传送点。","learn":"Python 会从上到下依次执行代码。robot.right() 是游戏提供的函数，每调用一次，Byte 就向右走一格。括号也要一起写上哦。","example":"# 这是一条注释，Python 不会执行它\nrobot.right()\nrobot.right()","starter":"# 每一行代码，都是新的一步。\nrobot.right()\n\n# 继续写，让 Byte 抵达传送点\n","hints":["数一数 Byte 与传送点之间有几格。","每一行 robot.right() 都只走一格。","已有一行移动指令，再补两行 robot.right()。"],"map":["#########","#########","##S..G###","#########","#########","#########"],"rules":{"atGoal":true}
+    },
+    {
+      "id":"python.wake.002","chapter":"wake","title":"转角的微光","concept":"函数调用","type":"world","brief":"前方有一段弯路。用不同的方向指令，带 Byte 绕过墙壁。","goal":"先向右 2 格，再向下 2 格。","learn":"robot.right()、robot.left()、robot.up() 和 robot.down() 分别控制四个方向。每个指令独占一行，执行顺序会影响路线。","example":"robot.right()\nrobot.down()","starter":"# 先往右，再往下。\nrobot.right()\n","hints":["先观察浅色道路，深色方块是墙。","向右两次之后，转向下方。","完整路线需要 2 次 right 和 2 次 down。"],"map":["#########","#S..#####","###.#####","###G#####","#########","#########"],"rules":{"atGoal":true}
+    },
+    {
+      "id":"python.wake.003","chapter":"wake","title":"带上第一块电池","concept":"调用与顺序","type":"world","brief":"传送点缺少备用电池。走到黄色电池所在的位置，再调用 collect() 把它带上。","goal":"收集电池，然后抵达传送点。","learn":"robot.collect() 会拾取脚下的电池。动作必须按正确顺序执行；站在电池旁边还不能捡到它。","example":"robot.right()\nrobot.collect()","starter":"# 到电池上，收集它，再出发。\nrobot.right()\n","hints":["电池在起点右边第 2 格。","走到电池所在格子后，再调用 robot.collect()。","先走两格、收集，再向右走两格。"],"map":["#########","#########","#S.B.G###","#########","#########","#########"],"rules":{"atGoal":true,"collected":1}
+    },
+    {
+      "id":"python.wake.004","chapter":"wake","title":"你好，校园","concept":"print 与字符串","type":"console","brief":"通信终端终于连上了。暂时放下方向指令，独立发送一条 Python 消息。","goal":"使用 print 输出：你好，校园！","learn":"print() 是 Python 自带的输出函数。文字称为字符串，需要用一对英文引号包起来。单引号与双引号都可以。","example":"print(\"你好，Byte！\")","starter":"# 在终端输出任务中要求的消息。\n","hints":["使用 print()，把文字放进括号。","输出的中文和标点要与目标一致。","print(\"你好，校园！\")"],"map":["#########","#.......#","#.S...G.#","#.......#","#########","#########"],"rules":{"output":"你好，校园！"}
+    },
+    {
+      "id":"python.power.001","chapter":"power","title":"给电量起个名字","concept":"变量与赋值","type":"world","brief":"供电站亮起了一盏灯。用变量记录路线长度，再把它交给机器人。","goal":"创建 steps 变量，值为 4，并让 Byte 走到终点。","learn":"变量像一个有名字的小盒子。steps = 4 把数字 4 存进 steps。robot.right(steps) 会读取盒子里的数字，向右走对应的格数。","example":"distance = 2\nrobot.right(distance)","starter":"# 用 steps 保存需要走的格数。\nsteps = 0\nrobot.right(steps)\n","hints":["起点到终点相隔 4 格。","等号右边是你要存入的值。","把 steps = 0 改成 steps = 4。"],"map":["#########","#########","#S...G###","#########","#########","#########"],"rules":{"atGoal":true,"variables":{"steps":4},"nodes":["Assign"]}
+    },
+    {
+      "id":"python.power.002","chapter":"power","title":"电量计算器","concept":"算术运算","type":"console","brief":"两块电池分别储存 35 和 25 单位能量。用 Python 计算总量。","goal":"将两块电池的总能量保存为 total，并输出 total。","learn":"+、-、*、/ 分别表示加、减、乘、除。运算时也可以使用变量。不要把数字放在引号里，那样它会变成文字。","example":"a = 10\nb = 5\ntotal = a + b\nprint(total)","starter":"battery_a = 35\nbattery_b = 25\n\n# 计算 total，然后输出它。\n","hints":["两个变量都已经准备好了。","使用 + 把它们相加，结果赋值给 total。","total = battery_a + battery_b，然后 print(total)。"],"map":["#########","#.......#","#.S...G.#","#.......#","#########","#########"],"rules":{"output":"60","variables":{"total":60},"nodes":["BinOp"]}
+    },
+    {
+      "id":"python.power.003","chapter":"power","title":"来自远方的指令","concept":"input 与类型转换","type":"console","brief":"终端收到两次补给数量。输入框中的两行数字会依次交给 input()。","goal":"读取两行输入，将它们转成整数，输出两数之和。","learn":"input() 每次读取一行文字。int() 可以把数字文字变成整数。int(input()) 就是先读入，再转换。右上角的输入数据会在每次运行时重新使用。","example":"count = int(input())\nprint(count + 1)","starter":"first = int(input())\nsecond = int(input())\n\n# 输出两数之和。\n","input":["12","8"],"hints":["读取的数字已经放进 first 和 second。","输出 first + second。","隐藏测试会换成不同的数字，所以请计算输入，而不是直接打印 20。"],"map":["#########","#.......#","#.S...G.#","#.......#","#########","#########"],"rules":{"output":"20"},"cases":[{"input":["7","3"],"output":"10"},{"input":["-2","5"],"output":"3"}]
+    },
+    {
+      "id":"python.power.004","chapter":"power","title":"专属呼号","concept":"字符串拼接","type":"console","brief":"给校园广播加上署名。读取名字，然后把它拼接进欢迎语。","goal":"读取一行名字，输出“欢迎，名字！”。","learn":"字符串也能使用 +，这时它表示把文字连接起来。可以用 name 保存读到的名字，再和前后的文字拼接。","example":"name = input()\nprint(\"你好，\" + name)","starter":"name = input()\n\n# 输出完整的欢迎语。\n","input":["Byte"],"hints":["目标输出是 欢迎，Byte！。","前半段、name、感叹号之间用 + 连接。","print(\"欢迎，\" + name + \"！\")"],"map":["#########","#.......#","#.S...G.#","#.......#","#########","#########"],"rules":{"output":"欢迎，Byte！"},"cases":[{"input":["小林"],"output":"欢迎，小林！"}]
+    },
+    {
+      "id":"python.gate.001","chapter":"gate","title":"电量足够吗","concept":"if 与比较","type":"world","brief":"门禁旁有一个充电座。当前电量偏低，先判断是否需要充电，再继续前进。","goal":"当 robot.energy 小于 50 时充电，然后向右 3 格。","learn":"if 条件: 表示条件成立时才执行下面的代码。下面的动作缩进 4 个空格。robot.charge() 每次增加 20 电量。robot.energy 读取当前电量，不需要括号。","example":"if robot.energy < 30:\n    robot.charge()","starter":"# 当前电量为 35。\nif robot.energy < 50:\n    # 在这里调用充电动作\n    pass\n\nrobot.right(3)\n","energy":35,"hints":["if 后面的冒号与下一行的缩进都很重要。","把 pass 替换为充电指令。","在缩进位置写 robot.charge()。"],"map":["#########","#########","##S..G###","#########","#########","#########"],"rules":{"atGoal":true,"minEnergy":50,"nodes":["If"]}
+    },
+    {
+      "id":"python.gate.002","chapter":"gate","title":"通行，还是等待","concept":"if / else","type":"console","brief":"把学到的判断用于普通 Python：读取电量，告诉控制室是否可以启动。","goal":"电量至少 50 输出 GO，否则输出 WAIT。","learn":">= 表示大于或等于。else: 提供条件不成立时的另一条路线。两条分支里的语句都需要缩进。","example":"if score >= 60:\n    print(\"通过\")\nelse:\n    print(\"继续练习\")","starter":"energy = int(input())\n\n# 根据 energy 选择输出。\n","input":["70"],"hints":["用 energy >= 50 作条件。","成立时 print(\"GO\")，否则 print(\"WAIT\")。","测试还会输入 50 和 20，记得包含刚好 50 的情况。"],"map":["#########","#.......#","#.S...G.#","#.......#","#########","#########"],"rules":{"output":"GO","nodes":["If"]},"cases":[{"input":["50"],"output":"GO"},{"input":["20"],"output":"WAIT"}]
+    },
+    {
+      "id":"python.gate.003","chapter":"gate","title":"三色指示灯","concept":"elif","type":"console","brief":"控制室需要更细的电量报告。为三种电量区间输出不同指示。","goal":"电量 < 30 输出 LOW；30～69 输出 OK；至少 70 输出 HIGH。","learn":"elif 表示“否则，如果”。Python 从上到下检查条件，命中一条分支后，就跳过其余分支。","example":"if n < 0:\n    print(\"负数\")\nelif n == 0:\n    print(\"零\")\nelse:\n    print(\"正数\")","starter":"energy = int(input())\n\n# 按从低到高的顺序判断。\n","input":["55"],"hints":["先判断 energy < 30。","接着判断 energy < 70，最后使用 else。","输出分别为 LOW、OK、HIGH，注意大写。"],"map":["#########","#.......#","#.S...G.#","#.......#","#########","#########"],"rules":{"output":"OK","nodes":["If"]},"cases":[{"input":["29"],"output":"LOW"},{"input":["30"],"output":"OK"},{"input":["70"],"output":"HIGH"}]
+    },
+    {
+      "id":"python.gate.004","chapter":"gate","title":"双重认证","concept":"and 与布尔值","type":"console","brief":"图书馆的门需要同时满足两个条件：已拥有钥匙，且电量至少 30。","goal":"输入为钥匙状态（1 或 0）和电量，满足两个条件输出 OPEN，否则输出 LOCKED。","learn":"== 用来比较，= 用来赋值。and 要求两侧条件都成立；or 要求至少一侧成立。比较的结果是 True 或 False。","example":"if has_card == 1 and energy >= 10:\n    print(\"可以进入\")","starter":"key = int(input())\nenergy = int(input())\n\n# 同时检查两个条件。\n","input":["1","40"],"hints":["钥匙条件是 key == 1。","把它和 energy >= 30 用 and 连接。","别忘了 else 分支中的 LOCKED。"],"map":["#########","#.......#","#.S...G.#","#.......#","#########","#########"],"rules":{"output":"OPEN","nodes":["BoolOp"]},"cases":[{"input":["0","90"],"output":"LOCKED"},{"input":["1","29"],"output":"LOCKED"},{"input":["1","30"],"output":"OPEN"}]
+    },
+    {
+      "id":"python.cargo.001","chapter":"cargo","title":"循环引擎上线","concept":"for 与 range","type":"world","brief":"校园运输线很长。用循环让同一个移动动作重复执行，点亮循环引擎。","goal":"使用 for 循环向右移动 5 次。","learn":"for i in range(5): 会把缩进的语句执行 5 次。i 依次取值 0、1、2、3、4。range 的结束数字不包含在结果里。","example":"for i in range(2):\n    robot.right()","starter":"# 把重复动作放进循环。\nfor i in range(1):\n    robot.right()\n","hints":["数一数起点和终点相隔几格。","修改 range 括号里的次数。","range(5) 会让循环体执行 5 次。"],"map":["#########","#########","#S....G##","#########","#########","#########"],"rules":{"atGoal":true,"nodes":["For"]}
+    },
+    {
+      "id":"python.cargo.002","chapter":"cargo","title":"整齐的电池阵列","concept":"循环体与多个动作","type":"world","brief":"三块备用电池排成一列。每走一格，就收集一次。","goal":"用 for 循环收集 3 块电池，再抵达传送点。","learn":"循环体可以放多个动作，它们会按顺序一起重复。缩进相同的语句属于同一个循环体。循环外的代码会在循环全部结束后执行。","example":"for i in range(2):\n    robot.right()\n    robot.collect()\nrobot.right()","starter":"for i in range(3):\n    robot.right()\n    # 每走一步，收集脚下的电池\n\n# 循环后再走向终点。\n","hints":["在循环内部加入 robot.collect()。","收集完 3 块电池后，离终点还有 1 格。","循环外再写一行 robot.right()。"],"map":["#########","#########","#SBBBG###","#########","#########","#########"],"rules":{"atGoal":true,"collected":3,"nodes":["For"]}
+    },
+    {
+      "id":"python.cargo.003","chapter":"cargo","title":"从一数到五","concept":"range 起点与终点","type":"console","brief":"给五箱救援物资依次编号。每个编号单独输出一行。","goal":"使用 for 依次输出 1、2、3、4、5，每行一个数字。","learn":"range(start, stop) 从 start 开始，到 stop 前一个数结束。所以 range(2, 5) 生成 2、3、4。","example":"for number in range(2, 5):\n    print(number)","starter":"# 让 number 从 1 变化到 5。\nfor number in range(1, 2):\n    print(number)\n","hints":["range 的结束值本身不会被取到。","要让 5 被输出，结束值要比 5 多 1。","使用 range(1, 6)。"],"map":["#########","#.......#","#.S...G.#","#.......#","#########","#########"],"rules":{"output":"1\n2\n3\n4\n5","nodes":["For"]}
+    },
+    {
+      "id":"python.cargo.004","chapter":"cargo","title":"物资总账","concept":"累加算法","type":"console","brief":"第一次独立写出小算法：给出 n，计算从 1 到 n 的总和。","goal":"读取 n，用 for 累加 1 到 n，最后输出总和。","learn":"累加需要一个初始为 0 的变量。每轮用 total = total + number 更新总数。最终输出应放在循环外面，避免输出中间结果。","example":"total = 0\nfor number in range(1, 4):\n    total = total + number\nprint(total)","starter":"n = int(input())\ntotal = 0\n\n# 在这里完成累加。\n\nprint(total)\n","input":["5"],"hints":["循环范围是 range(1, n + 1)。","每轮把当前 number 加到 total。","不同测试会给出不同的 n，请保留输入。"],"map":["#########","#.......#","#.S...G.#","#.......#","#########","#########"],"rules":{"output":"15","nodes":["For"]},"cases":[{"input":["1"],"output":"1"},{"input":["10"],"output":"55"}]
+    },
+    {
+      "id":"python.reboot.001","chapter":"reboot","title":"直到光亮起来","concept":"while 循环","type":"world","brief":"控制室需要至少 80 电量。Byte 当前只有 20，每充一次增加 20。","goal":"使用 while 充电到至少 80，然后向右 3 格。","learn":"while 条件: 会在每轮开始前判断条件。条件成立就继续执行，条件不成立就退出。循环体中要让条件有机会发生变化。","example":"while robot.energy < 60:\n    robot.charge()","starter":"# 达到 80 后，自动结束充电。\nwhile robot.energy < 80:\n    pass\n\nrobot.right(3)\n","energy":20,"hints":["pass 是占位符，不会做任何事。","如果电量没有增加，条件会一直成立。","用 robot.charge() 替换 pass。"],"map":["#########","#########","##S..G###","#########","#########","#########"],"rules":{"atGoal":true,"minEnergy":80,"nodes":["While"]}
+    },
+    {
+      "id":"python.reboot.002","chapter":"reboot","title":"终点探测器","concept":"not 与结束条件","type":"world","brief":"终点距离不再写死。使用传感器，让机器人自己判断什么时候停下。","goal":"只要还没到终点，就继续向右移动。","learn":"robot.at_goal() 返回是否到达终点。not 会把判断反过来。while not robot.at_goal(): 的意思是“只要还没到达，就继续”。","example":"while not robot.at_goal():\n    robot.right()","starter":"# 让传感器决定何时停止。\n","hints":["需要一个每轮都会重新检查的条件。","使用 while not robot.at_goal():。","循环体中调用 robot.right()。"],"map":["#########","#########","#S....G##","#########","#########","#########"],"rules":{"atGoal":true,"nodes":["While"]}
+    },
+    {
+      "id":"python.reboot.003","chapter":"reboot","title":"发射前的倒数","concept":"变量更新与 while","type":"console","brief":"把结束条件应用到普通程序：读取倒计时起点，每次减一，直到发射。","goal":"使用 while 从 n 倒数到 1，每行一个数字，最后输出 GO。","learn":"循环内用 n = n - 1 让计数逐渐接近结束。while n > 0: 会在 n 变成 0 时停下。循环后再执行最终的输出。","example":"n = 2\nwhile n > 0:\n    print(n)\n    n = n - 1\nprint(\"出发\")","starter":"n = int(input())\n\n# 倒计时结束后，输出 GO。\n","input":["3"],"hints":["循环条件是 n > 0。","先输出当前的 n，再把 n 减一。","print(\"GO\") 应放在循环外面。"],"map":["#########","#.......#","#.S...G.#","#.......#","#########","#########"],"rules":{"output":"3\n2\n1\nGO","nodes":["While"]},"cases":[{"input":["1"],"output":"1\nGO"},{"input":["0"],"output":"GO"}]
+    },
+    {
+      "id":"python.reboot.004","chapter":"reboot","title":"校园，重新上线","concept":"综合挑战","type":"world","brief":"最后一条救援线路：补足电量，收集沿途三块电池，把它们送进主控制室。校园的灯光正等着你。","goal":"用 while 充电到至少 80，用 for 收集 3 块电池，再抵达终点。","learn":"先把任务拆成几步，再分别选合适的语句。次数不确定时用 while，明确重复三次时用 for。把学到的知识组合起来，就是解决问题的开始。","example":"# 先补充能量\n# 再重复收集\n# 最后抵达终点","starter":"# 1. 把电量充到至少 80。\n\n# 2. 重复三次：向右移动，再收集。\n\n# 3. 向右走到控制室。\n","energy":20,"hints":["第一段参考 while robot.energy < 80。","第二段使用 for i in range(3)，每轮先 right 再 collect。","循环结束后还要再向右走一格。"],"map":["#########","#########","#SBBBG###","#########","#########","#########"],"rules":{"atGoal":true,"collected":3,"minEnergy":80,"nodes":["While","For"]}
+    }
+  ]
+}

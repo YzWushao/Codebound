@@ -1,0 +1,22 @@
+{
+ "python.wake.001":"robot.right()\nrobot.right()\nrobot.right()",
+ "python.wake.002":"robot.right(2)\nrobot.down(2)",
+ "python.wake.003":"robot.right(2)\nrobot.collect()\nrobot.right(2)",
+ "python.wake.004":"print('你好，校园！')",
+ "python.power.001":"steps = 4\nrobot.right(steps)",
+ "python.power.002":"battery_a = 35\nbattery_b = 25\ntotal = battery_a + battery_b\nprint(total)",
+ "python.power.003":"first = int(input())\nsecond = int(input())\nprint(first + second)",
+ "python.power.004":"name = input()\nprint('欢迎，' + name + '！')",
+ "python.gate.001":"if robot.energy < 50:\n    robot.charge()\nrobot.right(3)",
+ "python.gate.002":"energy = int(input())\nif energy >= 50:\n    print('GO')\nelse:\n    print('WAIT')",
+ "python.gate.003":"energy = int(input())\nif energy < 30:\n    print('LOW')\nelif energy < 70:\n    print('OK')\nelse:\n    print('HIGH')",
+ "python.gate.004":"key = int(input())\nenergy = int(input())\nif key == 1 and energy >= 30:\n    print('OPEN')\nelse:\n    print('LOCKED')",
+ "python.cargo.001":"for i in range(5):\n    robot.right()",
+ "python.cargo.002":"for i in range(3):\n    robot.right()\n    robot.collect()\nrobot.right()",
+ "python.cargo.003":"for number in range(1, 6):\n    print(number)",
+ "python.cargo.004":"n = int(input())\ntotal = 0\nfor number in range(1, n + 1):\n    total = total + number\nprint(total)",
+ "python.reboot.001":"while robot.energy < 80:\n    robot.charge()\nrobot.right(3)",
+ "python.reboot.002":"while not robot.at_goal():\n    robot.right()",
+ "python.reboot.003":"n = int(input())\nwhile n > 0:\n    print(n)\n    n = n - 1\nprint('GO')",
+ "python.reboot.004":"while robot.energy < 80:\n    robot.charge()\nfor i in range(3):\n    robot.right()\n    robot.collect()\nrobot.right()"
+}

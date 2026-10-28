@@ -1,0 +1,8 @@
+{
+  "owner": "YzWushao",
+  "repo": "Codebound",
+  "private": false,
+  "channel": "stable",
+  "appManifest": "updates/app.json",
+  "dlcManifest": "updates/dlc.json"
+}

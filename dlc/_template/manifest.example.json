@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "c-foundations",
+  "language": "c",
+  "title": "C · 机械工坊",
+  "version": "0.1.0",
+  "engineApi": 1,
+  "minAppVersion": "0.2.0",
+  "entry": "content/campaign.json",
+  "runtime": "c-runner",
+  "platforms": ["windows"],
+  "description": "仅为格式示例，当前没有对应课程或运行器。"
+}
