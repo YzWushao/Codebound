@@ -8,7 +8,7 @@ Python 网页版独立维护在 `YzWushao/codebound_web`。两个项目分别安
 
 ## 开始
 
-Windows 安装包请到 [GitHub Releases](https://github.com/YzWushao/Codebound/releases) 下载。本次发行版本为 `0.1.0-alpha.3`（免安装ZIP），无需另装 Python 或 Node.js。
+Windows 安装包请到 [GitHub Releases](https://github.com/YzWushao/Codebound/releases) 下载。本次发行版本为 `0.1.0-alpha.3`（安装EXE / 免安装ZIP），无需另装 Python 或 Node.js。
 
 本仓库同时提供源码。开发需要 Node.js 22.12+，在 Windows 上克隆后启动桌面版：
 
@@ -65,4 +65,4 @@ config/repository.json GitHub 来源配置
 
 依赖包括 Electron、CodeMirror、Lucide、Vite 与 Pyodide，分发时保留相应依赖许可。项目本身的发布许可由项目所有者决定。
 
-本地 Alpha.3 增加按幕选择、可收起侧栏与窗口自适应缩放，以及模块文件编辑、虚拟文件与JSON评分、档案快照。当前验证和限制见 [Alpha.3 QA](docs/ALPHA3-QA.md)。本次140关版本使用Windows免安装ZIP发行，完整解压后运行Codebound.exe；本地也可双击项目根目录Launch-Codebound.cmd。release目录里旧的60关Setup.exe不是本次发行文件。
+本地 Alpha.3 增加按幕选择、可收起侧栏与窗口自适应缩放，以及模块文件编辑、虚拟文件与JSON评分、档案快照。当前验证和限制见 [Alpha.3 QA](docs/ALPHA3-QA.md)。本次140关版本同时提供Setup.exe安装包与Windows免安装ZIP；ZIP完整解压后运行Codebound.exe。本地也可双击项目根目录Launch-Codebound.cmd。

@@ -36,7 +36,7 @@
 
 npm ci 安装，npm run dev构建并运行桌面，npm test验证，npm run build仅构建内嵌资源。用户最新已授权打包发布；本次构建免安装ZIP，不上传较早的60关Setup安装包。
 
-release目录内较早生成的Alpha.3安装包只含当时的60关，不能作为140关版交付。最新源码仅构建验证，后续打包需按用户新的要求执行。
+当前release目录中的安装EXE与ZIP均为140关构建，依据用户最新指令补充发行。
 
 ## 文档与接续
 
@@ -49,4 +49,4 @@ release目录内较早生成的Alpha.3安装包只含当时的60关，不能作�
 
 当前发行目标：v0.1.0-alpha.3；验证与校验值见ALPHA3-QA.md和releases/0.1.0-alpha.3.md，实际发布状态以GitHub Release为准。
 
-发布结果（2026-11-01）：[https://github.com/YzWushao/Codebound/releases/tag/v0.1.0-alpha.3](https://github.com/YzWushao/Codebound/releases/tag/v0.1.0-alpha.3)，GitHub预发行，Release ID 430433063。ZIP为161809815字节，服务器SHA-256与本地一致。本地直接入口：release/win-unpacked/Codebound.exe，也可使用桌面游戏快捷方式。
+发布结果（2026-11-01）：Alpha.3同一Release提供安装EXE与免安装ZIP，校验值以SHA256SUMS.txt附件为准。

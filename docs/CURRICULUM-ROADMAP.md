@@ -364,4 +364,4 @@ Python 是本体内置主线，随 Windows EXE 更新；其他语言作为独立
 
 当前发行目标：v0.1.0-alpha.3；验证与校验值见ALPHA3-QA.md和releases/0.1.0-alpha.3.md，实际发布状态以GitHub Release为准。
 
-发布结果（2026-11-01）：[https://github.com/YzWushao/Codebound/releases/tag/v0.1.0-alpha.3](https://github.com/YzWushao/Codebound/releases/tag/v0.1.0-alpha.3)，GitHub预发行，Release ID 430433063。ZIP为161809815字节，服务器SHA-256与本地一致。本地直接入口：release/win-unpacked/Codebound.exe，也可使用桌面游戏快捷方式。
+发布结果（2026-11-01）：Alpha.3同一Release提供安装EXE与免安装ZIP，校验值以SHA256SUMS.txt附件为准。

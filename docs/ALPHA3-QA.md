@@ -16,12 +16,12 @@
 
 ## 已验证
 
-- npm test：158项通过，0失败，包含140关参考解法与变式、真实Pyodide、旧存档跨幕、函数调用、JSON格式差异、模块错误定位、虚拟路径限制、可选挑战解锁、模块草稿和快照往返。
+- npm test：159项通过，0失败，包含140关参考解法与变式、真实Pyodide、旧存档跨幕、函数调用、JSON格式差异、模块错误定位、虚拟路径限制、可选挑战解锁、模块草稿和快照往返。
 - npm run build：通过；有内嵌资源大于500kB的体积提示。
 - Electron桌面冒烟：真实preload、内部codebound协议、第一幕末关导航、第三幕工具文件入口、虚拟档案面板、示例与提示。
 - 桌面真实Worker执行第140关及变式：通过，证明离线资源经内部协议可加载并完成JSON项目。
 - 在1440×1000、1000×700、1920×1080窗口检查主界面边界，均未超过可用视口；侧栏收起与恢复通过。
-- 已检查当前截图 docs/current-desktop.png。截图使用隔离QA存档，140/140为测试数据，不是玩家实际进度。
+- 已检查当前截图 docs/current-desktop.png。截图使用隔离QA存档；全部关卡已解锁，完成数仍按实际测试记录显示。
 - 文件树桌面交互验证通过：主文件与模块切换；真实点击运行第138关后record.json从待生成更新为实际文件，预览包含正确JSON内容，保存后快照出现在树中。该检查也覆盖三个窗口尺寸及侧栏收起恢复。
 - 冒烟脚本：构建后执行 electron scripts/desktop-smoke.cjs；使用独立临时userData，不改玩家存档。
 
@@ -37,10 +37,12 @@
 
 ## 打包状态
 
-用户最新要求已替代“先不生成”：本轮构建140关免安装ZIP，提供本地游戏EXE及快捷入口。本地快捷方式不作为Git源码发布。
+用户最新要求在同一个Alpha.3 Release中补充EXE安装包；安装EXE和免安装ZIP均已按当前140关代码重新构建。补充构建代码提交为288db10，保留最初v0.1.0-alpha.3发行标签。
 
-release/ 内较早生成的Alpha.3 Setup安装包仅含当时60关，本次不上传该旧文件。本次交付 Codebound-0.1.0-alpha.3-Windows-x64.zip，161809815字节，SHA-256为be9de363a06b69c337957bb682e8135b8433435dbae6b616c24f51aab82f1a40。
+- Codebound-0.1.0-alpha.3-Setup.exe：128788941字节，SHA-256 c1be1c02a5d6a040da320892b104d2f2dc3a3c0911982cebb92d7845fcbd5e00。
+- Codebound-0.1.0-alpha.3-Windows-x64.zip：161810060字节，SHA-256 40b9216c1cc6cfc7e5c28a792e0e49b9e615548b456b71181b304978fbca984e。
+- SHA256SUMS.txt同时记录两个文件，GitHub服务端摘要须与本地一致。
 
-重新运行158项自动检查通过。使用 --packaged 冒烟入口加载实际app.asar的主进程、preload与内嵌资源，文件树交互、真实Worker及三个窗口尺寸通过。启动入口为release/win-unpacked/Codebound.exe；项目根目录Launch-Codebound.cmd可直接启动该文件。
+本地入口仍为release/win-unpacked/Codebound.exe，根目录Launch-Codebound.cmd也可直接启动。解锁权限使用可选unlockedLevels存档字段，保留真实通关、草稿和提示记录；用户的本机授权只写入被忽略的本地记录，不上传玩家存档。
 
-发布结果（2026-11-01）：[https://github.com/YzWushao/Codebound/releases/tag/v0.1.0-alpha.3](https://github.com/YzWushao/Codebound/releases/tag/v0.1.0-alpha.3)，GitHub预发行，Release ID 430433063。ZIP为161809815字节，服务器SHA-256与本地一致。本地直接入口：release/win-unpacked/Codebound.exe，也可使用桌面游戏快捷方式。
+打包资源通过隔离Electron桌面冒烟，包含全部关卡解锁、模块、文件树、真实Worker、JSON生成及三个窗口尺寸。安装、升级、卸载完整回归仍待进行。

@@ -6,9 +6,14 @@
   "platforms": {
     "win32-x64": {
       "url": "https://github.com/YzWushao/Codebound/releases/download/v0.1.0-alpha.3/Codebound-0.1.0-alpha.3-Windows-x64.zip",
+      "size": 161810060,
+      "sha256": "40b9216c1cc6cfc7e5c28a792e0e49b9e615548b456b71181b304978fbca984e",
       "format": "zip",
-      "size": 161809815,
-      "sha256": "be9de363a06b69c337957bb682e8135b8433435dbae6b616c24f51aab82f1a40"
+      "installer": {
+        "url": "https://github.com/YzWushao/Codebound/releases/download/v0.1.0-alpha.3/Codebound-0.1.0-alpha.3-Setup.exe",
+        "size": 128788941,
+        "sha256": "c1be1c02a5d6a040da320892b104d2f2dc3a3c0911982cebb92d7845fcbd5e00"
+      }
     }
   }
 }
