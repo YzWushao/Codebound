@@ -1,5 +1,5 @@
 export const SAVE_VERSION = 1;
-export const APP_VERSION = '0.1.0-alpha.3';
+export const APP_VERSION = '0.1.0-alpha.4';
 export function initialScene(level) {
   let player = { x: 1, y: 1 }; const batteries = [];
   level.map.forEach((row, y) => [...row].forEach((cell, x) => {

@@ -1,19 +1,14 @@
 {
   "schemaVersion": 1,
-  "version": "0.1.0-alpha.3",
+  "version": "0.1.0-alpha.4",
   "channel": "alpha",
-  "notes": "140关Python主线，三幕新内容、虚拟文件树、模块与JSON、侧栏收缩及窗口自动缩放。",
+  "notes": "统一安装升级入口：已有安装原位升级，未安装进入安装向导，保留进度。",
   "platforms": {
     "win32-x64": {
-      "url": "https://github.com/YzWushao/Codebound/releases/download/v0.1.0-alpha.3/Codebound-0.1.0-alpha.3-Windows-x64.zip",
-      "size": 161810060,
-      "sha256": "40b9216c1cc6cfc7e5c28a792e0e49b9e615548b456b71181b304978fbca984e",
-      "format": "zip",
-      "installer": {
-        "url": "https://github.com/YzWushao/Codebound/releases/download/v0.1.0-alpha.3/Codebound-0.1.0-alpha.3-Setup.exe",
-        "size": 128788941,
-        "sha256": "c1be1c02a5d6a040da320892b104d2f2dc3a3c0911982cebb92d7845fcbd5e00"
-      }
+      "url": "https://github.com/YzWushao/Codebound/releases/download/v0.1.0-alpha.4/Codebound-0.1.0-alpha.4-Setup.exe",
+      "format": "nsis",
+      "size": 128781000,
+      "sha256": "9d59430775c560652787fa5c16b0fe403668f41333fc081ab19131ff906bcfe2"
     }
   }
 }

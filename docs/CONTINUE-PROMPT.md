@@ -1,5 +1,6 @@
 # 新会话接续提示
 
+> 最新状态：Alpha.4 新增统一安装/升级EXE，源码与159项检查通过；安装器集成测试覆盖首次安装、原位升级、同版本修复、失效记录回退与存档保护。详见 INSTALLER-QA.md。历史Alpha.3记录保留供回溯。
 ```text
 继续当前工作区中的 Codebound 项目。先读 AGENTS.md、docs/HANDOFF.md、docs/ALPHA3-QA.md、docs/PROJECT-TODO.md 和 docs/CURRICULUM-ROADMAP.md，检查 git status 并保留已有修改。
 本仓库只维护Windows EXE，网页在独立codebound_web仓库；Python内置，其他语言未来作为DLC。

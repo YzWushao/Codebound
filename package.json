@@ -1,6 +1,6 @@
 {
   "name": "codebound",
-  "version": "0.1.0-alpha.3",
+  "version": "0.1.0-alpha.4",
   "description": "Codebound Windows 桌面版 · 写下代码，开启下一关。",
   "repository": {
     "type": "git",
@@ -60,6 +60,7 @@
       "signExecutable": false
     },
     "nsis": {
+      "include": "build/installer.nsh",
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
