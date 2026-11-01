@@ -5,6 +5,7 @@ import { APP_VERSION, freshSave, normalizeSave, initialScene, judge, canOpen, La
 import { PythonRunner } from './runner.js';
 import { World } from './world.js';
 import { createEditor } from './editor.js';
+import { createFileWorkspace } from './file-workspace.js';
 
 const $ = selector => document.querySelector(selector);
 const esc = value => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
@@ -12,6 +13,7 @@ const icon = (name, cls = '') => `<i data-lucide="${name}" class="${cls}"></i>`;
 const renderIcons = () => createIcons({ icons, attrs: { 'aria-hidden': 'true' } });
 const levels = campaign.levels;
 const levelIds = levels.map(level => level.id);
+const actFor = chapter => campaign.acts.find(act => act.units.includes(chapter));
 const desktop = window.codebound;
 if (desktop?.platform !== 'desktop') {
   document.querySelector('#app').textContent = '请通过 Codebound.exe 启动桌面版。';
@@ -26,6 +28,29 @@ catch { storageWarning = '桌面存档读取失败，本次先使用客户端缓
 let current = levels.find(level => level.id === save.currentLevel) || levels[0];
 if (!canOpen(current, levels, save)) current = levels.find(level => !save.completed[level.id]) || levels[0];
 let expandedChapter = current.chapter;
+let sidebarAct = actFor(current.chapter).id;
+let sidebarCollapsed = localStorage.getItem('codebound.sidebarCollapsed') === 'true';
+let fitting = false;
+let fileWorkspace = null;
+function fitWorkspace() {
+  if (fitting) return;
+  fitting = true;
+  requestAnimationFrame(() => {
+    const app = $('#app'); if (!app) { fitting = false; return; }
+    let scale = 1;
+    for (let i = 0; i < 6; i++) {
+      app.style.width = `${window.innerWidth / scale}px`;
+      const height = app.scrollHeight;
+      const next = Math.min(1, window.innerHeight / Math.max(1, height));
+      if (Math.abs(next - scale) < .002) break;
+      scale = next;
+    }
+    app.style.width = `${window.innerWidth / scale}px`;
+    scale = Math.min(scale, window.innerHeight / Math.max(1, app.scrollHeight));
+    app.style.transform = `scale(${scale})`;
+    fitting = false;
+  });
+}
 let scene = initialScene(current), editor, world, running = false, computing = false, paused = false;
 let runToken = 0, replay = [], replayIndex = 0, runResult = null, activeTab = 'code';
 let localRuns = 0, toastTimer, saving = false;
@@ -54,22 +79,23 @@ function toast(message, error = false) {
 }
 
 function plannedActs() {
+  if (!campaign.acts.some(act => act.status === 'planned')) return '';
   return `<div class="planned-acts"><div class="side-label">NEXT EXPEDITIONS</div>${campaign.acts.filter(act=>act.status==='planned').map(act=>`<div class="planned-act">${icon('lock-keyhole')}<span><strong>${esc(act.title)} · ${esc(act.name)}</strong><small>后续内容 · 规划中</small></span></div>`).join('')}</div>`;
 }
 function renderSidebar() {
   const done = levels.filter(level => save.completed[level.id]).length;
-  $('#sidebar').innerHTML = `<div class="side-heading"><div class="side-label">YOUR ADVENTURE</div><div class="campaign-name"><h2>序·幕</h2><span class="tiny-badge">PYTHON 主线</span></div><div class="progress-track"><span style="width:${done / levels.length * 100}%"></span></div><div class="progress-label"><span>探索进度</span><span>${done} / ${levels.length} 关</span></div></div><nav class="chapter-list" aria-label="序幕入门单元">${campaign.chapters.map((chapter, index) => {
+  $('#sidebar').innerHTML = `<div class="side-heading"><div class="side-label">YOUR ADVENTURE</div><div class="campaign-name"><h2>${campaign.acts.find(a=>a.id===sidebarAct).title}</h2><span class="tiny-badge">PYTHON 主线</span></div><div class="progress-track"><span style="width:${done / levels.length * 100}%"></span></div><div class="progress-label"><span>探索进度</span><span>${done} / ${levels.length} 关</span></div></div><label class="act-picker">选择冒险幕<select id="act-navigation" aria-label="选择冒险幕">${campaign.acts.filter(a=>a.status==='available').map(a=>`<option value="${a.id}" ${a.id===sidebarAct?'selected':''}>${esc(a.title)} · ${esc(a.name)}</option>`).join('')}</select></label><nav class="chapter-list" aria-label="Python 冒险区域">${campaign.chapters.filter(ch=>actFor(ch.id).id===sidebarAct).map((chapter, index) => {
     const chapterLevels = levels.filter(level => level.chapter === chapter.id);
     const count = chapterLevels.filter(level => save.completed[level.id]).length;
-    return `<div class="chapter"><button class="chapter-button ${current.chapter === chapter.id ? 'current' : ''}" data-chapter="${chapter.id}" aria-expanded="${expandedChapter === chapter.id}"><span class="chapter-icon" style="--chapter-color:${chapter.color}">${icon(chapter.icon)}</span><span><span class="chapter-title">${String(index + 1).padStart(2,'0')} ${chapter.title}</span><span class="chapter-subtitle">${chapter.subtitle}</span></span><span class="chapter-count">${count}/${chapterLevels.length}</span></button>${expandedChapter === chapter.id ? `<div class="lesson-list">${chapterLevels.map((level, n) => `<button class="lesson-link ${level.id === current.id ? 'selected' : ''} ${save.completed[level.id] ? 'complete' : ''}" data-level="${level.id}" ${canOpen(level, levels, save) ? '' : 'disabled'} ${level.id === current.id ? 'aria-current="step"' : ''}><span class="lesson-num">${String(n + 1).padStart(2,'0')}</span>${esc(level.title)}${icon(save.completed[level.id] ? 'circle-check' : canOpen(level, levels, save) ? 'circle' : 'lock-keyhole')}</button>`).join('')}</div>` : ''}</div>`;
+    return `<div class="chapter"><button class="chapter-button ${current.chapter === chapter.id ? 'current' : ''}" data-chapter="${chapter.id}" aria-expanded="${expandedChapter === chapter.id}"><span class="chapter-icon" style="--chapter-color:${chapter.color}">${icon(chapter.icon)}</span><span><span class="chapter-title">${actFor(chapter.id).title} · ${chapter.title}</span><span class="chapter-subtitle">${chapter.subtitle}</span></span><span class="chapter-count">${count}/${chapterLevels.length}</span></button>${expandedChapter === chapter.id ? `<div class="lesson-list">${chapterLevels.map((level, n) => `<button class="lesson-link ${level.id === current.id ? 'selected' : ''} ${save.completed[level.id] ? 'complete' : ''}" data-level="${level.id}" ${canOpen(level, levels, save) ? '' : 'disabled'} ${level.id === current.id ? 'aria-current="step"' : ''}><span class="lesson-num">${String(n + 1).padStart(2,'0')}</span>${esc(level.title)}${icon(save.completed[level.id] ? 'circle-check' : canOpen(level, levels, save) ? 'circle' : 'lock-keyhole')}</button>`).join('')}</div>` : ''}</div>`;
   }).join('')}</nav>${plannedActs()}<div class="sidebar-footer">${icon('sparkles')}<div>大问题，从一小步开始。</div><p>每天探索一点，代码会成为你的超能力。</p></div>`;
   $('#completion-count').textContent = done;
-  renderIcons();
+  renderIcons(); fitWorkspace();
 }
 
 function render() {
   const index = levels.indexOf(current), chapter = campaign.chapters.find(item => item.id === current.chapter);
-  $('#app').innerHTML = `<div class="app-shell"><header class="topbar"><button class="brand" data-action="overview" aria-label="Codebound 冒险地图"><span class="brand-mark">${icon('code-xml')}</span>CODEBOUND<span class="alpha">ALPHA</span></button><nav class="topnav" aria-label="主导航"><button class="active" data-action="overview">${icon('map')}冒险地图</button><button data-action="dlc">${icon('puzzle')}语言扩展</button><button data-action="settings">${icon('settings-2')}设置</button></nav><div class="top-end"><span class="offline-dot">本地存档</span><span class="avatar" title="探索者">CB</span></div></header><div class="layout"><aside class="sidebar" id="sidebar"></aside><main class="workspace"><section class="welcome"><div><div class="eyebrow">HELLO, EXPLORER / 你好，探索者</div><h1>写下代码，开启下一关<span style="color:#c7ef7b">。</span></h1><p>用真实的 Python，从序·幕出发，和 Byte 一起点亮校园。</p></div><div class="journey-pill">${icon('trophy')}<div><strong><span id="completion-count">0</span><span style="font-size:12px;color:#6f8575"> / ${levels.length}</span></strong><small>已经完成的冒险</small></div></div></section><div class="mission-strip"><div class="breadcrumbs"><button class="icon-button mobile-menu" data-action="sidebar" aria-label="展开章节">${icon('menu')}</button><span>Python · 序·幕</span>${icon('chevron-right')}<span>${chapter.title}</span>${icon('chevron-right')}<span style="color:#c9d9c5">${esc(current.title)}</span></div><span class="mission-type">${icon(current.type === 'world' ? 'gamepad-2' : 'terminal')}${current.type === 'world' ? '行动关卡' : '独立练习'}</span></div><div class="play-grid"><div class="world-column"><section class="panel"><div class="panel-head"><div class="panel-title">${icon('orbit')}<span>校园 · ${chapter.title}</span></div><span class="live-dot">BYTE 已连接</span></div><div class="world-wrap"><canvas id="world" aria-label="Byte 的校园地图，紫色机器人为起点，绿色方框为终点。"></canvas><div class="map-overlay"><span class="sector-label">SECTOR ${String(campaign.chapters.indexOf(chapter)+1).padStart(2,'0')}</span></div></div><div class="world-controls"><span class="legend"><span class="legend-swatch"></span>Byte</span><span class="legend"><span class="legend-swatch goal"></span>传送点</span><span class="legend"><span class="legend-swatch battery"></span>电池</span><label class="world-speed">回放<select id="speed" aria-label="回放速度">${[.5,1,2,4].map(n => `<option value="${n}" ${save.settings.speed === n ? 'selected' : ''}>${n}×</option>`).join('')}</select></label></div><div class="world-stats"><div class="stat">${icon('battery-charging')}<span>能量<strong id="energy-stat">100 / 100</strong></span></div><div class="stat">${icon('package')}<span>已收集<strong id="inventory-stat">0 块电池</strong></span></div><div class="stat">${icon('map-pin')}<span>坐标<strong id="position-stat">0, 0</strong></span></div></div></section><section class="panel task-panel"><div class="task-heading">${icon('flag')}<span>${esc(current.title)}</span><span class="task-number">MISSION ${String(index+1).padStart(2,'0')} / ${levels.length}</span></div><p>${esc(current.brief)}</p><div class="goal-item">${icon('circle-dashed')}<span>${esc(current.goal)}</span></div>${current.input ? `<div class="input-block">${icon('log-in')}<span>本关输入</span><code>${current.input.map(esc).join('\n')}</code><span style="color:#607866">每行对应一次 input()</span></div>` : ''}</section></div><section class="panel editor-panel"><div class="panel-head"><div class="editor-tabs"><button class="editor-tab active" data-tab="code">${icon('code-2')}我的代码</button><button class="editor-tab" data-tab="learn">${icon('book-open')}示例与讲解</button></div><span class="language-tag">${icon('circle-dot')}Python</span></div><div class="file-bar"><span>${icon('file-code-2')}mission_${String(index+1).padStart(2,'0')}.py</span><span class="save-status">已保存到本机</span></div><div class="editor-host" id="editor"></div><div class="learn-view hidden" id="learn-view"><h3>${esc(current.concept)}</h3><p>${esc(current.learn)}</p><pre>${esc(current.example)}</pre><p style="font-size:10px;color:#778e7b">先理解这个例子的写法，再回到「我的代码」，根据本关目标调整。示例不一定是本关的完整答案。</p><button class="secondary-button" data-action="back-to-code">${icon('arrow-left')}回到我的代码</button></div><div class="editor-toolbar"><button class="run-button" data-action="run" title="Ctrl + Enter">${icon('play')}运行代码</button><button class="tool-button" data-action="step" title="逐条查看执行过程">${icon('step-forward')}单步</button><button class="icon-button" data-action="pause" title="暂停 / 继续回放" aria-label="暂停或继续回放" disabled>${icon('pause')}</button><button class="icon-button" data-action="stop" title="停止运行" aria-label="停止运行" disabled>${icon('square')}</button><button class="icon-button" data-action="reset" title="重置起始代码" aria-label="重置起始代码">${icon('rotate-ccw')}</button><span class="shortcut">Ctrl ↵ 运行</span></div><div class="console" aria-live="polite"><div class="console-head"><span>${icon('terminal')}运行终端</span><span class="console-state" id="console-state">等待指令</span></div><div class="console-body"><span id="output" class="console-placeholder">准备好了，写下你的第一行代码吧。</span><div id="feedback" class="feedback"></div><div id="variables" class="variables"></div></div></div></section></div><div class="knowledge-row"><section class="knowledge-card"><div class="knowledge-heading">${icon('book-open')}本关知识 · ${esc(current.concept)}</div><p>${esc(current.learn)}</p></section><section class="knowledge-card hint-card"><div class="hint-top"><div class="knowledge-heading">${icon('lightbulb')}Byte 的小提示</div><button class="hint-button" data-action="hint">查看提示 <span id="hint-count">0 / 3</span>${icon('arrow-up-right')}</button></div><div class="hint-copy" id="hint-copy">卡住也没关系。先看思路，再一步步找到答案。</div></section></div><footer class="workspace-footer"><span>${icon('hard-drive')}进度自动保存在本机 · 离线也能探索</span><span>CODEBOUND ${APP_VERSION} · 每一小步，都算数</span></footer></main></div></div>`;
+  $('#app').innerHTML = `<div class="app-shell"><header class="topbar"><button class="icon-button sidebar-toggle" data-action="collapse-sidebar" aria-label="收起或展开侧边栏" aria-expanded="${!sidebarCollapsed}" title="收起或展开侧边栏">${icon('panel-left')}</button><button class="brand" data-action="overview" aria-label="Codebound 冒险地图"><span class="brand-mark">${icon('code-xml')}</span>CODEBOUND<span class="alpha">ALPHA</span></button><nav class="topnav" aria-label="主导航"><button class="active" data-action="overview">${icon('map')}冒险地图</button><button data-action="dlc">${icon('puzzle')}语言扩展</button><button data-action="settings">${icon('settings-2')}设置</button></nav><div class="top-end"><span class="offline-dot">本地存档</span><span class="avatar" title="探索者">CB</span></div></header><div class="layout"><aside class="sidebar" id="sidebar"></aside><main class="workspace"><section class="welcome"><div><div class="eyebrow">HELLO, EXPLORER / 你好，探索者</div><h1>写下代码，开启下一关<span style="color:#c7ef7b">。</span></h1><p>用真实的 Python，从序·幕出发，和 Byte 一起点亮校园。</p></div><div class="journey-pill">${icon('trophy')}<div><strong><span id="completion-count">0</span><span style="font-size:12px;color:#6f8575"> / ${levels.length}</span></strong><small>已经完成的冒险</small></div></div></section><div class="mission-strip"><div class="breadcrumbs"><button class="icon-button mobile-menu" data-action="sidebar" aria-label="展开章节">${icon('menu')}</button><span>Python · ${actFor(current.chapter).title}</span>${icon('chevron-right')}<span>${chapter.title}</span>${icon('chevron-right')}<span style="color:#c9d9c5">${esc(current.title)}</span></div><span class="mission-type">${icon(current.type === 'world' ? 'gamepad-2' : 'terminal')}${current.type === 'world' ? '行动关卡' : '独立练习'}</span></div><div class="play-grid"><div class="world-column"><section class="panel"><div class="panel-head"><div class="panel-title">${icon('orbit')}<span>校园 · ${chapter.title}</span></div><span class="live-dot">BYTE 已连接</span></div><div class="world-wrap"><canvas id="world" aria-label="Byte 的校园地图，紫色机器人为起点，绿色方框为终点。"></canvas><div class="map-overlay"><span class="sector-label">SECTOR ${String(campaign.chapters.indexOf(chapter)+1).padStart(2,'0')}</span></div></div><div class="world-controls"><span class="legend"><span class="legend-swatch"></span>Byte</span><span class="legend"><span class="legend-swatch goal"></span>传送点</span><span class="legend"><span class="legend-swatch battery"></span>电池</span><label class="world-speed">回放<select id="speed" aria-label="回放速度">${[.5,1,2,4].map(n => `<option value="${n}" ${save.settings.speed === n ? 'selected' : ''}>${n}×</option>`).join('')}</select></label></div><div class="world-stats"><div class="stat">${icon('battery-charging')}<span>能量<strong id="energy-stat">100 / 100</strong></span></div><div class="stat">${icon('package')}<span>已收集<strong id="inventory-stat">0 块电池</strong></span></div><div class="stat">${icon('map-pin')}<span>坐标<strong id="position-stat">0, 0</strong></span></div></div></section><section class="panel task-panel"><div class="task-heading">${icon('flag')}<span>${esc(current.title)}</span><span class="task-number">MISSION ${String(index+1).padStart(2,'0')} / ${levels.length}</span></div><p>${esc(current.brief)}</p><div class="goal-item">${icon('circle-dashed')}<span>${esc(current.goal)}</span></div>${current.input ? `<div class="input-block">${icon('log-in')}<span>本关输入</span><code>${current.input.map(esc).join('\n')}</code><span style="color:#607866">每行对应一次 input()</span></div>` : ''}</section></div><section class="panel editor-panel"><div class="panel-head"><div class="editor-tabs"><button class="editor-tab active" data-tab="code">${icon('code-2')}我的代码</button><button class="editor-tab" data-tab="learn">${icon('book-open')}示例与讲解</button></div><span class="language-tag">${icon('circle-dot')}Python</span></div><div class="file-bar"><span>${icon('file-code-2')}mission_${String(index+1).padStart(2,'0')}.py</span><span class="save-status">已保存到本机</span></div><div class="editor-host" id="editor"></div><div class="learn-view hidden" id="learn-view"><h3>${esc(current.concept)}</h3><p>${esc(current.learn)}</p><pre>${esc(current.example)}</pre><p style="font-size:10px;color:#778e7b">先理解这个例子的写法，再回到「我的代码」，根据本关目标调整。示例不一定是本关的完整答案。</p><button class="secondary-button" data-action="back-to-code">${icon('arrow-left')}回到我的代码</button></div><div class="editor-toolbar"><button class="run-button" data-action="run" title="Ctrl + Enter">${icon('play')}运行代码</button><button class="tool-button" data-action="step" title="逐条查看执行过程">${icon('step-forward')}单步</button><button class="icon-button" data-action="pause" title="暂停 / 继续回放" aria-label="暂停或继续回放" disabled>${icon('pause')}</button><button class="icon-button" data-action="stop" title="停止运行" aria-label="停止运行" disabled>${icon('square')}</button><button class="icon-button" data-action="reset" title="重置起始代码" aria-label="重置起始代码">${icon('rotate-ccw')}</button><span class="shortcut">Ctrl ↵ 运行</span></div><div class="console" aria-live="polite"><div class="console-head"><span>${icon('terminal')}运行终端</span><span class="console-state" id="console-state">等待指令</span></div><div class="console-body"><span id="output" class="console-placeholder">准备好了，写下你的第一行代码吧。</span><div id="feedback" class="feedback"></div><div id="variables" class="variables"></div></div></div></section></div><div class="knowledge-row"><section class="knowledge-card"><div class="knowledge-heading">${icon('book-open')}本关知识 · ${esc(current.concept)}</div><p>${esc(current.learn)}</p></section><section class="knowledge-card hint-card"><div class="hint-top"><div class="knowledge-heading">${icon('lightbulb')}Byte 的小提示</div><button class="hint-button" data-action="hint">查看提示 <span id="hint-count">0 / 3</span>${icon('arrow-up-right')}</button></div><div class="hint-copy" id="hint-copy">卡住也没关系。先看思路，再一步步找到答案。</div></section></div><footer class="workspace-footer"><span>${icon('hard-drive')}进度自动保存在本机 · 离线也能探索</span><span>CODEBOUND ${APP_VERSION} · 每一小步，都算数</span></footer></main></div></div>`;
   world = new World($('#world')); scene = initialScene(current); world.set(current, scene, true);
   saving = false;
   editor = createEditor($('#editor'), save.drafts[current.id] ?? current.starter, code => {
@@ -77,7 +103,35 @@ function render() {
     save.drafts[current.id] = code; $('.save-status').textContent = '正在保存…'; persist();
   }, () => startRun());
   document.documentElement.style.setProperty('--editor-size', `${save.settings.fontSize}px`);
+  document.querySelector('.app-shell').classList.toggle('sidebar-collapsed', sidebarCollapsed);
+  renderWorkspace();
   activeTab = 'code'; renderSidebar(); updateStats(); updateHint(); renderIcons();
+}
+
+function renderWorkspace() {
+  $('#workspace-files')?.remove();
+  const host = document.createElement('div'); host.id = 'workspace-files';
+  if (current.optional) {
+    const skip = document.createElement('button'); skip.className = 'secondary-button'; skip.textContent = '跳过加强挑战，继续主线';
+    skip.addEventListener('click', () => openLevel(levels[levels.indexOf(current) + 1]?.id)); host.append(skip);
+  }
+  fileWorkspace = null;
+  if (current.modules || current.dataFiles || current.rules.files) {
+    fileWorkspace = createFileWorkspace(host, {
+      modules: { ...current.modules, ...save.moduleDrafts[current.id] },
+      files: current.dataFiles || {}, expectedFiles: current.rules.files || {},
+      savedFiles: save.projectFiles[current.id] || {},
+      canSave: Boolean(current.dataFiles || current.rules.files),
+      mainCode: () => editor.get(),
+      onMain: () => { switchTab('code'); editor.view.focus(); },
+      onModuleChange: (name, code) => {
+        save.moduleDrafts[current.id] ??= {}; save.moduleDrafts[current.id][name] = code; persist();
+      },
+      onSave: files => { save.projectFiles[current.id] = files; persist(); toast('档案快照已保存，会包含在导出的存档中。'); },
+    });
+  }
+  $('#editor').after(host);
+  fitWorkspace();
 }
 
 function updateStats() {
@@ -112,10 +166,12 @@ async function startRun(singleStep = false) {
   if (running) return;
   switchTab('code'); const token = ++runToken; running = computing = true; paused = Boolean(singleStep); localRuns++;
   scene = initialScene(current); world.set(current, scene, true); updateStats();
+  fileWorkspace?.update(current.dataFiles || {});
   $('#output').textContent = ''; $('#output').className = '';
   $('#feedback').textContent = ''; $('#feedback').className = 'feedback'; $('#variables').innerHTML = ''; controls();
   try {
-    const result = await runner.run(editor.get(), current, status => { if (token === runToken) $('#console-state').textContent = status; });
+    const runLevel = { ...current, modules: { ...current.modules, ...save.moduleDrafts[current.id] } };
+    const result = await runner.run(editor.get(), runLevel, status => { if (token === runToken) $('#console-state').textContent = status; });
     if (token !== runToken) return;
     computing = false; runResult = result; replay = result.events; replayIndex = 0; controls();
     if (singleStep) { $('#console-state').textContent = '单步回放'; advance(); }
@@ -149,12 +205,19 @@ async function play(token) {
 function finish() {
   if (!runResult) return;
   const result = runResult; runResult = null; running = computing = paused = false; controls();
+  fileWorkspace?.update(result.files || {});
+  fitWorkspace();
   $('#output').textContent = result.output || (result.error ? '' : '❯ 程序运行完毕。');
   const verdict = judge(current, result);
   $('#console-state').textContent = verdict.passed ? '全部检查通过' : result.error ? '需要调整一下' : '运行完成';
   $('#feedback').className = `feedback ${verdict.passed ? 'success' : 'error'}`;
   $('#feedback').textContent = `${result.error?.line ? `第 ${result.error.line} 行：` : ''}${verdict.message}`;
-  if (result.error?.line) editor.highlight(result.error.line); else editor.highlight(0);
+  if (result.error?.line && (!result.error.file || result.error.file === 'main.py')) editor.highlight(result.error.line); else editor.highlight(0);
+  if (result.error?.file && result.error.file !== 'main.py') $('#feedback').textContent = `${result.error.file} 第 ${result.error.line} 行：${verdict.message}`;
+  const failedCase = result.checks?.find(check => !check.passed);
+  if (failedCase && failedCase.expected !== undefined) {
+    const detail = document.createElement('pre'); detail.textContent = `变式预期：${failedCase.expected}\n实际输出：${failedCase.actual}`; $('#feedback').append(detail);
+  }
   if (result.error?.detail) {
     const details = document.createElement('details'); const summary = document.createElement('summary'); summary.textContent = '查看 Python 原始错误';
     const raw = document.createElement('div'); raw.textContent = `${result.error.type}: ${result.error.detail}`; details.append(summary, raw); $('#feedback').append(details);
@@ -169,7 +232,7 @@ function finish() {
 function openLevel(id) {
   const next = levels.find(level => level.id === id);
   if (!next || !canOpen(next, levels, save)) return;
-  closeModal(); stopRun(true); editor.dispose(); world.dispose(); current = next; expandedChapter = next.chapter;
+  closeModal(); stopRun(true); editor.dispose(); world.dispose(); current = next; expandedChapter = next.chapter; sidebarAct = actFor(next.chapter).id;
   save.currentLevel = next.id; localRuns = 0; persist(); render(); window.scrollTo({ top: 0 });
 }
 let lastFocus;
@@ -187,10 +250,10 @@ function successModal(firstTime) {
 }
 function resultCheckCount() { return 1 + (current.cases?.length || 0); }
 function overview() {
-  modal(`${modalHeader('你的冒险地图')}<p>序·幕 · Byte 苏醒：五个入门单元，共 ${levels.length} 个基础关卡。完成前一关，即可开启下一关。</p>${campaign.chapters.map(chapter => `<div class="knowledge-heading" style="margin-top:22px;color:${chapter.color}">${icon(chapter.icon)}${chapter.title}</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">${levels.filter(l=>l.chapter===chapter.id).map(level=>`<button class="secondary-button" style="justify-content:space-between" data-level="${level.id}" ${canOpen(level,levels,save)?'':'disabled'}>${esc(level.title)}${icon(save.completed[level.id]?'circle-check':canOpen(level,levels,save)?'arrow-up-right':'lock-keyhole')}</button>`).join('')}</div>`).join('')}${plannedActs()}`);
+  modal(`${modalHeader('你的冒险地图')}<p>序幕20关，第一、二、三幕各40关，共 ${levels.length} 个关卡。完成前一关，即可开启下一关。</p>${campaign.chapters.map(chapter => `<div class="knowledge-heading" style="margin-top:22px;color:${chapter.color}">${icon(chapter.icon)}${actFor(chapter.id).title} · ${chapter.title}</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">${levels.filter(l=>l.chapter===chapter.id).map(level=>`<button class="secondary-button" style="justify-content:space-between" data-level="${level.id}" ${canOpen(level,levels,save)?'':'disabled'}>${esc(level.title)}${icon(save.completed[level.id]?'circle-check':canOpen(level,levels,save)?'arrow-up-right':'lock-keyhole')}</button>`).join('')}</div>`).join('')}${plannedActs()}`);
 }
 function dlcModal() {
-  modal(`${modalHeader('更多语言，新的世界。')}<p>Python 是 Codebound 的内置主线。其他编程语言将在后续以独立扩展包加入桌面版，每个语言包都有自己的课程与进度。</p><div class="dlc-card">${icon('code-2')}<div><h3>Python · 序·幕</h3><p>${levels.length} 个序幕关卡，已随本体安装。</p></div><span class="dlc-status" style="color:#c7ef7b">内置主线</span></div><div class="dlc-card">${icon('cpu')}<div><h3>C · 机械工坊</h3><p>后续扩展 · 当前版本尚未提供课程与执行器。</p></div><span class="dlc-status">计划中</span></div><div class="dlc-card">${icon('braces')}<div><h3>C++ · 算法竞技场</h3><p>后续扩展 · 当前版本尚未提供课程与执行器。</p></div><span class="dlc-status">计划中</span></div><p class="muted">桌面扩展接口已预留。Alpha 先专注 Python 基础冒险。</p>`);
+  modal(`${modalHeader('更多语言，新的世界。')}<p>Python 是 Codebound 的内置主线。其他编程语言将在后续以独立扩展包加入桌面版，每个语言包都有自己的课程与进度。</p><div class="dlc-card">${icon('code-2')}<div><h3>Python · 内置主线</h3><p>${levels.length} 个关卡，已随本体安装。</p></div><span class="dlc-status" style="color:#c7ef7b">内置主线</span></div><div class="dlc-card">${icon('cpu')}<div><h3>C · 机械工坊</h3><p>后续扩展 · 当前版本尚未提供课程与执行器。</p></div><span class="dlc-status">计划中</span></div><div class="dlc-card">${icon('braces')}<div><h3>C++ · 算法竞技场</h3><p>后续扩展 · 当前版本尚未提供课程与执行器。</p></div><span class="dlc-status">计划中</span></div><p class="muted">桌面扩展接口已预留。Alpha 先专注 Python 基础冒险。</p>`);
 }
 function settingsModal() {
   modal(`${modalHeader('探索者设置')}<div class="setting-row"><div>代码字号<small>选择适合阅读的大小。</small></div><select id="font-size" aria-label="代码字号">${[13,15,17,19].map(n=>`<option value="${n}" ${save.settings.fontSize===n?'selected':''}>${n}px</option>`).join('')}</select></div><div class="setting-row"><div>存档位置<small>电脑本地应用数据目录，升级本体时保留。</small></div><span class="tiny-badge">仅保存在本机</span></div><div class="setting-row"><div>Codebound<small>${APP_VERSION} · Python 内置主线</small></div><button class="secondary-button" data-action="check-updates">${icon('refresh-cw')}检查更新</button></div><p id="update-message" class="muted">桌面本体与语言扩展采用独立的更新接口。</p><div class="button-row"><button class="secondary-button" data-action="export">${icon('download')}导出存档</button><button class="secondary-button" data-action="import">${icon('upload')}导入存档</button></div><input class="hidden" id="save-file" type="file" accept="application/json,.json"><p class="muted">存档包含通关记录、代码草稿与设置。可通过导入导出备份或迁移进度。</p>`);
@@ -218,12 +281,13 @@ document.addEventListener('click', event => {
     case 'stop': stopRun(); break;
     case 'hint': save.hints[current.id] = Math.min(3, (save.hints[current.id] || 0) + 1); updateHint(); persist(); break;
     case 'reset': modal(`${modalHeader('重新开始这一关？')}<p>将代码恢复为本关起始示例。通关记录会保留；当前草稿将被替换。</p><div class="button-row"><button class="secondary-button" data-action="close-modal">保留草稿</button><button class="run-button" data-action="confirm-reset">恢复起始代码</button></div>`); break;
-    case 'confirm-reset': closeModal(); stopRun(true); editor.set(current.starter); scene = initialScene(current); world.set(current, scene,true); updateStats(); $('#output').textContent = '❯ 已恢复起始代码。'; $('#feedback').textContent = ''; $('#variables').innerHTML = ''; $('#console-state').textContent = '等待指令'; break;
+    case 'confirm-reset': delete save.moduleDrafts[current.id]; renderWorkspace(); closeModal(); stopRun(true); editor.set(current.starter); scene = initialScene(current); world.set(current, scene,true); updateStats(); $('#output').textContent = '❯ 已恢复起始代码。'; $('#feedback').textContent = ''; $('#variables').innerHTML = ''; $('#console-state').textContent = '等待指令'; break;
     case 'overview': overview(); break;
     case 'dlc': dlcModal(); break;
     case 'settings': settingsModal(); break;
     case 'close-modal': closeModal(); break;
     case 'back-to-code': switchTab('code'); editor.view.focus(); break;
+    case 'collapse-sidebar': sidebarCollapsed = !sidebarCollapsed; localStorage.setItem('codebound.sidebarCollapsed', String(sidebarCollapsed)); $('.app-shell').classList.toggle('sidebar-collapsed', sidebarCollapsed); button.setAttribute('aria-expanded', String(!sidebarCollapsed)); fitWorkspace(); break;
     case 'sidebar': $('#sidebar').classList.toggle('open'); break;
     case 'check-updates': checkUpdates(); break;
     case 'export': exportSave(); break;
@@ -231,6 +295,7 @@ document.addEventListener('click', event => {
   }
 });
 document.addEventListener('change', async event => {
+  if (event.target.id === 'act-navigation') { sidebarAct = event.target.value; expandedChapter = campaign.acts.find(a=>a.id===sidebarAct).units[0]; renderSidebar(); }
   if (event.target.id === 'speed') { save.settings.speed = Number(event.target.value); persist(); }
   if (event.target.id === 'font-size') { save.settings.fontSize = Number(event.target.value); document.documentElement.style.setProperty('--editor-size',`${save.settings.fontSize}px`); persist(); }
   if (event.target.id === 'save-file') {
@@ -239,7 +304,7 @@ document.addEventListener('change', async event => {
       if (file.size > 1000000) throw new Error('存档文件过大。');
       const imported = normalizeSave(JSON.parse(await file.text()), levelIds);
       modal(`${modalHeader('导入这份存档？')}<p>这份存档包含 ${Object.keys(imported.completed).length} 个已完成关卡。导入会替换本机的进度和草稿，建议先导出当前存档。</p><div class="button-row"><button class="secondary-button" data-action="export">导出当前存档</button><button class="run-button" id="confirm-import">确认导入</button></div>`);
-      $('#confirm-import').addEventListener('click', async () => { stopRun(true); save = imported; await persist(true); editor.dispose(); world.dispose(); closeModal(); current = levels.find(l=>l.id===save.currentLevel)||levels[0]; if (!canOpen(current,levels,save)) current=levels.find(l=>!save.completed[l.id])||levels[0]; expandedChapter=current.chapter; render(); toast('存档已导入。'); }, { once: true });
+      $('#confirm-import').addEventListener('click', async () => { stopRun(true); save = imported; await persist(true); editor.dispose(); world.dispose(); closeModal(); current = levels.find(l=>l.id===save.currentLevel)||levels[0]; if (!canOpen(current,levels,save)) current=levels.find(l=>!save.completed[l.id])||levels[0]; expandedChapter=current.chapter; sidebarAct=actFor(current.chapter).id; render(); toast('存档已导入。'); }, { once: true });
     } catch (error) { toast(`导入失败：${error.message}`, true); }
   }
 });
@@ -258,3 +323,9 @@ window.addEventListener('beforeunload', () => { clearTimeout(saveTimer); try { l
 render();
 desktop.onFlush(async () => { await persist(true); });
 if (storageWarning) toast(storageWarning,true);
+
+window.addEventListener('resize', fitWorkspace);
+document.addEventListener('toggle', fitWorkspace, true);
+const layoutObserver = new ResizeObserver(fitWorkspace);
+layoutObserver.observe(document.querySelector('#app'));
+fitWorkspace();

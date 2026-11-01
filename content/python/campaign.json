@@ -1,77 +1,6354 @@
 {
-  "id": "python-main", "title": "重启校园", "subtitle": "一台机器人，二十次改变。", "schemaVersion": 1,
+  "id": "python-main",
+  "title": "重启校园",
+  "subtitle": "一台机器人，二十次改变。",
+  "schemaVersion": 1,
   "acts": [
-    { "id": "prologue", "title": "序·幕", "name": "Byte 苏醒", "summary": "从第一行代码开始，掌握指令、变量、判断与循环。", "status": "available", "units": ["wake", "power", "gate", "cargo", "reboot"] },
-    { "id": "act-one", "title": "第一幕", "name": "校园救援", "summary": "规划中的正式冒险：更长的任务区域、综合语法、列表与函数。", "status": "planned", "units": [] },
-    { "id": "act-two", "title": "第二幕", "name": "信号迷城", "summary": "规划中的后续冒险：数据处理、查找与基础算法。", "status": "planned", "units": [] }
+    {
+      "id": "prologue",
+      "title": "序·幕",
+      "name": "Byte 苏醒",
+      "summary": "从第一行代码开始，掌握指令、变量、判断与循环。",
+      "status": "available",
+      "units": [
+        "wake",
+        "power",
+        "gate",
+        "cargo",
+        "reboot"
+      ]
+    },
+    {
+      "id": "act-one",
+      "title": "第一幕",
+      "name": "校园救援",
+      "summary": "四十次救援任务：数据、物资与工具。",
+      "status": "available",
+      "units": [
+        "assembly",
+        "broadcast",
+        "warehouse",
+        "workshop"
+      ]
+    },
+    {
+      "id": "act-two",
+      "title": "第二幕",
+      "name": "信号迷城",
+      "summary": "字典、二维巡检、基础算法与城市调度。",
+      "status": "available",
+      "units": [
+        "archives",
+        "patrol",
+        "algorithms",
+        "control"
+      ]
+    },
+    {
+      "id": "act-three",
+      "title": "第三幕",
+      "name": "程序工具箱",
+      "status": "available",
+      "summary": "调试测试、异常、模块与虚拟文件项目。",
+      "units": [
+        "debug",
+        "exceptions",
+        "modules",
+        "files"
+      ]
+    }
   ],
   "chapters": [
-    { "id": "wake", "title": "唤醒机器人", "subtitle": "顺序 · 调用 · 输出", "icon": "bot", "color": "#c7ef7b" },
-    { "id": "power", "title": "恢复供电", "subtitle": "变量 · 字符串 · 运算", "icon": "zap", "color": "#ffc779" },
-    { "id": "gate", "title": "修复门禁", "subtitle": "比较 · 条件 · 分支", "icon": "split", "color": "#b7a2ff" },
-    { "id": "cargo", "title": "运送物资", "subtitle": "for · range · 累加", "icon": "boxes", "color": "#73d4e6" },
-    { "id": "reboot", "title": "重启校园", "subtitle": "while · 结束条件 · 综合", "icon": "radio-tower", "color": "#f299b9" }
+    {
+      "id": "wake",
+      "title": "唤醒机器人",
+      "subtitle": "顺序 · 调用 · 输出",
+      "icon": "bot",
+      "color": "#c7ef7b"
+    },
+    {
+      "id": "power",
+      "title": "恢复供电",
+      "subtitle": "变量 · 字符串 · 运算",
+      "icon": "zap",
+      "color": "#ffc779"
+    },
+    {
+      "id": "gate",
+      "title": "修复门禁",
+      "subtitle": "比较 · 条件 · 分支",
+      "icon": "split",
+      "color": "#b7a2ff"
+    },
+    {
+      "id": "cargo",
+      "title": "运送物资",
+      "subtitle": "for · range · 累加",
+      "icon": "boxes",
+      "color": "#73d4e6"
+    },
+    {
+      "id": "reboot",
+      "title": "重启校园",
+      "subtitle": "while · 结束条件 · 综合",
+      "icon": "radio-tower",
+      "color": "#f299b9"
+    },
+    {
+      "id": "assembly",
+      "title": "集结广场",
+      "subtitle": "类型 · 输出 · 运算",
+      "icon": "flag",
+      "color": "#c7ef7b"
+    },
+    {
+      "id": "broadcast",
+      "title": "广播站",
+      "subtitle": "字符串 · 指令处理",
+      "icon": "radio",
+      "color": "#73d4e6"
+    },
+    {
+      "id": "warehouse",
+      "title": "物资仓库",
+      "subtitle": "列表 · 遍历 · 筛选",
+      "icon": "package",
+      "color": "#ffc779"
+    },
+    {
+      "id": "workshop",
+      "title": "维修工坊",
+      "subtitle": "函数 · 参数 · 返回",
+      "icon": "wrench",
+      "color": "#b7a2ff"
+    },
+    {
+      "id": "archives",
+      "title": "信号档案馆",
+      "subtitle": "字典与键值对",
+      "icon": "book-open",
+      "color": "#73d4e6"
+    },
+    {
+      "id": "patrol",
+      "title": "巡检回廊",
+      "subtitle": "range 步长",
+      "icon": "grid-2x2",
+      "color": "#c7ef7b"
+    },
+    {
+      "id": "algorithms",
+      "title": "算法实验室",
+      "subtitle": "手写最大值",
+      "icon": "braces",
+      "color": "#b7a2ff"
+    },
+    {
+      "id": "control",
+      "title": "城市控制台",
+      "subtitle": "元组",
+      "icon": "radio",
+      "color": "#ffc779"
+    },
+    {
+      "id": "debug",
+      "title": "调试中心",
+      "subtitle": "输入输出与约束",
+      "icon": "bug",
+      "color": "#73d4e6"
+    },
+    {
+      "id": "exceptions",
+      "title": "容错检查站",
+      "subtitle": "ValueError",
+      "icon": "shield-check",
+      "color": "#c7ef7b"
+    },
+    {
+      "id": "modules",
+      "title": "工具联络站",
+      "subtitle": "import",
+      "icon": "boxes",
+      "color": "#b7a2ff"
+    },
+    {
+      "id": "files",
+      "title": "档案管理局",
+      "subtitle": "with open",
+      "icon": "folder-open",
+      "color": "#ffc779"
+    }
   ],
   "levels": [
     {
-      "id":"python.wake.001","chapter":"wake","title":"第一步，向前","concept":"顺序执行","type":"world","brief":"小机器人 Byte 已经醒来。通往校园的信号就在前方，让它抵达绿色传送点。","goal":"向右移动 3 格，到达传送点。","learn":"Python 会从上到下依次执行代码。robot.right() 是游戏提供的函数，每调用一次，Byte 就向右走一格。括号也要一起写上哦。","example":"# 这是一条注释，Python 不会执行它\nrobot.right()\nrobot.right()","starter":"# 每一行代码，都是新的一步。\nrobot.right()\n\n# 继续写，让 Byte 抵达传送点\n","hints":["数一数 Byte 与传送点之间有几格。","每一行 robot.right() 都只走一格。","已有一行移动指令，再补两行 robot.right()。"],"map":["#########","#########","##S..G###","#########","#########","#########"],"rules":{"atGoal":true}
+      "id": "python.wake.001",
+      "chapter": "wake",
+      "title": "第一步，向前",
+      "concept": "顺序执行",
+      "type": "world",
+      "brief": "小机器人 Byte 已经醒来。通往校园的信号就在前方，让它抵达绿色传送点。",
+      "goal": "向右移动 3 格，到达传送点。",
+      "learn": "Python 会从上到下依次执行代码。robot.right() 是游戏提供的函数，每调用一次，Byte 就向右走一格。括号也要一起写上哦。",
+      "example": "# 这是一条注释，Python 不会执行它\nrobot.right()\nrobot.right()",
+      "starter": "# 每一行代码，都是新的一步。\nrobot.right()\n\n# 继续写，让 Byte 抵达传送点\n",
+      "hints": [
+        "数一数 Byte 与传送点之间有几格。",
+        "每一行 robot.right() 都只走一格。",
+        "已有一行移动指令，再补两行 robot.right()。"
+      ],
+      "map": [
+        "#########",
+        "#########",
+        "##S..G###",
+        "#########",
+        "#########",
+        "#########"
+      ],
+      "rules": {
+        "atGoal": true
+      }
     },
     {
-      "id":"python.wake.002","chapter":"wake","title":"转角的微光","concept":"函数调用","type":"world","brief":"前方有一段弯路。用不同的方向指令，带 Byte 绕过墙壁。","goal":"先向右 2 格，再向下 2 格。","learn":"robot.right()、robot.left()、robot.up() 和 robot.down() 分别控制四个方向。每个指令独占一行，执行顺序会影响路线。","example":"robot.right()\nrobot.down()","starter":"# 先往右，再往下。\nrobot.right()\n","hints":["先观察浅色道路，深色方块是墙。","向右两次之后，转向下方。","完整路线需要 2 次 right 和 2 次 down。"],"map":["#########","#S..#####","###.#####","###G#####","#########","#########"],"rules":{"atGoal":true}
+      "id": "python.wake.002",
+      "chapter": "wake",
+      "title": "转角的微光",
+      "concept": "函数调用",
+      "type": "world",
+      "brief": "前方有一段弯路。用不同的方向指令，带 Byte 绕过墙壁。",
+      "goal": "先向右 2 格，再向下 2 格。",
+      "learn": "robot.right()、robot.left()、robot.up() 和 robot.down() 分别控制四个方向。每个指令独占一行，执行顺序会影响路线。",
+      "example": "robot.right()\nrobot.down()",
+      "starter": "# 先往右，再往下。\nrobot.right()\n",
+      "hints": [
+        "先观察浅色道路，深色方块是墙。",
+        "向右两次之后，转向下方。",
+        "完整路线需要 2 次 right 和 2 次 down。"
+      ],
+      "map": [
+        "#########",
+        "#S..#####",
+        "###.#####",
+        "###G#####",
+        "#########",
+        "#########"
+      ],
+      "rules": {
+        "atGoal": true
+      }
     },
     {
-      "id":"python.wake.003","chapter":"wake","title":"带上第一块电池","concept":"调用与顺序","type":"world","brief":"传送点缺少备用电池。走到黄色电池所在的位置，再调用 collect() 把它带上。","goal":"收集电池，然后抵达传送点。","learn":"robot.collect() 会拾取脚下的电池。动作必须按正确顺序执行；站在电池旁边还不能捡到它。","example":"robot.right()\nrobot.collect()","starter":"# 到电池上，收集它，再出发。\nrobot.right()\n","hints":["电池在起点右边第 2 格。","走到电池所在格子后，再调用 robot.collect()。","先走两格、收集，再向右走两格。"],"map":["#########","#########","#S.B.G###","#########","#########","#########"],"rules":{"atGoal":true,"collected":1}
+      "id": "python.wake.003",
+      "chapter": "wake",
+      "title": "带上第一块电池",
+      "concept": "调用与顺序",
+      "type": "world",
+      "brief": "传送点缺少备用电池。走到黄色电池所在的位置，再调用 collect() 把它带上。",
+      "goal": "收集电池，然后抵达传送点。",
+      "learn": "robot.collect() 会拾取脚下的电池。动作必须按正确顺序执行；站在电池旁边还不能捡到它。",
+      "example": "robot.right()\nrobot.collect()",
+      "starter": "# 到电池上，收集它，再出发。\nrobot.right()\n",
+      "hints": [
+        "电池在起点右边第 2 格。",
+        "走到电池所在格子后，再调用 robot.collect()。",
+        "先走两格、收集，再向右走两格。"
+      ],
+      "map": [
+        "#########",
+        "#########",
+        "#S.B.G###",
+        "#########",
+        "#########",
+        "#########"
+      ],
+      "rules": {
+        "atGoal": true,
+        "collected": 1
+      }
     },
     {
-      "id":"python.wake.004","chapter":"wake","title":"你好，校园","concept":"print 与字符串","type":"console","brief":"通信终端终于连上了。暂时放下方向指令，独立发送一条 Python 消息。","goal":"使用 print 输出：你好，校园！","learn":"print() 是 Python 自带的输出函数。文字称为字符串，需要用一对英文引号包起来。单引号与双引号都可以。","example":"print(\"你好，Byte！\")","starter":"# 在终端输出任务中要求的消息。\n","hints":["使用 print()，把文字放进括号。","输出的中文和标点要与目标一致。","print(\"你好，校园！\")"],"map":["#########","#.......#","#.S...G.#","#.......#","#########","#########"],"rules":{"output":"你好，校园！"}
+      "id": "python.wake.004",
+      "chapter": "wake",
+      "title": "你好，校园",
+      "concept": "print 与字符串",
+      "type": "console",
+      "brief": "通信终端终于连上了。暂时放下方向指令，独立发送一条 Python 消息。",
+      "goal": "使用 print 输出：你好，校园！",
+      "learn": "print() 是 Python 自带的输出函数。文字称为字符串，需要用一对英文引号包起来。单引号与双引号都可以。",
+      "example": "print(\"你好，Byte！\")",
+      "starter": "# 在终端输出任务中要求的消息。\n",
+      "hints": [
+        "使用 print()，把文字放进括号。",
+        "输出的中文和标点要与目标一致。",
+        "print(\"你好，校园！\")"
+      ],
+      "map": [
+        "#########",
+        "#.......#",
+        "#.S...G.#",
+        "#.......#",
+        "#########",
+        "#########"
+      ],
+      "rules": {
+        "output": "你好，校园！"
+      }
     },
     {
-      "id":"python.power.001","chapter":"power","title":"给电量起个名字","concept":"变量与赋值","type":"world","brief":"供电站亮起了一盏灯。用变量记录路线长度，再把它交给机器人。","goal":"创建 steps 变量，值为 4，并让 Byte 走到终点。","learn":"变量像一个有名字的小盒子。steps = 4 把数字 4 存进 steps。robot.right(steps) 会读取盒子里的数字，向右走对应的格数。","example":"distance = 2\nrobot.right(distance)","starter":"# 用 steps 保存需要走的格数。\nsteps = 0\nrobot.right(steps)\n","hints":["起点到终点相隔 4 格。","等号右边是你要存入的值。","把 steps = 0 改成 steps = 4。"],"map":["#########","#########","#S...G###","#########","#########","#########"],"rules":{"atGoal":true,"variables":{"steps":4},"nodes":["Assign"]}
+      "id": "python.power.001",
+      "chapter": "power",
+      "title": "给电量起个名字",
+      "concept": "变量与赋值",
+      "type": "world",
+      "brief": "供电站亮起了一盏灯。用变量记录路线长度，再把它交给机器人。",
+      "goal": "创建 steps 变量，值为 4，并让 Byte 走到终点。",
+      "learn": "变量像一个有名字的小盒子。steps = 4 把数字 4 存进 steps。robot.right(steps) 会读取盒子里的数字，向右走对应的格数。",
+      "example": "distance = 2\nrobot.right(distance)",
+      "starter": "# 用 steps 保存需要走的格数。\nsteps = 0\nrobot.right(steps)\n",
+      "hints": [
+        "起点到终点相隔 4 格。",
+        "等号右边是你要存入的值。",
+        "把 steps = 0 改成 steps = 4。"
+      ],
+      "map": [
+        "#########",
+        "#########",
+        "#S...G###",
+        "#########",
+        "#########",
+        "#########"
+      ],
+      "rules": {
+        "atGoal": true,
+        "variables": {
+          "steps": 4
+        },
+        "nodes": [
+          "Assign"
+        ]
+      }
     },
     {
-      "id":"python.power.002","chapter":"power","title":"电量计算器","concept":"算术运算","type":"console","brief":"两块电池分别储存 35 和 25 单位能量。用 Python 计算总量。","goal":"将两块电池的总能量保存为 total，并输出 total。","learn":"+、-、*、/ 分别表示加、减、乘、除。运算时也可以使用变量。不要把数字放在引号里，那样它会变成文字。","example":"a = 10\nb = 5\ntotal = a + b\nprint(total)","starter":"battery_a = 35\nbattery_b = 25\n\n# 计算 total，然后输出它。\n","hints":["两个变量都已经准备好了。","使用 + 把它们相加，结果赋值给 total。","total = battery_a + battery_b，然后 print(total)。"],"map":["#########","#.......#","#.S...G.#","#.......#","#########","#########"],"rules":{"output":"60","variables":{"total":60},"nodes":["BinOp"]}
+      "id": "python.power.002",
+      "chapter": "power",
+      "title": "电量计算器",
+      "concept": "算术运算",
+      "type": "console",
+      "brief": "两块电池分别储存 35 和 25 单位能量。用 Python 计算总量。",
+      "goal": "将两块电池的总能量保存为 total，并输出 total。",
+      "learn": "+、-、*、/ 分别表示加、减、乘、除。运算时也可以使用变量。不要把数字放在引号里，那样它会变成文字。",
+      "example": "a = 10\nb = 5\ntotal = a + b\nprint(total)",
+      "starter": "battery_a = 35\nbattery_b = 25\n\n# 计算 total，然后输出它。\n",
+      "hints": [
+        "两个变量都已经准备好了。",
+        "使用 + 把它们相加，结果赋值给 total。",
+        "total = battery_a + battery_b，然后 print(total)。"
+      ],
+      "map": [
+        "#########",
+        "#.......#",
+        "#.S...G.#",
+        "#.......#",
+        "#########",
+        "#########"
+      ],
+      "rules": {
+        "output": "60",
+        "variables": {
+          "total": 60
+        },
+        "nodes": [
+          "BinOp"
+        ]
+      }
     },
     {
-      "id":"python.power.003","chapter":"power","title":"来自远方的指令","concept":"input 与类型转换","type":"console","brief":"终端收到两次补给数量。输入框中的两行数字会依次交给 input()。","goal":"读取两行输入，将它们转成整数，输出两数之和。","learn":"input() 每次读取一行文字。int() 可以把数字文字变成整数。int(input()) 就是先读入，再转换。右上角的输入数据会在每次运行时重新使用。","example":"count = int(input())\nprint(count + 1)","starter":"first = int(input())\nsecond = int(input())\n\n# 输出两数之和。\n","input":["12","8"],"hints":["读取的数字已经放进 first 和 second。","输出 first + second。","隐藏测试会换成不同的数字，所以请计算输入，而不是直接打印 20。"],"map":["#########","#.......#","#.S...G.#","#.......#","#########","#########"],"rules":{"output":"20"},"cases":[{"input":["7","3"],"output":"10"},{"input":["-2","5"],"output":"3"}]
+      "id": "python.power.003",
+      "chapter": "power",
+      "title": "来自远方的指令",
+      "concept": "input 与类型转换",
+      "type": "console",
+      "brief": "终端收到两次补给数量。输入框中的两行数字会依次交给 input()。",
+      "goal": "读取两行输入，将它们转成整数，输出两数之和。",
+      "learn": "input() 每次读取一行文字。int() 可以把数字文字变成整数。int(input()) 就是先读入，再转换。右上角的输入数据会在每次运行时重新使用。",
+      "example": "count = int(input())\nprint(count + 1)",
+      "starter": "first = int(input())\nsecond = int(input())\n\n# 输出两数之和。\n",
+      "input": [
+        "12",
+        "8"
+      ],
+      "hints": [
+        "读取的数字已经放进 first 和 second。",
+        "输出 first + second。",
+        "隐藏测试会换成不同的数字，所以请计算输入，而不是直接打印 20。"
+      ],
+      "map": [
+        "#########",
+        "#.......#",
+        "#.S...G.#",
+        "#.......#",
+        "#########",
+        "#########"
+      ],
+      "rules": {
+        "output": "20"
+      },
+      "cases": [
+        {
+          "input": [
+            "7",
+            "3"
+          ],
+          "output": "10"
+        },
+        {
+          "input": [
+            "-2",
+            "5"
+          ],
+          "output": "3"
+        }
+      ]
     },
     {
-      "id":"python.power.004","chapter":"power","title":"专属呼号","concept":"字符串拼接","type":"console","brief":"给校园广播加上署名。读取名字，然后把它拼接进欢迎语。","goal":"读取一行名字，输出“欢迎，名字！”。","learn":"字符串也能使用 +，这时它表示把文字连接起来。可以用 name 保存读到的名字，再和前后的文字拼接。","example":"name = input()\nprint(\"你好，\" + name)","starter":"name = input()\n\n# 输出完整的欢迎语。\n","input":["Byte"],"hints":["目标输出是 欢迎，Byte！。","前半段、name、感叹号之间用 + 连接。","print(\"欢迎，\" + name + \"！\")"],"map":["#########","#.......#","#.S...G.#","#.......#","#########","#########"],"rules":{"output":"欢迎，Byte！"},"cases":[{"input":["小林"],"output":"欢迎，小林！"}]
+      "id": "python.power.004",
+      "chapter": "power",
+      "title": "专属呼号",
+      "concept": "字符串拼接",
+      "type": "console",
+      "brief": "给校园广播加上署名。读取名字，然后把它拼接进欢迎语。",
+      "goal": "读取一行名字，输出“欢迎，名字！”。",
+      "learn": "字符串也能使用 +，这时它表示把文字连接起来。可以用 name 保存读到的名字，再和前后的文字拼接。",
+      "example": "name = input()\nprint(\"你好，\" + name)",
+      "starter": "name = input()\n\n# 输出完整的欢迎语。\n",
+      "input": [
+        "Byte"
+      ],
+      "hints": [
+        "目标输出是 欢迎，Byte！。",
+        "前半段、name、感叹号之间用 + 连接。",
+        "print(\"欢迎，\" + name + \"！\")"
+      ],
+      "map": [
+        "#########",
+        "#.......#",
+        "#.S...G.#",
+        "#.......#",
+        "#########",
+        "#########"
+      ],
+      "rules": {
+        "output": "欢迎，Byte！"
+      },
+      "cases": [
+        {
+          "input": [
+            "小林"
+          ],
+          "output": "欢迎，小林！"
+        }
+      ]
     },
     {
-      "id":"python.gate.001","chapter":"gate","title":"电量足够吗","concept":"if 与比较","type":"world","brief":"门禁旁有一个充电座。当前电量偏低，先判断是否需要充电，再继续前进。","goal":"当 robot.energy 小于 50 时充电，然后向右 3 格。","learn":"if 条件: 表示条件成立时才执行下面的代码。下面的动作缩进 4 个空格。robot.charge() 每次增加 20 电量。robot.energy 读取当前电量，不需要括号。","example":"if robot.energy < 30:\n    robot.charge()","starter":"# 当前电量为 35。\nif robot.energy < 50:\n    # 在这里调用充电动作\n    pass\n\nrobot.right(3)\n","energy":35,"hints":["if 后面的冒号与下一行的缩进都很重要。","把 pass 替换为充电指令。","在缩进位置写 robot.charge()。"],"map":["#########","#########","##S..G###","#########","#########","#########"],"rules":{"atGoal":true,"minEnergy":50,"nodes":["If"]}
+      "id": "python.gate.001",
+      "chapter": "gate",
+      "title": "电量足够吗",
+      "concept": "if 与比较",
+      "type": "world",
+      "brief": "门禁旁有一个充电座。当前电量偏低，先判断是否需要充电，再继续前进。",
+      "goal": "当 robot.energy 小于 50 时充电，然后向右 3 格。",
+      "learn": "if 条件: 表示条件成立时才执行下面的代码。下面的动作缩进 4 个空格。robot.charge() 每次增加 20 电量。robot.energy 读取当前电量，不需要括号。",
+      "example": "if robot.energy < 30:\n    robot.charge()",
+      "starter": "# 当前电量为 35。\nif robot.energy < 50:\n    # 在这里调用充电动作\n    pass\n\nrobot.right(3)\n",
+      "energy": 35,
+      "hints": [
+        "if 后面的冒号与下一行的缩进都很重要。",
+        "把 pass 替换为充电指令。",
+        "在缩进位置写 robot.charge()。"
+      ],
+      "map": [
+        "#########",
+        "#########",
+        "##S..G###",
+        "#########",
+        "#########",
+        "#########"
+      ],
+      "rules": {
+        "atGoal": true,
+        "minEnergy": 50,
+        "nodes": [
+          "If"
+        ]
+      }
     },
     {
-      "id":"python.gate.002","chapter":"gate","title":"通行，还是等待","concept":"if / else","type":"console","brief":"把学到的判断用于普通 Python：读取电量，告诉控制室是否可以启动。","goal":"电量至少 50 输出 GO，否则输出 WAIT。","learn":">= 表示大于或等于。else: 提供条件不成立时的另一条路线。两条分支里的语句都需要缩进。","example":"if score >= 60:\n    print(\"通过\")\nelse:\n    print(\"继续练习\")","starter":"energy = int(input())\n\n# 根据 energy 选择输出。\n","input":["70"],"hints":["用 energy >= 50 作条件。","成立时 print(\"GO\")，否则 print(\"WAIT\")。","测试还会输入 50 和 20，记得包含刚好 50 的情况。"],"map":["#########","#.......#","#.S...G.#","#.......#","#########","#########"],"rules":{"output":"GO","nodes":["If"]},"cases":[{"input":["50"],"output":"GO"},{"input":["20"],"output":"WAIT"}]
+      "id": "python.gate.002",
+      "chapter": "gate",
+      "title": "通行，还是等待",
+      "concept": "if / else",
+      "type": "console",
+      "brief": "把学到的判断用于普通 Python：读取电量，告诉控制室是否可以启动。",
+      "goal": "电量至少 50 输出 GO，否则输出 WAIT。",
+      "learn": ">= 表示大于或等于。else: 提供条件不成立时的另一条路线。两条分支里的语句都需要缩进。",
+      "example": "if score >= 60:\n    print(\"通过\")\nelse:\n    print(\"继续练习\")",
+      "starter": "energy = int(input())\n\n# 根据 energy 选择输出。\n",
+      "input": [
+        "70"
+      ],
+      "hints": [
+        "用 energy >= 50 作条件。",
+        "成立时 print(\"GO\")，否则 print(\"WAIT\")。",
+        "测试还会输入 50 和 20，记得包含刚好 50 的情况。"
+      ],
+      "map": [
+        "#########",
+        "#.......#",
+        "#.S...G.#",
+        "#.......#",
+        "#########",
+        "#########"
+      ],
+      "rules": {
+        "output": "GO",
+        "nodes": [
+          "If"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "50"
+          ],
+          "output": "GO"
+        },
+        {
+          "input": [
+            "20"
+          ],
+          "output": "WAIT"
+        }
+      ]
     },
     {
-      "id":"python.gate.003","chapter":"gate","title":"三色指示灯","concept":"elif","type":"console","brief":"控制室需要更细的电量报告。为三种电量区间输出不同指示。","goal":"电量 < 30 输出 LOW；30～69 输出 OK；至少 70 输出 HIGH。","learn":"elif 表示“否则，如果”。Python 从上到下检查条件，命中一条分支后，就跳过其余分支。","example":"if n < 0:\n    print(\"负数\")\nelif n == 0:\n    print(\"零\")\nelse:\n    print(\"正数\")","starter":"energy = int(input())\n\n# 按从低到高的顺序判断。\n","input":["55"],"hints":["先判断 energy < 30。","接着判断 energy < 70，最后使用 else。","输出分别为 LOW、OK、HIGH，注意大写。"],"map":["#########","#.......#","#.S...G.#","#.......#","#########","#########"],"rules":{"output":"OK","nodes":["If"]},"cases":[{"input":["29"],"output":"LOW"},{"input":["30"],"output":"OK"},{"input":["70"],"output":"HIGH"}]
+      "id": "python.gate.003",
+      "chapter": "gate",
+      "title": "三色指示灯",
+      "concept": "elif",
+      "type": "console",
+      "brief": "控制室需要更细的电量报告。为三种电量区间输出不同指示。",
+      "goal": "电量 < 30 输出 LOW；30～69 输出 OK；至少 70 输出 HIGH。",
+      "learn": "elif 表示“否则，如果”。Python 从上到下检查条件，命中一条分支后，就跳过其余分支。",
+      "example": "if n < 0:\n    print(\"负数\")\nelif n == 0:\n    print(\"零\")\nelse:\n    print(\"正数\")",
+      "starter": "energy = int(input())\n\n# 按从低到高的顺序判断。\n",
+      "input": [
+        "55"
+      ],
+      "hints": [
+        "先判断 energy < 30。",
+        "接着判断 energy < 70，最后使用 else。",
+        "输出分别为 LOW、OK、HIGH，注意大写。"
+      ],
+      "map": [
+        "#########",
+        "#.......#",
+        "#.S...G.#",
+        "#.......#",
+        "#########",
+        "#########"
+      ],
+      "rules": {
+        "output": "OK",
+        "nodes": [
+          "If"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "29"
+          ],
+          "output": "LOW"
+        },
+        {
+          "input": [
+            "30"
+          ],
+          "output": "OK"
+        },
+        {
+          "input": [
+            "70"
+          ],
+          "output": "HIGH"
+        }
+      ]
     },
     {
-      "id":"python.gate.004","chapter":"gate","title":"双重认证","concept":"and 与布尔值","type":"console","brief":"图书馆的门需要同时满足两个条件：已拥有钥匙，且电量至少 30。","goal":"输入为钥匙状态（1 或 0）和电量，满足两个条件输出 OPEN，否则输出 LOCKED。","learn":"== 用来比较，= 用来赋值。and 要求两侧条件都成立；or 要求至少一侧成立。比较的结果是 True 或 False。","example":"if has_card == 1 and energy >= 10:\n    print(\"可以进入\")","starter":"key = int(input())\nenergy = int(input())\n\n# 同时检查两个条件。\n","input":["1","40"],"hints":["钥匙条件是 key == 1。","把它和 energy >= 30 用 and 连接。","别忘了 else 分支中的 LOCKED。"],"map":["#########","#.......#","#.S...G.#","#.......#","#########","#########"],"rules":{"output":"OPEN","nodes":["BoolOp"]},"cases":[{"input":["0","90"],"output":"LOCKED"},{"input":["1","29"],"output":"LOCKED"},{"input":["1","30"],"output":"OPEN"}]
+      "id": "python.gate.004",
+      "chapter": "gate",
+      "title": "双重认证",
+      "concept": "and 与布尔值",
+      "type": "console",
+      "brief": "图书馆的门需要同时满足两个条件：已拥有钥匙，且电量至少 30。",
+      "goal": "输入为钥匙状态（1 或 0）和电量，满足两个条件输出 OPEN，否则输出 LOCKED。",
+      "learn": "== 用来比较，= 用来赋值。and 要求两侧条件都成立；or 要求至少一侧成立。比较的结果是 True 或 False。",
+      "example": "if has_card == 1 and energy >= 10:\n    print(\"可以进入\")",
+      "starter": "key = int(input())\nenergy = int(input())\n\n# 同时检查两个条件。\n",
+      "input": [
+        "1",
+        "40"
+      ],
+      "hints": [
+        "钥匙条件是 key == 1。",
+        "把它和 energy >= 30 用 and 连接。",
+        "别忘了 else 分支中的 LOCKED。"
+      ],
+      "map": [
+        "#########",
+        "#.......#",
+        "#.S...G.#",
+        "#.......#",
+        "#########",
+        "#########"
+      ],
+      "rules": {
+        "output": "OPEN",
+        "nodes": [
+          "BoolOp"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "0",
+            "90"
+          ],
+          "output": "LOCKED"
+        },
+        {
+          "input": [
+            "1",
+            "29"
+          ],
+          "output": "LOCKED"
+        },
+        {
+          "input": [
+            "1",
+            "30"
+          ],
+          "output": "OPEN"
+        }
+      ]
     },
     {
-      "id":"python.cargo.001","chapter":"cargo","title":"循环引擎上线","concept":"for 与 range","type":"world","brief":"校园运输线很长。用循环让同一个移动动作重复执行，点亮循环引擎。","goal":"使用 for 循环向右移动 5 次。","learn":"for i in range(5): 会把缩进的语句执行 5 次。i 依次取值 0、1、2、3、4。range 的结束数字不包含在结果里。","example":"for i in range(2):\n    robot.right()","starter":"# 把重复动作放进循环。\nfor i in range(1):\n    robot.right()\n","hints":["数一数起点和终点相隔几格。","修改 range 括号里的次数。","range(5) 会让循环体执行 5 次。"],"map":["#########","#########","#S....G##","#########","#########","#########"],"rules":{"atGoal":true,"nodes":["For"]}
+      "id": "python.cargo.001",
+      "chapter": "cargo",
+      "title": "循环引擎上线",
+      "concept": "for 与 range",
+      "type": "world",
+      "brief": "校园运输线很长。用循环让同一个移动动作重复执行，点亮循环引擎。",
+      "goal": "使用 for 循环向右移动 5 次。",
+      "learn": "for i in range(5): 会把缩进的语句执行 5 次。i 依次取值 0、1、2、3、4。range 的结束数字不包含在结果里。",
+      "example": "for i in range(2):\n    robot.right()",
+      "starter": "# 把重复动作放进循环。\nfor i in range(1):\n    robot.right()\n",
+      "hints": [
+        "数一数起点和终点相隔几格。",
+        "修改 range 括号里的次数。",
+        "range(5) 会让循环体执行 5 次。"
+      ],
+      "map": [
+        "#########",
+        "#########",
+        "#S....G##",
+        "#########",
+        "#########",
+        "#########"
+      ],
+      "rules": {
+        "atGoal": true,
+        "nodes": [
+          "For"
+        ]
+      }
     },
     {
-      "id":"python.cargo.002","chapter":"cargo","title":"整齐的电池阵列","concept":"循环体与多个动作","type":"world","brief":"三块备用电池排成一列。每走一格，就收集一次。","goal":"用 for 循环收集 3 块电池，再抵达传送点。","learn":"循环体可以放多个动作，它们会按顺序一起重复。缩进相同的语句属于同一个循环体。循环外的代码会在循环全部结束后执行。","example":"for i in range(2):\n    robot.right()\n    robot.collect()\nrobot.right()","starter":"for i in range(3):\n    robot.right()\n    # 每走一步，收集脚下的电池\n\n# 循环后再走向终点。\n","hints":["在循环内部加入 robot.collect()。","收集完 3 块电池后，离终点还有 1 格。","循环外再写一行 robot.right()。"],"map":["#########","#########","#SBBBG###","#########","#########","#########"],"rules":{"atGoal":true,"collected":3,"nodes":["For"]}
+      "id": "python.cargo.002",
+      "chapter": "cargo",
+      "title": "整齐的电池阵列",
+      "concept": "循环体与多个动作",
+      "type": "world",
+      "brief": "三块备用电池排成一列。每走一格，就收集一次。",
+      "goal": "用 for 循环收集 3 块电池，再抵达传送点。",
+      "learn": "循环体可以放多个动作，它们会按顺序一起重复。缩进相同的语句属于同一个循环体。循环外的代码会在循环全部结束后执行。",
+      "example": "for i in range(2):\n    robot.right()\n    robot.collect()\nrobot.right()",
+      "starter": "for i in range(3):\n    robot.right()\n    # 每走一步，收集脚下的电池\n\n# 循环后再走向终点。\n",
+      "hints": [
+        "在循环内部加入 robot.collect()。",
+        "收集完 3 块电池后，离终点还有 1 格。",
+        "循环外再写一行 robot.right()。"
+      ],
+      "map": [
+        "#########",
+        "#########",
+        "#SBBBG###",
+        "#########",
+        "#########",
+        "#########"
+      ],
+      "rules": {
+        "atGoal": true,
+        "collected": 3,
+        "nodes": [
+          "For"
+        ]
+      }
     },
     {
-      "id":"python.cargo.003","chapter":"cargo","title":"从一数到五","concept":"range 起点与终点","type":"console","brief":"给五箱救援物资依次编号。每个编号单独输出一行。","goal":"使用 for 依次输出 1、2、3、4、5，每行一个数字。","learn":"range(start, stop) 从 start 开始，到 stop 前一个数结束。所以 range(2, 5) 生成 2、3、4。","example":"for number in range(2, 5):\n    print(number)","starter":"# 让 number 从 1 变化到 5。\nfor number in range(1, 2):\n    print(number)\n","hints":["range 的结束值本身不会被取到。","要让 5 被输出，结束值要比 5 多 1。","使用 range(1, 6)。"],"map":["#########","#.......#","#.S...G.#","#.......#","#########","#########"],"rules":{"output":"1\n2\n3\n4\n5","nodes":["For"]}
+      "id": "python.cargo.003",
+      "chapter": "cargo",
+      "title": "从一数到五",
+      "concept": "range 起点与终点",
+      "type": "console",
+      "brief": "给五箱救援物资依次编号。每个编号单独输出一行。",
+      "goal": "使用 for 依次输出 1、2、3、4、5，每行一个数字。",
+      "learn": "range(start, stop) 从 start 开始，到 stop 前一个数结束。所以 range(2, 5) 生成 2、3、4。",
+      "example": "for number in range(2, 5):\n    print(number)",
+      "starter": "# 让 number 从 1 变化到 5。\nfor number in range(1, 2):\n    print(number)\n",
+      "hints": [
+        "range 的结束值本身不会被取到。",
+        "要让 5 被输出，结束值要比 5 多 1。",
+        "使用 range(1, 6)。"
+      ],
+      "map": [
+        "#########",
+        "#.......#",
+        "#.S...G.#",
+        "#.......#",
+        "#########",
+        "#########"
+      ],
+      "rules": {
+        "output": "1\n2\n3\n4\n5",
+        "nodes": [
+          "For"
+        ]
+      }
     },
     {
-      "id":"python.cargo.004","chapter":"cargo","title":"物资总账","concept":"累加算法","type":"console","brief":"第一次独立写出小算法：给出 n，计算从 1 到 n 的总和。","goal":"读取 n，用 for 累加 1 到 n，最后输出总和。","learn":"累加需要一个初始为 0 的变量。每轮用 total = total + number 更新总数。最终输出应放在循环外面，避免输出中间结果。","example":"total = 0\nfor number in range(1, 4):\n    total = total + number\nprint(total)","starter":"n = int(input())\ntotal = 0\n\n# 在这里完成累加。\n\nprint(total)\n","input":["5"],"hints":["循环范围是 range(1, n + 1)。","每轮把当前 number 加到 total。","不同测试会给出不同的 n，请保留输入。"],"map":["#########","#.......#","#.S...G.#","#.......#","#########","#########"],"rules":{"output":"15","nodes":["For"]},"cases":[{"input":["1"],"output":"1"},{"input":["10"],"output":"55"}]
+      "id": "python.cargo.004",
+      "chapter": "cargo",
+      "title": "物资总账",
+      "concept": "累加算法",
+      "type": "console",
+      "brief": "第一次独立写出小算法：给出 n，计算从 1 到 n 的总和。",
+      "goal": "读取 n，用 for 累加 1 到 n，最后输出总和。",
+      "learn": "累加需要一个初始为 0 的变量。每轮用 total = total + number 更新总数。最终输出应放在循环外面，避免输出中间结果。",
+      "example": "total = 0\nfor number in range(1, 4):\n    total = total + number\nprint(total)",
+      "starter": "n = int(input())\ntotal = 0\n\n# 在这里完成累加。\n\nprint(total)\n",
+      "input": [
+        "5"
+      ],
+      "hints": [
+        "循环范围是 range(1, n + 1)。",
+        "每轮把当前 number 加到 total。",
+        "不同测试会给出不同的 n，请保留输入。"
+      ],
+      "map": [
+        "#########",
+        "#.......#",
+        "#.S...G.#",
+        "#.......#",
+        "#########",
+        "#########"
+      ],
+      "rules": {
+        "output": "15",
+        "nodes": [
+          "For"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "1"
+          ],
+          "output": "1"
+        },
+        {
+          "input": [
+            "10"
+          ],
+          "output": "55"
+        }
+      ]
     },
     {
-      "id":"python.reboot.001","chapter":"reboot","title":"直到光亮起来","concept":"while 循环","type":"world","brief":"控制室需要至少 80 电量。Byte 当前只有 20，每充一次增加 20。","goal":"使用 while 充电到至少 80，然后向右 3 格。","learn":"while 条件: 会在每轮开始前判断条件。条件成立就继续执行，条件不成立就退出。循环体中要让条件有机会发生变化。","example":"while robot.energy < 60:\n    robot.charge()","starter":"# 达到 80 后，自动结束充电。\nwhile robot.energy < 80:\n    pass\n\nrobot.right(3)\n","energy":20,"hints":["pass 是占位符，不会做任何事。","如果电量没有增加，条件会一直成立。","用 robot.charge() 替换 pass。"],"map":["#########","#########","##S..G###","#########","#########","#########"],"rules":{"atGoal":true,"minEnergy":80,"nodes":["While"]}
+      "id": "python.reboot.001",
+      "chapter": "reboot",
+      "title": "直到光亮起来",
+      "concept": "while 循环",
+      "type": "world",
+      "brief": "控制室需要至少 80 电量。Byte 当前只有 20，每充一次增加 20。",
+      "goal": "使用 while 充电到至少 80，然后向右 3 格。",
+      "learn": "while 条件: 会在每轮开始前判断条件。条件成立就继续执行，条件不成立就退出。循环体中要让条件有机会发生变化。",
+      "example": "while robot.energy < 60:\n    robot.charge()",
+      "starter": "# 达到 80 后，自动结束充电。\nwhile robot.energy < 80:\n    pass\n\nrobot.right(3)\n",
+      "energy": 20,
+      "hints": [
+        "pass 是占位符，不会做任何事。",
+        "如果电量没有增加，条件会一直成立。",
+        "用 robot.charge() 替换 pass。"
+      ],
+      "map": [
+        "#########",
+        "#########",
+        "##S..G###",
+        "#########",
+        "#########",
+        "#########"
+      ],
+      "rules": {
+        "atGoal": true,
+        "minEnergy": 80,
+        "nodes": [
+          "While"
+        ]
+      }
     },
     {
-      "id":"python.reboot.002","chapter":"reboot","title":"终点探测器","concept":"not 与结束条件","type":"world","brief":"终点距离不再写死。使用传感器，让机器人自己判断什么时候停下。","goal":"只要还没到终点，就继续向右移动。","learn":"robot.at_goal() 返回是否到达终点。not 会把判断反过来。while not robot.at_goal(): 的意思是“只要还没到达，就继续”。","example":"while not robot.at_goal():\n    robot.right()","starter":"# 让传感器决定何时停止。\n","hints":["需要一个每轮都会重新检查的条件。","使用 while not robot.at_goal():。","循环体中调用 robot.right()。"],"map":["#########","#########","#S....G##","#########","#########","#########"],"rules":{"atGoal":true,"nodes":["While"]}
+      "id": "python.reboot.002",
+      "chapter": "reboot",
+      "title": "终点探测器",
+      "concept": "not 与结束条件",
+      "type": "world",
+      "brief": "终点距离不再写死。使用传感器，让机器人自己判断什么时候停下。",
+      "goal": "只要还没到终点，就继续向右移动。",
+      "learn": "robot.at_goal() 返回是否到达终点。not 会把判断反过来。while not robot.at_goal(): 的意思是“只要还没到达，就继续”。",
+      "example": "while not robot.at_goal():\n    robot.right()",
+      "starter": "# 让传感器决定何时停止。\n",
+      "hints": [
+        "需要一个每轮都会重新检查的条件。",
+        "使用 while not robot.at_goal():。",
+        "循环体中调用 robot.right()。"
+      ],
+      "map": [
+        "#########",
+        "#########",
+        "#S....G##",
+        "#########",
+        "#########",
+        "#########"
+      ],
+      "rules": {
+        "atGoal": true,
+        "nodes": [
+          "While"
+        ]
+      }
     },
     {
-      "id":"python.reboot.003","chapter":"reboot","title":"发射前的倒数","concept":"变量更新与 while","type":"console","brief":"把结束条件应用到普通程序：读取倒计时起点，每次减一，直到发射。","goal":"使用 while 从 n 倒数到 1，每行一个数字，最后输出 GO。","learn":"循环内用 n = n - 1 让计数逐渐接近结束。while n > 0: 会在 n 变成 0 时停下。循环后再执行最终的输出。","example":"n = 2\nwhile n > 0:\n    print(n)\n    n = n - 1\nprint(\"出发\")","starter":"n = int(input())\n\n# 倒计时结束后，输出 GO。\n","input":["3"],"hints":["循环条件是 n > 0。","先输出当前的 n，再把 n 减一。","print(\"GO\") 应放在循环外面。"],"map":["#########","#.......#","#.S...G.#","#.......#","#########","#########"],"rules":{"output":"3\n2\n1\nGO","nodes":["While"]},"cases":[{"input":["1"],"output":"1\nGO"},{"input":["0"],"output":"GO"}]
+      "id": "python.reboot.003",
+      "chapter": "reboot",
+      "title": "发射前的倒数",
+      "concept": "变量更新与 while",
+      "type": "console",
+      "brief": "把结束条件应用到普通程序：读取倒计时起点，每次减一，直到发射。",
+      "goal": "使用 while 从 n 倒数到 1，每行一个数字，最后输出 GO。",
+      "learn": "循环内用 n = n - 1 让计数逐渐接近结束。while n > 0: 会在 n 变成 0 时停下。循环后再执行最终的输出。",
+      "example": "n = 2\nwhile n > 0:\n    print(n)\n    n = n - 1\nprint(\"出发\")",
+      "starter": "n = int(input())\n\n# 倒计时结束后，输出 GO。\n",
+      "input": [
+        "3"
+      ],
+      "hints": [
+        "循环条件是 n > 0。",
+        "先输出当前的 n，再把 n 减一。",
+        "print(\"GO\") 应放在循环外面。"
+      ],
+      "map": [
+        "#########",
+        "#.......#",
+        "#.S...G.#",
+        "#.......#",
+        "#########",
+        "#########"
+      ],
+      "rules": {
+        "output": "3\n2\n1\nGO",
+        "nodes": [
+          "While"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "1"
+          ],
+          "output": "1\nGO"
+        },
+        {
+          "input": [
+            "0"
+          ],
+          "output": "GO"
+        }
+      ]
     },
     {
-      "id":"python.reboot.004","chapter":"reboot","title":"校园，重新上线","concept":"综合挑战","type":"world","brief":"最后一条救援线路：补足电量，收集沿途三块电池，把它们送进主控制室。校园的灯光正等着你。","goal":"用 while 充电到至少 80，用 for 收集 3 块电池，再抵达终点。","learn":"先把任务拆成几步，再分别选合适的语句。次数不确定时用 while，明确重复三次时用 for。把学到的知识组合起来，就是解决问题的开始。","example":"# 先补充能量\n# 再重复收集\n# 最后抵达终点","starter":"# 1. 把电量充到至少 80。\n\n# 2. 重复三次：向右移动，再收集。\n\n# 3. 向右走到控制室。\n","energy":20,"hints":["第一段参考 while robot.energy < 80。","第二段使用 for i in range(3)，每轮先 right 再 collect。","循环结束后还要再向右走一格。"],"map":["#########","#########","#SBBBG###","#########","#########","#########"],"rules":{"atGoal":true,"collected":3,"minEnergy":80,"nodes":["While","For"]}
+      "id": "python.reboot.004",
+      "chapter": "reboot",
+      "title": "校园，重新上线",
+      "concept": "综合挑战",
+      "type": "world",
+      "brief": "最后一条救援线路：补足电量，收集沿途三块电池，把它们送进主控制室。校园的灯光正等着你。",
+      "goal": "用 while 充电到至少 80，用 for 收集 3 块电池，再抵达终点。",
+      "learn": "先把任务拆成几步，再分别选合适的语句。次数不确定时用 while，明确重复三次时用 for。把学到的知识组合起来，就是解决问题的开始。",
+      "example": "# 先补充能量\n# 再重复收集\n# 最后抵达终点",
+      "starter": "# 1. 把电量充到至少 80。\n\n# 2. 重复三次：向右移动，再收集。\n\n# 3. 向右走到控制室。\n",
+      "energy": 20,
+      "hints": [
+        "第一段参考 while robot.energy < 80。",
+        "第二段使用 for i in range(3)，每轮先 right 再 collect。",
+        "循环结束后还要再向右走一格。"
+      ],
+      "map": [
+        "#########",
+        "#########",
+        "#SBBBG###",
+        "#########",
+        "#########",
+        "#########"
+      ],
+      "rules": {
+        "atGoal": true,
+        "collected": 3,
+        "minEnergy": 80,
+        "nodes": [
+          "While",
+          "For"
+        ]
+      }
+    },
+    {
+      "id": "python.assembly.001",
+      "chapter": "assembly",
+      "title": "数据身份牌",
+      "concept": "类型与布尔值",
+      "type": "console",
+      "brief": "校园救援 · 集结广场：Byte 需要你的帮助。",
+      "goal": "输出 number 和它是否大于等于 0",
+      "learn": "input 得到文字。int 转整数；float 转小数；比较得到 True 或 False。",
+      "example": "age = 12\nprint(age >= 10)",
+      "starter": "number = int(input())\n# 输出 number 和它是否大于等于 0\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出三个步骤，复习「示例与讲解」。",
+        "input 得到文字。int 转整数；float 转小数；比较得到 True 或 False。",
+        "本关核心写法：\nprint(number, number >= 0)"
+      ],
+      "input": [
+        "3"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "3 True"
+      },
+      "cases": [
+        {
+          "input": [
+            "0"
+          ],
+          "output": "0 True"
+        },
+        {
+          "input": [
+            "-2"
+          ],
+          "output": "-2 False"
+        }
+      ]
+    },
+    {
+      "id": "python.assembly.002",
+      "chapter": "assembly",
+      "title": "补给单格式转换",
+      "concept": "float 与转换",
+      "type": "console",
+      "brief": "校园救援 · 集结广场：Byte 需要你的帮助。",
+      "goal": "输出总价",
+      "learn": "float(input()) 能读取小数。先转换再运算，文字相加会拼接。",
+      "example": "price = float('2.5')\nprint(price * 2)",
+      "starter": "price = float(input())\ncount = int(input())\n# 输出总价\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出三个步骤，复习「示例与讲解」。",
+        "float(input()) 能读取小数。先转换再运算，文字相加会拼接。",
+        "本关核心写法：\nprint(price * count)"
+      ],
+      "input": [
+        "2.5",
+        "3"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "7.5"
+      },
+      "cases": [
+        {
+          "input": [
+            "0",
+            "4"
+          ],
+          "output": "0.0"
+        },
+        {
+          "input": [
+            "1.25",
+            "2"
+          ],
+          "output": "2.5"
+        }
+      ]
+    },
+    {
+      "id": "python.assembly.003",
+      "chapter": "assembly",
+      "title": "一条清楚的广播",
+      "concept": "f-string",
+      "type": "console",
+      "brief": "校园救援 · 集结广场：Byte 需要你的帮助。",
+      "goal": "输出：站点名：数量（英文冒号）",
+      "learn": "f 字符串用 {变量} 把变量值放进文字。",
+      "example": "name = 'Byte'\nprint(f'你好，{name}')",
+      "starter": "name = input()\ncount = int(input())\n# 输出：站点名：数量（英文冒号）\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出三个步骤，复习「示例与讲解」。",
+        "f 字符串用 {变量} 把变量值放进文字。",
+        "本关核心写法：\nprint(f'{name}:{count}')"
+      ],
+      "input": [
+        "操场",
+        "3"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "操场:3"
+      },
+      "cases": [
+        {
+          "input": [
+            "A",
+            "0"
+          ],
+          "output": "A:0"
+        },
+        {
+          "input": [
+            "广播站",
+            "12"
+          ],
+          "output": "广播站:12"
+        }
+      ]
+    },
+    {
+      "id": "python.assembly.004",
+      "chapter": "assembly",
+      "title": "电量显示屏",
+      "concept": "小数格式化",
+      "type": "console",
+      "brief": "校园救援 · 集结广场：Byte 需要你的帮助。",
+      "goal": "保留两位小数输出",
+      "learn": "f'{value:.2f}' 将数字显示为两位小数；格式化改变显示方式。",
+      "example": "value = 3.5\nprint(f'{value:.2f}')",
+      "starter": "energy = float(input())\n# 保留两位小数输出\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出三个步骤，复习「示例与讲解」。",
+        "f'{value:.2f}' 将数字显示为两位小数；格式化改变显示方式。",
+        "本关核心写法：\nprint(f'{energy:.2f}')"
+      ],
+      "input": [
+        "7.5"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "7.50"
+      },
+      "cases": [
+        {
+          "input": [
+            "0"
+          ],
+          "output": "0.00"
+        },
+        {
+          "input": [
+            "12.345"
+          ],
+          "output": "12.35"
+        }
+      ]
+    },
+    {
+      "id": "python.assembly.005",
+      "chapter": "assembly",
+      "title": "还差多少补给",
+      "concept": "非负缺口",
+      "type": "console",
+      "brief": "校园救援 · 集结广场：Byte 需要你的帮助。",
+      "goal": "判断并输出缺口",
+      "learn": "需求减库存得到缺口；库存足够时缺口为 0。",
+      "example": "stock = 5\nneed = 8\nif need > stock:\n    print(need - stock)\nelse:\n    print(0)",
+      "starter": "stock = int(input())\nneed = int(input())\n# 判断并输出缺口\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出三个步骤，复习「示例与讲解」。",
+        "需求减库存得到缺口；库存足够时缺口为 0。",
+        "本关核心写法：\nif need > stock:\n    print(need - stock)\nelse:\n    print(0)"
+      ],
+      "input": [
+        "3",
+        "8"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "5"
+      },
+      "cases": [
+        {
+          "input": [
+            "8",
+            "8"
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "10",
+            "4"
+          ],
+          "output": "0"
+        }
+      ]
+    },
+    {
+      "id": "python.assembly.006",
+      "chapter": "assembly",
+      "title": "装满几箱",
+      "concept": "整除 //",
+      "type": "console",
+      "brief": "校园救援 · 集结广场：Byte 需要你的帮助。",
+      "goal": "输出完整箱数",
+      "learn": "// 计算完整份数。本关数量非负，容量为正整数。",
+      "example": "print(13 // 5)  # 2 个完整箱子",
+      "starter": "amount = int(input())\ncapacity = int(input())\n# 输出完整箱数\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出三个步骤，复习「示例与讲解」。",
+        "// 计算完整份数。本关数量非负，容量为正整数。",
+        "本关核心写法：\nprint(amount // capacity)"
+      ],
+      "input": [
+        "17",
+        "5"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "3",
+        "nodes": [
+          "FloorDiv"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "0",
+            "3"
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "12",
+            "4"
+          ],
+          "output": "3"
+        }
+      ]
+    },
+    {
+      "id": "python.assembly.007",
+      "chapter": "assembly",
+      "title": "最后一箱的秘密",
+      "concept": "余数 %",
+      "type": "console",
+      "brief": "校园救援 · 集结广场：Byte 需要你的帮助。",
+      "goal": "输出剩余数量；容量大于零",
+      "learn": "% 得到分组后剩余的数量。刚好分完时余数为 0。",
+      "example": "print(13 % 5)  # 剩 3 个",
+      "starter": "amount = int(input())\ncapacity = int(input())\n# 输出剩余数量；容量大于零\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出三个步骤，复习「示例与讲解」。",
+        "% 得到分组后剩余的数量。刚好分完时余数为 0。",
+        "本关核心写法：\nprint(amount % capacity)"
+      ],
+      "input": [
+        "17",
+        "5"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "2",
+        "nodes": [
+          "Mod"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "12",
+            "4"
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "0",
+            "3"
+          ],
+          "output": "0"
+        }
+      ]
+    },
+    {
+      "id": "python.assembly.008",
+      "chapter": "assembly",
+      "title": "奇偶信号灯",
+      "concept": "取余判断",
+      "type": "console",
+      "brief": "校园救援 · 集结广场：Byte 需要你的帮助。",
+      "goal": "偶数输出 EVEN，奇数输出 ODD",
+      "learn": "整数除以 2 余 0 是偶数，0 也属于偶数。",
+      "example": "if 6 % 2 == 0:\n    print('偶数')",
+      "starter": "number = int(input())\n# 偶数输出 EVEN，奇数输出 ODD\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出三个步骤，复习「示例与讲解」。",
+        "整数除以 2 余 0 是偶数，0 也属于偶数。",
+        "本关核心写法：\nif number % 2 == 0:\n    print('EVEN')\nelse:\n    print('ODD')"
+      ],
+      "input": [
+        "7"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "ODD",
+        "nodes": [
+          "If",
+          "Mod"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "0"
+          ],
+          "output": "EVEN"
+        },
+        {
+          "input": [
+            "12"
+          ],
+          "output": "EVEN"
+        }
+      ]
+    },
+    {
+      "id": "python.assembly.009",
+      "chapter": "assembly",
+      "title": "两种通行证",
+      "concept": "or 与 and",
+      "type": "console",
+      "brief": "校园救援 · 集结广场：Byte 需要你的帮助。",
+      "goal": "有任一证件且电量至少 30，输出 GO，否则 WAIT",
+      "learn": "or 表示至少一个条件成立；and 要求两个都成立。用括号写清组合关系。",
+      "example": "student = 1\nrescue = 0\nprint(student == 1 or rescue == 1)",
+      "starter": "student = int(input())\nrescue = int(input())\nenergy = int(input())\n# 有任一证件且电量至少 30，输出 GO，否则 WAIT\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出三个步骤，复习「示例与讲解」。",
+        "or 表示至少一个条件成立；and 要求两个都成立。用括号写清组合关系。",
+        "本关核心写法：\nif (student == 1 or rescue == 1) and energy >= 30:\n    print('GO')\nelse:\n    print('WAIT')"
+      ],
+      "input": [
+        "0",
+        "1",
+        "30"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "GO",
+        "nodes": [
+          "BoolOp"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "0",
+            "0",
+            "100"
+          ],
+          "output": "WAIT"
+        },
+        {
+          "input": [
+            "1",
+            "0",
+            "29"
+          ],
+          "output": "WAIT"
+        }
+      ]
+    },
+    {
+      "id": "python.assembly.010",
+      "chapter": "assembly",
+      "title": "集结调度完成",
+      "concept": "补给综合",
+      "type": "console",
+      "brief": "校园救援 · 集结广场：Byte 需要你的帮助。",
+      "goal": "依次输出缺口、完整箱数、余数，各占一行",
+      "learn": "依次求缺口、完整箱数和余数。先处理库存足够的分支，再进行装箱。",
+      "example": "shortage = 7\nprint(shortage // 3)\nprint(shortage % 3)",
+      "starter": "stock = int(input())\nneed = int(input())\ncapacity = int(input())\n# 依次输出缺口、完整箱数、余数，各占一行\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出三个步骤，复习「示例与讲解」。",
+        "依次求缺口、完整箱数和余数。先处理库存足够的分支，再进行装箱。",
+        "本关核心写法：\nshortage = 0\nif need > stock:\n    shortage = need - stock\nprint(shortage)\nprint(shortage // capacity)\nprint(shortage % capacity)"
+      ],
+      "input": [
+        "3",
+        "15",
+        "5"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "12\n2\n2"
+      },
+      "cases": [
+        {
+          "input": [
+            "9",
+            "2",
+            "3"
+          ],
+          "output": "0\n0\n0"
+        },
+        {
+          "input": [
+            "0",
+            "8",
+            "4"
+          ],
+          "output": "8\n2\n0"
+        }
+      ]
+    },
+    {
+      "id": "python.broadcast.001",
+      "chapter": "broadcast",
+      "title": "呼号有多长",
+      "concept": "len",
+      "type": "console",
+      "brief": "校园救援 · 广播站：Byte 需要你的帮助。",
+      "goal": "输出字符数，允许空行",
+      "learn": "len(text) 返回字符串长度。本关采用普通汉字、数字和英文字母。",
+      "example": "print(len('Byte'))",
+      "starter": "name = input()\n# 输出字符数，允许空行\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出三个步骤，复习「示例与讲解」。",
+        "len(text) 返回字符串长度。本关采用普通汉字、数字和英文字母。",
+        "本关核心写法：\nprint(len(name))"
+      ],
+      "input": [
+        "Byte"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "4"
+      },
+      "cases": [
+        {
+          "input": [
+            "校园"
+          ],
+          "output": "2"
+        },
+        {
+          "input": [
+            ""
+          ],
+          "output": "0"
+        }
+      ]
+    },
+    {
+      "id": "python.broadcast.002",
+      "chapter": "broadcast",
+      "title": "第一个信号",
+      "concept": "索引 0",
+      "type": "console",
+      "brief": "校园救援 · 广播站：Byte 需要你的帮助。",
+      "goal": "输出第一个字符",
+      "learn": "字符串从索引 0 开始；本关输入至少一个字符。",
+      "example": "text = 'ABC'\nprint(text[0])",
+      "starter": "signal = input()\n# 输出第一个字符\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出三个步骤，复习「示例与讲解」。",
+        "字符串从索引 0 开始；本关输入至少一个字符。",
+        "本关核心写法：\nprint(signal[0])"
+      ],
+      "input": [
+        "RIGHT"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "R"
+      },
+      "cases": [
+        {
+          "input": [
+            "中转"
+          ],
+          "output": "中"
+        },
+        {
+          "input": [
+            "A"
+          ],
+          "output": "A"
+        }
+      ]
+    },
+    {
+      "id": "python.broadcast.003",
+      "chapter": "broadcast",
+      "title": "末尾确认码",
+      "concept": "负数索引",
+      "type": "console",
+      "brief": "校园救援 · 广播站：Byte 需要你的帮助。",
+      "goal": "输出最后一个字符",
+      "learn": "-1 表示最后一个元素。本关字符串非空。",
+      "example": "print('ABC'[-1])",
+      "starter": "signal = input()\n# 输出最后一个字符\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出三个步骤，复习「示例与讲解」。",
+        "-1 表示最后一个元素。本关字符串非空。",
+        "本关核心写法：\nprint(signal[-1])"
+      ],
+      "input": [
+        "CODE7"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "7"
+      },
+      "cases": [
+        {
+          "input": [
+            "好"
+          ],
+          "output": "好"
+        },
+        {
+          "input": [
+            "AB"
+          ],
+          "output": "B"
+        }
+      ]
+    },
+    {
+      "id": "python.broadcast.004",
+      "chapter": "broadcast",
+      "title": "路线标签在哪里",
+      "concept": "切片",
+      "type": "console",
+      "brief": "校园救援 · 广播站：Byte 需要你的帮助。",
+      "goal": "输入固定以 ID: 开头，输出其后的标签",
+      "learn": "text[start:end] 取起点到终点之前的片段。",
+      "example": "print('ID:ABC'[3:])",
+      "starter": "signal = input()\n# 输入固定以 ID: 开头，输出其后的标签\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出三个步骤，复习「示例与讲解」。",
+        "text[start:end] 取起点到终点之前的片段。",
+        "本关核心写法：\nprint(signal[3:])"
+      ],
+      "input": [
+        "ID:RIGHT"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "RIGHT"
+      },
+      "cases": [
+        {
+          "input": [
+            "ID:左"
+          ],
+          "output": "左"
+        },
+        {
+          "input": [
+            "ID:"
+          ],
+          "output": ""
+        }
+      ]
+    },
+    {
+      "id": "python.broadcast.005",
+      "chapter": "broadcast",
+      "title": "逐字广播",
+      "concept": "字符串遍历",
+      "type": "console",
+      "brief": "校园救援 · 广播站：Byte 需要你的帮助。",
+      "goal": "每行输出一个字符",
+      "learn": "for letter in text 每次取得一个字符；空串不执行循环体。",
+      "example": "for letter in 'AB':\n    print(letter)",
+      "starter": "signal = input()\n# 每行输出一个字符\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出三个步骤，复习「示例与讲解」。",
+        "for letter in text 每次取得一个字符；空串不执行循环体。",
+        "本关核心写法：\nfor letter in signal:\n    print(letter)"
+      ],
+      "input": [
+        "SOS"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "S\nO\nS",
+        "nodes": [
+          "For"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "中"
+          ],
+          "output": "中"
+        },
+        {
+          "input": [
+            ""
+          ],
+          "output": ""
+        }
+      ]
+    },
+    {
+      "id": "python.broadcast.006",
+      "chapter": "broadcast",
+      "title": "数一数求助灯",
+      "concept": "字符条件计数",
+      "type": "console",
+      "brief": "校园救援 · 广播站：Byte 需要你的帮助。",
+      "goal": "输出 S 出现的次数",
+      "learn": "计数器从 0 开始，遇到指定字符才加 1。",
+      "example": "count = 0\nfor letter in 'ABA':\n    if letter == 'A':\n        count = count + 1\nprint(count)",
+      "starter": "signal = input()\n# 输出 S 出现的次数\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出三个步骤，复习「示例与讲解」。",
+        "计数器从 0 开始，遇到指定字符才加 1。",
+        "本关核心写法：\ncount = 0\nfor letter in signal:\n    if letter == 'S':\n        count = count + 1\nprint(count)"
+      ],
+      "input": [
+        "SOS"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "2",
+        "nodes": [
+          "For",
+          "If"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "ABC"
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "SSS"
+          ],
+          "output": "3"
+        }
+      ]
+    },
+    {
+      "id": "python.broadcast.007",
+      "chapter": "broadcast",
+      "title": "清理接收杂音",
+      "concept": "strip",
+      "type": "console",
+      "brief": "校园救援 · 广播站：Byte 需要你的帮助。",
+      "goal": "清除首尾空白后输出",
+      "learn": "strip() 清除首尾空白，不移除内部空格。",
+      "example": "print('  A B  '.strip())",
+      "starter": "signal = input()\n# 清除首尾空白后输出\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出三个步骤，复习「示例与讲解」。",
+        "strip() 清除首尾空白，不移除内部空格。",
+        "本关核心写法：\nprint(signal.strip())"
+      ],
+      "input": [
+        "  A B  "
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "A B"
+      },
+      "cases": [
+        {
+          "input": [
+            "   "
+          ],
+          "output": ""
+        },
+        {
+          "input": [
+            "Byte"
+          ],
+          "output": "Byte"
+        }
+      ]
+    },
+    {
+      "id": "python.broadcast.008",
+      "chapter": "broadcast",
+      "title": "拆开一行指令",
+      "concept": "split 与列表",
+      "type": "console",
+      "brief": "校园救援 · 广播站：Byte 需要你的帮助。",
+      "goal": "输出分割后的列表，再输出片段数量",
+      "learn": "split() 按空白拆分文字，得到列表。len 也能数列表项。",
+      "example": "parts = 'UP  RIGHT'.split()\nprint(parts)\nprint(len(parts))",
+      "starter": "signal = input()\n# 输出分割后的列表，再输出片段数量\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出三个步骤，复习「示例与讲解」。",
+        "split() 按空白拆分文字，得到列表。len 也能数列表项。",
+        "本关核心写法：\nparts = signal.split()\nprint(parts)\nprint(len(parts))"
+      ],
+      "input": [
+        "UP RIGHT"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "['UP', 'RIGHT']\n2"
+      },
+      "cases": [
+        {
+          "input": [
+            " A  B C "
+          ],
+          "output": "['A', 'B', 'C']\n3"
+        },
+        {
+          "input": [
+            ""
+          ],
+          "output": "[]\n0"
+        }
+      ]
+    },
+    {
+      "id": "python.broadcast.009",
+      "chapter": "broadcast",
+      "title": "一行里的两个数字",
+      "concept": "分割与转换",
+      "type": "console",
+      "brief": "校园救援 · 广播站：Byte 需要你的帮助。",
+      "goal": "本行恰有两个整数，输出它们的和",
+      "learn": "先 split 得到文字列表，再按索引取出，最后转为整数。",
+      "example": "parts = '2 3'.split()\nprint(int(parts[0]) + int(parts[1]))",
+      "starter": "parts = input().split()\n# 本行恰有两个整数，输出它们的和\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出三个步骤，复习「示例与讲解」。",
+        "先 split 得到文字列表，再按索引取出，最后转为整数。",
+        "本关核心写法：\nprint(int(parts[0]) + int(parts[1]))"
+      ],
+      "input": [
+        "3 8"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "11"
+      },
+      "cases": [
+        {
+          "input": [
+            " -5   2 "
+          ],
+          "output": "-3"
+        },
+        {
+          "input": [
+            "0 0"
+          ],
+          "output": "0"
+        }
+      ]
+    },
+    {
+      "id": "python.broadcast.010",
+      "chapter": "broadcast",
+      "title": "广播站重新连线",
+      "concept": "指令解释",
+      "type": "world",
+      "brief": "校园救援 · 广播站：Byte 需要你的帮助。",
+      "goal": "R 表示向右，执行每条指令，到达传送点",
+      "learn": "遍历分割后的指令，根据文字选择机器人动作。",
+      "example": "for direction in 'R D'.split():\n    if direction == 'R':\n        robot.right()\n    elif direction == 'D':\n        robot.down()",
+      "starter": "directions = input().strip().split()\n# R 表示向右，执行每条指令，到达传送点\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出（或行动）三个步骤，复习「示例与讲解」。",
+        "遍历分割后的指令，根据文字选择机器人动作。",
+        "本关核心写法：\nfor direction in directions:\n    if direction == 'R':\n        robot.right()"
+      ],
+      "input": [
+        "R R R R"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "atGoal": true,
+        "nodes": [
+          "For",
+          "If"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            " R  R R R "
+          ]
+        },
+        {
+          "input": [
+            "R R  R R"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "python.warehouse.001",
+      "chapter": "warehouse",
+      "title": "路线清单",
+      "concept": "列表字面量",
+      "type": "console",
+      "brief": "校园救援 · 物资仓库：Byte 需要你的帮助。",
+      "goal": "建立 route = [2, 3, 1]，依次输出列表与第一个值",
+      "learn": "列表用方括号保存多个值，用逗号分隔，可以按索引读取。",
+      "example": "route = [1, 3]\nprint(route[0])",
+      "starter": "# 建立 route = [2, 3, 1]，依次输出列表与第一个值\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出三个步骤，复习「示例与讲解」。",
+        "列表用方括号保存多个值，用逗号分隔，可以按索引读取。",
+        "本关核心写法：\nroute = [2, 3, 1]\nprint(route)\nprint(route[0])"
+      ],
+      "input": [],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "[2, 3, 1]\n2"
+      }
+    },
+    {
+      "id": "python.warehouse.002",
+      "chapter": "warehouse",
+      "title": "第几箱在哪里",
+      "concept": "列表索引",
+      "type": "console",
+      "brief": "校园救援 · 物资仓库：Byte 需要你的帮助。",
+      "goal": "输出指定索引的数量",
+      "learn": "将空格分隔的文字逐项转换为整数；索引保证有效。",
+      "example": "values = [4, 8, 2]\nprint(values[1])",
+      "starter": "values = []\nfor text in input().split():\n    values.append(int(text))\nindex = int(input())\n# 输出指定索引的数量\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出三个步骤，复习「示例与讲解」。",
+        "将空格分隔的文字逐项转换为整数；索引保证有效。",
+        "本关核心写法：\nprint(values[index])"
+      ],
+      "input": [
+        "4 8 2",
+        "1"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "8"
+      },
+      "cases": [
+        {
+          "input": [
+            "9",
+            "0"
+          ],
+          "output": "9"
+        },
+        {
+          "input": [
+            "3 5 7",
+            "2"
+          ],
+          "output": "7"
+        }
+      ]
+    },
+    {
+      "id": "python.warehouse.003",
+      "chapter": "warehouse",
+      "title": "修改配送站",
+      "concept": "列表赋值",
+      "type": "console",
+      "brief": "校园救援 · 物资仓库：Byte 需要你的帮助。",
+      "goal": "修改指定位置，输出 route",
+      "learn": "list[index] = value 更新指定位置，其余项保留。",
+      "example": "route = [1, 2]\nroute[0] = 3\nprint(route)",
+      "starter": "route = [1, 2, 3]\nindex = int(input())\ndistance = int(input())\n# 修改指定位置，输出 route\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出三个步骤，复习「示例与讲解」。",
+        "list[index] = value 更新指定位置，其余项保留。",
+        "本关核心写法：\nroute[index] = distance\nprint(route)"
+      ],
+      "input": [
+        "1",
+        "5"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "[1, 5, 3]"
+      },
+      "cases": [
+        {
+          "input": [
+            "0",
+            "0"
+          ],
+          "output": "[0, 2, 3]"
+        },
+        {
+          "input": [
+            "2",
+            "8"
+          ],
+          "output": "[1, 2, 8]"
+        }
+      ]
+    },
+    {
+      "id": "python.warehouse.004",
+      "chapter": "warehouse",
+      "title": "新补给到了",
+      "concept": "append",
+      "type": "console",
+      "brief": "校园救援 · 物资仓库：Byte 需要你的帮助。",
+      "goal": "追加后输出列表与长度，各一行",
+      "learn": "append 在列表末尾加入一项，直接修改列表。",
+      "example": "items = [2]\nitems.append(5)\nprint(items)",
+      "starter": "items = [2, 4]\nnew_item = int(input())\n# 追加后输出列表与长度，各一行\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出三个步骤，复习「示例与讲解」。",
+        "append 在列表末尾加入一项，直接修改列表。",
+        "本关核心写法：\nitems.append(new_item)\nprint(items)\nprint(len(items))"
+      ],
+      "input": [
+        "6"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "[2, 4, 6]\n3",
+        "nodes": [
+          "Call"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "0"
+          ],
+          "output": "[2, 4, 0]\n3"
+        },
+        {
+          "input": [
+            "4"
+          ],
+          "output": "[2, 4, 4]\n3"
+        }
+      ]
+    },
+    {
+      "id": "python.warehouse.005",
+      "chapter": "warehouse",
+      "title": "逐箱验货",
+      "concept": "元素和索引遍历",
+      "type": "console",
+      "brief": "校园救援 · 物资仓库：Byte 需要你的帮助。",
+      "goal": "每行输出一个索引和对应文字，用空格分隔",
+      "learn": "for value in items 得到元素。range(len(items)) 得到索引，可用来修改列表。",
+      "example": "items = [2, 4]\nfor index in range(len(items)):\n    print(index, items[index])",
+      "starter": "items = input().split()\n# 每行输出一个索引和对应文字，用空格分隔\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出三个步骤，复习「示例与讲解」。",
+        "for value in items 得到元素。range(len(items)) 得到索引，可用来修改列表。",
+        "本关核心写法：\nfor index in range(len(items)):\n    print(index, items[index])"
+      ],
+      "input": [
+        "A B"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "0 A\n1 B",
+        "nodes": [
+          "For"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "电池"
+          ],
+          "output": "0 电池"
+        },
+        {
+          "input": [
+            ""
+          ],
+          "output": ""
+        }
+      ]
+    },
+    {
+      "id": "python.warehouse.006",
+      "chapter": "warehouse",
+      "title": "清点全部库存",
+      "concept": "输入驱动累加",
+      "type": "console",
+      "brief": "校园救援 · 物资仓库：Byte 需要你的帮助。",
+      "goal": "读取 n 行数量并累计，最后输出 total",
+      "learn": "先读取数量 n，再恰好读取 n 行整数，累计到 total。n 为 0 时总和为 0。",
+      "example": "total = 0\nfor value in [2, 3]:\n    total = total + value\nprint(total)",
+      "starter": "n = int(input())\ntotal = 0\n# 读取 n 行数量并累计，最后输出 total\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出三个步骤，复习「示例与讲解」。",
+        "先读取数量 n，再恰好读取 n 行整数，累计到 total。n 为 0 时总和为 0。",
+        "本关核心写法：\nfor i in range(n):\n    total = total + int(input())\nprint(total)"
+      ],
+      "input": [
+        "3",
+        "2",
+        "3",
+        "5"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "10",
+        "nodes": [
+          "For"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "0"
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "1",
+            "7"
+          ],
+          "output": "7"
+        }
+      ]
+    },
+    {
+      "id": "python.warehouse.007",
+      "chapter": "warehouse",
+      "title": "哪些站点缺货",
+      "concept": "条件计数",
+      "type": "console",
+      "brief": "校园救援 · 物资仓库：Byte 需要你的帮助。",
+      "goal": "输出缺货站点数",
+      "learn": "仅对低于门槛的库存增加计数，等于门槛不算缺货。",
+      "example": "count = 0\nfor value in [2, 8]:\n    if value < 5:\n        count = count + 1\nprint(count)",
+      "starter": "minimum = int(input())\nvalues = []\nfor text in input().split():\n    values.append(int(text))\n# 输出缺货站点数\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出三个步骤，复习「示例与讲解」。",
+        "仅对低于门槛的库存增加计数，等于门槛不算缺货。",
+        "本关核心写法：\ncount = 0\nfor value in values:\n    if value < minimum:\n        count = count + 1\nprint(count)"
+      ],
+      "input": [
+        "5",
+        "2 5 8"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "1",
+        "nodes": [
+          "For",
+          "If"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "0",
+            "0 1"
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "3",
+            ""
+          ],
+          "output": "0"
+        }
+      ]
+    },
+    {
+      "id": "python.warehouse.008",
+      "chapter": "warehouse",
+      "title": "留下合格电池",
+      "concept": "筛选",
+      "type": "console",
+      "brief": "校园救援 · 物资仓库：Byte 需要你的帮助。",
+      "goal": "输出电量达到门槛的列表",
+      "learn": "准备新列表，只在条件成立时 append，保持原顺序和重复项。",
+      "example": "chosen = []\nfor value in [3, 4, 8]:\n    if value % 2 == 0:\n        chosen.append(value)\nprint(chosen)",
+      "starter": "minimum = int(input())\nvalues = []\nfor text in input().split():\n    values.append(int(text))\n# 输出电量达到门槛的列表\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出三个步骤，复习「示例与讲解」。",
+        "准备新列表，只在条件成立时 append，保持原顺序和重复项。",
+        "本关核心写法：\nqualified = []\nfor value in values:\n    if value >= minimum:\n        qualified.append(value)\nprint(qualified)"
+      ],
+      "input": [
+        "50",
+        "35 50 80"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "[50, 80]",
+        "nodes": [
+          "For",
+          "If"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "90",
+            "10 40"
+          ],
+          "output": "[]"
+        },
+        {
+          "input": [
+            "50",
+            "60 20 60 55"
+          ],
+          "output": "[60, 60, 55]"
+        },
+        {
+          "input": [
+            "50",
+            ""
+          ],
+          "output": "[]"
+        }
+      ]
+    },
+    {
+      "id": "python.warehouse.009",
+      "chapter": "warehouse",
+      "title": "两张清单的秘密",
+      "concept": "别名与 copy",
+      "type": "console",
+      "brief": "校园救援 · 物资仓库：Byte 需要你的帮助。",
+      "goal": "修复复制方式，再修改 copy[0]；依次输出 original 和 copy",
+      "learn": "b = a 指向同一个列表。a.copy() 为一维列表创建副本，修改副本不会改变原列表。",
+      "example": "a = [1, 2]\nb = a.copy()\nb[0] = 9\nprint(a)\nprint(b)",
+      "starter": "original = [2, 4, 6]\nreplacement = int(input())\ncopy = original\n# 修复复制方式，再修改 copy[0]；依次输出 original 和 copy\ncopy[0] = replacement\nprint(original)\nprint(copy)\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出三个步骤，复习「示例与讲解」。",
+        "b = a 指向同一个列表。a.copy() 为一维列表创建副本，修改副本不会改变原列表。",
+        "本关核心写法：\noriginal = [2, 4, 6]\nreplacement = int(input())\ncopy = original.copy()\ncopy[0] = replacement\nprint(original)\nprint(copy)"
+      ],
+      "input": [
+        "9"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "[2, 4, 6]\n[9, 4, 6]"
+      },
+      "cases": [
+        {
+          "input": [
+            "0"
+          ],
+          "output": "[2, 4, 6]\n[0, 4, 6]"
+        },
+        {
+          "input": [
+            "2"
+          ],
+          "output": "[2, 4, 6]\n[2, 4, 6]"
+        }
+      ]
+    },
+    {
+      "id": "python.warehouse.010",
+      "chapter": "warehouse",
+      "title": "物资配送车",
+      "concept": "列表与行动",
+      "type": "world",
+      "brief": "校园救援 · 物资仓库：Byte 需要你的帮助。",
+      "goal": "每段移动后收集，最后再向右一格",
+      "learn": "遍历距离列表，每段移动结束后收集电池，最后前往终点。",
+      "example": "for distance in [1, 2]:\n    robot.right(distance)\n    robot.collect()",
+      "starter": "route = [1, 1, 1]\n# 每段移动后收集，最后再向右一格\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出（或行动）三个步骤，复习「示例与讲解」。",
+        "遍历距离列表，每段移动结束后收集电池，最后前往终点。",
+        "本关核心写法：\nfor distance in route:\n    robot.right(distance)\n    robot.collect()\nrobot.right()"
+      ],
+      "input": [],
+      "map": [
+        "#########",
+        "#SBBBG###",
+        "#########"
+      ],
+      "rules": {
+        "atGoal": true,
+        "collected": 3
+      }
+    },
+    {
+      "id": "python.workshop.001",
+      "chapter": "workshop",
+      "title": "我的第一个工具",
+      "concept": "def 与调用",
+      "type": "world",
+      "brief": "校园救援 · 维修工坊：Byte 需要你的帮助。",
+      "goal": "定义 travel()，向右移动四格，再调用",
+      "learn": "def 定义函数，缩进代码是函数体；只有调用函数时才执行。",
+      "example": "def greet():\n    print('你好')\ngreet()",
+      "starter": "# 定义 travel()，向右移动四格，再调用\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出（或行动）三个步骤，复习「示例与讲解」。",
+        "def 定义函数，缩进代码是函数体；只有调用函数时才执行。",
+        "本关核心写法：\ndef travel():\n    robot.right(4)\ntravel()"
+      ],
+      "input": [],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "atGoal": true,
+        "nodes": [
+          "FunctionDef"
+        ]
+      }
+    },
+    {
+      "id": "python.workshop.002",
+      "chapter": "workshop",
+      "title": "工具接收指令",
+      "concept": "函数参数",
+      "type": "world",
+      "brief": "校园救援 · 维修工坊：Byte 需要你的帮助。",
+      "goal": "定义 travel(steps)，向右移动指定格数，再传入 distance",
+      "learn": "参数把不同数据交给同一个函数。",
+      "example": "def echo(text):\n    print(text)\necho('Byte')",
+      "starter": "distance = int(input())\n# 定义 travel(steps)，向右移动指定格数，再传入 distance\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出（或行动）三个步骤，复习「示例与讲解」。",
+        "参数把不同数据交给同一个函数。",
+        "本关核心写法：\ndef travel(steps):\n    robot.right(steps)\ntravel(distance)"
+      ],
+      "input": [
+        "4"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "atGoal": true,
+        "nodes": [
+          "FunctionDef"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "2"
+          ],
+          "map": [
+            "#########",
+            "#S.G#####",
+            "#########"
+          ]
+        },
+        {
+          "input": [
+            "3"
+          ],
+          "map": [
+            "#########",
+            "#S..G####",
+            "#########"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "python.workshop.003",
+      "chapter": "workshop",
+      "title": "两份信息一次处理",
+      "concept": "多参数",
+      "type": "console",
+      "brief": "校园救援 · 维修工坊：Byte 需要你的帮助。",
+      "goal": "定义 notify(name, place)，输出 名字@站点，再调用",
+      "learn": "参数顺序与调用顺序对应，用 f-string 组合文字。",
+      "example": "def greet(name, place):\n    print(f'{name}@{place}')\ngreet('Byte', '校园')",
+      "starter": "name = input()\nplace = input()\n# 定义 notify(name, place)，输出 名字@站点，再调用\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出三个步骤，复习「示例与讲解」。",
+        "参数顺序与调用顺序对应，用 f-string 组合文字。",
+        "本关核心写法：\ndef notify(name, place):\n    print(f'{name}@{place}')\nnotify(name, place)"
+      ],
+      "input": [
+        "Byte",
+        "操场"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "Byte@操场",
+        "nodes": [
+          "FunctionDef"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "A",
+            "B"
+          ],
+          "output": "A@B"
+        },
+        {
+          "input": [
+            "小明",
+            "广播站"
+          ],
+          "output": "小明@广播站"
+        }
+      ]
+    },
+    {
+      "id": "python.workshop.004",
+      "chapter": "workshop",
+      "title": "带回计算结果",
+      "concept": "return",
+      "type": "console",
+      "brief": "校园救援 · 维修工坊：Byte 需要你的帮助。",
+      "goal": "定义 double(value)，返回两倍值；输出调用结果",
+      "learn": "return 把结果交给调用者，也结束本次函数执行。",
+      "example": "def double(value):\n    return value * 2\nprint(double(3))",
+      "starter": "amount = int(input())\n# 定义 double(value)，返回两倍值；输出调用结果\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出三个步骤，复习「示例与讲解」。",
+        "return 把结果交给调用者，也结束本次函数执行。",
+        "本关核心写法：\ndef double(value):\n    return value * 2\nprint(double(amount))"
+      ],
+      "input": [
+        "4"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "8",
+        "nodes": [
+          "FunctionDef",
+          "Return"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "0"
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "-2"
+          ],
+          "output": "-4"
+        }
+      ]
+    },
+    {
+      "id": "python.workshop.005",
+      "chapter": "workshop",
+      "title": "打印不等于返回",
+      "concept": "None 与返回值",
+      "type": "console",
+      "brief": "校园救援 · 维修工坊：Byte 需要你的帮助。",
+      "goal": "修复函数，让程序只输出一行三倍值",
+      "learn": "print 负责显示，return 负责交回值。没有 return 的函数返回 None。",
+      "example": "def add_one(value):\n    return value + 1\nresult = add_one(2)\nprint(result)",
+      "starter": "def triple(value):\n    print(value * 3)\n\nnumber = int(input())\nresult = triple(number)\nprint(result)\n# 修复函数，让程序只输出一行三倍值\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出三个步骤，复习「示例与讲解」。",
+        "print 负责显示，return 负责交回值。没有 return 的函数返回 None。",
+        "本关核心写法：\ndef triple(value):\n    return value * 3\nnumber = int(input())\nresult = triple(number)\nprint(result)"
+      ],
+      "input": [
+        "3"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "9",
+        "nodes": [
+          "FunctionDef",
+          "Return"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "0"
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "-2"
+          ],
+          "output": "-6"
+        }
+      ]
+    },
+    {
+      "id": "python.workshop.006",
+      "chapter": "workshop",
+      "title": "会算清单的工具",
+      "concept": "列表参数",
+      "type": "console",
+      "brief": "校园救援 · 维修工坊：Byte 需要你的帮助。",
+      "goal": "定义 total(items) 手动累计并返回总和，再输出",
+      "learn": "函数可以接收列表；总和初始为 0，空列表也能处理。",
+      "example": "def count_items(items):\n    return len(items)\nprint(count_items([2, 3]))",
+      "starter": "values = []\nfor text in input().split():\n    values.append(int(text))\n# 定义 total(items) 手动累计并返回总和，再输出\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出三个步骤，复习「示例与讲解」。",
+        "函数可以接收列表；总和初始为 0，空列表也能处理。",
+        "本关核心写法：\ndef total(items):\n    result = 0\n    for value in items:\n        result = result + value\n    return result\nprint(total(values))"
+      ],
+      "input": [
+        "2 3 5"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "10",
+        "nodes": [
+          "FunctionDef",
+          "Return",
+          "For"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            ""
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "-2 2"
+          ],
+          "output": "0"
+        }
+      ]
+    },
+    {
+      "id": "python.workshop.007",
+      "chapter": "workshop",
+      "title": "可以出发了吗",
+      "concept": "布尔返回",
+      "type": "console",
+      "brief": "校园救援 · 维修工坊：Byte 需要你的帮助。",
+      "goal": "定义 ready(value)，至少30返回True；根据调用结果输出 GO 或 WAIT",
+      "learn": "比较表达式返回 True 或 False，可直接 return，再用于 if。",
+      "example": "def enough(energy):\n    return energy >= 50\nprint(enough(60))",
+      "starter": "energy = int(input())\n# 定义 ready(value)，至少30返回True；根据调用结果输出 GO 或 WAIT\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出三个步骤，复习「示例与讲解」。",
+        "比较表达式返回 True 或 False，可直接 return，再用于 if。",
+        "本关核心写法：\ndef ready(value):\n    return value >= 30\nif ready(energy):\n    print('GO')\nelse:\n    print('WAIT')"
+      ],
+      "input": [
+        "30"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "GO",
+        "nodes": [
+          "FunctionDef",
+          "Return"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "29"
+          ],
+          "output": "WAIT"
+        },
+        {
+          "input": [
+            "100"
+          ],
+          "output": "GO"
+        }
+      ]
+    },
+    {
+      "id": "python.workshop.008",
+      "chapter": "workshop",
+      "title": "工具合作",
+      "concept": "函数组合",
+      "type": "console",
+      "brief": "校园救援 · 维修工坊：Byte 需要你的帮助。",
+      "goal": "定义 boxes(n, size) 返回完整箱数；remaining(n,size) 返回余数；输出两个调用结果，各一行",
+      "learn": "把一个函数的结果交给另一个函数，分别处理统计和装箱。",
+      "example": "def double(value):\n    return value * 2\ndef plus_one(value):\n    return value + 1\nprint(plus_one(double(3)))",
+      "starter": "amount = int(input())\ncapacity = int(input())\n# 定义 boxes(n, size) 返回完整箱数；remaining(n,size) 返回余数\n# 输出两个调用结果，各一行\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出三个步骤，复习「示例与讲解」。",
+        "把一个函数的结果交给另一个函数，分别处理统计和装箱。",
+        "本关核心写法：\ndef boxes(n, size):\n    return n // size\ndef remaining(n, size):\n    return n % size\nprint(boxes(amount, capacity))\nprint(remaining(amount, capacity))"
+      ],
+      "input": [
+        "17",
+        "5"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "3\n2",
+        "nodes": [
+          "FunctionDef",
+          "Return"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "0",
+            "3"
+          ],
+          "output": "0\n0"
+        },
+        {
+          "input": [
+            "12",
+            "4"
+          ],
+          "output": "3\n0"
+        }
+      ]
+    },
+    {
+      "id": "python.workshop.009",
+      "chapter": "workshop",
+      "title": "丢失的充电结果",
+      "concept": "局部变量",
+      "type": "console",
+      "brief": "校园救援 · 维修工坊：Byte 需要你的帮助。",
+      "goal": "修复调用处，让 energy 接收返回值",
+      "learn": "函数里的参数赋值不会替换外部变量。接收 return 的结果再更新电量。",
+      "example": "def grow(value):\n    return value + 1\nnumber = 2\nnumber = grow(number)\nprint(number)",
+      "starter": "def charge(value):\n    value = value + 20\n    return value\nenergy = int(input())\ncharge(energy)\nprint(energy)\n# 修复调用处，让 energy 接收返回值\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出三个步骤，复习「示例与讲解」。",
+        "函数里的参数赋值不会替换外部变量。接收 return 的结果再更新电量。",
+        "本关核心写法：\ndef charge(value):\n    return value + 20\nenergy = int(input())\nenergy = charge(energy)\nprint(energy)"
+      ],
+      "input": [
+        "20"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "40",
+        "nodes": [
+          "FunctionDef",
+          "Return"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "0"
+          ],
+          "output": "20"
+        },
+        {
+          "input": [
+            "80"
+          ],
+          "output": "100"
+        }
+      ]
+    },
+    {
+      "id": "python.workshop.010",
+      "chapter": "workshop",
+      "title": "校园救援调度台",
+      "concept": "函数与列表综合",
+      "type": "console",
+      "brief": "校园救援 · 维修工坊：Byte 需要你的帮助。",
+      "goal": "定义 total_valid(items)：只累计非负请求并返回总和；输出：有效总量、完整箱数、余数，各一行",
+      "learn": "把有效请求的统计、装箱和报告拆成函数，逐步验证。负数请求无效，容量保证为正。",
+      "example": "def shortage(stock, need):\n    if need > stock:\n        return need - stock\n    return 0\nprint(shortage(3, 8))",
+      "starter": "capacity = int(input())\nrequests = []\nfor text in input().split():\n    requests.append(int(text))\n# 定义 total_valid(items)：只累计非负请求并返回总和\n# 输出：有效总量、完整箱数、余数，各一行\n",
+      "hints": [
+        "先把任务分成读取数据、处理和输出三个步骤，复习「示例与讲解」。",
+        "把有效请求的统计、装箱和报告拆成函数，逐步验证。负数请求无效，容量保证为正。",
+        "本关核心写法：\ndef total_valid(items):\n    total = 0\n    for value in items:\n        if value >= 0:\n            total = total + value\n    return total\namount = total_valid(requests)\nprint(amount)\nprint(amount // capacity)\nprint(amount % capacity)"
+      ],
+      "input": [
+        "5",
+        "3 -1 9"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "12\n2\n2",
+        "nodes": [
+          "FunctionDef",
+          "Return",
+          "For",
+          "If"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "3",
+            ""
+          ],
+          "output": "0\n0\n0"
+        },
+        {
+          "input": [
+            "4",
+            "0 -5 8"
+          ],
+          "output": "8\n2\n0"
+        }
+      ]
+    },
+    {
+      "id": "python.archives.001",
+      "chapter": "archives",
+      "title": "建立站点档案",
+      "concept": "字典与键值对",
+      "type": "console",
+      "brief": "信号迷城 · 信号档案馆：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "建立档案并输出字典",
+      "learn": "字典用 {键: 值} 表示对应关系。键唯一，通过键查找值。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nname = \"校园\"\nstock = int(\"0\")\n# 建立档案并输出字典\nrecords = {name: stock}\nprint(records)",
+      "starter": "name = input()\nstock = int(input())\n# 建立档案并输出字典\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。字典用 {键: 值} 表示对应关系。",
+        "字典用 {键: 值} 表示对应关系。键唯一，通过键查找值。",
+        "核心写法参考：\nrecords = {name: stock}\nprint(records)"
+      ],
+      "input": [
+        "A",
+        "5"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "{'A': 5}"
+      },
+      "cases": [
+        {
+          "input": [
+            "校园",
+            "0"
+          ],
+          "output": "{'校园': 0}"
+        },
+        {
+          "input": [
+            "B",
+            "12"
+          ],
+          "output": "{'B': 12}"
+        }
+      ]
+    },
+    {
+      "id": "python.archives.002",
+      "chapter": "archives",
+      "title": "按名字查找",
+      "concept": "按键读取",
+      "type": "console",
+      "brief": "信号迷城 · 信号档案馆：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "输出该站库存",
+      "learn": "records[name] 读取对应的值。本关查询键保证存在。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nrecords = {'A': 3, 'B': 8}\nname = \"B\"\n# 输出该站库存\nprint(records[name])",
+      "starter": "records = {'A': 3, 'B': 8}\nname = input()\n# 输出该站库存\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。records[name] 读取对应的值。",
+        "records[name] 读取对应的值。本关查询键保证存在。",
+        "核心写法参考：\nprint(records[name])"
+      ],
+      "input": [
+        "A"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "3"
+      },
+      "cases": [
+        {
+          "input": [
+            "B"
+          ],
+          "output": "8"
+        }
+      ]
+    },
+    {
+      "id": "python.archives.003",
+      "chapter": "archives",
+      "title": "更新一份档案",
+      "concept": "修改字典值",
+      "type": "console",
+      "brief": "信号迷城 · 信号档案馆：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "更新 A 后输出整个字典",
+      "learn": "为已存在的键重新赋值，只更新这一份记录。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nrecords = {'A': 3, 'B': 8}\nvalue = int(\"0\")\n# 更新 A 后输出整个字典\nrecords['A'] = value\nprint(records)",
+      "starter": "records = {'A': 3, 'B': 8}\nvalue = int(input())\n# 更新 A 后输出整个字典\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。为已存在的键重新赋值，只更新这一份记录。",
+        "为已存在的键重新赋值，只更新这一份记录。",
+        "核心写法参考：\nrecords['A'] = value\nprint(records)"
+      ],
+      "input": [
+        "5"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "{'A': 5, 'B': 8}"
+      },
+      "cases": [
+        {
+          "input": [
+            "0"
+          ],
+          "output": "{'A': 0, 'B': 8}"
+        }
+      ]
+    },
+    {
+      "id": "python.archives.004",
+      "chapter": "archives",
+      "title": "新站点加入",
+      "concept": "新增键",
+      "type": "console",
+      "brief": "信号迷城 · 信号档案馆：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "新站点库存设为0，输出字典长度",
+      "learn": "为不存在的键赋值会新增一项。len 能数出记录数。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nrecords = {'A': 3}\nname = \"C\"\n# 新站点库存设为0，输出字典长度\nrecords[name] = 0\nprint(len(records))",
+      "starter": "records = {'A': 3}\nname = input()\n# 新站点库存设为0，输出字典长度\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。为不存在的键赋值会新增一项。",
+        "为不存在的键赋值会新增一项。len 能数出记录数。",
+        "核心写法参考：\nrecords[name] = 0\nprint(len(records))"
+      ],
+      "input": [
+        "B"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "2"
+      },
+      "cases": [
+        {
+          "input": [
+            "C"
+          ],
+          "output": "2"
+        },
+        {
+          "input": [
+            "A"
+          ],
+          "output": "1"
+        }
+      ]
+    },
+    {
+      "id": "python.archives.005",
+      "chapter": "archives",
+      "title": "查不到怎么办",
+      "concept": "in 与缺失键",
+      "type": "console",
+      "brief": "信号迷城 · 信号档案馆：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "存在时输出库存，否则输出 UNKNOWN",
+      "learn": "直接读取缺失键会引发 KeyError。先判断 name in records。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nrecords = {'A': 3}\nname = \"B\"\n# 存在时输出库存，否则输出 UNKNOWN\nif name in records:\n    print(records[name])\nelse:\n    print('UNKNOWN')",
+      "starter": "records = {'A': 3}\nname = input()\n# 存在时输出库存，否则输出 UNKNOWN\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。直接读取缺失键会引发 KeyError。",
+        "直接读取缺失键会引发 KeyError。先判断 name in records。",
+        "核心写法参考：\nif name in records:\n    print(records[name])\nelse:\n    print('UNKNOWN')"
+      ],
+      "input": [
+        "A"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "3",
+        "nodes": [
+          "If"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "B"
+          ],
+          "output": "UNKNOWN"
+        },
+        {
+          "input": [
+            ""
+          ],
+          "output": "UNKNOWN"
+        }
+      ]
+    },
+    {
+      "id": "python.archives.006",
+      "chapter": "archives",
+      "title": "默认回复",
+      "concept": "get",
+      "type": "console",
+      "brief": "信号迷城 · 信号档案馆：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "缺失时输出 WAIT",
+      "learn": "records.get(key, default) 在键缺失时返回默认值。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nrecords = {'R': 'RIGHT', 'L': 'LEFT'}\nkey = \"L\"\n# 缺失时输出 WAIT\nprint(records.get(key, 'WAIT'))",
+      "starter": "records = {'R': 'RIGHT', 'L': 'LEFT'}\nkey = input()\n# 缺失时输出 WAIT\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。records.get(key, default) 在键缺失时返回默认值。",
+        "records.get(key, default) 在键缺失时返回默认值。",
+        "核心写法参考：\nprint(records.get(key, 'WAIT'))"
+      ],
+      "input": [
+        "R"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "RIGHT"
+      },
+      "cases": [
+        {
+          "input": [
+            "L"
+          ],
+          "output": "LEFT"
+        },
+        {
+          "input": [
+            "X"
+          ],
+          "output": "WAIT"
+        }
+      ]
+    },
+    {
+      "id": "python.archives.007",
+      "chapter": "archives",
+      "title": "逐站播报",
+      "concept": "items 与解包",
+      "type": "console",
+      "brief": "信号迷城 · 信号档案馆：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "每行输出站点和库存，用空格分隔",
+      "learn": "items() 每次提供一对键和值。for name, stock 把这对值分别交给变量，按照录入顺序遍历。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nrecords = {'A': 3, 'B': 8}\n# 每行输出站点和库存，用空格分隔\nfor name, stock in records.items():\n    print(name, stock)",
+      "starter": "records = {'A': 3, 'B': 8}\n# 每行输出站点和库存，用空格分隔\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。items() 每次提供一对键和值。",
+        "items() 每次提供一对键和值。for name, stock 把这对值分别交给变量，按照录入顺序遍历。",
+        "核心写法参考：\nfor name, stock in records.items():\n    print(name, stock)"
+      ],
+      "input": [],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "A 3\nB 8",
+        "nodes": [
+          "For"
+        ]
+      }
+    },
+    {
+      "id": "python.archives.008",
+      "chapter": "archives",
+      "title": "信号出现几次",
+      "concept": "字典频次统计",
+      "type": "console",
+      "brief": "信号迷城 · 信号档案馆：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "输出每种信号和次数，按首次出现顺序，每行一组",
+      "learn": "首次出现的信号从0开始累加。get 可以提供初值。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nsignals = \"\".split()\n# 输出每种信号和次数，按首次出现顺序，每行一组\ncounts = {}\nfor signal in signals:\n    counts[signal] = counts.get(signal, 0) + 1\nfor key, value in counts.items():\n    print(key, value)",
+      "starter": "signals = input().split()\n# 输出每种信号和次数，按首次出现顺序，每行一组\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。首次出现的信号从0开始累加。",
+        "首次出现的信号从0开始累加。get 可以提供初值。",
+        "核心写法参考：\ncounts = {}\nfor signal in signals:\n    counts[signal] = counts.get(signal, 0) + 1\nfor key, value in counts.items():\n    print(key, value)"
+      ],
+      "input": [
+        "A B A"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "A 2\nB 1",
+        "nodes": [
+          "For"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            ""
+          ],
+          "output": ""
+        },
+        {
+          "input": [
+            "B B B"
+          ],
+          "output": "B 3"
+        }
+      ]
+    },
+    {
+      "id": "python.archives.009",
+      "chapter": "archives",
+      "title": "合并两份记录",
+      "concept": "多来源累计",
+      "type": "console",
+      "brief": "信号迷城 · 信号档案馆：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "后面 n 行各为站点名和整数，合并后逐行输出站点与总数",
+      "learn": "每条记录包含站点和数量，已有站点累加，新站点从0开始。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nn = int(\"0\")\ncounts = {}\n# 后面 n 行各为站点名和整数，合并后逐行输出站点与总数\nfor i in range(n):\n    parts = \"\".split()\n    name = parts[0]\n    counts[name] = counts.get(name, 0) + int(parts[1])\nfor name, value in counts.items():\n    print(name, value)",
+      "starter": "n = int(input())\ncounts = {}\n# 后面 n 行各为站点名和整数，合并后逐行输出站点与总数\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。每条记录包含站点和数量，已有站点累加，新站点从0开始。",
+        "每条记录包含站点和数量，已有站点累加，新站点从0开始。",
+        "核心写法参考：\nfor i in range(n):\n    parts = input().split()\n    name = parts[0]\n    counts[name] = counts.get(name, 0) + int(parts[1])\nfor name, value in counts.items():\n    print(name, value)"
+      ],
+      "input": [
+        "3",
+        "A 2",
+        "B 3",
+        "A 4"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "A 6\nB 3"
+      },
+      "cases": [
+        {
+          "input": [
+            "0"
+          ],
+          "output": ""
+        },
+        {
+          "input": [
+            "1",
+            "C 0"
+          ],
+          "output": "C 0"
+        }
+      ]
+    },
+    {
+      "id": "python.archives.010",
+      "chapter": "archives",
+      "title": "破解方向码",
+      "concept": "字典映射综合",
+      "type": "world",
+      "brief": "信号迷城 · 信号档案馆：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "用字典把1映射为R，逐条执行，到达终点",
+      "learn": "映射将编号翻译成动作。本关1向右、其他编号等待。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\ncodes = \"0 1 1 0 1 1\".split()\n# 用字典把1映射为R，逐条执行，到达终点\ndirections = {'1': 'R', '0': 'WAIT'}\nfor code in codes:\n    if directions.get(code, 'WAIT') == 'R':\n        robot.right()",
+      "starter": "codes = input().split()\n# 用字典把1映射为R，逐条执行，到达终点\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。映射将编号翻译成动作。",
+        "映射将编号翻译成动作。本关1向右、其他编号等待。",
+        "核心写法参考：\ndirections = {'1': 'R', '0': 'WAIT'}\nfor code in codes:\n    if directions.get(code, 'WAIT') == 'R':\n        robot.right()"
+      ],
+      "input": [
+        "1 1 1 1"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "atGoal": true,
+        "nodes": [
+          "For",
+          "If"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "0 1 1 0 1 1"
+          ]
+        },
+        {
+          "input": [
+            "1 X 1 1 1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "python.patrol.001",
+      "chapter": "patrol",
+      "title": "隔站巡检",
+      "concept": "range 步长",
+      "type": "console",
+      "brief": "信号迷城 · 巡检回廊：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "从0开始输出小于n的编号，每行一个",
+      "learn": "range(start, stop, step) 不包含 stop，step 指定间隔。本关 step 为正。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nn = int(\"0\")\nstep = int(\"1\")\n# 从0开始输出小于n的编号，每行一个\nfor number in range(0, n, step):\n    print(number)",
+      "starter": "n = int(input())\nstep = int(input())\n# 从0开始输出小于n的编号，每行一个\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。range(start, stop, step) 不包含 stop，step 指定间隔。",
+        "range(start, stop, step) 不包含 stop，step 指定间隔。本关 step 为正。",
+        "核心写法参考：\nfor number in range(0, n, step):\n    print(number)"
+      ],
+      "input": [
+        "7",
+        "2"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "0\n2\n4\n6",
+        "nodes": [
+          "For"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "0",
+            "1"
+          ],
+          "output": ""
+        },
+        {
+          "input": [
+            "5",
+            "3"
+          ],
+          "output": "0\n3"
+        }
+      ]
+    },
+    {
+      "id": "python.patrol.002",
+      "chapter": "patrol",
+      "title": "找到就停",
+      "concept": "break",
+      "type": "console",
+      "brief": "信号迷城 · 巡检回廊：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "使用 break 找到首个 SOS 的索引",
+      "learn": "break 立即退出当前循环；本关找到首个 SOS 后输出它的位置，不存在输出-1。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nsignals = \"A B\".split()\n# 使用 break 找到首个 SOS 的索引\nfound = -1\nfor i in range(len(signals)):\n    if signals[i] == 'SOS':\n        found = i\n        break\nprint(found)",
+      "starter": "signals = input().split()\n# 使用 break 找到首个 SOS 的索引\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。break 立即退出当前循环；本关找到首个 SOS 后输出它的位置，不存在输出-1。",
+        "break 立即退出当前循环；本关找到首个 SOS 后输出它的位置，不存在输出-1。",
+        "核心写法参考：\nfound = -1\nfor i in range(len(signals)):\n    if signals[i] == 'SOS':\n        found = i\n        break\nprint(found)"
+      ],
+      "input": [
+        "A SOS SOS"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "1",
+        "nodes": [
+          "Break"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "A B"
+          ],
+          "output": "-1"
+        },
+        {
+          "input": [
+            "SOS"
+          ],
+          "output": "0"
+        }
+      ]
+    },
+    {
+      "id": "python.patrol.003",
+      "chapter": "patrol",
+      "title": "跳过杂音",
+      "concept": "continue",
+      "type": "console",
+      "brief": "信号迷城 · 巡检回廊：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "跳过 X，其余每项各输出一行",
+      "learn": "continue 跳过本轮剩余代码，继续下一项。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nvalues = \"X X\".split()\n# 跳过 X，其余每项各输出一行\nfor value in values:\n    if value == 'X':\n        continue\n    print(value)",
+      "starter": "values = input().split()\n# 跳过 X，其余每项各输出一行\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。continue 跳过本轮剩余代码，继续下一项。",
+        "continue 跳过本轮剩余代码，继续下一项。",
+        "核心写法参考：\nfor value in values:\n    if value == 'X':\n        continue\n    print(value)"
+      ],
+      "input": [
+        "A X B"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "A\nB",
+        "nodes": [
+          "Continue"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "X X"
+          ],
+          "output": ""
+        },
+        {
+          "input": [
+            "C"
+          ],
+          "output": "C"
+        }
+      ]
+    },
+    {
+      "id": "python.patrol.004",
+      "chapter": "patrol",
+      "title": "收到结束口令",
+      "concept": "哨兵循环",
+      "type": "console",
+      "brief": "信号迷城 · 巡检回廊：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "逐行读取，遇STOP结束，输出之前的指令数",
+      "learn": "while True 配合 break，在遇到 STOP 时结束。保证输入中有 STOP。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\ncount = 0\n# 逐行读取，遇STOP结束，输出之前的指令数\nwhile True:\n    signal = \"STOP\"\n    if signal == 'STOP':\n        break\n    count = count + 1\nprint(count)",
+      "starter": "count = 0\n# 逐行读取，遇STOP结束，输出之前的指令数\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。while True 配合 break，在遇到 STOP 时结束。",
+        "while True 配合 break，在遇到 STOP 时结束。保证输入中有 STOP。",
+        "核心写法参考：\nwhile True:\n    signal = input()\n    if signal == 'STOP':\n        break\n    count = count + 1\nprint(count)"
+      ],
+      "input": [
+        "A",
+        "B",
+        "STOP"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "2",
+        "nodes": [
+          "While",
+          "Break"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "STOP"
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "A",
+            "STOP"
+          ],
+          "output": "1"
+        }
+      ]
+    },
+    {
+      "id": "python.patrol.005",
+      "chapter": "patrol",
+      "title": "选择合适的循环",
+      "concept": "for 与 while",
+      "type": "console",
+      "brief": "信号迷城 · 巡检回廊：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "修正次数，不能漏掉最后一条",
+      "learn": "已知次数可用for；结束口令可用while。先读取n，再读取恰好n条记录。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nn = int(\"0\")\nfor i in range(n):\n    print(\"\")",
+      "starter": "n = int(input())\n# 修正次数，不能漏掉最后一条\nfor i in range(n - 1):\n    print(input())\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。已知次数可用for；结束口令可用while。",
+        "已知次数可用for；结束口令可用while。先读取n，再读取恰好n条记录。",
+        "核心写法参考：\nfor i in range(n):\n    print(input())"
+      ],
+      "input": [
+        "2",
+        "A",
+        "B"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "A\nB",
+        "nodes": [
+          "For"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "0"
+          ],
+          "output": ""
+        },
+        {
+          "input": [
+            "1",
+            "SOS"
+          ],
+          "output": "SOS"
+        }
+      ]
+    },
+    {
+      "id": "python.patrol.006",
+      "chapter": "patrol",
+      "title": "行与列",
+      "concept": "嵌套循环",
+      "type": "console",
+      "brief": "信号迷城 · 巡检回廊：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "每行输出一个 行号 列号",
+      "learn": "外层每走一轮，内层完整走完。输出行列坐标，从0开始。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nrows = int(\"1\")\ncols = int(\"3\")\n# 每行输出一个 行号 列号\nfor row in range(rows):\n    for col in range(cols):\n        print(row, col)",
+      "starter": "rows = int(input())\ncols = int(input())\n# 每行输出一个 行号 列号\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。外层每走一轮，内层完整走完。",
+        "外层每走一轮，内层完整走完。输出行列坐标，从0开始。",
+        "核心写法参考：\nfor row in range(rows):\n    for col in range(cols):\n        print(row, col)"
+      ],
+      "input": [
+        "2",
+        "2"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "0 0\n0 1\n1 0\n1 1",
+        "nodes": [
+          "For"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "1",
+            "3"
+          ],
+          "output": "0 0\n0 1\n0 2"
+        },
+        {
+          "input": [
+            "0",
+            "2"
+          ],
+          "output": ""
+        }
+      ]
+    },
+    {
+      "id": "python.patrol.007",
+      "chapter": "patrol",
+      "title": "查看楼层表",
+      "concept": "二维列表索引",
+      "type": "console",
+      "brief": "信号迷城 · 巡检回廊：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "输出对应数值",
+      "learn": "grid[row][col] 先选行，再选列。本关索引有效。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\ngrid = [[1, 2], [3, 4]]\nrow = int(\"1\")\ncol = int(\"0\")\n# 输出对应数值\nprint(grid[row][col])",
+      "starter": "grid = [[1, 2], [3, 4]]\nrow = int(input())\ncol = int(input())\n# 输出对应数值\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。grid[row][col] 先选行，再选列。",
+        "grid[row][col] 先选行，再选列。本关索引有效。",
+        "核心写法参考：\nprint(grid[row][col])"
+      ],
+      "input": [
+        "0",
+        "1"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "2"
+      },
+      "cases": [
+        {
+          "input": [
+            "1",
+            "0"
+          ],
+          "output": "3"
+        },
+        {
+          "input": [
+            "1",
+            "1"
+          ],
+          "output": "4"
+        }
+      ]
+    },
+    {
+      "id": "python.patrol.008",
+      "chapter": "patrol",
+      "title": "建立巡检表",
+      "concept": "独立行",
+      "type": "console",
+      "brief": "信号迷城 · 巡检回廊：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "建立rows行2列的零表，把首行首项设为1；rows至少为1",
+      "learn": "每轮新建行列表，再加入总表，避免各行指向同一个列表。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nrows = int(\"1\")\n# 建立rows行2列的零表，把首行首项设为1；rows至少为1\ngrid = []\nfor i in range(rows):\n    grid.append([0, 0])\ngrid[0][0] = 1\nprint(grid)",
+      "starter": "rows = int(input())\n# 建立rows行2列的零表，把首行首项设为1；rows至少为1\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。每轮新建行列表，再加入总表，避免各行指向同一个列表。",
+        "每轮新建行列表，再加入总表，避免各行指向同一个列表。",
+        "核心写法参考：\ngrid = []\nfor i in range(rows):\n    grid.append([0, 0])\ngrid[0][0] = 1\nprint(grid)"
+      ],
+      "input": [
+        "2"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "[[1, 0], [0, 0]]"
+      },
+      "cases": [
+        {
+          "input": [
+            "1"
+          ],
+          "output": "[[1, 0]]"
+        },
+        {
+          "input": [
+            "3"
+          ],
+          "output": "[[1, 0], [0, 0], [0, 0]]"
+        }
+      ]
+    },
+    {
+      "id": "python.patrol.009",
+      "chapter": "patrol",
+      "title": "最后一个位置",
+      "concept": "索引边界",
+      "type": "console",
+      "brief": "信号迷城 · 巡检回廊：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "修复越界，依次输出每个元素",
+      "learn": "range(len(items)) 最大索引为长度减1，空列表时循环不执行。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nitems = \"\".split()\nfor i in range(len(items)):\n    print(items[i])",
+      "starter": "items = input().split()\n# 修复越界，依次输出每个元素\nfor i in range(len(items) + 1):\n    print(items[i])\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。range(len(items)) 最大索引为长度减1，空列表时循环不执行。",
+        "range(len(items)) 最大索引为长度减1，空列表时循环不执行。",
+        "核心写法参考：\nfor i in range(len(items)):\n    print(items[i])"
+      ],
+      "input": [
+        "A B"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "A\nB"
+      },
+      "cases": [
+        {
+          "input": [
+            ""
+          ],
+          "output": ""
+        },
+        {
+          "input": [
+            "Z"
+          ],
+          "output": "Z"
+        }
+      ]
+    },
+    {
+      "id": "python.patrol.010",
+      "chapter": "patrol",
+      "title": "分区巡检完成",
+      "concept": "二维遍历综合",
+      "type": "console",
+      "brief": "信号迷城 · 巡检回廊：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "后续n行由0和1组成；先输出各行故障数，再输出总数",
+      "learn": "逐行统计字符1代表的故障，再累计总故障。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nn = int(\"0\")\n# 后续n行由0和1组成；先输出各行故障数，再输出总数\ntotal = 0\nfor i in range(n):\n    count = 0\n    for signal in \"\":\n        if signal == '1':\n            count = count + 1\n    print(count)\n    total = total + count\nprint(total)",
+      "starter": "n = int(input())\n# 后续n行由0和1组成；先输出各行故障数，再输出总数\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。逐行统计字符1代表的故障，再累计总故障。",
+        "逐行统计字符1代表的故障，再累计总故障。",
+        "核心写法参考：\ntotal = 0\nfor i in range(n):\n    count = 0\n    for signal in input():\n        if signal == '1':\n            count = count + 1\n    print(count)\n    total = total + count\nprint(total)"
+      ],
+      "input": [
+        "2",
+        "101",
+        "010"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "2\n1\n3"
+      },
+      "cases": [
+        {
+          "input": [
+            "0"
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "1",
+            "000"
+          ],
+          "output": "0\n0"
+        }
+      ]
+    },
+    {
+      "id": "python.algorithms.001",
+      "chapter": "algorithms",
+      "title": "最强的一块电池",
+      "concept": "手写最大值",
+      "type": "console",
+      "brief": "信号迷城 · 算法实验室：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "使用循环找最大值，不调用max",
+      "learn": "先把首项作为当前最大值，再逐项比较。本关列表非空。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nvalues = []\nfor text in \"-5 -2 -8\".split():\n    values.append(int(text))\n# 使用循环找最大值，不调用max\nbest = values[0]\nfor value in values:\n    if value > best:\n        best = value\nprint(best)",
+      "starter": "values = []\nfor text in input().split():\n    values.append(int(text))\n# 使用循环找最大值，不调用max\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。先把首项作为当前最大值，再逐项比较。",
+        "先把首项作为当前最大值，再逐项比较。本关列表非空。",
+        "核心写法参考：\nbest = values[0]\nfor value in values:\n    if value > best:\n        best = value\nprint(best)"
+      ],
+      "input": [
+        "3 9 1"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "9",
+        "nodes": [
+          "For",
+          "If"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "-5 -2 -8"
+          ],
+          "output": "-2"
+        },
+        {
+          "input": [
+            "0"
+          ],
+          "output": "0"
+        }
+      ]
+    },
+    {
+      "id": "python.algorithms.002",
+      "chapter": "algorithms",
+      "title": "最需要支援的站点",
+      "concept": "手写最小值",
+      "type": "console",
+      "brief": "信号迷城 · 算法实验室：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "使用循环找最小值",
+      "learn": "初值来自首项，避免用0导致全正数数据出错。列表非空。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nvalues = []\nfor text in \"-5 -2 -8\".split():\n    values.append(int(text))\n# 使用循环找最小值\nbest = values[0]\nfor value in values:\n    if value < best:\n        best = value\nprint(best)",
+      "starter": "values = []\nfor text in input().split():\n    values.append(int(text))\n# 使用循环找最小值\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。初值来自首项，避免用0导致全正数数据出错。",
+        "初值来自首项，避免用0导致全正数数据出错。列表非空。",
+        "核心写法参考：\nbest = values[0]\nfor value in values:\n    if value < best:\n        best = value\nprint(best)"
+      ],
+      "input": [
+        "3 9 1"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "1",
+        "nodes": [
+          "For",
+          "If"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "-5 -2 -8"
+          ],
+          "output": "-8"
+        },
+        {
+          "input": [
+            "7"
+          ],
+          "output": "7"
+        }
+      ]
+    },
+    {
+      "id": "python.algorithms.003",
+      "chapter": "algorithms",
+      "title": "指定信号计数器",
+      "concept": "单遍计数",
+      "type": "console",
+      "brief": "信号迷城 · 算法实验室：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "统计目标出现次数",
+      "learn": "逐项相等比较，未找到时保留0。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\ntarget = \"X\"\nvalues = \"A B\".split()\n# 统计目标出现次数\ncount = 0\nfor value in values:\n    if value == target:\n        count = count + 1\nprint(count)",
+      "starter": "target = input()\nvalues = input().split()\n# 统计目标出现次数\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。逐项相等比较，未找到时保留0。",
+        "逐项相等比较，未找到时保留0。",
+        "核心写法参考：\ncount = 0\nfor value in values:\n    if value == target:\n        count = count + 1\nprint(count)"
+      ],
+      "input": [
+        "A",
+        "A B A"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "2"
+      },
+      "cases": [
+        {
+          "input": [
+            "X",
+            "A B"
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "A",
+            ""
+          ],
+          "output": "0"
+        }
+      ]
+    },
+    {
+      "id": "python.algorithms.004",
+      "chapter": "algorithms",
+      "title": "信号存在吗",
+      "concept": "布尔查找",
+      "type": "console",
+      "brief": "信号迷城 · 算法实验室：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "定义 contains(items,target)，输出调用结果",
+      "learn": "函数遇到目标就return True；只有检查完所有项后才能return False。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\ntarget = \"X\"\nitems = \"A B\".split()\n# 定义 contains(items,target)，输出调用结果\ndef contains(items, target):\n    for item in items:\n        if item == target:\n            return True\n    return False\nprint(contains(items, target))",
+      "starter": "target = input()\nitems = input().split()\n# 定义 contains(items,target)，输出调用结果\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。函数遇到目标就return True；只有检查完所有项后才能return False。",
+        "函数遇到目标就return True；只有检查完所有项后才能return False。",
+        "核心写法参考：\ndef contains(items, target):\n    for item in items:\n        if item == target:\n            return True\n    return False\nprint(contains(items, target))"
+      ],
+      "input": [
+        "A",
+        "B A"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "True",
+        "nodes": [
+          "FunctionDef",
+          "Return"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "X",
+            "A B"
+          ],
+          "output": "False"
+        },
+        {
+          "input": [
+            "A",
+            ""
+          ],
+          "output": "False"
+        }
+      ]
+    },
+    {
+      "id": "python.algorithms.005",
+      "chapter": "algorithms",
+      "title": "第一次出现的位置",
+      "concept": "查找索引",
+      "type": "console",
+      "brief": "信号迷城 · 算法实验室：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "定义 locate，返回首次索引或-1",
+      "learn": "找到即返回索引，否则循环外返回-1。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\ntarget = \"X\"\nitems = \"\".split()\n# 定义 locate，返回首次索引或-1\ndef locate(items, target):\n    for i in range(len(items)):\n        if items[i] == target:\n            return i\n    return -1\nprint(locate(items, target))",
+      "starter": "target = input()\nitems = input().split()\n# 定义 locate，返回首次索引或-1\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。找到即返回索引，否则循环外返回-1。",
+        "找到即返回索引，否则循环外返回-1。",
+        "核心写法参考：\ndef locate(items, target):\n    for i in range(len(items)):\n        if items[i] == target:\n            return i\n    return -1\nprint(locate(items, target))"
+      ],
+      "input": [
+        "A",
+        "B A A"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "1",
+        "nodes": [
+          "FunctionDef"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "X",
+            ""
+          ],
+          "output": "-1"
+        },
+        {
+          "input": [
+            "A",
+            "A B"
+          ],
+          "output": "0"
+        }
+      ]
+    },
+    {
+      "id": "python.algorithms.006",
+      "chapter": "algorithms",
+      "title": "统计工具箱",
+      "concept": "内置统计",
+      "type": "console",
+      "brief": "信号迷城 · 算法实验室：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "非空时依次输出总和、最大、最小、首项绝对值；空时输出0与EMPTY",
+      "learn": "sum 求和；max/min 要求非空。本关空列表时只输出总和0和EMPTY。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nvalues = []\nfor text in \"\".split():\n    values.append(int(text))\n# 非空时依次输出总和、最大、最小、首项绝对值；空时输出0与EMPTY\nprint(sum(values))\nif values:\n    print(max(values))\n    print(min(values))\n    print(abs(values[0]))\nelse:\n    print('EMPTY')",
+      "starter": "values = []\nfor text in input().split():\n    values.append(int(text))\n# 非空时依次输出总和、最大、最小、首项绝对值；空时输出0与EMPTY\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。sum 求和；max/min 要求非空。",
+        "sum 求和；max/min 要求非空。本关空列表时只输出总和0和EMPTY。",
+        "核心写法参考：\nprint(sum(values))\nif values:\n    print(max(values))\n    print(min(values))\n    print(abs(values[0]))\nelse:\n    print('EMPTY')"
+      ],
+      "input": [
+        "-2 5 3"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "6\n5\n-2\n2"
+      },
+      "cases": [
+        {
+          "input": [
+            ""
+          ],
+          "output": "0\nEMPTY"
+        },
+        {
+          "input": [
+            "0"
+          ],
+          "output": "0\n0\n0\n0"
+        }
+      ]
+    },
+    {
+      "id": "python.algorithms.007",
+      "chapter": "algorithms",
+      "title": "清除重复编号",
+      "concept": "保序去重",
+      "type": "console",
+      "brief": "信号迷城 · 算法实验室：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "输出保序去重后的列表",
+      "learn": "新编号第一次出现时加入结果列表，用 not in 检查已存在项。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nitems = \"\".split()\n# 输出保序去重后的列表\nresult = []\nfor item in items:\n    if item not in result:\n        result.append(item)\nprint(result)",
+      "starter": "items = input().split()\n# 输出保序去重后的列表\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。新编号第一次出现时加入结果列表，用 not in 检查已存在项。",
+        "新编号第一次出现时加入结果列表，用 not in 检查已存在项。",
+        "核心写法参考：\nresult = []\nfor item in items:\n    if item not in result:\n        result.append(item)\nprint(result)"
+      ],
+      "input": [
+        "B A B C"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "['B', 'A', 'C']"
+      },
+      "cases": [
+        {
+          "input": [
+            ""
+          ],
+          "output": "[]"
+        },
+        {
+          "input": [
+            "X X"
+          ],
+          "output": "['X']"
+        }
+      ]
+    },
+    {
+      "id": "python.algorithms.008",
+      "chapter": "algorithms",
+      "title": "排出补给顺序",
+      "concept": "sorted 与 sort",
+      "type": "console",
+      "brief": "信号迷城 · 算法实验室：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "依次输出新排序结果、原列表、sort返回值、修改后的原列表",
+      "learn": "sorted 返回新列表；列表.sort 原地修改并返回 None。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nvalues = []\nfor text in \"\".split():\n    values.append(int(text))\n# 依次输出新排序结果、原列表、sort返回值、修改后的原列表\nprint(sorted(values))\nprint(values)\nresult = values.sort()\nprint(result)\nprint(values)",
+      "starter": "values = []\nfor text in input().split():\n    values.append(int(text))\n# 依次输出新排序结果、原列表、sort返回值、修改后的原列表\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。sorted 返回新列表；列表.sort 原地修改并返回 None。",
+        "sorted 返回新列表；列表.sort 原地修改并返回 None。",
+        "核心写法参考：\nprint(sorted(values))\nprint(values)\nresult = values.sort()\nprint(result)\nprint(values)"
+      ],
+      "input": [
+        "3 1 2"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "[1, 2, 3]\n[3, 1, 2]\nNone\n[1, 2, 3]"
+      },
+      "cases": [
+        {
+          "input": [
+            ""
+          ],
+          "output": "[]\n[]\nNone\n[]"
+        },
+        {
+          "input": [
+            "2 2"
+          ],
+          "output": "[2, 2]\n[2, 2]\nNone\n[2, 2]"
+        }
+      ]
+    },
+    {
+      "id": "python.algorithms.009",
+      "chapter": "algorithms",
+      "title": "相邻两箱换位置",
+      "concept": "一轮交换",
+      "type": "console",
+      "brief": "信号迷城 · 算法实验室：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "从左到右做一轮相邻比较交换，输出结果",
+      "learn": "依次比较相邻两项，左边较大时用临时变量交换。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nvalues = []\nfor text in \"\".split():\n    values.append(int(text))\n# 从左到右做一轮相邻比较交换，输出结果\nfor i in range(len(values) - 1):\n    if values[i] > values[i + 1]:\n        temp = values[i]\n        values[i] = values[i + 1]\n        values[i + 1] = temp\nprint(values)",
+      "starter": "values = []\nfor text in input().split():\n    values.append(int(text))\n# 从左到右做一轮相邻比较交换，输出结果\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。依次比较相邻两项，左边较大时用临时变量交换。",
+        "依次比较相邻两项，左边较大时用临时变量交换。",
+        "核心写法参考：\nfor i in range(len(values) - 1):\n    if values[i] > values[i + 1]:\n        temp = values[i]\n        values[i] = values[i + 1]\n        values[i + 1] = temp\nprint(values)"
+      ],
+      "input": [
+        "3 2 1"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "[2, 1, 3]"
+      },
+      "cases": [
+        {
+          "input": [
+            ""
+          ],
+          "output": "[]"
+        },
+        {
+          "input": [
+            "1 2 3"
+          ],
+          "output": "[1, 2, 3]"
+        }
+      ]
+    },
+    {
+      "id": "python.algorithms.010",
+      "chapter": "algorithms",
+      "title": "第一台排序机",
+      "concept": "冒泡挑战",
+      "type": "console",
+      "brief": "信号迷城 · 算法实验室：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "使用嵌套循环排序，不用sorted或sort",
+      "learn": "多轮执行相邻比较，列表最多8项。本关为可跳过的加强挑战。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nvalues = []\nfor text in \"\".split():\n    values.append(int(text))\n# 使用嵌套循环排序，不用sorted或sort\nfor turn in range(len(values)):\n    for i in range(len(values) - 1 - turn):\n        if values[i] > values[i + 1]:\n            temp = values[i]\n            values[i] = values[i + 1]\n            values[i + 1] = temp\nprint(values)",
+      "starter": "values = []\nfor text in input().split():\n    values.append(int(text))\n# 使用嵌套循环排序，不用sorted或sort\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。多轮执行相邻比较，列表最多8项。",
+        "多轮执行相邻比较，列表最多8项。本关为可跳过的加强挑战。",
+        "核心写法参考：\nfor turn in range(len(values)):\n    for i in range(len(values) - 1 - turn):\n        if values[i] > values[i + 1]:\n            temp = values[i]\n            values[i] = values[i + 1]\n            values[i + 1] = temp\nprint(values)"
+      ],
+      "input": [
+        "3 2 1"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "[1, 2, 3]",
+        "nodes": [
+          "For",
+          "If"
+        ]
+      },
+      "optional": true,
+      "cases": [
+        {
+          "input": [
+            ""
+          ],
+          "output": "[]"
+        },
+        {
+          "input": [
+            "2 -1 2 0"
+          ],
+          "output": "[-1, 0, 2, 2]"
+        }
+      ]
+    },
+    {
+      "id": "python.control.001",
+      "chapter": "control",
+      "title": "固定的坐标",
+      "concept": "元组",
+      "type": "console",
+      "brief": "信号迷城 · 城市控制台：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "建立坐标元组并输出",
+      "learn": "元组用圆括号保存固定组合，不支持按索引修改。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nx = int(\"0\")\ny = int(\"0\")\n# 建立坐标元组并输出\npoint = (x, y)\nprint(point)",
+      "starter": "x = int(input())\ny = int(input())\n# 建立坐标元组并输出\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。元组用圆括号保存固定组合，不支持按索引修改。",
+        "元组用圆括号保存固定组合，不支持按索引修改。",
+        "核心写法参考：\npoint = (x, y)\nprint(point)"
+      ],
+      "input": [
+        "2",
+        "3"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "(2, 3)"
+      },
+      "cases": [
+        {
+          "input": [
+            "0",
+            "0"
+          ],
+          "output": "(0, 0)"
+        },
+        {
+          "input": [
+            "-1",
+            "4"
+          ],
+          "output": "(-1, 4)"
+        }
+      ]
+    },
+    {
+      "id": "python.control.002",
+      "chapter": "control",
+      "title": "把坐标交给工具",
+      "concept": "解包",
+      "type": "console",
+      "brief": "信号迷城 · 城市控制台：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "解包，再输出两个坐标之和",
+      "learn": "x,y = point 把二元组合的两个值分别赋给变量。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\npoint = (int(\"0\"), int(\"0\"))\n# 解包，再输出两个坐标之和\nx, y = point\nprint(x + y)",
+      "starter": "point = (int(input()), int(input()))\n# 解包，再输出两个坐标之和\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。x,y = point 把二元组合的两个值分别赋给变量。",
+        "x,y = point 把二元组合的两个值分别赋给变量。",
+        "核心写法参考：\nx, y = point\nprint(x + y)"
+      ],
+      "input": [
+        "2",
+        "3"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "5"
+      },
+      "cases": [
+        {
+          "input": [
+            "0",
+            "0"
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "-1",
+            "4"
+          ],
+          "output": "3"
+        }
+      ]
+    },
+    {
+      "id": "python.control.003",
+      "chapter": "control",
+      "title": "不同站点有几个",
+      "concept": "集合",
+      "type": "console",
+      "brief": "信号迷城 · 城市控制台：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "输出唯一站点数",
+      "learn": "set(items) 去除重复，不保证遍历顺序。本关只输出不同项数量。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nitems = \"\".split()\n# 输出唯一站点数\nprint(len(set(items)))",
+      "starter": "items = input().split()\n# 输出唯一站点数\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。set(items) 去除重复，不保证遍历顺序。",
+        "set(items) 去除重复，不保证遍历顺序。本关只输出不同项数量。",
+        "核心写法参考：\nprint(len(set(items)))"
+      ],
+      "input": [
+        "A B A"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "2"
+      },
+      "cases": [
+        {
+          "input": [
+            ""
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "C C C"
+          ],
+          "output": "1"
+        }
+      ]
+    },
+    {
+      "id": "python.control.004",
+      "chapter": "control",
+      "title": "更新巡检名单",
+      "concept": "add 与 discard",
+      "type": "console",
+      "brief": "信号迷城 · 城市控制台：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "加入new_name，移除removed，排序后输出列表",
+      "learn": "add 加入元素，discard 移除元素；元素不存在时也可调用discard。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nnames = set(\"\".split())\nnew_name = \"X\"\nremoved = \"Z\"\n# 加入new_name，移除removed，排序后输出列表\nnames.add(new_name)\nnames.discard(removed)\nprint(sorted(names))",
+      "starter": "names = set(input().split())\nnew_name = input()\nremoved = input()\n# 加入new_name，移除removed，排序后输出列表\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。add 加入元素，discard 移除元素；元素不存在时也可调用discard。",
+        "add 加入元素，discard 移除元素；元素不存在时也可调用discard。",
+        "核心写法参考：\nnames.add(new_name)\nnames.discard(removed)\nprint(sorted(names))"
+      ],
+      "input": [
+        "A B",
+        "C",
+        "A"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "['B', 'C']"
+      },
+      "cases": [
+        {
+          "input": [
+            "",
+            "X",
+            "Z"
+          ],
+          "output": "['X']"
+        },
+        {
+          "input": [
+            "A",
+            "A",
+            "A"
+          ],
+          "output": "[]"
+        }
+      ]
+    },
+    {
+      "id": "python.control.005",
+      "chapter": "control",
+      "title": "有序清单与唯一名单",
+      "concept": "容器选择",
+      "type": "console",
+      "brief": "信号迷城 · 城市控制台：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "先输出原列表，再输出唯一项数量",
+      "learn": "列表保留重复和顺序；集合适合统计唯一项。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nitems = \"\".split()\n# 先输出原列表，再输出唯一项数量\nprint(items)\nprint(len(set(items)))",
+      "starter": "items = input().split()\n# 先输出原列表，再输出唯一项数量\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。列表保留重复和顺序；集合适合统计唯一项。",
+        "列表保留重复和顺序；集合适合统计唯一项。",
+        "核心写法参考：\nprint(items)\nprint(len(set(items)))"
+      ],
+      "input": [
+        "B A B"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "['B', 'A', 'B']\n2"
+      },
+      "cases": [
+        {
+          "input": [
+            ""
+          ],
+          "output": "[]\n0"
+        },
+        {
+          "input": [
+            "A"
+          ],
+          "output": "['A']\n1"
+        }
+      ]
+    },
+    {
+      "id": "python.control.006",
+      "chapter": "control",
+      "title": "给站点分配记录",
+      "concept": "字典中的列表",
+      "type": "console",
+      "brief": "信号迷城 · 城市控制台：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "后面n行是站点和整数，输出分组字典",
+      "learn": "每个站点对应自己的列表；不存在时先新建，再追加读数。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nn = int(\"0\")\n# 后面n行是站点和整数，输出分组字典\ngroups = {}\nfor i in range(n):\n    parts = \"\".split()\n    name = parts[0]\n    if name not in groups:\n        groups[name] = []\n    groups[name].append(int(parts[1]))\nprint(groups)",
+      "starter": "n = int(input())\n# 后面n行是站点和整数，输出分组字典\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。每个站点对应自己的列表；不存在时先新建，再追加读数。",
+        "每个站点对应自己的列表；不存在时先新建，再追加读数。",
+        "核心写法参考：\ngroups = {}\nfor i in range(n):\n    parts = input().split()\n    name = parts[0]\n    if name not in groups:\n        groups[name] = []\n    groups[name].append(int(parts[1]))\nprint(groups)"
+      ],
+      "input": [
+        "3",
+        "A 2",
+        "B 3",
+        "A 4"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "{'A': [2, 4], 'B': [3]}"
+      },
+      "cases": [
+        {
+          "input": [
+            "0"
+          ],
+          "output": "{}"
+        },
+        {
+          "input": [
+            "1",
+            "C 0"
+          ],
+          "output": "{'C': [0]}"
+        }
+      ]
+    },
+    {
+      "id": "python.control.007",
+      "chapter": "control",
+      "title": "计算补给缺口",
+      "concept": "多函数统计",
+      "type": "console",
+      "brief": "信号迷城 · 城市控制台：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "后续n行是库存和需求，输出总缺口",
+      "learn": "用函数计算单站缺口，再累计。库存满足需求时缺口为0。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nn = int(\"0\")\n# 后续n行是库存和需求，输出总缺口\ndef shortage(stock, need):\n    if need > stock:\n        return need - stock\n    return 0\ntotal = 0\nfor i in range(n):\n    parts = \"\".split()\n    total = total + shortage(int(parts[0]), int(parts[1]))\nprint(total)",
+      "starter": "n = int(input())\n# 后续n行是库存和需求，输出总缺口\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。用函数计算单站缺口，再累计。",
+        "用函数计算单站缺口，再累计。库存满足需求时缺口为0。",
+        "核心写法参考：\ndef shortage(stock, need):\n    if need > stock:\n        return need - stock\n    return 0\ntotal = 0\nfor i in range(n):\n    parts = input().split()\n    total = total + shortage(int(parts[0]), int(parts[1]))\nprint(total)"
+      ],
+      "input": [
+        "2",
+        "2 5",
+        "9 3"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "3",
+        "nodes": [
+          "FunctionDef"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "0"
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "1",
+            "4 4"
+          ],
+          "output": "0"
+        }
+      ]
+    },
+    {
+      "id": "python.control.008",
+      "chapter": "control",
+      "title": "控制台故障排查",
+      "concept": "缺失键与返回值修错",
+      "type": "console",
+      "brief": "信号迷城 · 城市控制台：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "修复缺失键和遗漏返回",
+      "learn": "修复工具函数，找不到的站点返回0；结果由调用者输出。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\ndef lookup(records, key):\n    return records.get(key, 0)\nrecords = {'A': 5}\nkey = \"B\"\nprint(lookup(records, key))",
+      "starter": "def lookup(records, key):\n    records[key]\nrecords = {'A': 5}\nkey = input()\nprint(lookup(records, key))\n# 修复缺失键和遗漏返回\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。修复工具函数，找不到的站点返回0；结果由调用者输出。",
+        "修复工具函数，找不到的站点返回0；结果由调用者输出。",
+        "核心写法参考：\ndef lookup(records, key):\n    return records.get(key, 0)\nrecords = {'A': 5}\nkey = input()\nprint(lookup(records, key))"
+      ],
+      "input": [
+        "A"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "5",
+        "nodes": [
+          "FunctionDef"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "B"
+          ],
+          "output": "0"
+        }
+      ]
+    },
+    {
+      "id": "python.control.009",
+      "chapter": "control",
+      "title": "城区联调",
+      "concept": "清理与统计",
+      "type": "console",
+      "brief": "信号迷城 · 城市控制台：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "输出非负数量总和",
+      "learn": "把一行输入清理、拆分、转数字，丢弃负数，计算总量。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nline = \"\"\n# 输出非负数量总和\ntotal = 0\nfor text in line.strip().split():\n    value = int(text)\n    if value >= 0:\n        total = total + value\nprint(total)",
+      "starter": "line = input()\n# 输出非负数量总和\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。把一行输入清理、拆分、转数字，丢弃负数，计算总量。",
+        "把一行输入清理、拆分、转数字，丢弃负数，计算总量。",
+        "核心写法参考：\ntotal = 0\nfor text in line.strip().split():\n    value = int(text)\n    if value >= 0:\n        total = total + value\nprint(total)"
+      ],
+      "input": [
+        " 3 -2 5 "
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "8"
+      },
+      "cases": [
+        {
+          "input": [
+            ""
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "-1 -9"
+          ],
+          "output": "0"
+        }
+      ]
+    },
+    {
+      "id": "python.control.010",
+      "chapter": "control",
+      "title": "信号迷城重新连接",
+      "concept": "第二幕综合",
+      "type": "console",
+      "brief": "信号迷城 · 城市控制台：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "n行站点与请求量；负数忽略，逐行输出站点和累计量，最后输出总量",
+      "learn": "按站点累计非负请求，再按站点名字排序输出，最后输出总请求量。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nn = int(\"0\")\n# n行站点与请求量；负数忽略，逐行输出站点和累计量，最后输出总量\nrecords = {}\nfor i in range(n):\n    parts = \"\".split()\n    value = int(parts[1])\n    if value >= 0:\n        records[parts[0]] = records.get(parts[0], 0) + value\nfor name in sorted(records):\n    print(name, records[name])\nprint(sum(records.values()))",
+      "starter": "n = int(input())\n# n行站点与请求量；负数忽略，逐行输出站点和累计量，最后输出总量\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。按站点累计非负请求，再按站点名字排序输出，最后输出总请求量。",
+        "按站点累计非负请求，再按站点名字排序输出，最后输出总请求量。",
+        "核心写法参考：\nrecords = {}\nfor i in range(n):\n    parts = input().split()\n    value = int(parts[1])\n    if value >= 0:\n        records[parts[0]] = records.get(parts[0], 0) + value\nfor name in sorted(records):\n    print(name, records[name])\nprint(sum(records.values()))"
+      ],
+      "input": [
+        "4",
+        "B 2",
+        "A 3",
+        "B 4",
+        "X -1"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "A 3\nB 6\n9"
+      },
+      "cases": [
+        {
+          "input": [
+            "0"
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "1",
+            "A 0"
+          ],
+          "output": "A 0\n0"
+        }
+      ]
+    },
+    {
+      "id": "python.debug.001",
+      "chapter": "debug",
+      "title": "先读懂任务",
+      "concept": "输入输出与约束",
+      "type": "console",
+      "brief": "程序工具箱 · 调试中心：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "输出完整箱数和剩余数，各一行",
+      "learn": "先找已知数据，再写计算步骤。题目保证容量为正，数量非负。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\namount = int(\"0\")\ncapacity = int(\"2\")\n# 输出完整箱数和剩余数，各一行\nprint(amount // capacity)\nprint(amount % capacity)",
+      "starter": "amount = int(input())\ncapacity = int(input())\n# 输出完整箱数和剩余数，各一行\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。先找已知数据，再写计算步骤。",
+        "先找已知数据，再写计算步骤。题目保证容量为正，数量非负。",
+        "核心写法参考：\nprint(amount // capacity)\nprint(amount % capacity)"
+      ],
+      "input": [
+        "8",
+        "3"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "2\n2"
+      },
+      "cases": [
+        {
+          "input": [
+            "0",
+            "2"
+          ],
+          "output": "0\n0"
+        },
+        {
+          "input": [
+            "6",
+            "3"
+          ],
+          "output": "2\n0"
+        }
+      ]
+    },
+    {
+      "id": "python.debug.002",
+      "chapter": "debug",
+      "title": "把大任务拆开",
+      "concept": "函数职责",
+      "type": "console",
+      "brief": "程序工具箱 · 调试中心：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "定义 parse(text) 返回整数列表，total(items)返回和，输出组合结果",
+      "learn": "一个函数处理清理，另一个函数统计；组合调用形成程序。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nline = \"\"\n# 定义 parse(text) 返回整数列表，total(items)返回和，输出组合结果\ndef parse(text):\n    items = []\n    for part in text.split():\n        items.append(int(part))\n    return items\ndef total(items):\n    return sum(items)\nprint(total(parse(line)))",
+      "starter": "line = input()\n# 定义 parse(text) 返回整数列表，total(items)返回和，输出组合结果\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。一个函数处理清理，另一个函数统计；组合调用形成程序。",
+        "一个函数处理清理，另一个函数统计；组合调用形成程序。",
+        "核心写法参考：\ndef parse(text):\n    items = []\n    for part in text.split():\n        items.append(int(part))\n    return items\ndef total(items):\n    return sum(items)\nprint(total(parse(line)))"
+      ],
+      "input": [
+        "2 3"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "5",
+        "nodes": [
+          "FunctionDef"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            ""
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "-2 1"
+          ],
+          "output": "-1"
+        }
+      ]
+    },
+    {
+      "id": "python.debug.003",
+      "chapter": "debug",
+      "title": "三种故障信号",
+      "concept": "错误分类",
+      "type": "console",
+      "brief": "程序工具箱 · 调试中心：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "SYNTAX输出语法错误，RUNTIME输出运行错误，LOGIC输出逻辑错误",
+      "learn": "SyntaxError 属语法错误，ZeroDivisionError 属运行错误；能够执行但结果错误属于逻辑错误。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nkind = \"RUNTIME\"\n# SYNTAX输出语法错误，RUNTIME输出运行错误，LOGIC输出逻辑错误\nlabels = {'SYNTAX': '语法错误', 'RUNTIME': '运行错误', 'LOGIC': '逻辑错误'}\nprint(labels[kind])",
+      "starter": "kind = input()\n# SYNTAX输出语法错误，RUNTIME输出运行错误，LOGIC输出逻辑错误\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。SyntaxError 属语法错误，ZeroDivisionError 属运行错误；能够执行但结果错误属于逻辑错误。",
+        "SyntaxError 属语法错误，ZeroDivisionError 属运行错误；能够执行但结果错误属于逻辑错误。",
+        "核心写法参考：\nlabels = {'SYNTAX': '语法错误', 'RUNTIME': '运行错误', 'LOGIC': '逻辑错误'}\nprint(labels[kind])"
+      ],
+      "input": [
+        "SYNTAX"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "语法错误"
+      },
+      "cases": [
+        {
+          "input": [
+            "RUNTIME"
+          ],
+          "output": "运行错误"
+        },
+        {
+          "input": [
+            "LOGIC"
+          ],
+          "output": "逻辑错误"
+        }
+      ]
+    },
+    {
+      "id": "python.debug.004",
+      "chapter": "debug",
+      "title": "追踪故障现场",
+      "concept": "调用链修错",
+      "type": "console",
+      "brief": "程序工具箱 · 调试中心：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "输入是整数文字，修复函数使输出为数值的两倍",
+      "learn": "错误可能在被调用函数内部。顺着调用链检查参数，不要只改最后一行。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\ndef double(value):\n    return value * 2\ndef report(text):\n    return double(int(text))\nprint(report(\"0\"))",
+      "starter": "def double(value):\n    return value * 2\ndef report(text):\n    return double(text)\nprint(report(input()))\n# 输入是整数文字，修复函数使输出为数值的两倍\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。错误可能在被调用函数内部。",
+        "错误可能在被调用函数内部。顺着调用链检查参数，不要只改最后一行。",
+        "核心写法参考：\ndef double(value):\n    return value * 2\ndef report(text):\n    return double(int(text))\nprint(report(input()))"
+      ],
+      "input": [
+        "3"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "6",
+        "nodes": [
+          "FunctionDef"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "0"
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "-2"
+          ],
+          "output": "-4"
+        }
+      ]
+    },
+    {
+      "id": "python.debug.005",
+      "chapter": "debug",
+      "title": "纸上的执行过程",
+      "concept": "变量追踪",
+      "type": "console",
+      "brief": "程序工具箱 · 调试中心：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "两轮：先将value加入total，再让value加1，输出total",
+      "learn": "每轮先更新total，再更新value，手算两轮核对先后。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nvalue = int(\"0\")\n# 两轮：先将value加入total，再让value加1，输出total\ntotal = 0\nfor i in range(2):\n    total = total + value\n    value = value + 1\nprint(total)",
+      "starter": "value = int(input())\n# 两轮：先将value加入total，再让value加1，输出total\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。每轮先更新total，再更新value，手算两轮核对先后。",
+        "每轮先更新total，再更新value，手算两轮核对先后。",
+        "核心写法参考：\ntotal = 0\nfor i in range(2):\n    total = total + value\n    value = value + 1\nprint(total)"
+      ],
+      "input": [
+        "2"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "5"
+      },
+      "cases": [
+        {
+          "input": [
+            "0"
+          ],
+          "output": "1"
+        },
+        {
+          "input": [
+            "-2"
+          ],
+          "output": "-3"
+        }
+      ]
+    },
+    {
+      "id": "python.debug.006",
+      "chapter": "debug",
+      "title": "自己准备测试",
+      "concept": "assert 测试",
+      "type": "console",
+      "brief": "程序工具箱 · 调试中心：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "编写至少三条assert，覆盖正常列表、空列表、零总和；最后输出PASS",
+      "learn": "assert 条件 在条件为False时抛出AssertionError。为正常、边界和空列表准备测试；成功后输出PASS。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\ndef total(items):\n    return sum(items)\n# 编写至少三条assert，覆盖正常列表、空列表、零总和；最后输出PASS\nassert total([2, 3]) == 5\nassert total([]) == 0\nassert total([-1, 1]) == 0\nprint('PASS')",
+      "starter": "def total(items):\n    return sum(items)\n# 编写至少三条assert，覆盖正常列表、空列表、零总和；最后输出PASS\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。assert 条件 在条件为False时抛出AssertionError。",
+        "assert 条件 在条件为False时抛出AssertionError。为正常、边界和空列表准备测试；成功后输出PASS。",
+        "核心写法参考：\nassert total([2, 3]) == 5\nassert total([]) == 0\nassert total([-1, 1]) == 0\nprint('PASS')"
+      ],
+      "input": [],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "PASS",
+        "nodes": [
+          "Assert"
+        ],
+        "minAssertions": 3
+      }
+    },
+    {
+      "id": "python.debug.007",
+      "chapter": "debug",
+      "title": "预期与实际",
+      "concept": "失败定位",
+      "type": "console",
+      "brief": "程序工具箱 · 调试中心：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "输出所有不一致索引，列表格式",
+      "learn": "逐项对照预期与实际，输出不一致的位置。两个列表长度相同。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nexpected = \"\".split()\nactual = \"\".split()\n# 输出所有不一致索引，列表格式\ndifferent = []\nfor i in range(len(expected)):\n    if expected[i] != actual[i]:\n        different.append(i)\nprint(different)",
+      "starter": "expected = input().split()\nactual = input().split()\n# 输出所有不一致索引，列表格式\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。逐项对照预期与实际，输出不一致的位置。",
+        "逐项对照预期与实际，输出不一致的位置。两个列表长度相同。",
+        "核心写法参考：\ndifferent = []\nfor i in range(len(expected)):\n    if expected[i] != actual[i]:\n        different.append(i)\nprint(different)"
+      ],
+      "input": [
+        "A B C",
+        "A X C"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "[1]"
+      },
+      "cases": [
+        {
+          "input": [
+            "",
+            ""
+          ],
+          "output": "[]"
+        },
+        {
+          "input": [
+            "1 2",
+            "3 4"
+          ],
+          "output": "[0, 1]"
+        }
+      ]
+    },
+    {
+      "id": "python.debug.008",
+      "chapter": "debug",
+      "title": "最小故障样例",
+      "concept": "缩小输入",
+      "type": "console",
+      "brief": "程序工具箱 · 调试中心：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "输出第一个负数，或NONE",
+      "learn": "已知负数会使旧程序出错。保留第一个负数作为最小复现输入；没有负数输出NONE。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nvalues = []\nfor text in \"0 1\".split():\n    values.append(int(text))\n# 输出第一个负数，或NONE\nfound = False\nfor value in values:\n    if value < 0:\n        print(value)\n        found = True\n        break\nif not found:\n    print('NONE')",
+      "starter": "values = []\nfor text in input().split():\n    values.append(int(text))\n# 输出第一个负数，或NONE\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。已知负数会使旧程序出错。",
+        "已知负数会使旧程序出错。保留第一个负数作为最小复现输入；没有负数输出NONE。",
+        "核心写法参考：\nfound = False\nfor value in values:\n    if value < 0:\n        print(value)\n        found = True\n        break\nif not found:\n    print('NONE')"
+      ],
+      "input": [
+        "3 -2 7 -1"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "-2"
+      },
+      "cases": [
+        {
+          "input": [
+            "0 1"
+          ],
+          "output": "NONE"
+        },
+        {
+          "input": [
+            ""
+          ],
+          "output": "NONE"
+        }
+      ]
+    },
+    {
+      "id": "python.debug.009",
+      "chapter": "debug",
+      "title": "让程序容易读",
+      "concept": "命名与职责",
+      "type": "console",
+      "brief": "程序工具箱 · 调试中心：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "定义shortage并输出非负缺口",
+      "learn": "使用有意义的名字，将缺口计算放在函数里，函数名为shortage。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nstock = int(\"7\")\nneed = int(\"2\")\n# 定义shortage并输出非负缺口\ndef shortage(stock, need):\n    if need > stock:\n        return need - stock\n    return 0\nprint(shortage(stock, need))",
+      "starter": "stock = int(input())\nneed = int(input())\n# 定义shortage并输出非负缺口\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。使用有意义的名字，将缺口计算放在函数里，函数名为shortage。",
+        "使用有意义的名字，将缺口计算放在函数里，函数名为shortage。",
+        "核心写法参考：\ndef shortage(stock, need):\n    if need > stock:\n        return need - stock\n    return 0\nprint(shortage(stock, need))"
+      ],
+      "input": [
+        "2",
+        "7"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "5",
+        "nodes": [
+          "FunctionDef"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "7",
+            "2"
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "0",
+            "0"
+          ],
+          "output": "0"
+        }
+      ]
+    },
+    {
+      "id": "python.debug.010",
+      "chapter": "debug",
+      "title": "调试中心值班",
+      "concept": "调试综合",
+      "type": "console",
+      "brief": "程序工具箱 · 调试中心：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "",
+      "learn": "修复初值、边界与返回值。列表可能为空，目标是非负项的总和。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\ndef valid_total(items):\n    total = 0\n    for value in items:\n        if value >= 0:\n            total = total + value\n    return total\nvalues = []\nfor text in \"\".split():\n    values.append(int(text))\nprint(valid_total(values))",
+      "starter": "def valid_total(items):\n    total = 1\n    for i in range(len(items) - 1):\n        if items[i] > 0:\n            total = total + items[i]\n\nvalues = []\nfor text in input().split():\n    values.append(int(text))\nprint(valid_total(values))\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。修复初值、边界与返回值。",
+        "修复初值、边界与返回值。列表可能为空，目标是非负项的总和。",
+        "核心写法参考：\ndef valid_total(items):\n    total = 0\n    for value in items:\n        if value >= 0:\n            total = total + value\n    return total\nvalues = []\nfor text in input().split():\n    values.append(int(text))\nprint(valid_total(values))"
+      ],
+      "input": [
+        "2 -1 3"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "5",
+        "nodes": [
+          "FunctionDef",
+          "Return"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            ""
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "0"
+          ],
+          "output": "0"
+        }
+      ]
+    },
+    {
+      "id": "python.exceptions.001",
+      "chapter": "exceptions",
+      "title": "不合法的数字",
+      "concept": "ValueError",
+      "type": "console",
+      "brief": "程序工具箱 · 容错检查站：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "INVALID输出BAD，其余转换为整数后输出",
+      "learn": "int('abc') 会抛出ValueError。先识别合法输入的约定：本关只有纯数字或INVALID。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\ntext = \"12\"\n# INVALID输出BAD，其余转换为整数后输出\nif text == 'INVALID':\n    print('BAD')\nelse:\n    print(int(text))",
+      "starter": "text = input()\n# INVALID输出BAD，其余转换为整数后输出\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。int('abc') 会抛出ValueError。",
+        "int('abc') 会抛出ValueError。先识别合法输入的约定：本关只有纯数字或INVALID。",
+        "核心写法参考：\nif text == 'INVALID':\n    print('BAD')\nelse:\n    print(int(text))"
+      ],
+      "input": [
+        "INVALID"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "BAD"
+      },
+      "cases": [
+        {
+          "input": [
+            "12"
+          ],
+          "output": "12"
+        },
+        {
+          "input": [
+            "-2"
+          ],
+          "output": "-2"
+        }
+      ]
+    },
+    {
+      "id": "python.exceptions.002",
+      "chapter": "exceptions",
+      "title": "接住输入错误",
+      "concept": "try / except",
+      "type": "console",
+      "brief": "程序工具箱 · 容错检查站：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "转整数成功输出数值，失败输出BAD",
+      "learn": "把可能失败的转换放在try中，用except ValueError处理；其他代码不必包进try。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\ntext = \"12\"\n# 转整数成功输出数值，失败输出BAD\ntry:\n    value = int(text)\n    print(value)\nexcept ValueError:\n    print('BAD')",
+      "starter": "text = input()\n# 转整数成功输出数值，失败输出BAD\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。把可能失败的转换放在try中，用except ValueError处理；其他代码不必包进try。",
+        "把可能失败的转换放在try中，用except ValueError处理；其他代码不必包进try。",
+        "核心写法参考：\ntry:\n    value = int(text)\n    print(value)\nexcept ValueError:\n    print('BAD')"
+      ],
+      "input": [
+        "abc"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "BAD",
+        "nodes": [
+          "Try"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "12"
+          ],
+          "output": "12"
+        },
+        {
+          "input": [
+            ""
+          ],
+          "output": "BAD"
+        }
+      ]
+    },
+    {
+      "id": "python.exceptions.003",
+      "chapter": "exceptions",
+      "title": "只处理预期故障",
+      "concept": "具体异常",
+      "type": "console",
+      "brief": "程序工具箱 · 容错检查站：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "成功输出两倍整数，转换失败输出INVALID",
+      "learn": "明确捕获ValueError，避免把拼写错误也隐藏成输入问题。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\ntext = \"3\"\n# 成功输出两倍整数，转换失败输出INVALID\ntry:\n    value = int(text)\nexcept ValueError:\n    print('INVALID')\nelse:\n    print(value * 2)",
+      "starter": "text = input()\n# 成功输出两倍整数，转换失败输出INVALID\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。明确捕获ValueError，避免把拼写错误也隐藏成输入问题。",
+        "明确捕获ValueError，避免把拼写错误也隐藏成输入问题。",
+        "核心写法参考：\ntry:\n    value = int(text)\nexcept ValueError:\n    print('INVALID')\nelse:\n    print(value * 2)"
+      ],
+      "input": [
+        "x"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "INVALID",
+        "nodes": [
+          "Try"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "3"
+          ],
+          "output": "6"
+        },
+        {
+          "input": [
+            "-1"
+          ],
+          "output": "-2"
+        }
+      ]
+    },
+    {
+      "id": "python.exceptions.004",
+      "chapter": "exceptions",
+      "title": "不能除以零",
+      "concept": "ZeroDivisionError",
+      "type": "console",
+      "brief": "程序工具箱 · 容错检查站：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "转换失败BAD，除零ZERO，成功输出整除结果",
+      "learn": "整数转换和除法可能分别失败，分别给出不同反馈。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nfirst = \"9\"\nsecond = \"0\"\n# 转换失败BAD，除零ZERO，成功输出整除结果\ntry:\n    print(int(first) // int(second))\nexcept ValueError:\n    print('BAD')\nexcept ZeroDivisionError:\n    print('ZERO')",
+      "starter": "first = input()\nsecond = input()\n# 转换失败BAD，除零ZERO，成功输出整除结果\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。整数转换和除法可能分别失败，分别给出不同反馈。",
+        "整数转换和除法可能分别失败，分别给出不同反馈。",
+        "核心写法参考：\ntry:\n    print(int(first) // int(second))\nexcept ValueError:\n    print('BAD')\nexcept ZeroDivisionError:\n    print('ZERO')"
+      ],
+      "input": [
+        "9",
+        "2"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "4",
+        "nodes": [
+          "Try"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "9",
+            "0"
+          ],
+          "output": "ZERO"
+        },
+        {
+          "input": [
+            "x",
+            "2"
+          ],
+          "output": "BAD"
+        }
+      ]
+    },
+    {
+      "id": "python.exceptions.005",
+      "chapter": "exceptions",
+      "title": "成功后的处理",
+      "concept": "else",
+      "type": "console",
+      "brief": "程序工具箱 · 容错检查站：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "转换失败BAD，成功输出数字加10",
+      "learn": "try成功才执行else，转换成功后再进行后续计算。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\ntext = \"x\"\n# 转换失败BAD，成功输出数字加10\ntry:\n    value = int(text)\nexcept ValueError:\n    print('BAD')\nelse:\n    print(value + 10)",
+      "starter": "text = input()\n# 转换失败BAD，成功输出数字加10\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。try成功才执行else，转换成功后再进行后续计算。",
+        "try成功才执行else，转换成功后再进行后续计算。",
+        "核心写法参考：\ntry:\n    value = int(text)\nexcept ValueError:\n    print('BAD')\nelse:\n    print(value + 10)"
+      ],
+      "input": [
+        "2"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "12",
+        "nodes": [
+          "Try"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "x"
+          ],
+          "output": "BAD"
+        },
+        {
+          "input": [
+            "-10"
+          ],
+          "output": "0"
+        }
+      ]
+    },
+    {
+      "id": "python.exceptions.006",
+      "chapter": "exceptions",
+      "title": "一定要完成的收尾",
+      "concept": "finally",
+      "type": "console",
+      "brief": "程序工具箱 · 容错检查站：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "成功输出整数，失败输出BAD，最后一定输出DONE",
+      "learn": "无论转换成功还是失败，都在finally里输出DONE。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\ntext = \"x\"\n# 成功输出整数，失败输出BAD，最后一定输出DONE\ntry:\n    print(int(text))\nexcept ValueError:\n    print('BAD')\nfinally:\n    print('DONE')",
+      "starter": "text = input()\n# 成功输出整数，失败输出BAD，最后一定输出DONE\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。无论转换成功还是失败，都在finally里输出DONE。",
+        "无论转换成功还是失败，都在finally里输出DONE。",
+        "核心写法参考：\ntry:\n    print(int(text))\nexcept ValueError:\n    print('BAD')\nfinally:\n    print('DONE')"
+      ],
+      "input": [
+        "3"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "3\nDONE",
+        "nodes": [
+          "Try"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "x"
+          ],
+          "output": "BAD\nDONE"
+        },
+        {
+          "input": [
+            "0"
+          ],
+          "output": "0\nDONE"
+        }
+      ]
+    },
+    {
+      "id": "python.exceptions.007",
+      "chapter": "exceptions",
+      "title": "工具拒绝错误参数",
+      "concept": "raise",
+      "type": "console",
+      "brief": "程序工具箱 · 容错检查站：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "定义check(n)：负数抛ValueError，否则返回n；调用并捕获",
+      "learn": "函数发现负数时raise ValueError，调用者捕获并显示BAD。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nnumber = int(\"0\")\n# 定义check(n)：负数抛ValueError，否则返回n；调用并捕获\ndef check(n):\n    if n < 0:\n        raise ValueError('数量不能为负')\n    return n\ntry:\n    print(check(number))\nexcept ValueError:\n    print('BAD')",
+      "starter": "number = int(input())\n# 定义check(n)：负数抛ValueError，否则返回n；调用并捕获\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。函数发现负数时raise ValueError，调用者捕获并显示BAD。",
+        "函数发现负数时raise ValueError，调用者捕获并显示BAD。",
+        "核心写法参考：\ndef check(n):\n    if n < 0:\n        raise ValueError('数量不能为负')\n    return n\ntry:\n    print(check(number))\nexcept ValueError:\n    print('BAD')"
+      ],
+      "input": [
+        "-1"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "BAD",
+        "nodes": [
+          "Raise",
+          "FunctionDef"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "0"
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "5"
+          ],
+          "output": "5"
+        }
+      ]
+    },
+    {
+      "id": "python.exceptions.008",
+      "chapter": "exceptions",
+      "title": "再试一次",
+      "concept": "有限重试",
+      "type": "console",
+      "brief": "程序工具箱 · 容错检查站：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "每次读取一行，尝试转换，成功就break",
+      "learn": "最多尝试三次，读到有效整数立即结束；三次都失败输出FAILED。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nresult = 'FAILED'\n# 每次读取一行，尝试转换，成功就break\nfor i in range(3):\n    try:\n        result = int(\"a\")\n        break\n    except ValueError:\n        pass\nprint(result)",
+      "starter": "result = 'FAILED'\n# 每次读取一行，尝试转换，成功就break\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。最多尝试三次，读到有效整数立即结束；三次都失败输出FAILED。",
+        "最多尝试三次，读到有效整数立即结束；三次都失败输出FAILED。",
+        "核心写法参考：\nfor i in range(3):\n    try:\n        result = int(input())\n        break\n    except ValueError:\n        pass\nprint(result)"
+      ],
+      "input": [
+        "x",
+        "4"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "4",
+        "nodes": [
+          "Try",
+          "Break"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "a",
+            "b",
+            "c"
+          ],
+          "output": "FAILED"
+        },
+        {
+          "input": [
+            "0"
+          ],
+          "output": "0"
+        }
+      ]
+    },
+    {
+      "id": "python.exceptions.009",
+      "chapter": "exceptions",
+      "title": "不要吞掉故障",
+      "concept": "精确错误反馈",
+      "type": "console",
+      "brief": "程序工具箱 · 容错检查站：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "计算100整除输入整数，转换失败BAD，除零ZERO",
+      "learn": "输入转换失败应输出BAD，零除应输出ZERO；不要用统一反馈掩盖不同原因。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\ntext = \"abc\"\n# 计算100整除输入整数，转换失败BAD，除零ZERO\ntry:\n    print(100 // int(text))\nexcept ValueError:\n    print('BAD')\nexcept ZeroDivisionError:\n    print('ZERO')",
+      "starter": "text = input()\n# 计算100整除输入整数，转换失败BAD，除零ZERO\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。输入转换失败应输出BAD，零除应输出ZERO；不要用统一反馈掩盖不同原因。",
+        "输入转换失败应输出BAD，零除应输出ZERO；不要用统一反馈掩盖不同原因。",
+        "核心写法参考：\ntry:\n    print(100 // int(text))\nexcept ValueError:\n    print('BAD')\nexcept ZeroDivisionError:\n    print('ZERO')"
+      ],
+      "input": [
+        "0"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "ZERO",
+        "nodes": [
+          "Try"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "abc"
+          ],
+          "output": "BAD"
+        },
+        {
+          "input": [
+            "4"
+          ],
+          "output": "25"
+        }
+      ]
+    },
+    {
+      "id": "python.exceptions.010",
+      "chapter": "exceptions",
+      "title": "可靠的接收站",
+      "concept": "异常综合",
+      "type": "console",
+      "brief": "程序工具箱 · 容错检查站：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "组合try、判断与break完成接收",
+      "learn": "最多三次输入，合法非负整数才接受；负数与非法文字继续尝试；最终输出值或FAILED。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nresult = 'FAILED'\n# 组合try、判断与break完成接收\nfor i in range(3):\n    try:\n        value = int(\"-1\")\n        if value < 0:\n            continue\n        result = value\n        break\n    except ValueError:\n        pass\nprint(result)",
+      "starter": "result = 'FAILED'\n# 组合try、判断与break完成接收\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。最多三次输入，合法非负整数才接受；负数与非法文字继续尝试；最终输出值或FAILED。",
+        "最多三次输入，合法非负整数才接受；负数与非法文字继续尝试；最终输出值或FAILED。",
+        "核心写法参考：\nfor i in range(3):\n    try:\n        value = int(input())\n        if value < 0:\n            continue\n        result = value\n        break\n    except ValueError:\n        pass\nprint(result)"
+      ],
+      "input": [
+        "x",
+        "-1",
+        "5"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "5",
+        "nodes": [
+          "Try",
+          "For"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "-1",
+            "x",
+            "-2"
+          ],
+          "output": "FAILED"
+        },
+        {
+          "input": [
+            "0"
+          ],
+          "output": "0"
+        }
+      ]
+    },
+    {
+      "id": "python.modules.001",
+      "chapter": "modules",
+      "title": "借来一个工具",
+      "concept": "import",
+      "type": "console",
+      "brief": "程序工具箱 · 工具联络站：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "导入math，输出平方根（浮点数）",
+      "learn": "import math 后通过math.函数名调用数学工具。本关输入非负数，平方根一定为整数。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nnumber = int(\"0\")\n# 导入math，输出平方根（浮点数）\nimport math\nprint(math.sqrt(number))",
+      "starter": "number = int(input())\n# 导入math，输出平方根（浮点数）\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。import math 后通过math.函数名调用数学工具。",
+        "import math 后通过math.函数名调用数学工具。本关输入非负数，平方根一定为整数。",
+        "核心写法参考：\nimport math\nprint(math.sqrt(number))"
+      ],
+      "input": [
+        "9"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "3.0",
+        "nodes": [
+          "Import"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "0"
+          ],
+          "output": "0.0"
+        },
+        {
+          "input": [
+            "16"
+          ],
+          "output": "4.0"
+        }
+      ]
+    },
+    {
+      "id": "python.modules.002",
+      "chapter": "modules",
+      "title": "工具的名字空间",
+      "concept": "模块名.函数",
+      "type": "console",
+      "brief": "程序工具箱 · 工具联络站：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "先输出floor结果，再输出ceil结果",
+      "learn": "math.floor向下取整，math.ceil向上取整。通过模块名前缀明确函数来源。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nnumber = float(\"-1.2\")\n# 先输出floor结果，再输出ceil结果\nimport math\nprint(math.floor(number))\nprint(math.ceil(number))",
+      "starter": "number = float(input())\n# 先输出floor结果，再输出ceil结果\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。math.floor向下取整，math.ceil向上取整。",
+        "math.floor向下取整，math.ceil向上取整。通过模块名前缀明确函数来源。",
+        "核心写法参考：\nimport math\nprint(math.floor(number))\nprint(math.ceil(number))"
+      ],
+      "input": [
+        "2.3"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "2\n3",
+        "nodes": [
+          "Import"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "-1.2"
+          ],
+          "output": "-2\n-1"
+        },
+        {
+          "input": [
+            "0"
+          ],
+          "output": "0\n0"
+        }
+      ]
+    },
+    {
+      "id": "python.modules.003",
+      "chapter": "modules",
+      "title": "只取需要的工具",
+      "concept": "from import",
+      "type": "console",
+      "brief": "程序工具箱 · 工具联络站：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "直接导入ceil并输出结果",
+      "learn": "from math import ceil 后可直接写ceil，不必再写math前缀。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nnumber = float(\"-1.2\")\n# 直接导入ceil并输出结果\nfrom math import ceil\nprint(ceil(number))",
+      "starter": "number = float(input())\n# 直接导入ceil并输出结果\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。from math import ceil 后可直接写ceil，不必再写math前缀。",
+        "from math import ceil 后可直接写ceil，不必再写math前缀。",
+        "核心写法参考：\nfrom math import ceil\nprint(ceil(number))"
+      ],
+      "input": [
+        "2.3"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "3",
+        "nodes": [
+          "ImportFrom"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "-1.2"
+          ],
+          "output": "-1"
+        },
+        {
+          "input": [
+            "0"
+          ],
+          "output": "0"
+        }
+      ]
+    },
+    {
+      "id": "python.modules.004",
+      "chapter": "modules",
+      "title": "给工具起别名",
+      "concept": "as",
+      "type": "console",
+      "brief": "程序工具箱 · 工具联络站：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "使用别名m输出平方根",
+      "learn": "import math as m 将模块起名为m，仍然用前缀调用。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nnumber = int(\"1\")\n# 使用别名m输出平方根\nimport math as m\nprint(m.sqrt(number))",
+      "starter": "number = int(input())\n# 使用别名m输出平方根\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。import math as m 将模块起名为m，仍然用前缀调用。",
+        "import math as m 将模块起名为m，仍然用前缀调用。",
+        "核心写法参考：\nimport math as m\nprint(m.sqrt(number))"
+      ],
+      "input": [
+        "25"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "5.0",
+        "nodes": [
+          "Import"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "1"
+          ],
+          "output": "1.0"
+        },
+        {
+          "input": [
+            "0"
+          ],
+          "output": "0.0"
+        }
+      ]
+    },
+    {
+      "id": "python.modules.005",
+      "chapter": "modules",
+      "title": "数学工具箱",
+      "concept": "ceil 与装箱",
+      "type": "console",
+      "brief": "程序工具箱 · 工具联络站：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "用math.ceil输出需要的总箱数",
+      "learn": "装下所有物资时，不满一箱也需要占一箱。数量非负、容量为正。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\namount = int(\"0\")\ncapacity = int(\"2\")\n# 用math.ceil输出需要的总箱数\nimport math\nprint(math.ceil(amount / capacity))",
+      "starter": "amount = int(input())\ncapacity = int(input())\n# 用math.ceil输出需要的总箱数\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。装下所有物资时，不满一箱也需要占一箱。",
+        "装下所有物资时，不满一箱也需要占一箱。数量非负、容量为正。",
+        "核心写法参考：\nimport math\nprint(math.ceil(amount / capacity))"
+      ],
+      "input": [
+        "7",
+        "3"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "3"
+      },
+      "cases": [
+        {
+          "input": [
+            "0",
+            "2"
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "6",
+            "3"
+          ],
+          "output": "2"
+        }
+      ]
+    },
+    {
+      "id": "python.modules.006",
+      "chapter": "modules",
+      "title": "随机巡检任务",
+      "concept": "random 与种子",
+      "type": "console",
+      "brief": "程序工具箱 · 工具联络站：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "upper至少1；固定种子7，生成5个1到upper的整数，输出所有值都在范围内的布尔结果",
+      "learn": "random.seed 固定随机序列，便于复现。randint(a,b)包含两端；本关生成同一范围的5个数并验证范围。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nupper = int(\"1\")\n# upper至少1；固定种子7，生成5个1到upper的整数，输出所有值都在范围内的布尔结果\nimport random\nrandom.seed(7)\nvalid = True\nfor i in range(5):\n    value = random.randint(1, upper)\n    if value < 1 or value > upper:\n        valid = False\nprint(valid)",
+      "starter": "upper = int(input())\n# upper至少1；固定种子7，生成5个1到upper的整数，输出所有值都在范围内的布尔结果\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。random.seed 固定随机序列，便于复现。",
+        "random.seed 固定随机序列，便于复现。randint(a,b)包含两端；本关生成同一范围的5个数并验证范围。",
+        "核心写法参考：\nimport random\nrandom.seed(7)\nvalid = True\nfor i in range(5):\n    value = random.randint(1, upper)\n    if value < 1 or value > upper:\n        valid = False\nprint(valid)"
+      ],
+      "input": [
+        "5"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "True",
+        "nodes": [
+          "Import",
+          "For"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "1"
+          ],
+          "output": "True"
+        },
+        {
+          "input": [
+            "10"
+          ],
+          "output": "True"
+        }
+      ]
+    },
+    {
+      "id": "python.modules.007",
+      "chapter": "modules",
+      "title": "拆出自己的工具",
+      "concept": "自定义模块",
+      "type": "console",
+      "brief": "程序工具箱 · 工具联络站：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "导入tools，调用double，输出结果",
+      "learn": "工作区tools.py提供double函数。主文件import tools后调用；切换文件可以查看与修改模块。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nnumber = int(\"0\")\n# 导入tools，调用double，输出结果\nimport tools\nprint(tools.double(number))",
+      "starter": "number = int(input())\n# 导入tools，调用double，输出结果\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。工作区tools.py提供double函数。",
+        "工作区tools.py提供double函数。主文件import tools后调用；切换文件可以查看与修改模块。",
+        "核心写法参考：\nimport tools\nprint(tools.double(number))"
+      ],
+      "input": [
+        "3"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "6",
+        "nodes": [
+          "Import"
+        ]
+      },
+      "modules": {
+        "tools.py": "# 工具模块：不在导入时读取输入\n\ndef double(value):\n    return value * 2\n"
+      },
+      "cases": [
+        {
+          "input": [
+            "0"
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "-2"
+          ],
+          "output": "-4"
+        }
+      ]
+    },
+    {
+      "id": "python.modules.008",
+      "chapter": "modules",
+      "title": "工具之间合作",
+      "concept": "模块职责",
+      "type": "console",
+      "brief": "程序工具箱 · 工具联络站：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "导入两个模块，输出解析后的整数总和",
+      "learn": "parse_tools负责解析，report_tools负责统计，主程序连接两者。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nline = \"\"\n# 导入两个模块，输出解析后的整数总和\nimport parse_tools\nimport report_tools\nprint(report_tools.total(parse_tools.parse(line)))",
+      "starter": "line = input()\n# 导入两个模块，输出解析后的整数总和\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。parse_tools负责解析，report_tools负责统计，主程序连接两者。",
+        "parse_tools负责解析，report_tools负责统计，主程序连接两者。",
+        "核心写法参考：\nimport parse_tools\nimport report_tools\nprint(report_tools.total(parse_tools.parse(line)))"
+      ],
+      "input": [
+        "2 3"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "5",
+        "nodes": [
+          "Import"
+        ]
+      },
+      "modules": {
+        "parse_tools.py": "def parse(text):\n    result = []\n    for part in text.split():\n        result.append(int(part))\n    return result\n",
+        "report_tools.py": "def total(items):\n    return sum(items)\n"
+      },
+      "cases": [
+        {
+          "input": [
+            ""
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "-2 1"
+          ],
+          "output": "-1"
+        }
+      ]
+    },
+    {
+      "id": "python.modules.009",
+      "chapter": "modules",
+      "title": "程序从哪里开始",
+      "concept": "__name__",
+      "type": "console",
+      "brief": "程序工具箱 · 工具联络站：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "用__name__判断后调用main",
+      "learn": "直接运行主文件时__name__是__main__，被导入时是模块名。把交互代码放在入口判断下。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\ndef main():\n    value = int(\"0\")\n    print(value * 3)\nif __name__ == '__main__':\n    main()",
+      "starter": "def main():\n    # 在这里读取整数并输出三倍值\n    pass\n\n# 用__name__判断后调用main\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。直接运行主文件时__name__是__main__，被导入时是模块名。",
+        "直接运行主文件时__name__是__main__，被导入时是模块名。把交互代码放在入口判断下。",
+        "核心写法参考：\ndef main():\n    value = int(input())\n    print(value * 3)\nif __name__ == '__main__':\n    main()"
+      ],
+      "input": [
+        "3"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "9",
+        "nodes": [
+          "FunctionDef",
+          "If"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "0"
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "-1"
+          ],
+          "output": "-3"
+        }
+      ]
+    },
+    {
+      "id": "python.modules.010",
+      "chapter": "modules",
+      "title": "工具联络完成",
+      "concept": "模块综合",
+      "type": "console",
+      "brief": "程序工具箱 · 工具联络站：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "调用tools.valid_total，输出结果",
+      "learn": "通过tools模块清理、筛选并统计非负数量，主程序负责输入输出。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nline = \"\"\n# 调用tools.valid_total，输出结果\nimport tools\nprint(tools.valid_total(line))",
+      "starter": "line = input()\n# 调用tools.valid_total，输出结果\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。通过tools模块清理、筛选并统计非负数量，主程序负责输入输出。",
+        "通过tools模块清理、筛选并统计非负数量，主程序负责输入输出。",
+        "核心写法参考：\nimport tools\nprint(tools.valid_total(line))"
+      ],
+      "input": [
+        "2 -3 4"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "6",
+        "nodes": [
+          "Import"
+        ]
+      },
+      "modules": {
+        "tools.py": "def valid_total(text):\n    result = 0\n    for part in text.split():\n        value = int(part)\n        if value >= 0:\n            result = result + value\n    return result\n"
+      },
+      "cases": [
+        {
+          "input": [
+            ""
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "-1"
+          ],
+          "output": "0"
+        }
+      ]
+    },
+    {
+      "id": "python.files.001",
+      "chapter": "files",
+      "title": "打开虚拟档案",
+      "concept": "with open",
+      "type": "console",
+      "brief": "程序工具箱 · 档案管理局：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "以utf-8读取文件并输出内容，不增加额外换行",
+      "learn": "open读取游戏内虚拟档案。with结束时自动关闭文件，read返回全文。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nfilename = \"empty.txt\"\n# 以utf-8读取文件并输出内容，不增加额外换行\nwith open(filename, encoding='utf-8') as file:\n    print(file.read(), end='')",
+      "starter": "filename = input()\n# 以utf-8读取文件并输出内容，不增加额外换行\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。open读取游戏内虚拟档案。",
+        "open读取游戏内虚拟档案。with结束时自动关闭文件，read返回全文。",
+        "核心写法参考：\nwith open(filename, encoding='utf-8') as file:\n    print(file.read(), end='')"
+      ],
+      "input": [
+        "note.txt"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "Byte online",
+        "nodes": [
+          "With"
+        ]
+      },
+      "dataFiles": {
+        "note.txt": "Byte online",
+        "empty.txt": "",
+        "chinese.txt": "校园"
+      },
+      "cases": [
+        {
+          "input": [
+            "empty.txt"
+          ],
+          "output": ""
+        },
+        {
+          "input": [
+            "chinese.txt"
+          ],
+          "output": "校园"
+        }
+      ]
+    },
+    {
+      "id": "python.files.002",
+      "chapter": "files",
+      "title": "逐行检查记录",
+      "concept": "文件遍历",
+      "type": "console",
+      "brief": "程序工具箱 · 档案管理局：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "逐行strip后输出非空行",
+      "learn": "for line in file逐行读取。strip移除行末换行，空行也需根据任务处理。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nfilename = \"empty.txt\"\n# 逐行strip后输出非空行\nwith open(filename, encoding='utf-8') as file:\n    for line in file:\n        text = line.strip()\n        if text:\n            print(text)",
+      "starter": "filename = input()\n# 逐行strip后输出非空行\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。for line in file逐行读取。",
+        "for line in file逐行读取。strip移除行末换行，空行也需根据任务处理。",
+        "核心写法参考：\nwith open(filename, encoding='utf-8') as file:\n    for line in file:\n        text = line.strip()\n        if text:\n            print(text)"
+      ],
+      "input": [
+        "logs.txt"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "A\nB",
+        "nodes": [
+          "With",
+          "For"
+        ]
+      },
+      "dataFiles": {
+        "logs.txt": " A \n\n B \n",
+        "empty.txt": ""
+      },
+      "cases": [
+        {
+          "input": [
+            "empty.txt"
+          ],
+          "output": ""
+        }
+      ]
+    },
+    {
+      "id": "python.files.003",
+      "chapter": "files",
+      "title": "写入救援日志",
+      "concept": "写入w",
+      "type": "console",
+      "brief": "程序工具箱 · 档案管理局：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "把text写入log.txt，不增加换行",
+      "learn": "w模式覆盖原内容。write不自动增加换行。实际写入文件才能通过本关。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\ntext = \"\"\n# 把text写入log.txt，不增加换行\nwith open('log.txt', 'w', encoding='utf-8') as file:\n    file.write(text)",
+      "starter": "text = input()\n# 把text写入log.txt，不增加换行\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。w模式覆盖原内容。",
+        "w模式覆盖原内容。write不自动增加换行。实际写入文件才能通过本关。",
+        "核心写法参考：\nwith open('log.txt', 'w', encoding='utf-8') as file:\n    file.write(text)"
+      ],
+      "input": [
+        "ready"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "",
+        "nodes": [
+          "With"
+        ],
+        "files": {
+          "log.txt": "ready"
+        }
+      },
+      "dataFiles": {
+        "log.txt": "old"
+      },
+      "cases": [
+        {
+          "input": [
+            ""
+          ],
+          "output": "",
+          "files": {
+            "log.txt": ""
+          }
+        },
+        {
+          "input": [
+            "校园"
+          ],
+          "output": "",
+          "files": {
+            "log.txt": "校园"
+          }
+        }
+      ]
+    },
+    {
+      "id": "python.files.004",
+      "chapter": "files",
+      "title": "继续记录今天",
+      "concept": "追加a",
+      "type": "console",
+      "brief": "程序工具箱 · 档案管理局：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "追加到log.txt，不额外添加换行",
+      "learn": "a模式把新内容追加在文件末尾，保留旧内容。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\ntext = \"\"\n# 追加到log.txt，不额外添加换行\nwith open('log.txt', 'a', encoding='utf-8') as file:\n    file.write(text)",
+      "starter": "text = input()\n# 追加到log.txt，不额外添加换行\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。a模式把新内容追加在文件末尾，保留旧内容。",
+        "a模式把新内容追加在文件末尾，保留旧内容。",
+        "核心写法参考：\nwith open('log.txt', 'a', encoding='utf-8') as file:\n    file.write(text)"
+      ],
+      "input": [
+        "B"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "",
+        "nodes": [
+          "With"
+        ],
+        "files": {
+          "log.txt": "A\nB"
+        }
+      },
+      "dataFiles": {
+        "log.txt": "A\n"
+      },
+      "cases": [
+        {
+          "input": [
+            ""
+          ],
+          "output": "",
+          "files": {
+            "log.txt": "A\n"
+          }
+        },
+        {
+          "input": [
+            "校园"
+          ],
+          "output": "",
+          "files": {
+            "log.txt": "A\n校园"
+          }
+        }
+      ]
+    },
+    {
+      "id": "python.files.005",
+      "chapter": "files",
+      "title": "中文档案不乱码",
+      "concept": "UTF-8",
+      "type": "console",
+      "brief": "程序工具箱 · 档案管理局：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "写入cn.txt，再读取并输出",
+      "learn": "写入和读取都显式指定encoding='utf-8'，便于表达一致的编码约定。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\ntext = \"Byte\"\n# 写入cn.txt，再读取并输出\nwith open('cn.txt', 'w', encoding='utf-8') as file:\n    file.write(text)\nwith open('cn.txt', encoding='utf-8') as file:\n    print(file.read())",
+      "starter": "text = input()\n# 写入cn.txt，再读取并输出\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。写入和读取都显式指定encoding='utf-8'，便于表达一致的编码约定。",
+        "写入和读取都显式指定encoding='utf-8'，便于表达一致的编码约定。",
+        "核心写法参考：\nwith open('cn.txt', 'w', encoding='utf-8') as file:\n    file.write(text)\nwith open('cn.txt', encoding='utf-8') as file:\n    print(file.read())"
+      ],
+      "input": [
+        "你好校园"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "你好校园",
+        "nodes": [
+          "With"
+        ],
+        "files": {
+          "cn.txt": "你好校园"
+        }
+      },
+      "cases": [
+        {
+          "input": [
+            "Byte"
+          ],
+          "output": "Byte",
+          "files": {
+            "cn.txt": "Byte"
+          }
+        },
+        {
+          "input": [
+            ""
+          ],
+          "output": "",
+          "files": {
+            "cn.txt": ""
+          }
+        }
+      ]
+    },
+    {
+      "id": "python.files.006",
+      "chapter": "files",
+      "title": "档案不存在",
+      "concept": "FileNotFoundError",
+      "type": "console",
+      "brief": "程序工具箱 · 档案管理局：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "存在时输出内容，否则MISSING",
+      "learn": "尝试读取文件，缺失时捕获FileNotFoundError，显示MISSING。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nfilename = \"absent.txt\"\n# 存在时输出内容，否则MISSING\ntry:\n    with open(filename, encoding='utf-8') as file:\n        print(file.read())\nexcept FileNotFoundError:\n    print('MISSING')",
+      "starter": "filename = input()\n# 存在时输出内容，否则MISSING\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。尝试读取文件，缺失时捕获FileNotFoundError，显示MISSING。",
+        "尝试读取文件，缺失时捕获FileNotFoundError，显示MISSING。",
+        "核心写法参考：\ntry:\n    with open(filename, encoding='utf-8') as file:\n        print(file.read())\nexcept FileNotFoundError:\n    print('MISSING')"
+      ],
+      "input": [
+        "ready.txt"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "OK",
+        "nodes": [
+          "Try",
+          "With"
+        ]
+      },
+      "dataFiles": {
+        "ready.txt": "OK",
+        "empty.txt": ""
+      },
+      "cases": [
+        {
+          "input": [
+            "absent.txt"
+          ],
+          "output": "MISSING"
+        },
+        {
+          "input": [
+            "empty.txt"
+          ],
+          "output": ""
+        }
+      ]
+    },
+    {
+      "id": "python.files.007",
+      "chapter": "files",
+      "title": "让数据变成文字",
+      "concept": "JSON转换",
+      "type": "console",
+      "brief": "程序工具箱 · 档案管理局：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "读取JSON对象，输出其中items列表的总和",
+      "learn": "json.loads把JSON文字转换成Python数据。JSON中的true/false/null分别对应True/False/None。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\ntext = \"{\\\"items\\\":[]}\"\n# 读取JSON对象，输出其中items列表的总和\nimport json\nrecord = json.loads(text)\nprint(sum(record['items']))",
+      "starter": "text = input()\n# 读取JSON对象，输出其中items列表的总和\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。json.loads把JSON文字转换成Python数据。",
+        "json.loads把JSON文字转换成Python数据。JSON中的true/false/null分别对应True/False/None。",
+        "核心写法参考：\nimport json\nrecord = json.loads(text)\nprint(sum(record['items']))"
+      ],
+      "input": [
+        "{\"items\":[2,3]}"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "5",
+        "nodes": [
+          "Import"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "{\"items\":[]}"
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "{\"items\":[-2,1]}"
+          ],
+          "output": "-1"
+        }
+      ]
+    },
+    {
+      "id": "python.files.008",
+      "chapter": "files",
+      "title": "保存完整档案",
+      "concept": "JSON文件",
+      "type": "console",
+      "brief": "程序工具箱 · 档案管理局：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "写入record.json，包含name和count，再读回并输出两个字段（空格分隔）",
+      "learn": "json.dump写入结构化数据，json.load读回。用ensure_ascii=False保留中文显示。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nname = \"A\"\ncount = int(\"0\")\n# 写入record.json，包含name和count，再读回并输出两个字段（空格分隔）\nimport json\nwith open('record.json', 'w', encoding='utf-8') as file:\n    json.dump({'name': name, 'count': count}, file, ensure_ascii=False)\nwith open('record.json', encoding='utf-8') as file:\n    record = json.load(file)\nprint(record['name'], record['count'])",
+      "starter": "name = input()\ncount = int(input())\n# 写入record.json，包含name和count，再读回并输出两个字段（空格分隔）\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。json.dump写入结构化数据，json.load读回。",
+        "json.dump写入结构化数据，json.load读回。用ensure_ascii=False保留中文显示。",
+        "核心写法参考：\nimport json\nwith open('record.json', 'w', encoding='utf-8') as file:\n    json.dump({'name': name, 'count': count}, file, ensure_ascii=False)\nwith open('record.json', encoding='utf-8') as file:\n    record = json.load(file)\nprint(record['name'], record['count'])"
+      ],
+      "input": [
+        "校园",
+        "3"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "校园 3",
+        "nodes": [
+          "With",
+          "Import"
+        ],
+        "files": {
+          "record.json": "{\"name\": \"校园\", \"count\": 3}"
+        }
+      },
+      "cases": [
+        {
+          "input": [
+            "A",
+            "0"
+          ],
+          "output": "A 0",
+          "files": {
+            "record.json": "{\"name\": \"A\", \"count\": 0}"
+          }
+        },
+        {
+          "input": [
+            "B",
+            "12"
+          ],
+          "output": "B 12",
+          "files": {
+            "record.json": "{\"name\": \"B\", \"count\": 12}"
+          }
+        }
+      ]
+    },
+    {
+      "id": "python.files.009",
+      "chapter": "files",
+      "title": "损坏档案恢复",
+      "concept": "JSONDecodeError与结构检查",
+      "type": "console",
+      "brief": "程序工具箱 · 档案管理局：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "语法损坏输出CORRUPT，结构不符输出INVALID，否则输出items长度",
+      "learn": "JSON语法损坏与结构不符是两类问题。本关要求对象中items为列表；原文件保持不变。 isinstance(value, type) 用于检查值的类型；not 表示条件取反，or 表示至少一项成立。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nfilename = \"bad.json\"\n# 语法损坏输出CORRUPT，结构不符输出INVALID，否则输出items长度\nimport json\ntry:\n    with open(filename, encoding='utf-8') as file:\n        data = json.load(file)\n    if not isinstance(data, dict) or not isinstance(data.get('items'), list):\n        print('INVALID')\n    else:\n        print(len(data['items']))\nexcept json.JSONDecodeError:\n    print('CORRUPT')",
+      "starter": "filename = input()\n# 语法损坏输出CORRUPT，结构不符输出INVALID，否则输出items长度\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。JSON语法损坏与结构不符是两类问题。",
+        "JSON语法损坏与结构不符是两类问题。本关要求对象中items为列表；原文件保持不变。",
+        "核心写法参考：\nimport json\ntry:\n    with open(filename, encoding='utf-8') as file:\n        data = json.load(file)\n    if not isinstance(data, dict) or not isinstance(data.get('items'), list):\n        print('INVALID')\n    else:\n        print(len(data['items']))\nexcept json.JSONDecodeError:\n    print('CORRUPT')"
+      ],
+      "input": [
+        "good.json"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "2",
+        "nodes": [
+          "Try"
+        ]
+      },
+      "dataFiles": {
+        "good.json": "{\"items\":[1,2]}",
+        "bad.json": "{broken",
+        "shape.json": "[]"
+      },
+      "cases": [
+        {
+          "input": [
+            "bad.json"
+          ],
+          "output": "CORRUPT"
+        },
+        {
+          "input": [
+            "shape.json"
+          ],
+          "output": "INVALID"
+        }
+      ]
+    },
+    {
+      "id": "python.files.010",
+      "chapter": "files",
+      "title": "我的救援管理器",
+      "concept": "保存与查询项目",
+      "type": "console",
+      "brief": "程序工具箱 · 档案管理局：完成本关任务，帮助 Byte 掌握新的工具。",
+      "goal": "读取stations.json，给name累加amount，保存再重载；输出query的库存（缺失为0），再输出全部库存总和",
+      "learn": "读取已有JSON档案，加入或更新站点，保存后重新读取，最后查询站点与总量。通过虚拟文件面板可查看生成档案。",
+      "example": "# 相似数据演示：先理解执行顺序，再完成本关。\nname = \"A\"\namount = int(\"2\")\nquery = \"A\"\n# 读取stations.json，给name累加amount，保存再重载\n# 输出query的库存（缺失为0），再输出全部库存总和\nimport json\nwith open('stations.json', encoding='utf-8') as file:\n    records = json.load(file)\nrecords[name] = records.get(name, 0) + amount\nwith open('stations.json', 'w', encoding='utf-8') as file:\n    json.dump(records, file, ensure_ascii=False)\nwith open('stations.json', encoding='utf-8') as file:\n    restored = json.load(file)\nprint(restored.get(query, 0))\nprint(sum(restored.values()))",
+      "starter": "name = input()\namount = int(input())\nquery = input()\n# 读取stations.json，给name累加amount，保存再重载\n# 输出query的库存（缺失为0），再输出全部库存总和\n",
+      "hints": [
+        "先按注释明确输入、处理和输出。读取已有JSON档案，加入或更新站点，保存后重新读取，最后查询站点与总量。",
+        "读取已有JSON档案，加入或更新站点，保存后重新读取，最后查询站点与总量。通过虚拟文件面板可查看生成档案。",
+        "核心写法参考：\nimport json\nwith open('stations.json', encoding='utf-8') as file:\n    records = json.load(file)\nrecords[name] = records.get(name, 0) + amount\nwith open('stations.json', 'w', encoding='utf-8') as file:\n    json.dump(records, file, ensure_ascii=False)\nwith open('stations.json', encoding='utf-8') as file:\n    restored = json.load(file)\nprint(restored.get(query, 0))\nprint(sum(restored.values()))"
+      ],
+      "input": [
+        "B",
+        "3",
+        "A"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "2\n5",
+        "nodes": [
+          "With",
+          "Import"
+        ],
+        "files": {
+          "stations.json": "{\"A\": 2, \"B\": 3}"
+        }
+      },
+      "dataFiles": {
+        "stations.json": "{\"A\": 2}"
+      },
+      "cases": [
+        {
+          "input": [
+            "A",
+            "2",
+            "A"
+          ],
+          "output": "4\n4",
+          "files": {
+            "stations.json": "{\"A\": 4}"
+          }
+        },
+        {
+          "input": [
+            "C",
+            "0",
+            "X"
+          ],
+          "output": "0\n2",
+          "files": {
+            "stations.json": "{\"A\": 2, \"C\": 0}"
+          }
+        }
+      ]
     }
   ]
 }

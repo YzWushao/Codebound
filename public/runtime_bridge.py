@@ -4,6 +4,8 @@ import builtins
 import json
 import sys
 import traceback
+import io
+import types
 
 
 def run_case(code, level):
@@ -16,7 +18,11 @@ def run_case(code, level):
                            for x, char in enumerate(row) if char == "B"]}
     current_line, ticks, actions = 0, 0, 0
     variables, namespace = {}, {}
+    called_functions = set()
     inputs = iter(level.get("input", []))
+    files = dict(level.get('dataFiles', {}))
+    module_sources = dict(level.get('modules', {}))
+    module_cache = {}
 
     def snapshot(kind, text=None):
         if len(events) >= 650:
@@ -34,15 +40,17 @@ def run_case(code, level):
                 continue
             if type(value) in (int, float, str, bool, type(None)):
                 variables[name] = str(value)[:120] if type(value) is str else value
-            elif type(value) in (list, tuple) and len(value) <= 20:
+            elif type(value) in (list, tuple, dict, set) and len(value) <= 20:
                 variables[name] = repr(value)[:120]
             if len(variables) >= 16:
                 break
 
     def trace(frame, event, arg):
         nonlocal ticks, current_line
-        if frame.f_code.co_filename != "<student>":
+        if not frame.f_code.co_filename.startswith('<student'):
             return trace
+        if event == 'call' and frame.f_code.co_name != '<module>':
+            called_functions.add(frame.f_code.co_name)
         if event == "line":
             ticks += 1
             if ticks > 3000:
@@ -66,6 +74,56 @@ def run_case(code, level):
             return str(next(inputs))
         except StopIteration:
             raise EOFError("输入数据已经读完了；检查 input() 的调用次数。") from None
+
+    def virtual_open(name, mode='r', encoding=None, **kwargs):
+        if not isinstance(name, str) or '/' in name or '\\' in name or name in ('.', '..'):
+            raise ValueError('只能访问虚拟档案柜中的文件名。')
+        if mode not in ('r', 'w', 'a'):
+            raise ValueError('本课程支持文本模式 r、w、a。')
+        if encoding not in (None, 'utf-8', 'UTF-8'):
+            raise ValueError('请使用 UTF-8 编码。')
+        if mode == 'r' and name not in files:
+            raise FileNotFoundError(name)
+        class Document(io.StringIO):
+            def close(self):
+                if not self.closed and mode != 'r':
+                    value = self.getvalue()
+                    if len(value) > 20000:
+                        raise ValueError('虚拟文件超过 20000 字符。')
+                    files[name] = value
+                super().close()
+            def write(self, text):
+                if mode == 'r':
+                    raise io.UnsupportedOperation('文件以只读方式打开。')
+                written = super().write(text)
+                if self.tell() > 20000:
+                    raise ValueError('虚拟文件超过 20000 字符。')
+                files[name] = self.getvalue()
+                return written
+        handle = Document('' if mode == 'w' else files.get(name, ''))
+        if mode == 'w':
+            files[name] = ''
+        if mode == 'a':
+            handle.seek(0, 2)
+        return handle
+
+    student_builtins = dict(builtins.__dict__)
+
+    def student_import(name, globals=None, locals=None, fromlist=(), level=0):
+        if level:
+            raise ImportError('本课程使用同目录模块的绝对导入。')
+        if name + '.py' in module_sources:
+            if name not in module_cache:
+                module = types.ModuleType(name)
+                module.__dict__['__builtins__'] = student_builtins
+                module_cache[name] = module
+                exec(compile(module_sources[name + '.py'], '<student:' + name + '.py>', 'exec'), module.__dict__)
+            return module_cache[name]
+        if name not in ('math', 'random', 'json'):
+            raise ImportError('本课程可使用 math、random、json 和工作区里的模块。')
+        return builtins.__import__(name, globals, locals, fromlist, 0)
+
+    student_builtins.update(open=virtual_open, __import__=student_import)
 
     class Robot:
         @property
@@ -120,8 +178,9 @@ def run_case(code, level):
         def say(self, text):
             printed(text)
 
+    student_builtins.update(print=printed, input=read_input)
     namespace.update({"robot": Robot(), "print": printed, "input": read_input,
-                      "__builtins__": builtins.__dict__})
+                      "__name__": '__main__', "__builtins__": student_builtins})
     error, nodes = None, []
     try:
         if len(code) > 20000:
@@ -133,9 +192,11 @@ def run_case(code, level):
     except BaseException as exc:
         sys.settrace(None)
         line = getattr(exc, "lineno", None) or current_line
+        error_file = 'main.py'
         for frame in traceback.extract_tb(exc.__traceback__):
-            if frame.filename == "<student>":
+            if frame.filename.startswith('<student'):
                 line = frame.lineno
+                error_file = frame.filename[9:-1] if frame.filename.startswith('<student:') else 'main.py'
         detail = str(exc)
         kind = type(exc).__name__
         if isinstance(exc, IndentationError):
@@ -148,6 +209,10 @@ def run_case(code, level):
                 message += " 代码符号请使用英文输入法；引号里的中文不受影响。"
         elif isinstance(exc, NameError):
             message = "这个名字还没有定义。检查拼写，并确认变量在使用前已经赋值。"
+        elif isinstance(exc, IndexError):
+            message = '索引超出范围。索引从 0 开始，最后一个位置是长度减 1；先检查列表或字符串是否为空。'
+        elif isinstance(exc, KeyError):
+            message = '字典里没有这个键。先用 in 检查，或使用 get 提供默认值。'
         elif isinstance(exc, AttributeError):
             message = "没有找到这个动作或属性。检查 right、left、up、down、collect、charge 的拼写。"
         elif isinstance(exc, TypeError):
@@ -156,7 +221,7 @@ def run_case(code, level):
             message = "除数不能是 0。先检查参与运算的数字。"
         else:
             message = detail or "程序提前结束了，请检查代码。"
-        error = {"line": line, "type": kind, "message": message, "detail": detail[:600]}
+        error = {"line": line, "file": error_file, "type": kind, "message": message, "detail": detail[:600]}
     finally:
         sys.settrace(None)
     for name, value in namespace.items():
@@ -164,7 +229,7 @@ def run_case(code, level):
             variables[name] = str(value)[:120] if type(value) is str else value
     snapshot("end")
     return {"state": state, "events": events, "output": "".join(output),
-            "variables": variables, "nodes": nodes, "error": error}
+            "variables": variables, "nodes": nodes, "assertions": sum(isinstance(node, ast.Assert) for node in ast.walk(tree)) if error is None else 0, "files": files, "calledFunctions": sorted(called_functions), "error": error}
 
 
 def execute_request(request_json):
@@ -175,8 +240,27 @@ def execute_request(request_json):
     if result["error"] is None:
         for case in level.get("cases", []):
             variant = dict(level)
-            variant["input"] = case["input"]
+            variant.update({key: case[key] for key in ('input', 'map', 'energy', 'dataFiles') if key in case})
             checked = run_case(request["code"], variant)
-            result["checks"].append({"passed": checked["error"] is None and checked["output"].strip() == case["output"].strip(),
+            rules = case.get('rules', level.get('rules', {}))
+            player = checked['state']['player']
+            valid = checked['error'] is None
+            if 'output' in case:
+                valid = valid and checked['output'].strip() == case['output'].strip()
+            if rules.get('atGoal'):
+                valid = valid and variant['map'][player['y']][player['x']] == 'G'
+            if rules.get('collected'):
+                valid = valid and checked['state']['collected'] >= rules['collected']
+            for name, expected in case.get('files', rules.get('files', {})).items():
+                actual = checked['files'].get(name)
+                if name.endswith('.json'):
+                    try:
+                        valid = valid and json.loads(actual) == json.loads(expected)
+                    except (ValueError, TypeError):
+                        valid = False
+                else:
+                    valid = valid and actual == expected
+            result["checks"].append({"passed": valid,
+                                     "expected": case.get('output', ''), "actual": checked['output'],
                                      "error": checked["error"]})
     return json.dumps(result, ensure_ascii=False, allow_nan=False)

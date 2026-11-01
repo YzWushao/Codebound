@@ -36,7 +36,7 @@ test('初始化退出保留阶段与 Python 标准错误', () => {
   assert.match(result.detail, /ModuleNotFoundError: encodings/);
 });
 
-test('真实 Pyodide 执行全部 20 关；两步移动只是不达标，不会退出运行器', async () => {
+test('真实 Pyodide 执行全部关卡；两步移动只是不达标，不会退出运行器', async () => {
   const checked = await readRuntimeAssets(root, fileFetch);
   const python = await loadPyodide({
     indexURL: fileURLToPath(root),

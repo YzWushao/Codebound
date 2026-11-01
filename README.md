@@ -2,13 +2,13 @@
 
 写下代码，开启下一关。
 
-本仓库只维护 Windows EXE 桌面版。这是面向零基础学习者的本地 Alpha。Python 是游戏内置主线；已有 20 关构成「序·幕：Byte 苏醒」，其中五个入门单元教授顺序执行、输出、变量、输入、条件、for、while 和基础累加。每关提供中文讲解、注释示例与三级提示，穿插独立 Python 练习与不同输入测试。第一幕、第二幕为后续正式冒险，当前明确标注为规划内容。
+本仓库只维护 Windows EXE 桌面版。这是面向零基础学习者的本地 Alpha。Python 是游戏内置主线；已有 20 关构成「序·幕：Byte 苏醒」，其中五个入门单元教授顺序执行、输出、变量、输入、条件、for、while 和基础累加。每关提供中文讲解、注释示例与三级提示，穿插独立 Python 练习与不同输入测试。第一幕「校园救援」新增40关：集结广场、广播站、物资仓库、维修工坊。第二幕「信号迷城」和第三幕「程序工具箱」各40关也已加入本地源码，共140关。
 
 Python 网页版独立维护在 `YzWushao/codebound_web`，本地目录为 `D:/Desktop/codebound_web`。两个项目分别安装依赖、构建和发布。
 
 ## 开始
 
-Windows 安装包请到 [GitHub Releases](https://github.com/YzWushao/Codebound/releases) 下载。当前版本为 `0.1.0-alpha.2`，无需另装 Python 或 Node.js。
+Windows 安装包请到 [GitHub Releases](https://github.com/YzWushao/Codebound/releases) 下载。本次发行版本为 `0.1.0-alpha.3`（免安装ZIP），无需另装 Python 或 Node.js。
 
 本仓库同时提供源码。开发需要 Node.js 22.12+，在 Windows 上克隆后启动桌面版：
 
@@ -57,10 +57,12 @@ config/repository.json GitHub 来源配置
 
 ## 验证
 
-`npm test` 使用本机 Python 3 与真实 Pyodide 执行同一游戏桥，检查 20 关参考答案、输入变式、错误行号、循环限制、存档协议与运行时完整性。EXE 内实际运行使用随程序打包的 Pyodide。
+`npm test` 使用本机 Python 3 与真实 Pyodide 执行同一游戏桥，检查全部140关参考答案、输入变式、错误行号、循环限制、存档协议与运行时完整性。EXE 内实际运行使用随程序打包的 Pyodide。
 
 如果源码启动时提示运行资源缺失或损坏，请重新执行 `npm ci` 与 `npm run dev`。如果仍然报错，请展开「查看运行器诊断」查看具体初始化信息；安装版请重新下载安装完整安装包。
 
 ## 依赖与许可
 
 依赖包括 Electron、CodeMirror、Lucide、Vite 与 Pyodide，分发时保留相应依赖许可。项目本身的发布许可由项目所有者决定。
+
+本地 Alpha.3 增加按幕选择、可收起侧栏与窗口自适应缩放，以及模块文件编辑、虚拟文件与JSON评分、档案快照。当前验证和限制见 [Alpha.3 QA](docs/ALPHA3-QA.md)。本次140关版本使用Windows免安装ZIP发行，完整解压后运行Codebound.exe；本地也可双击项目根目录Launch-Codebound.cmd。release目录里旧的60关Setup.exe不是本次发行文件。

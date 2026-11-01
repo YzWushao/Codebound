@@ -1,5 +1,5 @@
 export const SAVE_VERSION = 1;
-export const APP_VERSION = '0.1.0-alpha.2';
+export const APP_VERSION = '0.1.0-alpha.3';
 export function initialScene(level) {
   let player = { x: 1, y: 1 }; const batteries = [];
   level.map.forEach((row, y) => [...row].forEach((cell, x) => {
@@ -11,6 +11,15 @@ export function initialScene(level) {
 export function judge(level, result) {
   if (result.error) return { passed: false, message: result.error.message };
   const rules = level.rules;
+  if (rules.minAssertions && result.assertions < rules.minAssertions) return { passed: false, message: `请至少编写 ${rules.minAssertions} 条 assert，覆盖正常、边界和空结果。` };
+  for (const [name, value] of Object.entries(rules.files ?? {})) {
+    let matches = result.files?.[name] === value;
+    if (name.endsWith('.json')) {
+      const canonical = value => Array.isArray(value) ? value.map(canonical) : value && typeof value === 'object' ? Object.fromEntries(Object.keys(value).sort().map(key => [key, canonical(value[key])])) : value;
+      try { matches = JSON.stringify(canonical(JSON.parse(result.files?.[name]))) === JSON.stringify(canonical(JSON.parse(value))); } catch { matches = false; }
+    }
+    if (!matches) return { passed: false, message: `检查虚拟文件 ${name} 的内容，打印文字不能替代实际写入。` };
+  }
   const p = result.state.player;
   if (rules.atGoal && level.map[p.y]?.[p.x] !== 'G') return { passed: false, message: '程序运行完了，Byte 还没有抵达绿色传送点。再检查一下路线。' };
   if (rules.collected && result.state.collected < rules.collected) return { passed: false, message: `还需要收集电池：${result.state.collected} / ${rules.collected}。` };
@@ -19,21 +28,29 @@ export function judge(level, result) {
   for (const [key, value] of Object.entries(rules.variables ?? {})) {
     if (result.variables[key] !== value) return { passed: false, message: `检查变量 ${key}，它需要保存 ${value}。` };
   }
-  const labels = { For: 'for 循环', While: 'while 循环', If: 'if 判断', Assign: '变量赋值', BinOp: '算术运算', BoolOp: 'and / or 条件' };
+  const labels = { FunctionDef: '函数定义', Return: 'return 返回值', FloorDiv: '整除 //', Mod: '余数 %', Call: '函数调用', For: 'for 循环', While: 'while 循环', If: 'if 判断', Assign: '变量赋值', BinOp: '算术运算', BoolOp: 'and / or 条件' };
   for (const node of rules.nodes ?? []) {
     if (!result.nodes.includes(node)) return { passed: false, message: `结果已经接近了！本关请使用${labels[node] || node}，练习新学到的知识。` };
   }
+  if (rules.nodes?.includes('FunctionDef') && !result.calledFunctions?.length) return { passed: false, message: '函数已经定义了，请实际调用它来完成任务。' };
   if (result.checks?.some(check => !check.passed)) return { passed: false, message: '当前输入通过了，但换一组输入还没有通过。请让程序处理不同的数据，不要把答案写死。' };
   return { passed: true, message: '任务完成！你又点亮了校园的一角。' };
 }
 export function freshSave() {
-  return { schemaVersion: SAVE_VERSION, currentLevel: 'python.wake.001', completed: {}, drafts: {}, hints: {}, settings: { speed: 1, fontSize: 15, sound: false }, updatedAt: new Date().toISOString() };
+  return { schemaVersion: SAVE_VERSION, currentLevel: 'python.wake.001', completed: {}, drafts: {}, hints: {}, moduleDrafts: {}, projectFiles: {}, settings: { speed: 1, fontSize: 15, sound: false }, updatedAt: new Date().toISOString() };
 }
 export function normalizeSave(value, levelIds) {
   if (!value || value.schemaVersion !== SAVE_VERSION || typeof value !== 'object') throw new Error('存档格式或版本不支持。');
   const save = freshSave();
   if (levelIds.includes(value.currentLevel)) save.currentLevel = value.currentLevel;
   for (const id of levelIds) {
+    for (const field of ['moduleDrafts', 'projectFiles']) {
+      const files = value[field]?.[id];
+      if (files && typeof files === 'object' && !Array.isArray(files)) {
+        const safe = Object.fromEntries(Object.entries(files).filter(([name,text]) => /^[a-zA-Z0-9_-]+\.(py|txt|json)$/.test(name) && typeof text === 'string' && text.length <= 20000).slice(0, 12));
+        if (Object.keys(safe).length) save[field][id] = safe;
+      }
+    }
     if (value.completed?.[id]) save.completed[id] = { completedAt: String(value.completed[id].completedAt || ''), runs: Number(value.completed[id].runs) || 1 };
     if (typeof value.drafts?.[id] === 'string' && value.drafts[id].length <= 20000) save.drafts[id] = value.drafts[id];
     if (Number.isInteger(value.hints?.[id])) save.hints[id] = Math.max(0, Math.min(3, value.hints[id]));
@@ -44,7 +61,9 @@ export function normalizeSave(value, levelIds) {
 }
 export function canOpen(level, levels, save) {
   const index = levels.findIndex(item => item.id === level.id);
-  return index === 0 || Boolean(save.completed[level.id]) || Boolean(save.completed[levels[index - 1]?.id]);
+  let previous = index - 1;
+  while (previous >= 0 && levels[previous].optional) previous--;
+  return index >= 0 && (previous < 0 || Boolean(save.completed[level.id]) || Boolean(save.completed[levels[previous]?.id]));
 }
 export class LanguageRegistry {
   #runners = new Map();

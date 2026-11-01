@@ -1,7 +1,14 @@
 {
   "schemaVersion": 1,
-  "version": "0.1.0-alpha.2",
+  "version": "0.1.0-alpha.3",
   "channel": "alpha",
-  "notes": "Windows 安装包：20 关 Python 序幕；增加运行时资源完整性检查、标准库预加载及初始化错误诊断。",
-  "platforms": {}
+  "notes": "140关Python主线，三幕新内容、虚拟文件树、模块与JSON、侧栏收缩及窗口自动缩放。",
+  "platforms": {
+    "win32-x64": {
+      "url": "https://github.com/YzWushao/Codebound/releases/download/v0.1.0-alpha.3/Codebound-0.1.0-alpha.3-Windows-x64.zip",
+      "format": "zip",
+      "size": 161809815,
+      "sha256": "be9de363a06b69c337957bb682e8135b8433435dbae6b616c24f51aab82f1a40"
+    }
+  }
 }

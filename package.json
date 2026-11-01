@@ -1,8 +1,11 @@
 {
   "name": "codebound",
-  "version": "0.1.0-alpha.2",
+  "version": "0.1.0-alpha.3",
   "description": "Codebound Windows 桌面版 · 写下代码，开启下一关。",
-  "repository": { "type": "git", "url": "https://github.com/YzWushao/Codebound.git" },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YzWushao/Codebound.git"
+  },
   "private": true,
   "type": "module",
   "main": "desktop/main.cjs",
@@ -33,10 +36,33 @@
   "build": {
     "appId": "studio.codebound.game",
     "productName": "Codebound",
-    "directories": { "output": "release" },
-    "files": ["dist/**/*", "desktop/**/*", "config/**/*", "package.json"],
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "desktop/**/*",
+      "config/**/*",
+      "package.json"
+    ],
     "asar": true,
-    "win": { "target": [{ "target": "nsis", "arch": ["x64"] }], "icon": "build/icon.ico", "signExecutable": false },
-    "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true, "createDesktopShortcut": true, "artifactName": "Codebound-${version}-Setup.${ext}" }
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico",
+      "signExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "artifactName": "Codebound-${version}-Setup.${ext}"
+    }
   }
 }
