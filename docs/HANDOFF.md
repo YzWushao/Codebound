@@ -6,7 +6,7 @@
 
 用户已要求制作第一幕，并追加“第二、第三幕都做”；之后要求侧栏收起和主界面无需滚动、自动缩放。用户最新要求“打包、发布，给本地运行入口，不要安装包”，已替代之前的“先不生成”。本次交付免安装ZIP与本地游戏EXE入口。
 
-当前目录 D:/Desktop/codebound；发行代码提交af4aa243fbee073391988be297366b0861216335，标签v0.1.0-alpha.3，包含140关。源码与文档已推送，公开GitHub Release已发布Alpha.3免安装ZIP。
+当前工作区为 Codebound 仓库；发行代码提交af4aa243fbee073391988be297366b0861216335，标签v0.1.0-alpha.3，包含140关。源码与文档已推送，公开GitHub Release已发布Alpha.3免安装ZIP。
 
 ## 产品边界
 
@@ -49,4 +49,4 @@ release目录内较早生成的Alpha.3安装包只含当时的60关，不能作�
 
 当前发行目标：v0.1.0-alpha.3；验证与校验值见ALPHA3-QA.md和releases/0.1.0-alpha.3.md，实际发布状态以GitHub Release为准。
 
-发布结果（2026-11-01）：[https://github.com/YzWushao/Codebound/releases/tag/v0.1.0-alpha.3](https://github.com/YzWushao/Codebound/releases/tag/v0.1.0-alpha.3)，GitHub预发行，Release ID 430433063。ZIP为161809815字节，服务器SHA-256与本地一致。本地直接入口：release/win-unpacked/Codebound.exe，桌面快捷方式：D:/Desktop/Codebound Alpha.3.lnk。
+发布结果（2026-11-01）：[https://github.com/YzWushao/Codebound/releases/tag/v0.1.0-alpha.3](https://github.com/YzWushao/Codebound/releases/tag/v0.1.0-alpha.3)，GitHub预发行，Release ID 430433063。ZIP为161809815字节，服务器SHA-256与本地一致。本地直接入口：release/win-unpacked/Codebound.exe，也可使用桌面游戏快捷方式。

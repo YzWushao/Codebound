@@ -15,7 +15,8 @@
     "build": "node scripts/prepare-runtime.mjs && node scripts/build-icon.mjs && vite build",
     "desktop": "electron .",
     "package:win": "npm run build && electron-builder --win --publish never",
-    "test": "node --test tests/*.test.mjs"
+    "test": "node scripts/check-public-paths.mjs && node --test tests/*.test.mjs",
+    "check:public-paths": "node scripts/check-public-paths.mjs"
   },
   "dependencies": {
     "@codemirror/autocomplete": "^6.18.0",

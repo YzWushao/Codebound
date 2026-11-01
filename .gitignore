@@ -7,4 +7,5 @@ public/runtime/
 .env*
 !.env.example
 test-results/
+.local/
 __pycache__/

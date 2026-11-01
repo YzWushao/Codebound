@@ -2,7 +2,7 @@
 
 ## 产品范围
 
-- 本仓库仅维护 Windows EXE。Python 网页版独立维护在 `YzWushao/codebound_web`，本地相邻目录为 `D:/Desktop/codebound_web`。
+- 本仓库仅维护 Windows EXE。Python 网页版独立维护在 `YzWushao/codebound_web`。
 - Python 不属于 DLC；新增 Python 关卡、素材与程序修复随本体版本发行。
 - 其他语言作为独立 DLC，源文件放在同一仓库的 `dlc/<language-id>/` 下，预留包格式和运行器接口。
 - 本体与 DLC 分别读取发行清单，后续对接 GitHub 发行包；Alpha 不执行未签名的远程安装。
