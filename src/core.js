@@ -37,11 +37,12 @@ export function judge(level, result) {
   return { passed: true, message: '任务完成！你又点亮了校园的一角。' };
 }
 export function freshSave() {
-  return { schemaVersion: SAVE_VERSION, currentLevel: 'python.wake.001', completed: {}, drafts: {}, hints: {}, moduleDrafts: {}, projectFiles: {}, settings: { speed: 1, fontSize: 15, sound: false }, updatedAt: new Date().toISOString() };
+  return { schemaVersion: SAVE_VERSION, currentLevel: 'python.wake.001', completed: {}, unlockedLevels: [], drafts: {}, hints: {}, moduleDrafts: {}, projectFiles: {}, settings: { speed: 1, fontSize: 15, sound: false }, updatedAt: new Date().toISOString() };
 }
 export function normalizeSave(value, levelIds) {
   if (!value || value.schemaVersion !== SAVE_VERSION || typeof value !== 'object') throw new Error('存档格式或版本不支持。');
   const save = freshSave();
+  if (Array.isArray(value.unlockedLevels)) save.unlockedLevels = levelIds.filter(id => value.unlockedLevels.includes(id));
   if (levelIds.includes(value.currentLevel)) save.currentLevel = value.currentLevel;
   for (const id of levelIds) {
     for (const field of ['moduleDrafts', 'projectFiles']) {
@@ -63,7 +64,7 @@ export function canOpen(level, levels, save) {
   const index = levels.findIndex(item => item.id === level.id);
   let previous = index - 1;
   while (previous >= 0 && levels[previous].optional) previous--;
-  return index >= 0 && (previous < 0 || Boolean(save.completed[level.id]) || Boolean(save.completed[levels[previous]?.id]));
+  return index >= 0 && (save.unlockedLevels?.includes(level.id) || previous < 0 || Boolean(save.completed[level.id]) || Boolean(save.completed[levels[previous]?.id]));
 }
 export class LanguageRegistry {
   #runners = new Map();

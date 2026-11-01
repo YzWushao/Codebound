@@ -55,6 +55,18 @@ test('排序挑战可跳过，不阻断第二幕后续关卡',()=>{
  save.completed[before.id]={runs:1};
  assert.equal(canOpen(levels.find(l=>l.id==='python.control.001'),levels,save),true);
 });
+test('全部解锁保留真实通关进度，忽略未知关卡并兼容旧存档',()=>{
+ const save=freshSave(); save.unlockedLevels=[...levels.map(l=>l.id),'unknown.level'];
+ save.drafts[levels[0].id]='# 保留草稿';save.hints[levels[0].id]=2;
+ const restored=normalizeSave(save,levels.map(l=>l.id));
+ assert.equal(restored.unlockedLevels.length,140);
+ assert.equal(Object.keys(restored.completed).length,0);
+ assert.equal(restored.drafts[levels[0].id],'# 保留草稿');
+ assert.equal(restored.hints[levels[0].id],2);
+ assert.ok(levels.every(l=>canOpen(l,levels,restored)));
+ const old={...save};delete old.unlockedLevels;
+ assert.deepEqual(normalizeSave(old,levels.map(l=>l.id)).unlockedLevels,[]);
+});
 test('虚拟文件检查拒绝只打印，JSON接受不同排版',()=>{
  const file=levels.find(l=>l.id==='python.files.003');
  assert.equal(judge(file,run('print(\"\")',file)).passed,false);

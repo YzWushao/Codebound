@@ -9,7 +9,7 @@ const profile=fs.mkdtempSync(path.join(os.tmpdir(),'codebound-qa-'));
 const campaign=require('../content/python/campaign.json');
 app.setPath('userData',profile);
 app.getAppPath=()=>appRoot;
-fs.writeFileSync(path.join(profile,'progress.v1.json'),JSON.stringify({schemaVersion:1,currentLevel:'python.assembly.001',completed:Object.fromEntries(campaign.levels.map(l=>[l.id,{runs:1}])),drafts:{},hints:{},settings:{speed:4,fontSize:15}}));
+fs.writeFileSync(path.join(profile,'progress.v1.json'),JSON.stringify({schemaVersion:1,currentLevel:'python.assembly.001',completed:{},unlockedLevels:campaign.levels.map(l=>l.id),drafts:{},hints:{},settings:{speed:4,fontSize:15}}));
 const timer=setTimeout(()=>{console.error('Desktop smoke timeout');app.exit(1);},30000);
 app.on('browser-window-created',(_,win)=>{
  win.webContents.once('did-finish-load',async()=>{
