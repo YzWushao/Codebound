@@ -32,3 +32,7 @@ build/installer.nsh 通过 NSIS 自定义钩子扩展现有 assisted installer�
 - 测试安装已卸载，独立注册项已清理；真实玩家存档哈希保持不变。
 
 当前用户作用域已进行真实安装与升级测试。系统级安装/UAC、两种作用域共存及跨用户账户路径已审阅并编译，尚未进行完整管理员账户回归。应用内自动下载更新不属于此入口；当前用法为下载新版 Setup.exe 后运行。
+
+## 发行结果
+
+Alpha.4已发布至 https://github.com/YzWushao/Codebound/releases/tag/v0.1.0-alpha.4 。Setup.exe大小128781000字节，SHA-256为9d59430775c560652787fa5c16b0fe403668f41333fc081ab19131ff906bcfe2，GitHub服务端摘要与本地一致。附件保留SHA256SUMS.txt，Release正文只保留用户需要的更新内容和运行方式。
