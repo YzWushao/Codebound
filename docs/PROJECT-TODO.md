@@ -6,7 +6,7 @@
 
 ## 使用与状态
 
-- [x] 已有游戏基线：Alpha.2、序幕 20 关（历史实现状态，本轮未重新运行游戏测试）。
+- [x] 已有游戏基线：Alpha.2、序幕 20 关（历史实现状态；本轮已重新运行158项检查并通过）。
 - [x] 完成新版课程设计文件：140 关清单，新增 120 关已实现，待完整验收。
 - [x] 保存旧版 100 关设计稿到 archive/CURRICULUM-ROADMAP-v1.md。
 - [x] 建立本 TODO 总表，并同步交接摘要与新会话提示。
@@ -333,7 +333,7 @@ A01～A08 是模板，制作每关时复制为该关验收记录；此处的勾�
 
 - [ ] I01 后续每次制作完成后更新本表，仅勾选有验收记录的事项。
 - [ ] I02 同步 HANDOFF.md 的最新基线、完成范围、未解决问题和下一步。
-- [ ] I03 在适当提交中保存规划及 TODO，并按用户当时要求推送；当前这些新文档仅在本机。
+- [ ] I03 在适当提交中保存规划及 TODO，并按用户当时要求推送；当前这些文档已随本轮源码推送。
 - [ ] I04 跨电脑备份时包含未提交的 docs 文件及 archive，不只携带远程仓库地址。
 - [ ] I05 备份后核对课程清单、TODO、交接摘要与续接提示能被打开且无遗漏。
 - [ ] I06 阶段发行时保留对应课程方案和 TODO 快照，便于回溯版本。
@@ -342,3 +342,5 @@ A01～A08 是模板，制作每关时复制为该关验收记录；此处的勾�
 
 
 当前发行目标：v0.1.0-alpha.3；验证与校验值见ALPHA3-QA.md和releases/0.1.0-alpha.3.md，实际发布状态以GitHub Release为准。
+
+发布结果（2026-11-01）：[https://github.com/YzWushao/Codebound/releases/tag/v0.1.0-alpha.3](https://github.com/YzWushao/Codebound/releases/tag/v0.1.0-alpha.3)，GitHub预发行，Release ID 430433063。ZIP为161809815字节，服务器SHA-256与本地一致。本地直接入口：release/win-unpacked/Codebound.exe，桌面快捷方式：D:/Desktop/Codebound Alpha.3.lnk。

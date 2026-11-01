@@ -42,3 +42,5 @@
 release/ 内较早生成的Alpha.3 Setup安装包仅含当时60关，本次不上传该旧文件。本次交付 Codebound-0.1.0-alpha.3-Windows-x64.zip，161809815字节，SHA-256为be9de363a06b69c337957bb682e8135b8433435dbae6b616c24f51aab82f1a40。
 
 重新运行158项自动检查通过。使用 --packaged 冒烟入口加载实际app.asar的主进程、preload与内嵌资源，文件树交互、真实Worker及三个窗口尺寸通过。启动入口为release/win-unpacked/Codebound.exe；项目根目录Launch-Codebound.cmd可直接启动该文件。
+
+发布结果（2026-11-01）：[https://github.com/YzWushao/Codebound/releases/tag/v0.1.0-alpha.3](https://github.com/YzWushao/Codebound/releases/tag/v0.1.0-alpha.3)，GitHub预发行，Release ID 430433063。ZIP为161809815字节，服务器SHA-256与本地一致。本地直接入口：release/win-unpacked/Codebound.exe，桌面快捷方式：D:/Desktop/Codebound Alpha.3.lnk。

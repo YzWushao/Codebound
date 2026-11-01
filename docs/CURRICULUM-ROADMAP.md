@@ -6,7 +6,7 @@
 
 ## 当前状态与范围
 
-- 当前游戏基线：0.1.0-alpha.2；已实现序幕 20 关。
+- 当前发行版本：0.1.0-alpha.3；共140关，源码与文档已推送，免安装ZIP已发布。
 - 新版提出 140 关主线：序幕 20 + 第一幕 40 + 第二幕 40 + 第三幕 40，新增 120 关已实现，待完整试玩与发行验收。
 - 140 是本次设计建议，不是引擎固定容量，也不表示用户已逐关确认标题和难度。
 - 第一版 100 关方案归档为 [历史 v1](archive/CURRICULUM-ROADMAP-v1.md)。新版替代旧版的制作顺序和展示编号；旧游戏的关卡 ID 不变。
@@ -357,9 +357,11 @@ Python 是本体内置主线，随 Windows EXE 更新；其他语言作为独立
 
 ## 备份与接续
 
-本轮以本地 Markdown 文档作为交付，按用户最新指令准备提交、推送并发行免安装版本。复制整个项目时应包含 docs 目录与未跟踪文件；仅克隆远程仓库不会获得这些本地新文档。
+本轮文档和源码已提交推送，Alpha.3免安装版已发布。复制整个项目时应包含 docs 目录与未跟踪文件；仅克隆远程仓库不会获得这些本地新文档。
 
 进入新会话先读取 AGENTS.md、HANDOFF.md、CURRICULUM-ROADMAP.md、PROJECT-TODO.md，并检查 Git 状态。以用户最新要求确定是继续设计还是开始制作。
 
 
 当前发行目标：v0.1.0-alpha.3；验证与校验值见ALPHA3-QA.md和releases/0.1.0-alpha.3.md，实际发布状态以GitHub Release为准。
+
+发布结果（2026-11-01）：[https://github.com/YzWushao/Codebound/releases/tag/v0.1.0-alpha.3](https://github.com/YzWushao/Codebound/releases/tag/v0.1.0-alpha.3)，GitHub预发行，Release ID 430433063。ZIP为161809815字节，服务器SHA-256与本地一致。本地直接入口：release/win-unpacked/Codebound.exe，桌面快捷方式：D:/Desktop/Codebound Alpha.3.lnk。
