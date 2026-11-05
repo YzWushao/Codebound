@@ -18,7 +18,8 @@ def run_case(code, level):
                            for x, char in enumerate(row) if char == "B"]}
     current_line, ticks, actions = 0, 0, 0
     variables, namespace = {}, {}
-    called_functions = set()
+    called_functions, recursive_functions, instance_classes = set(), set(), set()
+    student_class_names = set()
     inputs = iter(level.get("input", []))
     files = dict(level.get('dataFiles', {}))
     module_sources = dict(level.get('modules', {}))
@@ -33,15 +34,25 @@ def run_case(code, level):
             event["text"] = text
         events.append(event)
 
-    def collect_variables(frame):
+    def collect_values(values):
         variables.clear()
-        for name, value in frame.f_locals.items():
+        for name, value in values.items():
             if name.startswith("_") or name == "robot":
                 continue
             if type(value) in (int, float, str, bool, type(None)):
                 variables[name] = str(value)[:120] if type(value) is str else value
             elif type(value) in (list, tuple, dict, set) and len(value) <= 20:
                 variables[name] = repr(value)[:120]
+            elif type(value).__name__ in student_class_names:
+                instance_classes.add(type(value).__name__)
+                attributes = object.__getattribute__(value, '__dict__')
+                visible = []
+                for key, item in attributes.items():
+                    if not key.startswith('_') and type(item) in (int, float, str, bool, type(None), list, dict, tuple):
+                        visible.append(key + '=' + repr(item)[:60])
+                    if len(visible) >= 6:
+                        break
+                variables[name] = (type(value).__name__ + '(' + ', '.join(visible) + ')')[:160]
             if len(variables) >= 16:
                 break
 
@@ -51,12 +62,18 @@ def run_case(code, level):
             return trace
         if event == 'call' and frame.f_code.co_name != '<module>':
             called_functions.add(frame.f_code.co_name)
+            ancestor = frame.f_back
+            while ancestor is not None:
+                if ancestor.f_code is frame.f_code:
+                    recursive_functions.add(frame.f_code.co_name)
+                    break
+                ancestor = ancestor.f_back
         if event == "line":
             ticks += 1
             if ticks > 3000:
                 raise RuntimeError("执行步骤太多：请检查循环的结束条件，或缩小循环次数。")
             current_line = frame.f_lineno
-            collect_variables(frame)
+            collect_values(frame.f_locals)
             snapshot("line")
         return trace
 
@@ -117,7 +134,10 @@ def run_case(code, level):
                 module = types.ModuleType(name)
                 module.__dict__['__builtins__'] = student_builtins
                 module_cache[name] = module
-                exec(compile(module_sources[name + '.py'], '<student:' + name + '.py>', 'exec'), module.__dict__)
+                filename = '<student:' + name + '.py>'
+                module_tree = ast.parse(module_sources[name + '.py'], filename=filename)
+                student_class_names.update(node.name for node in ast.walk(module_tree) if isinstance(node, ast.ClassDef))
+                exec(compile(module_tree, filename, 'exec'), module.__dict__)
             return module_cache[name]
         if name not in ('math', 'random', 'json'):
             raise ImportError('本课程可使用 math、random、json 和工作区里的模块。')
@@ -186,6 +206,7 @@ def run_case(code, level):
         if len(code) > 20000:
             raise ValueError("代码超过 20000 字符，请先缩短代码。")
         tree = ast.parse(code, filename="<student>")
+        student_class_names.update(node.name for node in ast.walk(tree) if isinstance(node, ast.ClassDef))
         nodes = list({type(node).__name__ for node in ast.walk(tree)})
         sys.settrace(trace)
         exec(compile(tree, "<student>", "exec"), namespace, namespace)
@@ -214,22 +235,23 @@ def run_case(code, level):
         elif isinstance(exc, KeyError):
             message = '字典里没有这个键。先用 in 检查，或使用 get 提供默认值。'
         elif isinstance(exc, AttributeError):
-            message = "没有找到这个动作或属性。检查 right、left、up、down、collect、charge 的拼写。"
+            message = "没有找到这个属性或方法。检查对象和名称的拼写，并确认属性已先赋值。机器人动作包括 right、left、up、down、collect、charge。"
         elif isinstance(exc, TypeError):
             message = "数据类型或参数不合适。检查数字和文字是否混用，以及函数参数是否正确。"
         elif isinstance(exc, ZeroDivisionError):
             message = "除数不能是 0。先检查参与运算的数字。"
+        elif isinstance(exc, RecursionError):
+            message = "递归调用太深了。检查是否写了结束条件，以及每次调用是否更接近结束条件。"
         else:
             message = detail or "程序提前结束了，请检查代码。"
         error = {"line": line, "file": error_file, "type": kind, "message": message, "detail": detail[:600]}
     finally:
         sys.settrace(None)
-    for name, value in namespace.items():
-        if not name.startswith("_") and name not in ("robot", "print", "input") and type(value) in (int, float, str, bool, type(None)):
-            variables[name] = str(value)[:120] if type(value) is str else value
+    collect_values(namespace)
     snapshot("end")
     return {"state": state, "events": events, "output": "".join(output),
-            "variables": variables, "nodes": nodes, "assertions": sum(isinstance(node, ast.Assert) for node in ast.walk(tree)) if error is None else 0, "files": files, "calledFunctions": sorted(called_functions), "error": error}
+            "variables": variables, "nodes": nodes, "assertions": sum(isinstance(node, ast.Assert) for node in ast.walk(tree)) if error is None else 0, "files": files, "calledFunctions": sorted(called_functions),
+            "recursiveFunctions": sorted(recursive_functions), "instanceClasses": sorted(instance_classes), "error": error}
 
 
 def execute_request(request_json):
@@ -253,13 +275,13 @@ def execute_request(request_json):
                 valid = valid and checked['state']['collected'] >= rules['collected']
             for name, expected in case.get('files', rules.get('files', {})).items():
                 actual = checked['files'].get(name)
-                if name.endswith('.json'):
+                matches = actual == expected
+                if name.endswith('.json') and not matches:
                     try:
-                        valid = valid and json.loads(actual) == json.loads(expected)
+                        matches = json.loads(actual) == json.loads(expected)
                     except (ValueError, TypeError):
-                        valid = False
-                else:
-                    valid = valid and actual == expected
+                        matches = False
+                valid = valid and matches
             result["checks"].append({"passed": valid,
                                      "expected": case.get('output', ''), "actual": checked['output'],
                                      "error": checked["error"]})

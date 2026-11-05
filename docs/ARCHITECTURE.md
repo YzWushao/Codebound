@@ -1,42 +1,48 @@
-# Codebound Alpha 的内容与扩展约定
+# Codebound 内容与扩展约定
 
-## 产品范围
+更新：2026-11-05。开发版Alpha.5含180关，最近已发行Alpha.4含140关。
 
-- 本仓库仅维护 Windows EXE。Python 网页版独立维护在 `YzWushao/codebound_web`。
-- Python 不属于 DLC；新增 Python 关卡、素材与程序修复随本体版本发行。
-- 其他语言作为独立 DLC，源文件放在同一仓库的 `dlc/<language-id>/` 下，预留包格式和运行器接口。
-- 本体与 DLC 分别读取发行清单，后续对接 GitHub 发行包；Alpha 不执行未签名的远程安装。
-- EXE 内置关卡、Python 运行时与资源均落地本机。进度和草稿独立存储，可导出迁移。
-- 桌面资源采用 `codebound://app/`，不启动本地 HTTP 服务，不需要为 Python / Node 开放公网入站。
+## 产品与教学层级
 
-## 教学层级
+本仓库仅维护Windows EXE。Python是内置主线，新增Python课程、素材与修复随本体发行；网页独立维护在YzWushao/codebound_web。
 
-`Python 主线 → 幕 → 入门单元 / 任务区域 → 关卡`
+Python主线 → 幕 → 入门单元/任务区域 → 关卡。
 
-已有 20 关归入「序·幕：Byte 苏醒」。五组基础知识是序幕里的入门单元，每组四个短关卡，用于第一次接触语法。
+序幕五个单元各4关；第一、二、三幕与终幕各有四个区域、每区10关。已有180关均在课程数据中可用，完整真人试玩仍待完成。具体知识见[课程表](KNOWLEDGE-MAP.md)。
 
-后续第一幕「校园救援」、第二幕「信号迷城」目前为明确标注的规划入口，没有可游玩的关卡。正式幕将以更长的区域任务、练习、变式和综合挑战组织，不沿用每个章节固定四关的限制。预期一个区域 8～12 关，实际数量根据教学需要决定。
+幕导航、总览和进度按内容数据计算。固定关卡ID用于存档，新增幕不重置旧记录，也不把旧版全部解锁等同于新关卡完成。
 
-所有进度分母从内容数据计算。存档只依赖固定关卡 ID，不以关卡在列表中的位置作标识，因此新增幕和调整显示顺序不会重置已有进度。
+## 运行与判定
 
-## 接口
+- LanguageRegistry注册语言运行器，当前仅实现Python。
+- PythonRunner.run/stop/dispose管理独立Worker、超时与结果。
+- Worker初始化前校验运行资源大小和SHA-256；从已校验的内存副本加载标准库，失败时保留阶段与stderr诊断。
+- 游戏桥返回行号、变量、实例属性、动作、输出、文件和错误；实例属性显示只用于学习回放，不作为任意系统对象检查器。
+- 判定支持终点、收集、电量、输出、变量、AST教学构造、指定函数调用、真实递归、实例创建与文件结果。
+- 真实递归通过调用帧识别。主样例检查所学构造，输入变式继续检查输出、地图和文件；递归结束条件变式允许不发生进一步调用。
+- JSON文件优先接受完全相同的原文；内容不同但均合法时进行结构比较，因此既支持不同排版，也支持要求保留损坏JSON原文的练习。
+- 保留追踪3000行、150动作、650事件和6秒执行超时，课程使用小输入。
 
-- `LanguageRegistry`：注册语言运行器；Python 当前已实现。
-- `LanguageRunner.run(code, level, onStatus)`：返回统一的状态、行号、变量、输出、动作事件、错误和输入变式结果。
-- `LanguageRunner.stop / dispose`：停止与释放执行环境。
-- 关卡判定：检查终点、收集数、电量、输出、变量和教学要求；输入题运行多个数据案例。
-- 存档协议：`schemaVersion`、固定关卡 ID、完成记录、草稿、提示状态、设置与更新时间。
-- DLC 描述：`schemaVersion`、`id`、`language`、`version`、`engineApi`、`minAppVersion`、`entry`、`runtime`。
-- 更新源：`updates/app.json` 与 `updates/dlc.json` 独立维护。未来下载、签名验证、暂存、兼容检查与安装分别实现。
+## 模块、文件与存档
 
-## 发布
+math、random、json及工作区同目录模块可导入。模块源文件由隔离的执行请求提供，模块草稿可保存。
 
-本仓库构建 Windows EXE 与安装包。Electron 的内嵌界面继续使用 HTML、CSS、JavaScript、Worker 与 Pyodide；这些文件属于桌面源码。界面入口要求 Electron preload 接口，不能作为独立网页启动。Vite 只负责生成客户端内嵌资源，不在本仓库维护网页预览或网站部署流程。
+文件使用内存文本工作区，仅提供文件名和r/w/a模式、UTF-8编码。每次运行及变式独立，评分不读写任意系统路径。结果文件可保存成档案快照，但快照不自动注入评分输入。
 
-`codebound_web` 是独立的 Python 网页项目，分别维护依赖锁文件、课程副本、浏览器存储和网站构建。两个仓库不在构建时读取对方文件，后续课程改动需要按产品需要分别同步。Python 关卡 ID 与存档 schemaVersion 保持兼容，用户仍可通过 JSON 导入导出迁移进度。
+存档schemaVersion=1，保留固定ID、真实完成、解锁列表、草稿、提示、设置、模块草稿和档案快照。桌面通过受限IPC将progress.v1.json原子写入userData，渲染器缓存作为后备。
 
-运行组件通过 npm 锁定版本，构建时放入本仓库资源目录。
+## DLC与更新接口
 
-仓库 `YzWushao/Codebound` 已公开，维护桌面版源码、20 关 Python 序幕、DLC 接口及构建说明。依赖、运行时副本、日志和 EXE 编译产物不纳入源码提交，可通过锁文件安装与构建生成。Windows 安装包通过 GitHub Releases 分发，Alpha 标记为预发行版本；客户端不携带维护者的 GitHub 凭据，尚不自动下载或安装更新。
+其他语言源文件放在dlc/<language-id>/。描述字段包括schemaVersion、id、language、version、engineApi、minAppVersion、entry、runtime。Python不能注册为DLC。
 
-运行时准备脚本生成资源大小与 SHA-256 清单。Worker 在初始化前读取并验证分发文件，从已校验的内存副本加载标准库，同时保留初始化阶段与标准错误。失败详情在界面本地展开查看，不自动上传。
+updates/app.json与updates/dlc.json独立维护。应用清单仅指向实际已发布的安装包，开发版版本号不提前覆盖发行URL。
+
+Alpha.4安装器支持手动下载Setup.exe后的原位升级与修复，应用内自动下载、签名验证和失败恢复仍待完善。
+
+## 桌面发行
+
+Electron内嵌HTML/CSS/JavaScript、Worker与Pyodide由Vite构建，通过codebound://app/加载。入口要求preload，不能作为独立网页启动，也不启动本地HTTP服务。
+
+依赖、运行时副本、日志、玩家数据和编译产物不提交Git。机器专属记录放在被忽略的.local目录；公开资料使用仓库相对路径。客户端不携带维护者的GitHub凭据。
+
+当前终幕只更新源码与文档，未创建Alpha.5安装包或Release。完整测试与桌面验证见[终幕QA](FINALE-QA.md)，安装器历史验证见[安装QA](INSTALLER-QA.md)。

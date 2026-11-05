@@ -1,5 +1,5 @@
 export const SAVE_VERSION = 1;
-export const APP_VERSION = '0.1.0-alpha.4';
+export const APP_VERSION = '0.1.0-alpha.5';
 export function initialScene(level) {
   let player = { x: 1, y: 1 }; const batteries = [];
   level.map.forEach((row, y) => [...row].forEach((cell, x) => {
@@ -14,7 +14,7 @@ export function judge(level, result) {
   if (rules.minAssertions && result.assertions < rules.minAssertions) return { passed: false, message: `请至少编写 ${rules.minAssertions} 条 assert，覆盖正常、边界和空结果。` };
   for (const [name, value] of Object.entries(rules.files ?? {})) {
     let matches = result.files?.[name] === value;
-    if (name.endsWith('.json')) {
+    if (name.endsWith('.json') && !matches) {
       const canonical = value => Array.isArray(value) ? value.map(canonical) : value && typeof value === 'object' ? Object.fromEntries(Object.keys(value).sort().map(key => [key, canonical(value[key])])) : value;
       try { matches = JSON.stringify(canonical(JSON.parse(result.files?.[name]))) === JSON.stringify(canonical(JSON.parse(value))); } catch { matches = false; }
     }
@@ -28,11 +28,20 @@ export function judge(level, result) {
   for (const [key, value] of Object.entries(rules.variables ?? {})) {
     if (result.variables[key] !== value) return { passed: false, message: `检查变量 ${key}，它需要保存 ${value}。` };
   }
-  const labels = { FunctionDef: '函数定义', Return: 'return 返回值', FloorDiv: '整除 //', Mod: '余数 %', Call: '函数调用', For: 'for 循环', While: 'while 循环', If: 'if 判断', Assign: '变量赋值', BinOp: '算术运算', BoolOp: 'and / or 条件' };
+  const labels = { FunctionDef: '函数定义', ClassDef: 'class 类定义', Return: 'return 返回值', FloorDiv: '整除 //', Mod: '余数 %', Sub: '减法', Call: '函数调用', For: 'for 循环', While: 'while 循环', If: 'if 判断', Try: 'try / except 异常处理', With: 'with 文件管理', Assert: 'assert 测试', Import: 'import 导入', ImportFrom: 'from … import 导入', Assign: '变量赋值', BinOp: '算术运算', BoolOp: 'and / or 条件' };
   for (const node of rules.nodes ?? []) {
     if (!result.nodes.includes(node)) return { passed: false, message: `结果已经接近了！本关请使用${labels[node] || node}，练习新学到的知识。` };
   }
   if (rules.nodes?.includes('FunctionDef') && !result.calledFunctions?.length) return { passed: false, message: '函数已经定义了，请实际调用它来完成任务。' };
+  for (const name of rules.calledFunctions ?? []) {
+    if (!result.calledFunctions?.includes(name)) return { passed: false, message: '请实际调用 ' + name + ' 来完成本关任务。' };
+  }
+  for (const name of rules.recursiveFunctions ?? []) {
+    if (!result.recursiveFunctions?.includes(name)) return { passed: false, message: '本关请让 ' + name + ' 实际递归调用，练习结束条件与逐层返回。' };
+  }
+  for (const name of rules.instances ?? []) {
+    if (!result.instanceClasses?.includes(name)) return { passed: false, message: '请创建并使用 ' + name + ' 的实例，让对象保存本关数据。' };
+  }
   if (result.checks?.some(check => !check.passed)) return { passed: false, message: '当前输入通过了，但换一组输入还没有通过。请让程序处理不同的数据，不要把答案写死。' };
   return { passed: true, message: '任务完成！你又点亮了校园的一角。' };
 }

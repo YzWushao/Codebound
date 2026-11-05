@@ -1,7 +1,7 @@
 {
   "id": "python-main",
   "title": "重启校园",
-  "subtitle": "一台机器人，二十次改变。",
+  "subtitle": "从第一行代码，到独立完成远征。",
   "schemaVersion": 1,
   "acts": [
     {
@@ -55,6 +55,19 @@
         "exceptions",
         "modules",
         "files"
+      ]
+    },
+    {
+      "id": "finale",
+      "title": "终幕",
+      "name": "独立远征",
+      "status": "available",
+      "summary": "策略算法、递归、类与对象，最后完成可保存的救援项目。",
+      "units": [
+        "strategy",
+        "recursion",
+        "objects",
+        "expedition"
       ]
     }
   ],
@@ -125,57 +138,85 @@
     {
       "id": "archives",
       "title": "信号档案馆",
-      "subtitle": "字典与键值对",
+      "subtitle": "字典 · 映射 · 频次统计",
       "icon": "book-open",
       "color": "#73d4e6"
     },
     {
       "id": "patrol",
       "title": "巡检回廊",
-      "subtitle": "range 步长",
+      "subtitle": "循环控制 · 嵌套 · 二维列表",
       "icon": "grid-2x2",
       "color": "#c7ef7b"
     },
     {
       "id": "algorithms",
       "title": "算法实验室",
-      "subtitle": "手写最大值",
+      "subtitle": "查找 · 统计 · 去重 · 排序",
       "icon": "braces",
       "color": "#b7a2ff"
     },
     {
       "id": "control",
       "title": "城市控制台",
-      "subtitle": "元组",
+      "subtitle": "元组 · 集合 · 容器组合",
       "icon": "radio",
       "color": "#ffc779"
     },
     {
       "id": "debug",
       "title": "调试中心",
-      "subtitle": "输入输出与约束",
+      "subtitle": "任务拆解 · 追踪 · 测试",
       "icon": "bug",
       "color": "#73d4e6"
     },
     {
       "id": "exceptions",
       "title": "容错检查站",
-      "subtitle": "ValueError",
+      "subtitle": "异常处理 · 抛出 · 重试",
       "icon": "shield-check",
       "color": "#c7ef7b"
     },
     {
       "id": "modules",
       "title": "工具联络站",
-      "subtitle": "import",
+      "subtitle": "标准库 · 自定义模块 · 入口",
       "icon": "boxes",
       "color": "#b7a2ff"
     },
     {
       "id": "files",
       "title": "档案管理局",
-      "subtitle": "with open",
+      "subtitle": "文本文件 · JSON · 保存恢复",
       "icon": "folder-open",
+      "color": "#ffc779"
+    },
+    {
+      "id": "strategy",
+      "title": "策略指挥室",
+      "subtitle": "枚举 · 前缀和 · 二分",
+      "icon": "compass",
+      "color": "#73d4e6"
+    },
+    {
+      "id": "recursion",
+      "title": "递归信标塔",
+      "subtitle": "结束条件 · 调用 · 返回",
+      "icon": "radio-tower",
+      "color": "#c7ef7b"
+    },
+    {
+      "id": "objects",
+      "title": "机器人学院",
+      "subtitle": "类 · 实例 · 方法",
+      "icon": "bot",
+      "color": "#b7a2ff"
+    },
+    {
+      "id": "expedition",
+      "title": "远征控制室",
+      "subtitle": "验证 · 模块 · 毕业项目",
+      "icon": "flag",
       "color": "#ffc779"
     }
   ],
@@ -980,9 +1021,9 @@
       "type": "console",
       "brief": "校园救援 · 集结广场：Byte 需要你的帮助。",
       "goal": "输出总价",
-      "learn": "float(input()) 能读取小数。先转换再运算，文字相加会拼接。",
+      "learn": "float(input())能把输入文字转成小数。price表示单价，count表示数量，都是自定义变量名；price * count得到总价。先转换再运算，文字相加会拼接。",
       "example": "price = float('2.5')\nprint(price * 2)",
-      "starter": "price = float(input())\ncount = int(input())\n# 输出总价\n",
+      "starter": "price = float(input())  # price：单价，可以是小数\ncount = int(input())    # count：数量，是整数\n# 输出总价（单价 × 数量）\n",
       "hints": [
         "先把任务分成读取数据、处理和输出三个步骤，复习「示例与讲解」。",
         "float(input()) 能读取小数。先转换再运算，文字相加会拼接。",
@@ -6349,6 +6390,2334 @@
           }
         }
       ]
+    },
+    {
+      "id": "python.strategy.001",
+      "chapter": "strategy",
+      "title": "逐个尝试的策略",
+      "concept": "枚举与筛选",
+      "type": "console",
+      "brief": "终幕 · 策略指挥室：逐个尝试的策略。把已学工具用于新的远征任务。",
+      "goal": "读取n，输出1到n中所有3的倍数，保持递增顺序，使用列表格式。",
+      "learn": "枚举就是按顺序检查所有候选，再留下符合条件的项。本关候选为1到n，n为0到20的整数；n为0时结果为空。用取余检查是否为3的倍数。",
+      "example": "# 逐个检查1到6，留下偶数。\nchosen = []\nfor value in range(1, 7):\n    if value % 2 == 0:\n        chosen.append(value)\nprint(chosen)\n",
+      "starter": "n = int(input())\nchosen = []\n# 枚举1到n，留下3的倍数。\n\nprint(chosen)\n",
+      "hints": [
+        "先确定所有候选：1到n，range的结束值要写n+1。",
+        "用value % 3 == 0判断候选是否符合要求。",
+        "条件成立时chosen.append(value)，循环结束后统一打印列表。"
+      ],
+      "input": [
+        "10"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "[3, 6, 9]",
+        "nodes": [
+          "For",
+          "If"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "0"
+          ],
+          "output": "[]"
+        },
+        {
+          "input": [
+            "3"
+          ],
+          "output": "[3]"
+        },
+        {
+          "input": [
+            "2"
+          ],
+          "output": "[]"
+        }
+      ]
+    },
+    {
+      "id": "python.strategy.002",
+      "chapter": "strategy",
+      "title": "两块电池的搭档",
+      "concept": "双重枚举与不重复配对",
+      "type": "console",
+      "brief": "终幕 · 策略指挥室：两块电池的搭档。把已学工具用于新的远征任务。",
+      "goal": "第一行是空格分隔的整数（可为空），第二行是目标和。输出和等于目标的索引配对数量，每对只数一次。",
+      "learn": "两层循环可以检查两件物品的所有组合。用索引i和j，且j从i+1开始，可避免自己和自己配对，也避免重复。输入列表最多8项；相同数值在不同位置仍是不同电池。",
+      "example": "values = [2, 5, 8]\n# 每对索引只出现一次。\nfor i in range(len(values)):\n    for j in range(i + 1, len(values)):\n        print(i, j)\n",
+      "starter": "numbers = []\nfor text in input().split():\n    numbers.append(int(text))\ntarget = int(input())\ncount = 0\n# 枚举i < j的配对。\n\nprint(count)\n",
+      "hints": [
+        "配对按位置区分；外层选择第一块，内层只看它后面的电池。",
+        "内层使用range(i + 1, len(numbers))。",
+        "在两层循环内比较numbers[i] + numbers[j]与target，相等就让count加1。"
+      ],
+      "input": [
+        "1 2 3 4",
+        "5"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "2",
+        "nodes": [
+          "For",
+          "If"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "",
+            "5"
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "2 2 2",
+            "4"
+          ],
+          "output": "3"
+        },
+        {
+          "input": [
+            "4",
+            "8"
+          ],
+          "output": "0"
+        }
+      ]
+    },
+    {
+      "id": "python.strategy.003",
+      "chapter": "strategy",
+      "title": "按规则模拟电量",
+      "concept": "状态模拟与上下界",
+      "type": "console",
+      "brief": "终幕 · 策略指挥室：按规则模拟电量。把已学工具用于新的远征任务。",
+      "goal": "第一行是初始电量，第二行是各次电量变化。每次变化后将电量限制在0到100，输出最终电量。",
+      "learn": "模拟是按题目规则逐步更新状态。先应用本轮变化，再把电量限制在0到100之间。初始电量为0到100，变化最多10项，允许负数；第二行可以为空。",
+      "example": "energy = 95\nfor change in [10, -3]:\n    energy += change\n    if energy > 100:\n        energy = 100\n    if energy < 0:\n        energy = 0\nprint(energy)\n",
+      "starter": "energy = int(input())\nchanges = input().split()\n# 每轮先改变电量，再检查上下界。\n\nprint(energy)\n",
+      "hints": [
+        "变化的顺序不能交换；每一步处理完才进入下一步。",
+        "先energy += int(text)，再检查energy < 0或energy > 100。",
+        "低于0就改成0，高于100就改成100；最后只打印一次。"
+      ],
+      "input": [
+        "3",
+        "2 -8 4"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "4",
+        "nodes": [
+          "For",
+          "If"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "90",
+            "20 -5"
+          ],
+          "output": "95"
+        },
+        {
+          "input": [
+            "0",
+            ""
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "5",
+            "-5 100"
+          ],
+          "output": "100"
+        }
+      ]
+    },
+    {
+      "id": "python.strategy.004",
+      "chapter": "strategy",
+      "title": "提前记下累计量",
+      "concept": "前缀和",
+      "type": "console",
+      "brief": "终幕 · 策略指挥室：提前记下累计量。把已学工具用于新的远征任务。",
+      "goal": "读取一行整数，构建以0开头的前缀和列表并输出。",
+      "learn": "前缀和把从开头开始的累计量保存下来。prefix[0]为0，prefix[k]表示前k项的和，所以列表会比原数据多一项。输入最多10个整数，可为空。",
+      "example": "values = [4, 1]\nprefix = [0]\nfor value in values:\n    prefix.append(prefix[-1] + value)\nprint(prefix)  # [0, 4, 5]\n",
+      "starter": "numbers = []\nfor text in input().split():\n    numbers.append(int(text))\nprefix = [0]\n# 将新的累计和追加到prefix。\n\nprint(prefix)\n",
+      "hints": [
+        "保留prefix开头的0，它表示还没有取任何数据。",
+        "新累计和等于上一次累计和prefix[-1]加当前值。",
+        "每轮执行prefix.append(prefix[-1] + value)。"
+      ],
+      "input": [
+        "2 3 5"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "[0, 2, 5, 10]",
+        "nodes": [
+          "For"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            ""
+          ],
+          "output": "[0]"
+        },
+        {
+          "input": [
+            "4 -4"
+          ],
+          "output": "[0, 4, 0]"
+        }
+      ]
+    },
+    {
+      "id": "python.strategy.005",
+      "chapter": "strategy",
+      "title": "一减就能查区间",
+      "concept": "前缀和区间查询",
+      "type": "console",
+      "brief": "终幕 · 策略指挥室：一减就能查区间。把已学工具用于新的远征任务。",
+      "goal": "第一行是整数列表，第二行是left和right。先构建前缀和，再输出区间[left, right)的和。",
+      "learn": "区间采用左闭右开约定[left, right)，包含left，不包含right。区间和等于prefix[right] - prefix[left]。输入保证0 <= left <= right <= 数据长度，左右相等表示空区间。",
+      "example": "prefix = [0, 4, 5, 11]  # 对应[4, 1, 6]\nleft = 1\nright = 3\nprint(prefix[right] - prefix[left])  # 1 + 6\n",
+      "starter": "numbers = []\nfor text in input().split():\n    numbers.append(int(text))\nbounds = input().split()\nleft = int(bounds[0])\nright = int(bounds[1])\n# 构建prefix，再做一次减法。\n",
+      "hints": [
+        "prefix[k]保存前k项的和，先按上一关建立它。",
+        "前right项减去前left项，就只剩下需要的区间。",
+        "输出prefix[right] - prefix[left]；不要对空区间额外加一项。"
+      ],
+      "input": [
+        "2 3 5 7",
+        "1 3"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "8",
+        "nodes": [
+          "For",
+          "Sub"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "2 3 5 7",
+            "0 4"
+          ],
+          "output": "17"
+        },
+        {
+          "input": [
+            "2 3 5 7",
+            "2 2"
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "",
+            "0 0"
+          ],
+          "output": "0"
+        }
+      ]
+    },
+    {
+      "id": "python.strategy.006",
+      "chapter": "strategy",
+      "title": "有序信号折半找",
+      "concept": "二分查找",
+      "type": "console",
+      "brief": "终幕 · 策略指挥室：有序信号折半找。把已学工具用于新的远征任务。",
+      "goal": "第一行是递增整数列表（可为空），第二行是目标。使用while和中点缩小范围，输出索引，找不到输出-1。",
+      "learn": "二分查找要求数据已经有序。本关整数严格递增，最多15项。维护闭区间left到right，中点mid=(left+right)//2；太小时丢掉左半边，太大时丢掉右半边。未找到返回-1。",
+      "example": "values = [2, 6, 10]\nleft, right = 0, len(values) - 1\ntarget = 10\nwhile left <= right:\n    mid = (left + right) // 2\n    if values[mid] == target:\n        print(mid)\n        break\n    if values[mid] < target:\n        left = mid + 1\n    else:\n        right = mid - 1\n",
+      "starter": "numbers = []\nfor text in input().split():\n    numbers.append(int(text))\ntarget = int(input())\nleft, right = 0, len(numbers) - 1\nanswer = -1\n# 在闭区间中二分，找到后停止。\n\nprint(answer)\n",
+      "hints": [
+        "空列表的right是-1，循环会自然跳过。",
+        "mid=(left+right)//2；相等时记录答案并break。",
+        "太小时left=mid+1；太大时right=mid-1。每轮必须缩小范围。"
+      ],
+      "input": [
+        "1 3 5 7 9",
+        "7"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "3",
+        "nodes": [
+          "While",
+          "FloorDiv"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "",
+            "1"
+          ],
+          "output": "-1"
+        },
+        {
+          "input": [
+            "2",
+            "2"
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "1 3 5",
+            "6"
+          ],
+          "output": "-1"
+        }
+      ]
+    },
+    {
+      "id": "python.strategy.007",
+      "chapter": "strategy",
+      "title": "重复信号的第一处",
+      "concept": "二分查找左边界",
+      "type": "console",
+      "brief": "终幕 · 策略指挥室：重复信号的第一处。把已学工具用于新的远征任务。",
+      "goal": "读取有序列表和目标，使用二分输出目标第一次出现的索引。",
+      "learn": "非递减列表允许重复。找到目标后先记住mid，再继续去左边寻找更早的位置；因此相等时不能立即break。数据最多15项，找不到仍输出-1。",
+      "example": "values = [1, 4, 4, 8]\n# 已在索引2找到4，仍需继续检查它左边。\nanswer = 2\nright = 2 - 1\nprint(answer, right)\n",
+      "starter": "numbers = []\nfor text in input().split():\n    numbers.append(int(text))\ntarget = int(input())\nleft, right = 0, len(numbers) - 1\nanswer = -1\n# 相等时记住答案，并继续向左找。\n\nprint(answer)\n",
+      "hints": [
+        "保留answer=-1作为未找到的约定。",
+        "当前值大于或等于target时，都可以继续查左边。",
+        "相等就answer=mid，再right=mid-1；当前值太小则left=mid+1。"
+      ],
+      "input": [
+        "1 2 2 2 4",
+        "2"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "1",
+        "nodes": [
+          "While",
+          "FloorDiv"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "1 2 2 4",
+            "3"
+          ],
+          "output": "-1"
+        },
+        {
+          "input": [
+            "2 2 2",
+            "2"
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "",
+            "1"
+          ],
+          "output": "-1"
+        }
+      ]
+    },
+    {
+      "id": "python.strategy.008",
+      "chapter": "strategy",
+      "title": "修好不动的边界",
+      "concept": "二分终止条件修错",
+      "type": "console",
+      "brief": "终幕 · 策略指挥室：修好不动的边界。把已学工具用于新的远征任务。",
+      "goal": "修复起始代码中的边界更新，正确返回目标索引或-1。",
+      "learn": "二分每轮都必须排除已经检查过的mid。left=mid可能让区间不变。起始代码有一处边界错误；保留二分思路，修复它。输入严格递增，最多15项。",
+      "example": "left, right = 0, 1\nmid = (left + right) // 2\n# 中点太小时，应越过已经检查的mid。\nleft = mid + 1\nprint(left)\n",
+      "starter": "numbers = []\nfor text in input().split():\n    numbers.append(int(text))\ntarget = int(input())\nleft, right = 0, len(numbers) - 1\nanswer = -1\nwhile left <= right:\n    mid = (left + right) // 2\n    if numbers[mid] == target:\n        answer = mid\n        break\n    if numbers[mid] < target:\n        left = mid  # 修复这一行\n    else:\n        right = mid - 1\nprint(answer)\n",
+      "hints": [
+        "手算只剩两个位置时的mid，观察left有没有变化。",
+        "检查过且太小的mid不可能再是答案，要把它排除。",
+        "把left = mid改为left = mid + 1，右边界仍使用mid - 1。"
+      ],
+      "input": [
+        "2 4 6 8",
+        "8"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "3",
+        "nodes": [
+          "While",
+          "FloorDiv"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "2 4 6 8",
+            "1"
+          ],
+          "output": "-1"
+        },
+        {
+          "input": [
+            "5",
+            "5"
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "",
+            "0"
+          ],
+          "output": "-1"
+        }
+      ]
+    },
+    {
+      "id": "python.strategy.009",
+      "chapter": "strategy",
+      "title": "一次准备多次查询",
+      "concept": "前缀和复用",
+      "type": "console",
+      "brief": "终幕 · 策略指挥室：一次准备多次查询。把已学工具用于新的远征任务。",
+      "goal": "第一行是整数列表，第二行是查询次数q，之后每行是left和right。每行输出一次区间和。",
+      "learn": "同一组数据需要多次区间求和时，只建立一次prefix，再复用。数据最多10项，查询最多5次，区间仍为左闭右开，输入保证边界合法。",
+      "example": "prefix = [0, 3, 8]\nfor left, right in [(0, 2), (1, 2)]:\n    print(prefix[right] - prefix[left])\n",
+      "starter": "numbers = []\nfor text in input().split():\n    numbers.append(int(text))\nq = int(input())\n# 先构建prefix，再循环读取q次查询。\n",
+      "hints": [
+        "建立prefix的循环放在查询循环外面。",
+        "每次查询只读取一行，把两个片段转成整数。",
+        "在range(q)中输出prefix[right]-prefix[left]，不要重复建立累计表。"
+      ],
+      "input": [
+        "1 2 3 4",
+        "3",
+        "0 4",
+        "1 3",
+        "2 2"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "10\n5\n0",
+        "nodes": [
+          "For",
+          "Sub"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "",
+            "1",
+            "0 0"
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "2 -3 5",
+            "2",
+            "0 3",
+            "1 2"
+          ],
+          "output": "4\n-3"
+        },
+        {
+          "input": [
+            "1",
+            "0"
+          ],
+          "output": ""
+        }
+      ]
+    },
+    {
+      "id": "python.strategy.010",
+      "chapter": "strategy",
+      "title": "最佳补给计划",
+      "concept": "枚举最优方案",
+      "type": "console",
+      "brief": "终幕 · 策略指挥室：最佳补给计划。把已学工具用于新的远征任务。",
+      "goal": "定义best_value(budget)，用双重枚举返回最高总价值。读取预算后调用函数并输出结果。",
+      "learn": "A箱耗费3点预算、价值5；B箱耗费4点预算、价值7。枚举A箱数量，再枚举B箱数量，只比较不超预算的方案。预算为0到20，不要求恰好用完。best记录目前最高价值。",
+      "example": "# 先筛掉不合规方案，再更新当前最优值。\nbest = 0\nfor cost, value in [(2, 3), (5, 9)]:\n    if cost <= 3 and value > best:\n        best = value\nprint(best)\n",
+      "starter": "budget = int(input())\n# 定义best_value，再输出调用结果。\n",
+      "hints": [
+        "A最多budget//3箱，B最多budget//4箱，数量都从0开始。",
+        "两层循环内先检查a*3+b*4<=budget。",
+        "合法方案的价值是a*5+b*7；更大时更新best，最后return best。"
+      ],
+      "input": [
+        "10"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "17",
+        "nodes": [
+          "FunctionDef",
+          "For",
+          "If"
+        ],
+        "calledFunctions": [
+          "best_value"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "0"
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "6"
+          ],
+          "output": "10"
+        },
+        {
+          "input": [
+            "7"
+          ],
+          "output": "12"
+        }
+      ]
+    },
+    {
+      "id": "python.recursion.001",
+      "chapter": "recursion",
+      "title": "信标会呼叫自己",
+      "concept": "递归与结束条件",
+      "type": "console",
+      "brief": "终幕 · 递归信标塔：信标会呼叫自己。把已学工具用于新的远征任务。",
+      "goal": "定义down(n)，递归逐行输出n到0；读取整数后调用。",
+      "learn": "递归就是函数调用自己。必须先写结束条件，再让每次调用更接近它。本关n为0到8；先输出n，若n为0就return，否则调用down(n-1)。",
+      "example": "def ping(n):\n    print(n)\n    if n == 0:\n        return\n    ping(n - 1)\nping(2)\n",
+      "starter": "n = int(input())\n# down中先输出，再判断是否结束，最后调用自己。\n",
+      "hints": [
+        "从down(0)开始想：它输出0后就应结束。",
+        "n大于0时，接下来交给down(n-1)。",
+        "函数里先print(n)，if n==0就return，否则down(n-1)；主程序调用down(n)。"
+      ],
+      "input": [
+        "3"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "3\n2\n1\n0",
+        "nodes": [
+          "FunctionDef",
+          "If"
+        ],
+        "calledFunctions": [
+          "down"
+        ],
+        "recursiveFunctions": [
+          "down"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "0"
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "1"
+          ],
+          "output": "1\n0"
+        }
+      ]
+    },
+    {
+      "id": "python.recursion.002",
+      "chapter": "recursion",
+      "title": "一层带回一个答案",
+      "concept": "递归返回值",
+      "type": "console",
+      "brief": "终幕 · 递归信标塔：一层带回一个答案。把已学工具用于新的远征任务。",
+      "goal": "定义递归函数sum_to(n)，返回1到n的和，主程序输出返回值。",
+      "learn": "sum_to(0)=0；sum_to(n)可分解为n+sum_to(n-1)。函数要把下一层返回的数继续参与计算并返回。n为0到12，不能只打印中间值。",
+      "example": "def count(n):\n    if n == 0:\n        return 0\n    return 1 + count(n - 1)\nprint(count(3))\n",
+      "starter": "n = int(input())\n# sum_to(0)返回0，其余返回n加下一层结果。\n",
+      "hints": [
+        "结束条件必须返回数值0。",
+        "把规模为n的问题变成n-1的问题。",
+        "递归分支写return n + sum_to(n-1)，最后print(sum_to(n))。"
+      ],
+      "input": [
+        "4"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "10",
+        "nodes": [
+          "FunctionDef",
+          "Return"
+        ],
+        "calledFunctions": [
+          "sum_to"
+        ],
+        "recursiveFunctions": [
+          "sum_to"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "0"
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "1"
+          ],
+          "output": "1"
+        },
+        {
+          "input": [
+            "6"
+          ],
+          "output": "21"
+        }
+      ]
+    },
+    {
+      "id": "python.recursion.003",
+      "chapter": "recursion",
+      "title": "层层相乘的密码",
+      "concept": "递归阶乘",
+      "type": "console",
+      "brief": "终幕 · 递归信标塔：层层相乘的密码。把已学工具用于新的远征任务。",
+      "goal": "编写递归factorial(n)，返回n的阶乘并输出。",
+      "learn": "阶乘n!表示从1乘到n，约定0!=1。递归关系为factorial(n)=n*factorial(n-1)，结束时应返回1，不能返回0。输入n为0到7。",
+      "example": "# 乘法任务的结束值常用1。\ndef product_to(n):\n    if n == 0:\n        return 1\n    return n * product_to(n - 1)\nprint(product_to(3))\n",
+      "starter": "n = int(input())\n# 注意factorial(0)应返回什么。\n",
+      "hints": [
+        "先确定0的答案：阶乘约定为1。",
+        "n大于0时，当前n乘以下一层的结果。",
+        "结束分支return 1，递归分支return n * factorial(n-1)。"
+      ],
+      "input": [
+        "4"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "24",
+        "nodes": [
+          "FunctionDef",
+          "Return"
+        ],
+        "calledFunctions": [
+          "factorial"
+        ],
+        "recursiveFunctions": [
+          "factorial"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "0"
+          ],
+          "output": "1"
+        },
+        {
+          "input": [
+            "1"
+          ],
+          "output": "1"
+        },
+        {
+          "input": [
+            "6"
+          ],
+          "output": "720"
+        }
+      ]
+    },
+    {
+      "id": "python.recursion.004",
+      "chapter": "recursion",
+      "title": "返回路上点亮灯",
+      "concept": "递归调用前后顺序",
+      "type": "console",
+      "brief": "终幕 · 递归信标塔：返回路上点亮灯。把已学工具用于新的远征任务。",
+      "goal": "使用递归rise(n)逐行输出1到n，n为0时不输出。",
+      "learn": "把print放在递归调用后，会先完成更小问题，再返回打印。n为0到8；n=0不输出，其他情况先调用rise(n-1)，再输出n。",
+      "example": "def unwind(n):\n    if n == 0:\n        return\n    unwind(n - 1)\n    print('返回', n)\nunwind(2)\n",
+      "starter": "n = int(input())\n# 先递归处理更小的数，再输出当前n。\n",
+      "hints": [
+        "想得到递增顺序，要让较小的数先输出。",
+        "if n==0时return，其余先rise(n-1)。",
+        "print(n)放在rise(n-1)的下一行，而不是前面。"
+      ],
+      "input": [
+        "3"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "1\n2\n3",
+        "nodes": [
+          "FunctionDef",
+          "If"
+        ],
+        "calledFunctions": [
+          "rise"
+        ],
+        "recursiveFunctions": [
+          "rise"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "0"
+          ],
+          "output": ""
+        },
+        {
+          "input": [
+            "1"
+          ],
+          "output": "1"
+        },
+        {
+          "input": [
+            "4"
+          ],
+          "output": "1\n2\n3\n4"
+        }
+      ]
+    },
+    {
+      "id": "python.recursion.005",
+      "chapter": "recursion",
+      "title": "沿清单继续求和",
+      "concept": "递归处理列表",
+      "type": "console",
+      "brief": "终幕 · 递归信标塔：沿清单继续求和。把已学工具用于新的远征任务。",
+      "goal": "定义total(items, index)，递归求列表从index开始的和，主程序调用total(numbers, 0)并输出。",
+      "learn": "用索引index表示接下来要处理的位置。index等于列表长度时没有剩余项，返回0；否则把当前元素加上下一位置的结果。列表最多8项，可为空。",
+      "example": "def remaining(items, index):\n    if index == len(items):\n        return 0\n    return 1 + remaining(items, index + 1)\nprint(remaining(['A', 'B'], 0))\n",
+      "starter": "numbers = []\nfor text in input().split():\n    numbers.append(int(text))\n# 定义total(items, index)，从索引0开始处理。\n",
+      "hints": [
+        "结束条件是index == len(items)，它也适用于空列表。",
+        "当前项为items[index]，下一步索引为index+1。",
+        "return items[index] + total(items, index+1)，主程序传入0作为起点。"
+      ],
+      "input": [
+        "2 -3 5"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "4",
+        "nodes": [
+          "FunctionDef",
+          "Return"
+        ],
+        "calledFunctions": [
+          "total"
+        ],
+        "recursiveFunctions": [
+          "total"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            ""
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "7"
+          ],
+          "output": "7"
+        },
+        {
+          "input": [
+            "0 0"
+          ],
+          "output": "0"
+        }
+      ]
+    },
+    {
+      "id": "python.recursion.006",
+      "chapter": "recursion",
+      "title": "拆开数字信号",
+      "concept": "取余与递归缩小",
+      "type": "console",
+      "brief": "终幕 · 递归信标塔：拆开数字信号。把已学工具用于新的远征任务。",
+      "goal": "定义digit_sum(n)，通过递归返回各位数字之和。",
+      "learn": "非负整数n的最后一位是n%10，去掉最后一位得到n//10。递归计算各位数字之和；n=0时返回0。输入为0到99999的整数。",
+      "example": "number = 407\nprint(number % 10)   # 最后一位7\nprint(number // 10)  # 剩下40\n",
+      "starter": "n = int(input())\n# 每次取最后一位，再处理去掉末位后的数字。\n",
+      "hints": [
+        "结束条件是n==0。",
+        "本层贡献n%10，剩余问题为digit_sum(n//10)。",
+        "把本层数字与下一层返回值相加后return。"
+      ],
+      "input": [
+        "5002"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "7",
+        "nodes": [
+          "FunctionDef",
+          "Mod",
+          "FloorDiv"
+        ],
+        "calledFunctions": [
+          "digit_sum"
+        ],
+        "recursiveFunctions": [
+          "digit_sum"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "0"
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "9"
+          ],
+          "output": "9"
+        },
+        {
+          "input": [
+            "10101"
+          ],
+          "output": "3"
+        }
+      ]
+    },
+    {
+      "id": "python.recursion.007",
+      "chapter": "recursion",
+      "title": "把文字倒着传回",
+      "concept": "递归与字符串切片",
+      "type": "console",
+      "brief": "终幕 · 递归信标塔：把文字倒着传回。把已学工具用于新的远征任务。",
+      "goal": "定义reverse_text(text)，用递归返回反转结果，空输入输出空行。",
+      "learn": "空串或单字符反转后不变。更长的字符串可以先反转text[1:]，再把首字符text[0]接到末尾。输入最多8个普通中文或英文字母。",
+      "example": "text = 'ABC'\nprint(text[1:])  # 剩下BC\nprint(text[0])   # 第一个A\n# 先反转BC得到CB，再拼上A。\n",
+      "starter": "text = input()\n# 长度不超过1时直接返回text。\n",
+      "hints": [
+        "空字符串不能取text[0]，先检查长度。",
+        "长度大于1才递归处理text[1:]。",
+        "返回reverse_text(text[1:]) + text[0]，顺序不能写反。"
+      ],
+      "input": [
+        "BYTE"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "ETYB",
+        "nodes": [
+          "FunctionDef",
+          "Return"
+        ],
+        "calledFunctions": [
+          "reverse_text"
+        ],
+        "recursiveFunctions": [
+          "reverse_text"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            ""
+          ],
+          "output": ""
+        },
+        {
+          "input": [
+            "中A文"
+          ],
+          "output": "文A中"
+        },
+        {
+          "input": [
+            "A"
+          ],
+          "output": "A"
+        }
+      ]
+    },
+    {
+      "id": "python.recursion.008",
+      "chapter": "recursion",
+      "title": "分成两个小信标",
+      "concept": "双分支递归",
+      "type": "console",
+      "brief": "终幕 · 递归信标塔：分成两个小信标。把已学工具用于新的远征任务。",
+      "goal": "编写递归fib(n)，输出第n个斐波那契数。",
+      "learn": "斐波那契数列约定fib(0)=0，fib(1)=1，其余为fib(n-1)+fib(n-2)。它会反复计算相同的小问题，所以本关只使用0到8，不把这种写法用于大输入。",
+      "example": "# 先列出小答案，帮助理解两个分支。\nvalues = [0, 1]\nvalues.append(values[-1] + values[-2])\nvalues.append(values[-1] + values[-2])\nprint(values)  # [0, 1, 1, 2]\n",
+      "starter": "n = int(input())\n# 先处理0和1，再组合两个更小问题。\n",
+      "hints": [
+        "有两个结束值，n为0或1时直接返回n。",
+        "其他情况分为n-1和n-2两个调用。",
+        "递归分支return fib(n-1) + fib(n-2)，不要漏掉return。"
+      ],
+      "input": [
+        "6"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "8",
+        "nodes": [
+          "FunctionDef",
+          "Return"
+        ],
+        "calledFunctions": [
+          "fib"
+        ],
+        "recursiveFunctions": [
+          "fib"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "0"
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "1"
+          ],
+          "output": "1"
+        },
+        {
+          "input": [
+            "8"
+          ],
+          "output": "21"
+        }
+      ]
+    },
+    {
+      "id": "python.recursion.009",
+      "chapter": "recursion",
+      "title": "修复越走越远的调用",
+      "concept": "递归终止修错",
+      "type": "console",
+      "brief": "终幕 · 递归信标塔：修复越走越远的调用。把已学工具用于新的远征任务。",
+      "goal": "修复sum_to的递归参数，输出1到n之和。",
+      "learn": "结束条件正确还不够，每次调用也必须接近它。起始代码的n+1让非负n越来越大；本关n为0到10，修复调用参数并保留递归。",
+      "example": "n = 3\nprint(n, n - 1, n - 2, 0)\n# 非负规模要逐步减小，才可能抵达0。\n",
+      "starter": "n = int(input())\ndef sum_to(n):\n    if n == 0:\n        return 0\n    return n + sum_to(n + 1)  # 修复参数\nprint(sum_to(n))\n",
+      "hints": [
+        "不要先反复运行，先手算sum_to(2)接下来会调用谁。",
+        "目标结束条件是n==0，n应减少而不是增加。",
+        "将sum_to(n+1)改为sum_to(n-1)，其他累加逻辑保留。"
+      ],
+      "input": [
+        "5"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "15",
+        "nodes": [
+          "FunctionDef",
+          "Return"
+        ],
+        "calledFunctions": [
+          "sum_to"
+        ],
+        "recursiveFunctions": [
+          "sum_to"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "0"
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "2"
+          ],
+          "output": "3"
+        }
+      ]
+    },
+    {
+      "id": "python.recursion.010",
+      "chapter": "recursion",
+      "title": "递归点亮信标",
+      "concept": "递归行动综合",
+      "type": "world",
+      "brief": "终幕 · 递归信标塔：递归点亮信标。把已学工具用于新的远征任务。",
+      "goal": "定义递归walk(n)，每层向右走一步，到达传送点后输出ONLINE。",
+      "learn": "把走n步拆成先走一步、再走剩余n-1步；walk(0)只返回，不再移动。主程序完成后输出ONLINE。本关路线是直路，输入距离为1到4。",
+      "example": "def announce(n):\n    if n == 0:\n        return\n    print('信标')\n    announce(n - 1)\nannounce(2)\n",
+      "starter": "distance = int(input())\n# walk(0)返回；其他情况移动一步再调用walk。\n",
+      "hints": [
+        "输入为n步，但递归结束值仍然是0。",
+        "非结束分支先robot.right()，再walk(n-1)。",
+        "主程序调用walk(distance)，完成后再print('ONLINE')。"
+      ],
+      "input": [
+        "4"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "ONLINE",
+        "nodes": [
+          "FunctionDef",
+          "If"
+        ],
+        "calledFunctions": [
+          "walk"
+        ],
+        "recursiveFunctions": [
+          "walk"
+        ],
+        "atGoal": true
+      },
+      "cases": [
+        {
+          "input": [
+            "2"
+          ],
+          "map": [
+            "#########",
+            "#S.G#####",
+            "#########"
+          ],
+          "output": "ONLINE"
+        },
+        {
+          "input": [
+            "1"
+          ],
+          "map": [
+            "#########",
+            "#SG######",
+            "#########"
+          ],
+          "output": "ONLINE"
+        }
+      ]
+    },
+    {
+      "id": "python.objects.001",
+      "chapter": "objects",
+      "title": "建立机器人名册",
+      "concept": "类与实例",
+      "type": "console",
+      "brief": "终幕 · 机器人学院：建立机器人名册。把已学工具用于新的远征任务。",
+      "goal": "读取站点名，定义Station类，创建实例station，把名字存为station.name并输出。",
+      "learn": "class定义一种对象的结构，Station()创建一个实例。pass表示暂时不写内容，不是字符串。创建实例后可以用对象.属性保存它的数据。本关先学习类和实例，下一关再学习初始化。",
+      "example": "class Badge:\n    pass\nbadge = Badge()\nbadge.text = '探索者'\nprint(badge.text)\n",
+      "starter": "name = input()\n# 定义Station类并创建station，再设置name属性。\n",
+      "hints": [
+        "class Station:后缩进写pass，表示暂时为空的类。",
+        "station = Station()得到实例，不是把类名直接交给变量。",
+        "station.name = name，再print(station.name)。"
+      ],
+      "input": [
+        "校园"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "校园",
+        "nodes": [
+          "ClassDef"
+        ],
+        "instances": [
+          "Station"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "A"
+          ],
+          "output": "A"
+        },
+        {
+          "input": [
+            "Byte"
+          ],
+          "output": "Byte"
+        }
+      ]
+    },
+    {
+      "id": "python.objects.002",
+      "chapter": "objects",
+      "title": "接好初始电源",
+      "concept": "__init__与实例属性",
+      "type": "console",
+      "brief": "终幕 · 机器人学院：接好初始电源。把已学工具用于新的远征任务。",
+      "goal": "定义Battery类的__init__(self, energy)，创建battery后输出battery.energy。",
+      "learn": "创建Battery(energy)时，Python会调用__init__。self表示正在初始化的这个对象，self.energy保存属于它的电量。调用时不用自己传self。输入电量为0到100。",
+      "example": "class Label:\n    def __init__(self, text):\n        self.text = text\nlabel = Label('Byte')\nprint(label.text)\n",
+      "starter": "energy = int(input())\n# __init__接收energy，用self.energy保存。\n",
+      "hints": [
+        "方法定义在class内部，需要再缩进一级。",
+        "__init__的第一个参数写self，第二个参数为energy。",
+        "保存self.energy = energy，类定义外创建battery = Battery(energy)。"
+      ],
+      "input": [
+        "35"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "35",
+        "nodes": [
+          "ClassDef",
+          "FunctionDef"
+        ],
+        "calledFunctions": [
+          "__init__"
+        ],
+        "instances": [
+          "Battery"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "0"
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "100"
+          ],
+          "output": "100"
+        }
+      ]
+    },
+    {
+      "id": "python.objects.003",
+      "chapter": "objects",
+      "title": "让站点介绍自己",
+      "concept": "实例方法与self",
+      "type": "console",
+      "brief": "终幕 · 机器人学院：让站点介绍自己。把已学工具用于新的远征任务。",
+      "goal": "定义Station(name)，describe(self)返回'站点:'+名字，创建实例并打印方法返回值。",
+      "learn": "实例方法写在class内部，第一个参数为self。station.describe()会把station自动交给self。describe通过self.name读取本对象的数据，再返回介绍文字。",
+      "example": "class Badge:\n    def __init__(self, text):\n        self.text = text\n    def show(self):\n        return '徽章:' + self.text\nprint(Badge('探险').show())\n",
+      "starter": "name = input()\n# Station保存名字，describe返回介绍文字。\n",
+      "hints": [
+        "__init__先把name保存成self.name。",
+        "describe需要self参数，但调用describe()时不写self。",
+        "方法中return '站点:' + self.name；主程序打印station.describe()。"
+      ],
+      "input": [
+        "A"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "站点:A",
+        "nodes": [
+          "ClassDef",
+          "FunctionDef"
+        ],
+        "calledFunctions": [
+          "describe"
+        ],
+        "instances": [
+          "Station"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "校园"
+          ],
+          "output": "站点:校园"
+        },
+        {
+          "input": [
+            "B"
+          ],
+          "output": "站点:B"
+        }
+      ]
+    },
+    {
+      "id": "python.objects.004",
+      "chapter": "objects",
+      "title": "给电池充一次电",
+      "concept": "方法参数与状态更新",
+      "type": "console",
+      "brief": "终幕 · 机器人学院：给电池充一次电。把已学工具用于新的远征任务。",
+      "goal": "读取电量和充电量，创建Battery，调用charge(amount)，输出更新后的energy。",
+      "learn": "方法可以接收额外参数，并修改实例属性。charge(self, amount)更新self.energy；充电后最大为100。初始电量和充电量均为0到100。",
+      "example": "class Counter:\n    def __init__(self, value):\n        self.value = value\n    def add(self, amount):\n        self.value += amount\ncounter = Counter(2)\ncounter.add(3)\nprint(counter.value)\n",
+      "starter": "energy = int(input())\namount = int(input())\n# Battery.charge更新电量，上限100。\n",
+      "hints": [
+        "只计算energy + amount不会自动修改对象。",
+        "把新值写回self.energy。",
+        "self.energy = min(100, self.energy + amount)，随后调用battery.charge(amount)。"
+      ],
+      "input": [
+        "80",
+        "35"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "100",
+        "nodes": [
+          "ClassDef",
+          "FunctionDef"
+        ],
+        "calledFunctions": [
+          "charge"
+        ],
+        "instances": [
+          "Battery"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "0",
+            "10"
+          ],
+          "output": "10"
+        },
+        {
+          "input": [
+            "100",
+            "0"
+          ],
+          "output": "100"
+        }
+      ]
+    },
+    {
+      "id": "python.objects.005",
+      "chapter": "objects",
+      "title": "两块电池各自记录",
+      "concept": "实例状态独立",
+      "type": "console",
+      "brief": "终幕 · 机器人学院：两块电池各自记录。把已学工具用于新的远征任务。",
+      "goal": "建立两个Battery实例，只调用first.charge(amount)，同一行输出两块电池的电量。",
+      "learn": "每次Battery(...)都会创建独立实例，self.energy属于各自的对象。只给第一块电池充电，不应修改第二块。三行输入依次为第一块、第二块的电量和充电量，均为0到50，不设上限截断。",
+      "example": "class Counter:\n    def __init__(self, value):\n        self.value = value\na = Counter(1)\nb = Counter(9)\na.value += 2\nprint(a.value, b.value)  # 3 9\n",
+      "starter": "a = int(input())\nb = int(input())\namount = int(input())\n# 创建first和second，不能让second = first。\n",
+      "hints": [
+        "要调用两次Battery，分别交给first和second。",
+        "charge只写self.energy += amount，因此只影响调用它的那个对象。",
+        "创建first=Battery(a)、second=Battery(b)，再first.charge(amount)。"
+      ],
+      "input": [
+        "10",
+        "20",
+        "5"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "15 20",
+        "nodes": [
+          "ClassDef",
+          "FunctionDef"
+        ],
+        "calledFunctions": [
+          "charge"
+        ],
+        "instances": [
+          "Battery"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "1",
+            "1",
+            "2"
+          ],
+          "output": "3 1"
+        },
+        {
+          "input": [
+            "0",
+            "9",
+            "0"
+          ],
+          "output": "0 9"
+        }
+      ]
+    },
+    {
+      "id": "python.objects.006",
+      "chapter": "objects",
+      "title": "能否领走这些补给",
+      "concept": "方法返回值与状态约束",
+      "type": "console",
+      "brief": "终幕 · 机器人学院：能否领走这些补给。把已学工具用于新的远征任务。",
+      "goal": "定义Depot(stock)和take(amount)，依次输出领取是否成功、剩余库存。",
+      "learn": "方法既可以更新状态，也可以返回结果。take(amount)库存足够才扣减并返回True，否则保持库存并返回False。库存与申请量均为0到20，申请0也算成功。",
+      "example": "def try_take(stock, amount):\n    if stock < amount:\n        return False, stock\n    return True, stock - amount\nprint(try_take(4, 6))\n",
+      "starter": "stock = int(input())\namount = int(input())\n# Depot.take要在成功时更新self.stock。\n",
+      "hints": [
+        "失败分支应该先返回，不能先减库存。",
+        "成功时self.stock -= amount，再return True。",
+        "先print(depot.take(amount))，再print(depot.stock)，观察状态是否正确。"
+      ],
+      "input": [
+        "8",
+        "3"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "True\n5",
+        "nodes": [
+          "ClassDef",
+          "FunctionDef",
+          "If"
+        ],
+        "calledFunctions": [
+          "take"
+        ],
+        "instances": [
+          "Depot"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "2",
+            "3"
+          ],
+          "output": "False\n2"
+        },
+        {
+          "input": [
+            "0",
+            "0"
+          ],
+          "output": "True\n0"
+        }
+      ]
+    },
+    {
+      "id": "python.objects.007",
+      "chapter": "objects",
+      "title": "管理一整队电池",
+      "concept": "对象列表与遍历",
+      "type": "console",
+      "brief": "终幕 · 机器人学院：管理一整队电池。把已学工具用于新的远征任务。",
+      "goal": "读取电量列表，为每一项创建Battery实例，遍历实例列表并输出总电量。",
+      "learn": "列表中可以保存实例。逐个读取电量，创建Battery并追加；遍历对象时用battery.energy取属性。列表最多8项，可为空，空列表总和为0。",
+      "example": "class Label:\n    def __init__(self, name):\n        self.name = name\nlabels = []\nfor name in ['A', 'B']:\n    labels.append(Label(name))\nfor label in labels:\n    print(label.name)\n",
+      "starter": "numbers = []\nfor text in input().split():\n    numbers.append(int(text))\n# 定义Battery，并把实例放进batteries列表。\n",
+      "hints": [
+        "batteries应保存Battery(energy)，而不是只保存energy。",
+        "先用for构建对象列表，再用另一个for累加属性。",
+        "total从0开始，每轮total += battery.energy，最后输出。"
+      ],
+      "input": [
+        "10 20 30"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "60",
+        "nodes": [
+          "ClassDef",
+          "For"
+        ],
+        "instances": [
+          "Battery"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            ""
+          ],
+          "output": "0"
+        },
+        {
+          "input": [
+            "7"
+          ],
+          "output": "7"
+        },
+        {
+          "input": [
+            "0 0"
+          ],
+          "output": "0"
+        }
+      ]
+    },
+    {
+      "id": "python.objects.008",
+      "chapter": "objects",
+      "title": "每支小队自己的名单",
+      "concept": "对象组合与可变属性",
+      "type": "console",
+      "brief": "终幕 · 机器人学院：每支小队自己的名单。把已学工具用于新的远征任务。",
+      "goal": "定义Team类，读取一行名字，加入team，再创建空的other队伍；输出team.count()和other.count()，用空格分隔。",
+      "learn": "对象属性可以是列表。必须在__init__中创建self.members=[]，让每支队伍各有一份名单。add(name)追加，count()返回人数；空行表示没有成员。",
+      "example": "class Box:\n    def __init__(self):\n        self.items = []  # 每个实例新建一份\nfirst = Box()\nsecond = Box()\nfirst.items.append('电池')\nprint(first.items, second.items)\n",
+      "starter": "names = input().split()\n# Team在__init__里建立members，提供add和count方法。\n",
+      "hints": [
+        "members不要定义为所有实例共享的类属性。",
+        "在__init__内部self.members=[]；add调用append，count返回len。",
+        "创建team并加入名字，再单独创建other，输出两次count结果。"
+      ],
+      "input": [
+        "Byte Ada"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "2 0",
+        "nodes": [
+          "ClassDef",
+          "FunctionDef",
+          "For"
+        ],
+        "calledFunctions": [
+          "add",
+          "count"
+        ],
+        "instances": [
+          "Team"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            ""
+          ],
+          "output": "0 0"
+        },
+        {
+          "input": [
+            "A"
+          ],
+          "output": "1 0"
+        }
+      ]
+    },
+    {
+      "id": "python.objects.009",
+      "chapter": "objects",
+      "title": "把对象交回档案",
+      "concept": "对象转普通数据",
+      "type": "console",
+      "brief": "终幕 · 机器人学院：把对象交回档案。把已学工具用于新的远征任务。",
+      "goal": "定义Station(name, stock)，to_dict返回包含name和stock的字典，输出方法返回值。",
+      "learn": "JSON不能直接保存自定义实例。先用to_dict()把需要的属性转成普通字典，再交给文件工具。本关只输出字典，键按name、stock顺序创建；库存非负。",
+      "example": "class Badge:\n    def __init__(self, text):\n        self.text = text\n    def to_dict(self):\n        return {'text': self.text}\nprint(Badge('探索').to_dict())\n",
+      "starter": "name = input()\nstock = int(input())\n# Station.to_dict返回普通字典，下一地区会将它保存。\n",
+      "hints": [
+        "to_dict不打印对象，负责返回一个字典。",
+        "字典键为'name'和'stock'，值从self的属性取得。",
+        "return {'name': self.name, 'stock': self.stock}，主程序打印station.to_dict()。"
+      ],
+      "input": [
+        "A",
+        "3"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "{'name': 'A', 'stock': 3}",
+        "nodes": [
+          "ClassDef",
+          "Return"
+        ],
+        "calledFunctions": [
+          "to_dict"
+        ],
+        "instances": [
+          "Station"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "校园",
+            "0"
+          ],
+          "output": "{'name': '校园', 'stock': 0}"
+        },
+        {
+          "input": [
+            "B",
+            "5"
+          ],
+          "output": "{'name': 'B', 'stock': 5}"
+        }
+      ]
+    },
+    {
+      "id": "python.objects.010",
+      "chapter": "objects",
+      "title": "小队再出发",
+      "concept": "对象与机器人行动",
+      "type": "world",
+      "brief": "终幕 · 机器人学院：小队再出发。把已学工具用于新的远征任务。",
+      "goal": "定义Navigator(distance)和travel()，创建对象后调用方法向右移动，输出方法返回的距离。",
+      "learn": "Navigator保存自己的行程，travel()通过self.distance控制机器人，再返回走过的步数。距离为1到4，地图随输入变化；实际抵达终点才算完成。",
+      "example": "class Route:\n    def __init__(self, distance):\n        self.distance = distance\n    def describe(self):\n        return '路线长度:' + str(self.distance)\nprint(Route(2).describe())\n",
+      "starter": "distance = int(input())\n# Navigator.travel使用self.distance移动并返回它。\n",
+      "hints": [
+        "__init__保存self.distance，travel使用同一个属性。",
+        "在travel中调用robot.right(self.distance)，再return self.distance。",
+        "navigator = Navigator(distance)，最后print(navigator.travel())。"
+      ],
+      "input": [
+        "4"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "4",
+        "nodes": [
+          "ClassDef",
+          "FunctionDef"
+        ],
+        "calledFunctions": [
+          "travel"
+        ],
+        "instances": [
+          "Navigator"
+        ],
+        "atGoal": true
+      },
+      "cases": [
+        {
+          "input": [
+            "2"
+          ],
+          "map": [
+            "#########",
+            "#S.G#####",
+            "#########"
+          ],
+          "output": "2"
+        },
+        {
+          "input": [
+            "1"
+          ],
+          "map": [
+            "#########",
+            "#SG######",
+            "#########"
+          ],
+          "output": "1"
+        }
+      ]
+    },
+    {
+      "id": "python.expedition.001",
+      "chapter": "expedition",
+      "title": "写清记录的入口",
+      "concept": "解析函数与输入约定",
+      "type": "console",
+      "brief": "终幕 · 远征控制室：写清记录的入口。把已学工具用于新的远征任务。",
+      "goal": "定义parse(line)，返回名字和整数数量；主程序解包后同一行输出名字与数量。",
+      "learn": "先把输入格式固定：每行是站点名、空格、非负整数数量。本关输入保证合法，可包含多余空白。parse(line)只解析并返回二元组，不负责打印。",
+      "example": "def parse_pair(text):\n    parts = text.split()\n    return parts[0], int(parts[1])\nname, number = parse_pair('示例 6')\nprint(name, number)\n",
+      "starter": "line = input()\n# 编写parse，再解包并输出。\n",
+      "hints": [
+        "解析和输出分开，parse内部只return。",
+        "split后第0项是名字，第1项用int转换。",
+        "return parts[0], int(parts[1])，主程序name, amount = parse(line)。"
+      ],
+      "input": [
+        " A  3 "
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "A 3",
+        "nodes": [
+          "FunctionDef",
+          "Return"
+        ],
+        "calledFunctions": [
+          "parse"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "B 0"
+          ],
+          "output": "B 0"
+        },
+        {
+          "input": [
+            "校园 12"
+          ],
+          "output": "校园 12"
+        }
+      ]
+    },
+    {
+      "id": "python.expedition.002",
+      "chapter": "expedition",
+      "title": "挡住无效记录",
+      "concept": "验证、异常与None约定",
+      "type": "console",
+      "brief": "终幕 · 远征控制室：挡住无效记录。把已学工具用于新的远征任务。",
+      "goal": "扩展parse(line)：缺字段、多字段、非整数、负数都返回None。主程序对非法记录输出INVALID，否则输出名字和数量。",
+      "learn": "先检查片段恰好有两个，再尝试转整数，并拒绝负数。非法记录返回None，合法记录返回二元组。判断result is None使用身份比较，用来检查是否就是空结果None。",
+      "example": "def read_count(text):\n    try:\n        value = int(text)\n    except ValueError:\n        return None\n    if value < 0:\n        return None\n    return value\nresult = read_count('bad')\nif result is None:\n    print('INVALID')\n",
+      "starter": "line = input()\n# parse返回None或(name, amount)。\n",
+      "hints": [
+        "检查len(parts)后再读取索引，避免缺字段引起越界。",
+        "把int转换放进try/except ValueError，负数也返回None。",
+        "合法时return parts[0], amount；主程序用result is None区分两种结果。"
+      ],
+      "input": [
+        "A -2"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "INVALID",
+        "nodes": [
+          "FunctionDef",
+          "Try",
+          "If"
+        ],
+        "calledFunctions": [
+          "parse"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "B 4"
+          ],
+          "output": "B 4"
+        },
+        {
+          "input": [
+            "oops"
+          ],
+          "output": "INVALID"
+        },
+        {
+          "input": [
+            "C bad"
+          ],
+          "output": "INVALID"
+        },
+        {
+          "input": [
+            ""
+          ],
+          "output": "INVALID"
+        },
+        {
+          "input": [
+            "A 1 extra"
+          ],
+          "output": "INVALID"
+        }
+      ]
+    },
+    {
+      "id": "python.expedition.003",
+      "chapter": "expedition",
+      "title": "合并重复的到货单",
+      "concept": "模块复用与分组累计",
+      "type": "console",
+      "brief": "终幕 · 远征控制室：合并重复的到货单。把已学工具用于新的远征任务。",
+      "goal": "导入parsing，读取n条记录，累计到字典，按站点名每行输出名字与数量。",
+      "learn": "parsing.py已经提供上一关的parse。本关n为0到6，后续n行均为合法记录；按站点合并数量，并按名字排序输出。n=0时不输出。",
+      "example": "totals = {}\nfor name, amount in [('A', 2), ('A', 3)]:\n    totals[name] = totals.get(name, 0) + amount\nprint(totals)\n",
+      "starter": "import parsing\nn = int(input())\nrecords = {}\n# 使用parsing.parse解析每行，然后累计。\n",
+      "hints": [
+        "records保存每个站点已经累计的数量。",
+        "name, amount = parsing.parse(input())，再使用get(name, 0)累计。",
+        "读完记录后for name in sorted(records)，逐行输出name与records[name]。"
+      ],
+      "input": [
+        "3",
+        "A 2",
+        "B 1",
+        "A 3"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "A 5\nB 1",
+        "nodes": [
+          "Import",
+          "For"
+        ],
+        "calledFunctions": [
+          "parse"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "0"
+          ],
+          "output": ""
+        },
+        {
+          "input": [
+            "2",
+            "C 0",
+            "C 4"
+          ],
+          "output": "C 4"
+        }
+      ],
+      "modules": {
+        "parsing.py": "def parse(line):\n    parts = line.split()\n    if len(parts) != 2:\n        return None\n    try:\n        amount = int(parts[1])\n    except ValueError:\n        return None\n    if amount < 0:\n        return None\n    return parts[0], amount\n"
+      }
+    },
+    {
+      "id": "python.expedition.004",
+      "chapter": "expedition",
+      "title": "让站点对象接班",
+      "concept": "JSON数据与对象列表",
+      "type": "console",
+      "brief": "终幕 · 远征控制室：让站点对象接班。把已学工具用于新的远征任务。",
+      "goal": "读取JSON字典，按名字排序创建Station对象列表，再遍历对象逐行输出名字和库存。",
+      "learn": "json.loads把一行JSON文字变为字典。models.py提供Station(name, stock)，将每个键值对恢复成实例。数据保证是名字到非负整数的字典，最多6个站点。",
+      "example": "import json\nrecords = json.loads('{\"A\": 2}')\nfor name in sorted(records):\n    print(name, records[name])\n# 再将每对名字、库存交给Station构造实例。\n",
+      "starter": "import json\nfrom models import Station\nrecords = json.loads(input())\nstations = []\n# 创建实例放入stations，再遍历属性。\n",
+      "hints": [
+        "先按sorted(records)的名字顺序创建对象。",
+        "stations.append(Station(name, records[name]))。",
+        "遍历stations，用station.name和station.stock读取属性并输出。"
+      ],
+      "input": [
+        "{\"B\":1,\"A\":5}"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "A 5\nB 1",
+        "nodes": [
+          "ImportFrom",
+          "For"
+        ],
+        "instances": [
+          "Station"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "{}"
+          ],
+          "output": ""
+        },
+        {
+          "input": [
+            "{\"C\":0}"
+          ],
+          "output": "C 0"
+        }
+      ],
+      "modules": {
+        "models.py": "class Station:\n    def __init__(self, name, stock):\n        self.name = name\n        self.stock = stock\n"
+      }
+    },
+    {
+      "id": "python.expedition.005",
+      "chapter": "expedition",
+      "title": "排出救援计划",
+      "concept": "筛选、排序与函数返回",
+      "type": "console",
+      "brief": "终幕 · 远征控制室：排出救援计划。把已学工具用于新的远征任务。",
+      "goal": "第一行是JSON字典，第二行是minimum。定义plan(records, minimum)，依次输出所选名字列表、总量。",
+      "learn": "本关JSON字典记录站点请求量，均为非负整数。只选择数量大于0且达到minimum的站点，名字按排序输出。plan返回名字列表与所选总量的二元组，空结果为[]和0。",
+      "example": "def select(values, minimum):\n    chosen = []\n    for value in values:\n        if value > 0 and value >= minimum:\n            chosen.append(value)\n    return chosen, sum(chosen)\nprint(select([0, 2, 5], 3))\n",
+      "starter": "import json\nrecords = json.loads(input())\nminimum = int(input())\n# plan返回(chosen, total)，主程序分别打印。\n",
+      "hints": [
+        "从sorted(records)遍历，保证结果名字有序。",
+        "同时检查amount > 0和amount >= minimum。",
+        "符合条件才追加名字并累计；return chosen, total，主程序解包。"
+      ],
+      "input": [
+        "{\"A\":5,\"B\":1,\"C\":0}",
+        "3"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "['A']\n5",
+        "nodes": [
+          "FunctionDef",
+          "For",
+          "If"
+        ],
+        "calledFunctions": [
+          "plan"
+        ]
+      },
+      "cases": [
+        {
+          "input": [
+            "{}",
+            "0"
+          ],
+          "output": "[]\n0"
+        },
+        {
+          "input": [
+            "{\"B\":4,\"A\":4}",
+            "4"
+          ],
+          "output": "['A', 'B']\n8"
+        }
+      ]
+    },
+    {
+      "id": "python.expedition.006",
+      "chapter": "expedition",
+      "title": "发布前自己验一遍",
+      "concept": "回归测试与边界案例",
+      "type": "console",
+      "brief": "终幕 · 远征控制室：发布前自己验一遍。把已学工具用于新的远征任务。",
+      "goal": "为shortage编写至少四条assert并调用；输出PASS，然后输出输入需求相对库存2的缺口。",
+      "learn": "supply.py提供shortage(need, stock)，计算非负缺口。至少写四条assert：需求大于库存、库存足够、两者相等、两者为0。成功后输出PASS，再读取need并输出shortage(need, 2)。need为0到20。",
+      "example": "def double(n):\n    return n * 2\nassert double(2) == 4\nassert double(0) == 0\n# 每条测试应验证一个明确预期，而不是assert True。\n",
+      "starter": "from supply import shortage\n# 四条assert覆盖正常、足够、相等和零。\n\nprint('PASS')\nneed = int(input())\nprint(shortage(need, 2))\n",
+      "hints": [
+        "四条测试应该使用四组不同的需求和库存。",
+        "正常缺口是need-stock，库存足够或相等时结果为0。",
+        "例如assert shortage(5, 2)==3；其余测试覆盖(1,3)、(2,2)、(0,0)。"
+      ],
+      "input": [
+        "5"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "PASS\n3",
+        "nodes": [
+          "Assert",
+          "ImportFrom"
+        ],
+        "calledFunctions": [
+          "shortage"
+        ],
+        "minAssertions": 4
+      },
+      "cases": [
+        {
+          "input": [
+            "0"
+          ],
+          "output": "PASS\n0"
+        },
+        {
+          "input": [
+            "2"
+          ],
+          "output": "PASS\n0"
+        }
+      ],
+      "modules": {
+        "supply.py": "def shortage(need, stock):\n    return max(0, need - stock)\n"
+      }
+    },
+    {
+      "id": "python.expedition.007",
+      "chapter": "expedition",
+      "title": "保存可恢复的档案",
+      "concept": "JSON保存与重载验证",
+      "type": "console",
+      "brief": "终幕 · 远征控制室：保存可恢复的档案。把已学工具用于新的远征任务。",
+      "goal": "读取JSON字典，写入finale-stations.json，再用json.load重载并输出总库存。",
+      "learn": "先把JSON文字解析成数据，再实际写入虚拟文件，关闭后重新读取。输出重载数据的总库存，不能只打印原输入。输入保证为最多6个站点的非负整数字典。",
+      "example": "import json\nwith open('sample.json', 'w', encoding='utf-8') as file:\n    json.dump({'示例': 2}, file, ensure_ascii=False)\nwith open('sample.json', encoding='utf-8') as file:\n    restored = json.load(file)\nprint(restored['示例'])\n",
+      "starter": "import json\nrecords = json.loads(input())\n# 保存finale-stations.json，再从文件读回。\n",
+      "hints": [
+        "第一个with用w模式，调用json.dump保存records。",
+        "第二个with用读取模式，将json.load结果交给restored。",
+        "最后print(sum(restored.values()))；必须保留实际生成的文件。"
+      ],
+      "input": [
+        "{\"A\":5,\"B\":1}"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "6",
+        "nodes": [
+          "With",
+          "Import"
+        ],
+        "files": {
+          "finale-stations.json": "{\"A\":5,\"B\":1}"
+        }
+      },
+      "cases": [
+        {
+          "input": [
+            "{}"
+          ],
+          "output": "0",
+          "files": {
+            "finale-stations.json": "{}"
+          }
+        },
+        {
+          "input": [
+            "{\"校园\":3}"
+          ],
+          "output": "3",
+          "files": {
+            "finale-stations.json": "{\"校园\":3}"
+          }
+        }
+      ]
+    },
+    {
+      "id": "python.expedition.008",
+      "chapter": "expedition",
+      "title": "面对缺失与损坏档案",
+      "concept": "恢复约定与原文件保护",
+      "type": "console",
+      "brief": "终幕 · 远征控制室：面对缺失与损坏档案。把已学工具用于新的远征任务。",
+      "goal": "定义load_records()读取archive.json，非法时返回{}，合法时返回记录；打印结果。仅读取，保留已有文件原文。",
+      "learn": "缺失文件、JSON语法错误、数据结构不符分别检查。本关合法档案必须为字典，值必须是非负整数；type(value) is int可以排除布尔值。失败时用空字典继续，但不要覆盖原文件。",
+      "example": "import json\ntry:\n    data = json.loads('[]')\n    if not isinstance(data, dict):\n        data = {}\n    print(data)\nexcept json.JSONDecodeError:\n    print({})\n",
+      "starter": "import json\n# load_records只读取；检查类型和值，遇到预期错误返回{}。\n",
+      "hints": [
+        "先try读取与解析，再检查是不是字典，最后逐值检查整数与非负。",
+        "可以用except (FileNotFoundError, json.JSONDecodeError)一起处理两种预期异常。",
+        "失败时return {}即可；不要用w模式打开原档案。"
+      ],
+      "input": [],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "{'A': 2}",
+        "nodes": [
+          "FunctionDef",
+          "Try"
+        ],
+        "calledFunctions": [
+          "load_records"
+        ],
+        "files": {
+          "archive.json": "{\"A\":2}"
+        }
+      },
+      "cases": [
+        {
+          "input": [],
+          "dataFiles": {},
+          "output": "{}",
+          "files": {}
+        },
+        {
+          "input": [],
+          "dataFiles": {
+            "archive.json": "{broken"
+          },
+          "output": "{}",
+          "files": {
+            "archive.json": "{broken"
+          }
+        },
+        {
+          "input": [],
+          "dataFiles": {
+            "archive.json": "[]"
+          },
+          "output": "{}",
+          "files": {
+            "archive.json": "[]"
+          }
+        },
+        {
+          "input": [],
+          "dataFiles": {
+            "archive.json": "{\"A\":true}"
+          },
+          "output": "{}",
+          "files": {
+            "archive.json": "{\"A\":true}"
+          }
+        }
+      ],
+      "dataFiles": {
+        "archive.json": "{\"A\":2}"
+      }
+    },
+    {
+      "id": "python.expedition.009",
+      "chapter": "expedition",
+      "title": "让模块共同值班",
+      "concept": "对象、模块与保存联调",
+      "type": "console",
+      "brief": "终幕 · 远征控制室：让模块共同值班。把已学工具用于新的远征任务。",
+      "goal": "读取站点和数量，从stations.json建立Depot，调用add；负数捕获ValueError。保存记录，最后输出总库存。",
+      "learn": "models.py的Depot管理库存，storage.py负责读取与保存。主程序只连接输入、对象方法和文件。负数量会被Depot.add拒绝，此时输出INVALID并保存原记录。数量范围为-5到10。",
+      "example": "# 分工：主程序连接流程，工具各自负责一件事。\nimport storage\nrecords = storage.load('stations.json')\nprint(sum(records.values()))\n",
+      "starter": "import models\nimport storage\nname = input()\namount = int(input())\n# 创建Depot，尝试add，保存后输出总量。\n",
+      "hints": [
+        "depot = models.Depot(storage.load('stations.json'))恢复旧记录。",
+        "只把depot.add(name, amount)放在try中，失败输出INVALID。",
+        "storage.save('stations.json', depot.records)，最后print(depot.total())。"
+      ],
+      "input": [
+        "B",
+        "3"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "5",
+        "nodes": [
+          "Import",
+          "Try"
+        ],
+        "calledFunctions": [
+          "add",
+          "load",
+          "save",
+          "total"
+        ],
+        "instances": [
+          "Depot"
+        ],
+        "files": {
+          "stations.json": "{\"A\":2,\"B\":3}"
+        }
+      },
+      "cases": [
+        {
+          "input": [
+            "A",
+            "0"
+          ],
+          "output": "2",
+          "files": {
+            "stations.json": "{\"A\":2}"
+          }
+        },
+        {
+          "input": [
+            "C",
+            "-1"
+          ],
+          "output": "INVALID\n2",
+          "files": {
+            "stations.json": "{\"A\":2}"
+          }
+        },
+        {
+          "input": [
+            "A",
+            "1"
+          ],
+          "dataFiles": {},
+          "output": "1",
+          "files": {
+            "stations.json": "{\"A\":1}"
+          }
+        }
+      ],
+      "modules": {
+        "models.py": "class Depot:\n    def __init__(self, records):\n        self.records = records.copy()\n    def add(self, name, amount):\n        if amount < 0:\n            raise ValueError('数量不能为负')\n        self.records[name] = self.records.get(name, 0) + amount\n    def get(self, name):\n        return self.records.get(name, 0)\n    def total(self):\n        return sum(self.records.values())\n",
+        "storage.py": "import json\ndef load(filename):\n    try:\n        with open(filename, encoding='utf-8') as file:\n            records = json.load(file)\n        if not isinstance(records, dict):\n            return {}\n        for value in records.values():\n            if type(value) is not int or value < 0:\n                return {}\n        return records\n    except (FileNotFoundError, json.JSONDecodeError):\n        return {}\ndef save(filename, records):\n    with open(filename, 'w', encoding='utf-8') as file:\n        json.dump(records, file, ensure_ascii=False)\n"
+      },
+      "dataFiles": {
+        "stations.json": "{\"A\":2}"
+      }
+    },
+    {
+      "id": "python.expedition.010",
+      "chapter": "expedition",
+      "title": "写下代码，开启远征",
+      "concept": "终幕毕业项目",
+      "type": "world",
+      "brief": "终幕 · 远征控制室：写下代码，开启远征。把已学工具用于新的远征任务。",
+      "goal": "第一行n，之后n行是记录，再读查询站点query和距离distance。忽略格式错误、非整数和负数；保存stations.json与report.json（accepted、query、total）。向右移动distance格，逐行输出CODEBOUND、查询库存、总库存。",
+      "learn": "按清单完成最后一次远征：恢复档案，逐行解析并忽略非法记录，用Depot累计，保存库存与报告，再控制Byte抵达终点。parsing、models、storage模块均已提供且可查看。n为0到6，距离为1到4，每次运行使用独立虚拟档案。",
+      "example": "# 小规模演示：解析、累计、生成报告。\nimport parsing\nimport models\ndepot = models.Depot({})\nparsed = parsing.parse('示例 2')\nif parsed is not None:\n    name, amount = parsed\n    depot.add(name, amount)\nprint({'accepted': 1, 'query': depot.get('示例'), 'total': depot.total()})\n",
+      "starter": "import parsing\nimport models\nimport storage\nn = int(input())\ndepot = models.Depot(storage.load('stations.json'))\naccepted = 0\n# 1. 读取n行，parse后只累计合法记录，accepted计数。\n\nquery = input()\ndistance = int(input())\n# 2. 保存库存与含accepted/query/total的报告。\n# 3. 移动到终点，输出CODEBOUND、查询库存、总库存。\n",
+      "hints": [
+        "先把读取、解析、累计跑通：parsed为None就continue，成功则depot.add并让accepted加1。",
+        "读取query和distance后，保存depot.records；报告中query的值是depot.get(query)，不是站点名字。",
+        "report={'accepted':accepted,'query':depot.get(query),'total':depot.total()}；保存两个JSON文件，再robot.right(distance)，最后逐行输出。"
+      ],
+      "input": [
+        "4",
+        "A 3",
+        "B 2",
+        "bad",
+        "A -2",
+        "A",
+        "4"
+      ],
+      "map": [
+        "#########",
+        "#S...G###",
+        "#########"
+      ],
+      "rules": {
+        "output": "CODEBOUND\n5\n7",
+        "nodes": [
+          "Import",
+          "For",
+          "If"
+        ],
+        "calledFunctions": [
+          "parse",
+          "add",
+          "get",
+          "total",
+          "load",
+          "save"
+        ],
+        "instances": [
+          "Depot"
+        ],
+        "files": {
+          "stations.json": "{\"A\":5,\"B\":2}",
+          "report.json": "{\"accepted\":2,\"query\":5,\"total\":7}"
+        },
+        "atGoal": true
+      },
+      "cases": [
+        {
+          "input": [
+            "0",
+            "missing",
+            "2"
+          ],
+          "map": [
+            "#########",
+            "#S.G#####",
+            "#########"
+          ],
+          "dataFiles": {},
+          "output": "CODEBOUND\n0\n0",
+          "files": {
+            "stations.json": "{}",
+            "report.json": "{\"accepted\":0,\"query\":0,\"total\":0}"
+          }
+        },
+        {
+          "input": [
+            "3",
+            "C 0",
+            "C 4",
+            "broken",
+            "C",
+            "1"
+          ],
+          "map": [
+            "#########",
+            "#SG######",
+            "#########"
+          ],
+          "dataFiles": {
+            "stations.json": "{\"A\":1}"
+          },
+          "output": "CODEBOUND\n4\n5",
+          "files": {
+            "stations.json": "{\"A\":1,\"C\":4}",
+            "report.json": "{\"accepted\":2,\"query\":4,\"total\":5}"
+          }
+        }
+      ],
+      "modules": {
+        "parsing.py": "def parse(line):\n    parts = line.split()\n    if len(parts) != 2:\n        return None\n    try:\n        amount = int(parts[1])\n    except ValueError:\n        return None\n    if amount < 0:\n        return None\n    return parts[0], amount\n",
+        "models.py": "class Depot:\n    def __init__(self, records):\n        self.records = records.copy()\n    def add(self, name, amount):\n        if amount < 0:\n            raise ValueError('数量不能为负')\n        self.records[name] = self.records.get(name, 0) + amount\n    def get(self, name):\n        return self.records.get(name, 0)\n    def total(self):\n        return sum(self.records.values())\n",
+        "storage.py": "import json\ndef load(filename):\n    try:\n        with open(filename, encoding='utf-8') as file:\n            records = json.load(file)\n        if not isinstance(records, dict):\n            return {}\n        for value in records.values():\n            if type(value) is not int or value < 0:\n                return {}\n        return records\n    except (FileNotFoundError, json.JSONDecodeError):\n        return {}\ndef save(filename, records):\n    with open(filename, 'w', encoding='utf-8') as file:\n        json.dump(records, file, ensure_ascii=False)\n"
+      },
+      "dataFiles": {
+        "stations.json": "{\"A\":2}"
+      }
     }
   ]
 }

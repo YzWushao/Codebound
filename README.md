@@ -2,69 +2,68 @@
 
 写下代码，开启下一关。
 
-本仓库只维护 Windows EXE 桌面版。这是面向零基础学习者的本地 Alpha。Python 是游戏内置主线；已有 20 关构成「序·幕：Byte 苏醒」，其中五个入门单元教授顺序执行、输出、变量、输入、条件、for、while 和基础累加。每关提供中文讲解、注释示例与三级提示，穿插独立 Python 练习与不同输入测试。第一幕「校园救援」新增40关：集结广场、广播站、物资仓库、维修工坊。第二幕「信号迷城」和第三幕「程序工具箱」各40关也已加入本地源码，共140关。
+Codebound是面向零基础学习者的Windows编程闯关游戏。Python是内置主线，每关提供中文讲解、示例代码、起始代码和三级提示。
 
-Python 网页版独立维护在 `YzWushao/codebound_web`。两个项目分别安装依赖、构建和发布。
+## 课程与版本
 
-## 开始
+当前开发源码为0.1.0-alpha.5，共180关：序幕20关，第一幕「校园救援」、第二幕「信号迷城」、第三幕「程序工具箱」和终幕「独立远征」各40关。
 
-Windows 安装包请到 [GitHub Releases](https://github.com/YzWushao/Codebound/releases) 下载。本次发行版本为 `0.1.0-alpha.4`（统一安装与升级EXE），Alpha.3另提供免安装ZIP，无需另装 Python 或 Node.js。
+终幕分为策略指挥室、递归信标塔、机器人学院、远征控制室，依次练习枚举、前缀和、二分、递归、类与对象，再完成解析、验证、统计和JSON保存的毕业项目。
 
-本仓库同时提供源码。开发需要 Node.js 22.12+，在 Windows 上克隆后启动桌面版：
+查看[各幕知识点](docs/KNOWLEDGE-MAP.md)、[完整课程清单](docs/CURRICULUM-ROADMAP.md)和[终幕验证记录](docs/FINALE-QA.md)。
 
-```powershell
+最近已发布的安装版仍是[Alpha.4](https://github.com/YzWushao/Codebound/releases/tag/v0.1.0-alpha.4)，包含140关；Alpha.3另提供140关免安装ZIP。新增终幕尚未打包发行，需使用当前源码运行。
+
+## 开发与运行
+
+开发需要Node.js 22.12+，测试还使用Python 3。
+
+~~~powershell
 git clone https://github.com/YzWushao/Codebound.git
 cd Codebound
 npm ci
 npm run dev
-```
+~~~
 
-首次安装需要联网；运行所需 Python 核心会复制进本地资源。`npm run dev` 构建内嵌界面后启动 Electron。
+首次安装依赖需要联网；准备脚本会将Pyodide资源复制进本地。npm run dev构建内嵌界面后启动Electron。打包后的游戏无需另装Python或Node.js，可离线游玩。
 
-执行 `npm run package:win` 生成 Windows EXE 安装包，输出在 `release/`。构建后可运行 `release/win-unpacked/Codebound.exe`（需保留同目录资源），或使用生成的 Setup.exe 安装。打包后的游戏无需另装 Python 或 Node.js，可离线游玩。
+~~~powershell
+npm test
+npm run build
+npm run package:win
+~~~
 
-`npm run build` 生成 `dist/` 内嵌界面资源，由 EXE 通过内部协议加载；本仓库不提供独立网页发行入口。依赖、运行时副本和编译产物不提交到 Git，安装与构建命令会生成它们。
+构建输出在dist，Windows打包输出在release。完整保留同目录资源后可运行release/win-unpacked/Codebound.exe；Launch-Codebound.cmd启动已有的便携构建，只有重新构建后的EXE才包含新增终幕。
 
-## Alpha 已有功能
+## 已有功能
 
-- 真实的 Python 解释器（Pyodide / CPython），在无 Node 权限的独立 Worker 中执行。
-- 机器人地图、收集和充电动作；执行行高亮、变量查看、暂停、单步、停止与速度调整。
-- 中文错误说明、原始错误折叠查看；死循环步骤限制与运行超时中断。
-- 关卡解锁、草稿与进度自动保存，支持 JSON 导出导入。
-- 桌面进度写入 Electron `app.getPath('userData')` 下的 `progress.v1.json`；客户端缓存作为恢复后备。更新本体不覆盖存档。
-- 桌面资源通过 `codebound://app/` 内部协议加载，不启动 Python 服务或 HTTP 监听端口；离线游戏不需要公网入站访问。
-- C/C++ 语言扩展目录、统一运行器和关卡判定接口。尚无 C/C++ 课程或执行器。
+- 真实Pyodide/CPython解释器、机器人地图、运行与逐步回放、暂停和停止。
+- 变量与实例属性查看、中文错误、循环步骤限制、递归提示和输入变式。
+- 按幕导航、可收起侧栏与窗口自动缩放。
+- 本地进度、草稿、提示和设置保存，支持JSON导入导出；旧关卡ID与存档版本保持兼容。
+- 模块编辑、虚拟文件树、JSON文件评分与档案快照。
+- C/C++语言包目录及运行器接口；当前未提供其他语言课程与执行器。
 
-## 目录与发布约定
+## 桌面与网页边界
 
-```text
-content/python/       Python 内置主线，随本体更新
-src/                  EXE 内嵌界面、编辑器、地图与判定
-public/               EXE 的 Python Worker 与运行时资源
-desktop/              Windows 桌面入口、存档和更新接口
-dlc/<language-id>/    后续语言扩展包的独立目录
-updates/              本体与 DLC 的独立发行清单
-config/repository.json GitHub 来源配置
-```
+本仓库仅维护Windows EXE。Electron内嵌HTML/CSS/JavaScript、Worker和Pyodide属于桌面源码，构建后由codebound://app/加载，不启动本地HTTP监听服务。
 
-不同语言 DLC 维护自己的语言包版本与兼容要求。新增 Python 关卡、资源或修复属于本体新版本。网页的课程和网站更新在独立仓库维护。
+Python网页版在独立YzWushao/codebound_web仓库维护，两个仓库分别安装、构建和发布。本仓库不包含网站发布流程。
 
-## GitHub 更新状态
+Python内容随本体更新；未来其他语言放在dlc/<language-id>/，维护独立语言包版本与兼容要求。应用更新清单和DLC清单分开保存。
 
-当前已关联公开仓库 `YzWushao/Codebound`，更新源配置已同步为公开。Alpha 安装包由 GitHub Releases 分发；游戏中的检查更新接口尚未接入发行包的签名校验、下载和自动安装。Alpha 预发行版本请从 Releases 手动下载。不会向玩家客户端内置 GitHub 凭据。
+## 安装与更新
 
-客户端更新以正式构建的发行包为单位，不在玩家电脑上克隆源码或现场编译。应用清单与 DLC 清单分开维护，避免语言包发行影响本体更新通道。
+Alpha.4的Setup.exe识别有效安装记录，已有安装时沿用原位置升级，未安装时显示向导；升级保留进度，同版本可修复安装。详见[安装升级记录](docs/INSTALLER-QA.md)。
 
-## 验证
+这是下载新版Setup.exe后运行的升级入口。应用内自动下载、签名验证与安装更新仍待实现，客户端不携带GitHub凭据。updates/app.json记录最近已发布安装包，不提前指向尚未发行的Alpha.5。
 
-`npm test` 使用本机 Python 3 与真实 Pyodide 执行同一游戏桥，检查全部140关参考答案、输入变式、错误行号、循环限制、存档协议与运行时完整性。EXE 内实际运行使用随程序打包的 Pyodide。
+## 验证与维护
 
-如果源码启动时提示运行资源缺失或损坏，请重新执行 `npm ci` 与 `npm run dev`。如果仍然报错，请展开「查看运行器诊断」查看具体初始化信息；安装版请重新下载安装完整安装包。
+npm test检查全部关卡参考解法、变式、真实Pyodide、运行时完整性、存档兼容、递归与对象教学要求。完整真人逐关试玩和进一步DPI体验仍待完成。
 
-## 依赖与许可
+项目进度见[TODO](docs/PROJECT-TODO.md)，接续开发见[交接摘要](docs/HANDOFF.md)。历史发行验证保留在对应QA文档中。
 
-依赖包括 Electron、CodeMirror、Lucide、Vite 与 Pyodide，分发时保留相应依赖许可。项目本身的发布许可由项目所有者决定。
+源码启动若提示资源缺失或损坏，请重新执行npm ci与npm run dev，仍有错误时展开运行器诊断。原Win11测试者的exit(1)根因和复测尚未确认。
 
-本地 Alpha.3 增加按幕选择、可收起侧栏与窗口自适应缩放，以及模块文件编辑、虚拟文件与JSON评分、档案快照。当前验证和限制见 [Alpha.3 QA](docs/ALPHA3-QA.md)。本次140关版本同时提供Setup.exe安装包与Windows免安装ZIP；ZIP完整解压后运行Codebound.exe。本地也可双击项目根目录Launch-Codebound.cmd。
-
-Alpha.4 的 Setup.exe 会检测有效安装记录：已有安装时沿用原目录升级，没有安装时显示安装向导。升级保留存档与解锁进度。同版本再次运行可修复安装。实现与验证见 [安装升级说明](docs/INSTALLER-QA.md)。
+依赖包括Electron、CodeMirror、Lucide、Vite与Pyodide，分发时保留对应许可。项目本身的发布许可由项目所有者决定。

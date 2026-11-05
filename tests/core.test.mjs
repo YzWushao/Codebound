@@ -9,7 +9,7 @@ const levels=campaign.levels;
 function run(code,level){return JSON.parse(execFileSync('python',['tests/verify_python.py'],{input:JSON.stringify({code,level}),encoding:'utf8',timeout:10000}));}
 test('关卡 ID 唯一，全部关卡都有教学、示例和三级提示',()=>{
  assert.equal(new Set(levels.map(l=>l.id)).size,levels.length);
- assert.equal(levels.length,140);
+ assert.equal(levels.length,180);
  for(const l of levels){assert.ok(l.learn&&l.example&&l.starter);assert.equal(l.hints.length,3);assert.equal(l.map.filter(row=>row.includes('S')).length,1);assert.equal(l.map.filter(row=>row.includes('G')).length,1);assert.ok(solutions[l.id]);}
 });
 for(const level of levels)test(`参考解法及变式检查：${level.title}`,()=>{
@@ -59,7 +59,7 @@ test('全部解锁保留真实通关进度，忽略未知关卡并兼容旧存�
  const save=freshSave(); save.unlockedLevels=[...levels.map(l=>l.id),'unknown.level'];
  save.drafts[levels[0].id]='# 保留草稿';save.hints[levels[0].id]=2;
  const restored=normalizeSave(save,levels.map(l=>l.id));
- assert.equal(restored.unlockedLevels.length,140);
+ assert.equal(restored.unlockedLevels.length,levels.length);
  assert.equal(Object.keys(restored.completed).length,0);
  assert.equal(restored.drafts[levels[0].id],'# 保留草稿');
  assert.equal(restored.hints[levels[0].id],2);

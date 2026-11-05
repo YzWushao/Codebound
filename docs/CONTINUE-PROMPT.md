@@ -1,14 +1,18 @@
 # 新会话接续提示
 
-> 最新状态：Alpha.4已发布，新增统一安装/升级EXE，源码与159项检查通过；安装器集成测试覆盖首次安装、原位升级、同版本修复、失效记录回退与存档保护。详见 INSTALLER-QA.md。历史Alpha.3记录保留供回溯。
-```text
-继续当前工作区中的 Codebound 项目。先读 AGENTS.md、docs/HANDOFF.md、docs/ALPHA3-QA.md、docs/PROJECT-TODO.md 和 docs/CURRICULUM-ROADMAP.md，检查 git status 并保留已有修改。
-本仓库只维护Windows EXE，网页在独立codebound_web仓库；Python内置，其他语言未来作为DLC。
-本地Alpha.4源码保留140关（序幕20、三幕各40），158项自动检查及桌面冒烟通过。包含模块草稿、虚拟文件和JSON评分、档案快照、收缩侧栏与窗口自动缩放。真人逐关试玩和完整发行验收尚待完成。
-用户最新已授权打包发布；本次交付140关Windows免安装ZIP，并提供本地Codebound.exe入口。release中较早的60关包已被当前140关构建替代。GitHub已发布Alpha.3免安装版，源码及规划文档已提交推送。
-请按我的最新要求继续，真实报告源码实现与待验收的区别，不把TODO中的规划功能说成已完成。
-```
+~~~text
+继续当前Codebound工作区。先读AGENTS.md、docs/HANDOFF.md、
+docs/FINALE-QA.md、docs/KNOWLEDGE-MAP.md、docs/CURRICULUM-ROADMAP.md
+及docs/PROJECT-TODO.md，检查git status并保留已有修改。
 
-当前发行目标：v0.1.0-alpha.3；验证与校验值见ALPHA3-QA.md和releases/0.1.0-alpha.3.md，实际发布状态以GitHub Release为准。
+本仓库只维护Windows EXE；Python是内置主线，网页在独立codebound_web仓库。
+源码为Alpha.5，共180关：序幕20，第一、二、三幕与终幕各40。
+终幕四区是策略算法、递归、对象与综合项目，保持旧关卡ID与存档版本兼容。
+第一幕第二关已解释price为单价、count为数量。
 
-发布结果（2026-11-01）：Alpha.3同一Release提供安装EXE与免安装ZIP，校验值以SHA256SUMS.txt附件为准。
+最近已发布安装版仍是Alpha.4（140关）；Alpha.5尚未打包发行。
+updates/app.json保留已发布Alpha.4链接。当前180关使用npm run dev启动，
+旧的本地便携EXE不会自动包含新增关卡。
+实际检查结果与未完成验收见FINALE-QA.md；不要把历史QA当成本轮验证。
+完整真人试玩仍待完成，后续按我的具体要求继续，不自动打包或创建Release。
+~~~
